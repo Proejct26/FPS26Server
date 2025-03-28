@@ -1,0 +1,86 @@
+﻿  CircularQueue.cpp
+  Content.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\Content.cpp(49,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\Content.cpp(49,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CrashDump.cpp
+  CustomException.cpp
+  LogManager.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'LogManager.cpp'을(를) 컴파일하는 중)
+  
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.cpp(55,25): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  MemoryPoolManager.cpp
+  Profile.cpp
+  Sinleton.cpp
+  Main.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  
+  MakePacket.cpp
+  NetIOManager.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\NetIOManager.cpp(40,26): warning C4267: '초기화 중': 'size_t'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Object.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'Object.cpp'을(를) 컴파일하는 중)
+  
+  ObjectManager.cpp
+  Packet.cpp
+  PacketProc.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'PacketProc.cpp'을(를) 컴파일하는 중)
+  
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(184,118): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(184,91): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(203,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(203,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(259,118): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(259,91): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(278,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(278,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(305,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(305,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(386,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(386,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(466,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(466,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(552,105): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\PacketProc.cpp(552,78): warning C4244: '인수': 'LONG'에서 'UINT8'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  pch.cpp
+  Player.cpp
+  Sector.cpp
+  SectorManager.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(109,18): warning C4244: '초기화 중': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(110,18): warning C4244: '초기화 중': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(121,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(122,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(137,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(138,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(153,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(154,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(169,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(170,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(186,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(187,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(198,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(199,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(210,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(211,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(222,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(223,44): warning C4244: '=': 'LONG'에서 'UINT16'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(294,18): warning C4101: 'posY' :참조되지 않은 지역 변수입니다.
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\SectorManager.cpp(294,12): warning C4101: 'posX' :참조되지 않은 지역 변수입니다.
+  Session.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  SessionManager.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'SessionManager.cpp'을(를) 컴파일하는 중)
+  
+  StackWalker.cpp
+  TimerManager.cpp
+G:\Git\TCPFighterMMOServer\TCPFighterMMOServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
+  (소스 파일 'TimerManager.cpp'을(를) 컴파일하는 중)
+  
+  WinSockManager.cpp
+  코드를 생성하고 있습니다...
+  TCPFighterMMOServer.vcxproj -> G:\Git\TCPFighterMMOServer\x64\Debug\TCPFighterMMOServer.exe

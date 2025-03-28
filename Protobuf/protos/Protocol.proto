@@ -1,0 +1,541 @@
+
+
+syntax = "proto3";
+
+package game;
+
+// 클라이언트 -> 서버: 접속 시 이름 전달
+message CS_OnAccept {
+  string name = 1; // 최대 20자 유니코드 문자열 (실제 제한은 코드로 처리)
+}
+
+// 서버 -> 클라이언트: 내 캐릭터 생성 정보
+message SC_CreateMyCharacter {
+  uint32 id = 1;
+  uint32 posX = 2;
+  uint32 posY = 3;
+  uint32 posZ = 4;
+  uint32 rotateX = 5;
+  uint32 rotateY = 6;
+  uint32 rotateZ = 7;
+  string name = 8;
+}
+
+// 서버 -> 클라이언트: 다른 캐릭터 생성 정보
+message SC_CreateOtherCharacter {
+  uint32 id = 1;
+  uint32 posX = 2;
+  uint32 posY = 3;
+  uint32 posZ = 4;
+  uint32 rotateX = 5;
+  uint32 rotateY = 6;
+  uint32 rotateZ = 7;
+  uint32 hp = 8;
+}
+
+// 서버 -> 클라이언트: 캐릭터 삭제
+message SC_DeleteCharacter {
+  uint32 id = 1;
+}
+
+// 클라이언트 -> 서버: 이동 시작
+message CS_MoveStart {
+  uint32 rotateAxisY = 1;
+  uint32 keyW = 2;
+  uint32 keyA = 3;
+  uint32 keyS = 4;
+  uint32 keyD = 5;
+  uint32 posX = 6;
+  uint32 posY = 7;
+  uint32 posZ = 8;
+}
+
+// 서버 -> 클라이언트: 다른 유저 이동 시작
+message SC_MoveStart {
+  uint32 id = 1;
+  uint32 rotateAxisY = 2;
+  uint32 keyW = 3;
+  uint32 keyA = 4;
+  uint32 keyS = 5;
+  uint32 keyD = 6;
+  uint32 posX = 7;
+  uint32 posY = 8;
+  uint32 posZ = 9;
+}
+
+// 클라이언트 -> 서버: 이동 정지
+message CS_MoveStop {
+  uint32 rotateAxisY = 1;
+  uint32 posX = 2;
+  uint32 posY = 3;
+  uint32 posZ = 4;
+}
+
+// 서버 -> 클라이언트: 다른 유저 이동 정지
+message SC_MoveStop {
+  uint32 id = 1;
+  uint32 rotateAxisY = 2;
+  uint32 posX = 3;
+  uint32 posY = 4;
+  uint32 posZ = 5;
+}
+
+// 클라이언트 -> 서버: 무기 교체
+message CS_ChangeWeapon {
+  uint32 weapon = 1;
+}
+
+// 서버 -> 클라이언트: 다른 캐릭터 무기 교체
+message SC_ChangeWeapon {
+  uint32 id = 1;
+  uint32 weapon = 2;
+}
+
+// 클라이언트 -> 서버: 공격
+message CS_Attack {
+  uint32 targetId = 1;
+  bool attackSuccess = 2;
+}
+
+// 서버 -> 클라이언트: 캐릭터 공격
+message SC_Attack {
+  uint32 id = 1;
+  uint32 rotateAxisY = 2;
+  uint32 posX = 3;
+  uint32 posY = 4;
+  uint32 posZ = 5;
+}
+
+// 서버 -> 클라이언트: 데미지 정보
+message SC_Damage {
+  uint32 attackerId = 1;
+  uint32 targetId = 2;
+  uint32 damageHP = 3;
+}
+
+// 클라이언트 -> 서버: 위치 동기화
+message CS_Sync {
+  uint32 rotateAxisY = 1;
+  uint32 posX = 2;
+  uint32 posY = 3;
+  uint32 posZ = 4;
+}
+
+// 서버 -> 클라이언트: 동기화 정보
+message SC_Sync {
+  uint32 id = 1;
+  uint32 rotateAxisY = 2;
+  uint32 posX = 3;
+  uint32 posY = 4;
+  uint32 posZ = 5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------
+// 클라이언트 자신의 캐릭터 할당		Client -> Server
+//
+// 서버에 접속시 최초로 전송하는 패킷으로 이리 설정한 이름을 보낸다.
+// 
+// 이 패킷을 받으면 자신의 ID,X,Y,Z 이름을 저장하고 캐릭터를 생성시켜야 한다.
+// 이름은 유니코드로 최대 20자를 받도록 한다.
+//
+//	40	-	Name
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_ONACCEPT			100
+/*
+	string		Name
+*/
+
+
+
+//---------------------------------------------------------------
+// 클라이언트 자신의 캐릭터 할당		Server -> Client
+//
+// 서버에 접속시 최초로 받게되는 패킷으로 자신이 할당받은 ID 와
+// 자신의 최초 위치, 이름을 받게 된다. (처음에 한번 받게 됨)
+// 
+// 이 패킷을 받으면 자신의 ID, 위치(x,y,z), 회전값(오일러 - x,y,z) 이름을 저장하고 캐릭터를 생성시켜야 한다.
+//
+//	4	-	ID
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//	2	-	rotateX
+//	2	-	rotateY
+//	2	-	rotateZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_CREATE_MY_CHARACTER			0
+/*
+	UINT32		ID
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+	UINT16		rotateX
+	UINT16		rotateY
+	UINT16		rotateZ
+*/
+
+
+//---------------------------------------------------------------
+// 다른 클라이언트의 캐릭터 생성 패킷		Server -> Client
+//
+// 처음 서버에 접속시 이미 접속되어 있던 캐릭터들의 정보
+// 또는 게임중에 접속된 클라이언트들의 생성용 정보.
+//
+//
+//	4	-	ID
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//	2	-	rotateX
+//	2	-	rotateY
+//	2	-	rotateZ
+//	1	-	HP
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_CREATE_OTHER_CHARACTER		1
+/*
+	UINT32		ID
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+	UINT16		rotateX
+	UINT16		rotateY
+	UINT16		rotateZ
+	UINT8		HP
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 삭제 패킷						Server -> Client
+//
+// 캐릭터의 접속해제 또는 캐릭터가 죽었을때 전송됨.
+//
+//	4	-	ID
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_DELETE_CHARACTER			2
+/*
+	UINT32		ID
+*/
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 이동시작 패킷						Client -> Server
+//
+// 자신의 캐릭터 이동시작시 이 패킷을 보낸다.
+// 이동 중에는 본 패킷을 보내지 않으며, 키 입력 + 마우스 회전값이 변경되었을 경우에만
+// 보내줘야 한다.
+// 최적화를 위해 마우스 회전은 360을 5로 나누어 기존 값과 5도 이상 차이가 있을 때만 전송한다. 클라이언트에서 따로 보간하는 방식으로 진행
+// 이동 보간을 위해 현재 위치도 같이 보내준다.
+//
+//
+//	1	-	rotateAxisY	( 3d에서 플레이어는 Y축으로 회전 )
+//	2	-	W
+//	2	-	A
+//	2	-	S
+//	2	-	D
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_MOVE_START					10
+/*
+	UINT8		rotateAxisY
+	UINT8		W
+	UINT8		A
+	UINT8		S
+	UINT8		D
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 이동시작 패킷						Server -> Client
+//
+// 다른 유저의 캐릭터 이동시 본 패킷을 받는다.
+// 패킷 수신시 해당 캐릭터를 찾아 이동처리를 해주도록 한다.
+// 
+// 패킷 수신 시 해당 키가 계속해서 눌린것으로 생각하고
+// 해당 방향으로 계속 이동을 하고 있어야만 한다.
+//
+// 패킷 수신시 현재 플레이어의 위치와 비슷한 위치에 있는지 확인하여, 만일 다를 경우 보간한다.
+//
+//	4	-	ID
+//	1	-	rotateAxisY	( 3d에서 플레이어는 Y축으로 회전 )
+//	2	-	W
+//	2	-	A
+//	2	-	S
+//	2	-	D
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_MOVE_START					11
+/*
+	UINT32		ID
+	UINT8		rotateAxisY
+	UINT8		W
+	UINT8		A
+	UINT8		S
+	UINT8		D
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 이동중지 패킷						Client -> Server
+//
+// 이동중 키보드 입력이 없어서 정지되었을 때, 이 패킷을 서버에 보내준다.
+// 이동중 방향 전환시에는 스탑을 보내지 않는다.
+//
+//	1	-	rotateAxisY (Y축 회전값)
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_MOVE_STOP					12
+/*
+	UINT8		rotateAxisY
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 이동중지 패킷						Server -> Client
+//
+// ID 에 해당하는 캐릭터가 이동을 멈춘것이므로 
+// 캐릭터를 찾아서 방향과, 좌표를 입력해주고 멈추도록 처리한다.
+//
+//	4	-	ID
+//	1	-	rotateAxisY (Y축 회전값)
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_MOVE_STOP					13
+/*
+	UINT32		ID
+	UINT8		rotateAxisY
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 무기 교체 패킷							Client -> Server
+//
+// 공격 키 입력시 본 패킷을 서버에게 보낸다.
+// 공격 판정에 대해선 클라이언트가 이미 계산해서 서버에 보내는 것으로 데미지에 대한 결과는 서버에서 알려 줄 것이다.
+//
+// 공격 동작 시작시 한번만 서버에게 보내줘야 한다.
+//
+//  1	-	Weapon (무기 정보, 데미지 계산에 사용)
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_CHANGEWEAPON						14
+/*
+	UINT8		Weapon
+*/
+
+
+//---------------------------------------------------------------
+// 캐릭터 무기 교체 패킷							Server -> Client
+//
+// 패킷 수신시 
+// 공격 판정에 대해선 클라이언트가 이미 계산해서 서버에 보내는 것으로 데미지에 대한 결과는 서버에서 알려 줄 것이다.
+//
+// 공격 동작 시작시 한번만 서버에게 보내줘야 한다.
+//
+//	4	-	ID
+//  1	-	Weapon (무기 정보, 데미지 계산에 사용)
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_CHANGEWEAPON						15
+/*
+	UINT32		ID
+	UINT8		Weapon
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 공격 패킷							Client -> Server
+//
+// 공격 키 입력시 본 패킷을 서버에게 보낸다.
+// 공격 판정에 대해선 클라이언트가 이미 계산해서 서버에 보내는 것으로 데미지에 대한 결과는 서버에서 알려 줄 것이다.
+//
+// 공격 동작 시작시 한번만 서버에게 보내줘야 한다.
+//
+//	4	-	ID (피격 대상 ID)
+//	1	-	bAttackSuccess	( 공격 성공 여부 )
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_ATTACK						20
+/*
+	UINT32		ID
+	UINT8		bAttackSuccess
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 공격 패킷							Server -> Client
+//
+// 패킷 수신시 해당 캐릭터를 찾아서 공격 동작으로 액션을 취해준다.
+// 회전 방향과 위치가 다를 경우에는 해당 위치로 보간하면서 해준다.
+//
+//	4	-	ID
+//	1	-	rotateAxisY (Y축 회전값)
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_ATTACK						21
+/*
+	UINT32		ID
+	UINT8		rotateAxisY
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+
+//---------------------------------------------------------------
+// 캐릭터 데미지 패킷							Server -> Client
+//
+// 공격에 맞은 캐릭터의 정보를 보냄. 클라이언트는 무기 정보만 보낼 수 있지 데미지를 직접적으로 보내지 못함.
+//
+//	4	-	AttackID	( 공격자 ID )
+//	4	-	DamageID	( 피해자 ID )
+//	1	-	DamageHP	( 피해자 HP )
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_DAMAGE						30
+/*
+	UINT32		AttackID
+	UINT32		DamageID
+	UINT8		DamageHP
+*/
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------
+// 동기화를 위한 패킷					Client -> Server
+//
+//
+//	1	-	rotateAxisY (Y축 회전값)
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_SYNC						250
+/*
+	UINT8		rotateAxisY
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+//---------------------------------------------------------------
+// 동기화를 위한 패킷					Server -> Client
+//
+// 서버로부터 동기화 패킷을 받으면 해당 캐릭터를 찾아서
+// 캐릭터 좌표를 보정해준다.
+//
+//	4	-	ID
+//	1	-	rotateAxisY (Y축 회전값)
+//	2	-	posX
+//	2	-	posY
+//	2	-	posZ
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_SYNC						251
+/*
+	UINT32		ID
+	UINT8		rotateAxisY
+	UINT16		posX
+	UINT16		posY
+	UINT16		posZ
+*/
+
+
+
+
+
+//---------------------------------------------------------------
+// Echo 용 패킷					Client -> Server
+//
+//	4	-	Time
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_CS_ECHO						252
+/*
+	UINT32		Time
+*/
+
+
+//---------------------------------------------------------------
+// Echo 응답 패킷				Server -> Client
+//
+//	4	-	Time
+//
+//---------------------------------------------------------------
+//#define	dfPACKET_SC_ECHO						253
+/*
+	UINT32		Time
+*/
+
