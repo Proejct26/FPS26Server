@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package game;
+
+enum PacketID {
+    CS_OnAccept = 1;
+    SC_CreateMyCharacter = 2;
+    SC_CreateOtherCharacter = 3;
+    SC_CharacterDown = 4;
+    SC_CharacterKillLog = 5;
+}
+
+message SC_CreateMyCharacter {
+    uint32 playerId = 1; // 서버로부터 받은 ID
+    uint32 posX = 2; // X 좌표
+    uint32 posY = 3; // Y 좌표
+    uint32 posZ = 4; // Z 좌표
+    uint32 maxHP = 5; // 최대 체력
+}
+message SC_CreateOtherCharacter {
+    uint32 playerId = 1; // 서버로부터 받은 ID
+    string name = 2; // 캐릭터 이름
+    uint32 curHP = 3; // 현재 체력
+}
