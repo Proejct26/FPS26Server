@@ -269,7 +269,7 @@ struct SC_SyncDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SyncDefaultTypeInternal _SC_Sync_default_instance_;
 }  // namespace game
 static ::_pb::Metadata file_level_metadata_Protocol_2eproto[15];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Protocol_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Protocol_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Protocol_2eproto = nullptr;
 
 const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -498,12 +498,20 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "H\n\007CS_Sync\022\023\n\013rotateAxisY\030\001 \001(\r\022\014\n\004posX\030"
   "\002 \001(\r\022\014\n\004posY\030\003 \001(\r\022\014\n\004posZ\030\004 \001(\r\"T\n\007SC_"
   "Sync\022\n\n\002id\030\001 \001(\r\022\023\n\013rotateAxisY\030\002 \001(\r\022\014\n"
-  "\004posX\030\003 \001(\r\022\014\n\004posY\030\004 \001(\r\022\014\n\004posZ\030\005 \001(\rb"
-  "\006proto3"
+  "\004posX\030\003 \001(\r\022\014\n\004posY\030\004 \001(\r\022\014\n\004posZ\030\005 \001(\r*"
+  "\310\002\n\010PacketID\022\032\n\026SC_CREATE_MY_CHARACTER\020\000"
+  "\022\035\n\031SC_CREATE_OTHER_CHARACTER\020\001\022\027\n\023SC_DE"
+  "LETE_CHARACTER\020\002\022\021\n\rSC_MOVE_START\020\013\022\020\n\014S"
+  "C_MOVE_STOP\020\r\022\023\n\017SC_CHANGEWEAPON\020\017\022\r\n\tSC"
+  "_ATTACK\020\025\022\r\n\tSC_DAMAGE\020\036\022\014\n\007SC_SYNC\020\373\001\022\014"
+  "\n\007SC_ECHO\020\375\001\022\021\n\rCS_MOVE_START\020\n\022\020\n\014CS_MO"
+  "VE_STOP\020\014\022\023\n\017CS_CHANGEWEAPON\020\016\022\r\n\tCS_ATT"
+  "ACK\020\024\022\017\n\013CS_ONACCEPT\020d\022\014\n\007CS_SYNC\020\372\001\022\014\n\007"
+  "CS_ECHO\020\374\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 1287, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 1618, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
     &descriptor_table_Protocol_2eproto_once, nullptr, 0, 15,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
@@ -517,6 +525,35 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Protocol
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Protocol_2eproto(&descriptor_table_Protocol_2eproto);
 namespace game {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PacketID_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Protocol_2eproto);
+  return file_level_enum_descriptors_Protocol_2eproto[0];
+}
+bool PacketID_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 20:
+    case 21:
+    case 30:
+    case 100:
+    case 250:
+    case 251:
+    case 252:
+    case 253:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 

@@ -52,10 +52,17 @@ namespace Game {
             "X1N5bmMSEwoLcm90YXRlQXhpc1kYASABKA0SDAoEcG9zWBgCIAEoDRIMCgRw",
             "b3NZGAMgASgNEgwKBHBvc1oYBCABKA0iVAoHU0NfU3luYxIKCgJpZBgBIAEo",
             "DRITCgtyb3RhdGVBeGlzWRgCIAEoDRIMCgRwb3NYGAMgASgNEgwKBHBvc1kY",
-            "BCABKA0SDAoEcG9zWhgFIAEoDWIGcHJvdG8z"));
+            "BCABKA0SDAoEcG9zWhgFIAEoDSrIAgoIUGFja2V0SUQSGgoWU0NfQ1JFQVRF",
+            "X01ZX0NIQVJBQ1RFUhAAEh0KGVNDX0NSRUFURV9PVEhFUl9DSEFSQUNURVIQ",
+            "ARIXChNTQ19ERUxFVEVfQ0hBUkFDVEVSEAISEQoNU0NfTU9WRV9TVEFSVBAL",
+            "EhAKDFNDX01PVkVfU1RPUBANEhMKD1NDX0NIQU5HRVdFQVBPThAPEg0KCVND",
+            "X0FUVEFDSxAVEg0KCVNDX0RBTUFHRRAeEgwKB1NDX1NZTkMQ+wESDAoHU0Nf",
+            "RUNITxD9ARIRCg1DU19NT1ZFX1NUQVJUEAoSEAoMQ1NfTU9WRV9TVE9QEAwS",
+            "EwoPQ1NfQ0hBTkdFV0VBUE9OEA4SDQoJQ1NfQVRUQUNLEBQSDwoLQ1NfT05B",
+            "Q0NFUFQQZBIMCgdDU19TWU5DEPoBEgwKB0NTX0VDSE8Q/AFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Game.PacketID), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_OnAccept), global::Game.CS_OnAccept.Parser, new[]{ "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_CreateMyCharacter), global::Game.SC_CreateMyCharacter.Parser, new[]{ "Id", "PosX", "PosY", "PosZ", "RotateX", "RotateY", "RotateZ", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_CreateOtherCharacter), global::Game.SC_CreateOtherCharacter.Parser, new[]{ "Id", "PosX", "PosY", "PosZ", "RotateX", "RotateY", "RotateZ", "Hp" }, null, null, null, null),
@@ -76,6 +83,35 @@ namespace Game {
     #endregion
 
   }
+  #region Enums
+  public enum PacketID {
+    /// <summary>
+    /// Server → Client
+    /// </summary>
+    [pbr::OriginalName("SC_CREATE_MY_CHARACTER")] ScCreateMyCharacter = 0,
+    [pbr::OriginalName("SC_CREATE_OTHER_CHARACTER")] ScCreateOtherCharacter = 1,
+    [pbr::OriginalName("SC_DELETE_CHARACTER")] ScDeleteCharacter = 2,
+    [pbr::OriginalName("SC_MOVE_START")] ScMoveStart = 11,
+    [pbr::OriginalName("SC_MOVE_STOP")] ScMoveStop = 13,
+    [pbr::OriginalName("SC_CHANGEWEAPON")] ScChangeweapon = 15,
+    [pbr::OriginalName("SC_ATTACK")] ScAttack = 21,
+    [pbr::OriginalName("SC_DAMAGE")] ScDamage = 30,
+    [pbr::OriginalName("SC_SYNC")] ScSync = 251,
+    [pbr::OriginalName("SC_ECHO")] ScEcho = 253,
+    /// <summary>
+    /// Client → Server
+    /// </summary>
+    [pbr::OriginalName("CS_MOVE_START")] CsMoveStart = 10,
+    [pbr::OriginalName("CS_MOVE_STOP")] CsMoveStop = 12,
+    [pbr::OriginalName("CS_CHANGEWEAPON")] CsChangeweapon = 14,
+    [pbr::OriginalName("CS_ATTACK")] CsAttack = 20,
+    [pbr::OriginalName("CS_ONACCEPT")] CsOnaccept = 100,
+    [pbr::OriginalName("CS_SYNC")] CsSync = 250,
+    [pbr::OriginalName("CS_ECHO")] CsEcho = 252,
+  }
+
+  #endregion
+
   #region Messages
   /// <summary>
   /// 클라이언트 -> 서버: 접속 시 이름 전달

@@ -4,134 +4,232 @@ syntax = "proto3";
 
 package game;
 
+enum PacketID {
+    // Server → Client
+    SC_CREATE_MY_CHARACTER     = 0;
+    SC_CREATE_OTHER_CHARACTER  = 1;
+    SC_DELETE_CHARACTER        = 2;
+    SC_MOVE_START              = 11;
+    SC_MOVE_STOP               = 13;
+    SC_CHANGEWEAPON            = 15;
+    SC_ATTACK                  = 21;
+    SC_DAMAGE                  = 30;
+    SC_SYNC                    = 251;
+    SC_ECHO                    = 253;
+
+    // Client → Server
+    CS_MOVE_START         = 10;
+    CS_MOVE_STOP          = 12;
+    CS_CHANGEWEAPON       = 14;
+    CS_ATTACK             = 20;
+    CS_ONACCEPT           = 100;
+    CS_SYNC               = 250;
+    CS_ECHO               = 252;
+}
+
 // 클라이언트 -> 서버: 접속 시 이름 전달
 message CS_OnAccept {
-  string name = 1; // 최대 20자 유니코드 문자열 (실제 제한은 코드로 처리)
+  string name = 1; // 최대 20자 유니코드 문자열 (실제 제한은 코드로 처리, 제한은 필요할때 늘리면 됨)
+}
+
+// KDA 정보
+message KDAInfo {
+    uint32 kill = 2;
+    uint32 death = 3;
+    uint32 assist = 4;
+}
+
+// 플레이어 정보
+message PlayerInfo {
+	uint32 playerId = 1;
+	KDAInfo kda = 2;
 }
 
 // 서버 -> 클라이언트: 내 캐릭터 생성 정보
 message SC_CreateMyCharacter {
-  uint32 id = 1;
-  uint32 posX = 2;
-  uint32 posY = 3;
-  uint32 posZ = 4;
-  uint32 rotateX = 5;
-  uint32 rotateY = 6;
-  uint32 rotateZ = 7;
-  string name = 8;
+	// 서버로 부터 부여받은 ID
+	uint32 playerId = 1;
+	
+	// 현재 위치
+	uint32 posX = 2;
+	uint32 posY = 3;
+	uint32 posZ = 4;
+	
+	// 보는 방향
+	uint32 posX = 5;
+	uint32 posY = 6;
+	uint32 posZ = 7;
+
+	// 최대 Hp
+	UINT32 maxHP = 8;
 }
 
 // 서버 -> 클라이언트: 다른 캐릭터 생성 정보
 message SC_CreateOtherCharacter {
-  uint32 id = 1;
-  uint32 posX = 2;
-  uint32 posY = 3;
-  uint32 posZ = 4;
-  uint32 rotateX = 5;
-  uint32 rotateY = 6;
-  uint32 rotateZ = 7;
-  uint32 hp = 8;
+	// 서버로 부터 부여받은 ID
+	uint32 playerId = 1;
+
+	// 현재 위치
+	uint32 posX = 2;
+	uint32 posY = 3;
+	uint32 posZ = 4;
+	
+	// 보는 방향
+	uint32 posX = 5;
+	uint32 posY = 6;
+	uint32 posZ = 7;
+
+	// Hp
+	uint32 maxHP = 8;
+	uint32 curHP = 8;
+
+	// 이름
+	string name = 9;
+	
+	// KDA 정보
+	KDAInfo kdaInfo = 10;
+} 
+
+// 서버 -> 클라이언트: 캐릭터 hp가 0이 될때 전송
+message SC_CharacterDown {
+	// 서버로 부터 부여받은 ID
+	uint32 playerId = 1;
 }
 
-// 서버 -> 클라이언트: 캐릭터 삭제
-message SC_DeleteCharacter {
-  uint32 id = 1;
+// 서버 -> 클라이언트: 캐릭터가 다운됬을 때 모든 플레이어들의 KDA 정보를 전송
+message SC_CharacterKillLog {
+    repeated PlayerInfo playerInfoList = 1;
 }
 
-// 클라이언트 -> 서버: 이동 시작
-message CS_MoveStart {
-  uint32 rotateAxisY = 1;
-  uint32 keyW = 2;
-  uint32 keyA = 3;
-  uint32 keyS = 4;
-  uint32 keyD = 5;
-  uint32 posX = 6;
-  uint32 posY = 7;
-  uint32 posZ = 8;
+// 클라이언트 -> 서버: 입력한 키 정보
+message CS_KeyInput {
+	// 키(WASD)
+	uint32 keyW = 1;
+	uint32 keyA = 2;
+	uint32 keyS = 3;
+	uint32 keyD = 4;
+	
+	// 마우스 X축 회전값
+	fixed32 rotateAxisX = 5;
+	// 마우스 Y축 회전값
+	fixed32 rotateAxisY = 6;
+	
+	// 점프 여부
+	uint32 Jump = 7;
 }
 
-// 서버 -> 클라이언트: 다른 유저 이동 시작
-message SC_MoveStart {
-  uint32 id = 1;
-  uint32 rotateAxisY = 2;
-  uint32 keyW = 3;
-  uint32 keyA = 4;
-  uint32 keyS = 5;
-  uint32 keyD = 6;
-  uint32 posX = 7;
-  uint32 posY = 8;
-  uint32 posZ = 9;
+
+// 서버 -> 클라이언트: 입력한 키 정보
+message SC_KeyInput {
+	uint32 playerId = 1;
+	
+	// 키(WASD)
+	uint32 keyW = 2;
+	uint32 keyA = 3;
+	uint32 keyS = 4;
+	uint32 keyD = 5;
+	
+	// 마우스 X축 회전값
+	fixed32 rotateAxisX = 6;
+	// 마우스 Y축 회전값
+	fixed32 rotateAxisY = 7;
+	
+	// 점프 여부
+	uint32 Jump = 8;
 }
 
-// 클라이언트 -> 서버: 이동 정지
-message CS_MoveStop {
-  uint32 rotateAxisY = 1;
-  uint32 posX = 2;
-  uint32 posY = 3;
-  uint32 posZ = 4;
+// 클라이언트 -> 서버: 현재 위치 정보 보간용
+message CS_PosInterpolation {
+	// 플레이어의 현재 위치
+	uint32 posX = 1;
+	uint32 posY = 2;
+	uint32 posZ = 3;
+}
+// 서버 -> 클라이언트: 현재 위치 정보 보간용
+message SC_PosInterpolation {
+	// 플레이어의 현재 위치
+	uint32 posX = 1;
+	uint32 posY = 2;
+	uint32 posZ = 3;
 }
 
-// 서버 -> 클라이언트: 다른 유저 이동 정지
-message SC_MoveStop {
-  uint32 id = 1;
-  uint32 rotateAxisY = 2;
-  uint32 posX = 3;
-  uint32 posY = 4;
-  uint32 posZ = 5;
+
+// 가지고 있는 무기 사용
+// 총은 발사, 단검은 휘두르기, 수류탄은 던지기
+message CS_Attack {
+	bool bAttack = 1;	// 임의의 변수, 의미 없음.
 }
+message SC_Attack {
+	uint32 playerId = 1;
+}
+
+// 클라이언트 -> 서버: 맞았을 경우, 총이나 단검의 경우
+message CS_ShotHit {
+	// 피격 대상
+	uint32 playerId = 1;
+
+	// 데미지 처리 후 피격 대상의 남은 HP
+	uint32 hp = 2;
+}
+// 서버 -> 클라이언트: 맞았을 경우, 총이나 단검의 경우
+message SC_ShotHit {
+	// 피격 대상
+	uint32 playerId = 1;
+
+	// 데미지 처리 후 피격 대상의 남은 HP
+	uint32 hp = 2;
+}
+
+// 클라이언트 -> 서버: 수류탄의 경우
+message CS_ThrowGrenade {
+	// 던지기 시작하는 현재 플레이어의 위치
+	uint32 posX = 1;
+	uint32 posY = 2;
+	uint32 posZ = 3;
+	
+	// 던지는 방향의 벡터
+	fixed32 posX = 4;
+	fixed32 posY = 5;
+	fixed32 posZ = 6;
+}
+// 서버 -> 클라이언트: 수류탄의 경우
+message SC_ThrowGrenade {
+	// 던지기 시작하는 현재 플레이어의 위치
+	uint32 posX = 1;
+	uint32 posY = 2;
+	uint32 posZ = 3;
+	
+	// 던지는 방향의 벡터
+	fixed32 posX = 4;
+	fixed32 posY = 5;
+	fixed32 posZ = 6;
+}
+
+// 클라이언트 -> 서버: 수류탄이 터지는 위치, 계산해서 다른 클라이언트들에게 전송
+message CS_GrenadeExplositionPos {
+  // 터질 위치
+  uint32 posX = 1;
+  uint32 posY = 2;
+  uint32 posZ = 3;
+}
+// 서버 -> 클라이언트: 수류탄이 터지는 위치, 해당 정보를 받았을 때 수류탄이 터짐
+message SC_GrenadeExplositionPos {
+  // 터질 위치
+  uint32 posX = 1;
+  uint32 posY = 2;
+  uint32 posZ = 3;
+}
+
 
 // 클라이언트 -> 서버: 무기 교체
 message CS_ChangeWeapon {
   uint32 weapon = 1;
 }
-
 // 서버 -> 클라이언트: 다른 캐릭터 무기 교체
 message SC_ChangeWeapon {
-  uint32 id = 1;
+  uint32 playerId = 1;
   uint32 weapon = 2;
 }
-
-// 클라이언트 -> 서버: 공격
-message CS_Attack {
-  uint32 targetId = 1;
-  bool attackSuccess = 2;
-}
-
-// 서버 -> 클라이언트: 캐릭터 공격
-message SC_Attack {
-  uint32 id = 1;
-  uint32 rotateAxisY = 2;
-  uint32 posX = 3;
-  uint32 posY = 4;
-  uint32 posZ = 5;
-}
-
-// 서버 -> 클라이언트: 데미지 정보
-message SC_Damage {
-  uint32 attackerId = 1;
-  uint32 targetId = 2;
-  uint32 damageHP = 3;
-}
-
-// 클라이언트 -> 서버: 위치 동기화
-message CS_Sync {
-  uint32 rotateAxisY = 1;
-  uint32 posX = 2;
-  uint32 posY = 3;
-  uint32 posZ = 4;
-}
-
-// 서버 -> 클라이언트: 동기화 정보
-message SC_Sync {
-  uint32 id = 1;
-  uint32 rotateAxisY = 2;
-  uint32 posX = 3;
-  uint32 posY = 4;
-  uint32 posZ = 5;
-}
-
-
-
 
 
 

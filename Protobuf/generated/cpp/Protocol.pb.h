@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -110,6 +111,46 @@ template<> ::game::SC_Sync* Arena::CreateMaybeMessage<::game::SC_Sync>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace game {
 
+enum PacketID : int {
+  SC_CREATE_MY_CHARACTER = 0,
+  SC_CREATE_OTHER_CHARACTER = 1,
+  SC_DELETE_CHARACTER = 2,
+  SC_MOVE_START = 11,
+  SC_MOVE_STOP = 13,
+  SC_CHANGEWEAPON = 15,
+  SC_ATTACK = 21,
+  SC_DAMAGE = 30,
+  SC_SYNC = 251,
+  SC_ECHO = 253,
+  CS_MOVE_START = 10,
+  CS_MOVE_STOP = 12,
+  CS_CHANGEWEAPON = 14,
+  CS_ATTACK = 20,
+  CS_ONACCEPT = 100,
+  CS_SYNC = 250,
+  CS_ECHO = 252,
+  PacketID_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  PacketID_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool PacketID_IsValid(int value);
+constexpr PacketID PacketID_MIN = SC_CREATE_MY_CHARACTER;
+constexpr PacketID PacketID_MAX = SC_ECHO;
+constexpr int PacketID_ARRAYSIZE = PacketID_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PacketID_descriptor();
+template<typename T>
+inline const std::string& PacketID_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, PacketID>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function PacketID_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    PacketID_descriptor(), enum_t_value);
+}
+inline bool PacketID_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, PacketID* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PacketID>(
+    PacketID_descriptor(), name, value);
+}
 // ===================================================================
 
 class CS_OnAccept final :
@@ -4383,6 +4424,16 @@ inline void SC_Sync::set_posz(uint32_t value) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace game
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::game::PacketID> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::game::PacketID>() {
+  return ::game::PacketID_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 
