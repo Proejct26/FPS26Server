@@ -1,32 +1,114 @@
-# Prerequisites
-*.d
+# =========================
+# Python 관련
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pyc
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# 가상환경
+.env/
+.venv/
+env/
+venv/
+ENV/
+ENV.bak/
+*.env
+
+# Python 빌드 결과물
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================
+# C/C++ 관련
+# =========================
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
+*.o
 *.a
 *.lib
-
-# Executables
+*.so
+*.dll
 *.exe
 *.out
-*.app
+
+# CMake 관련
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# =========================
+# Visual Studio 2022
+# =========================
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ipdb
+*.iobj
+*.log
+
+*.tlog
+*.lastbuildstate
+*.idb
+*.opensdf
+*.sdf
+*.cache
+*.db
+
+[Bb]in/
+[Oo]bj/
+ipch/
+.vs/
+GeneratedFiles/
+_Debug/
+_Release/
+
+# 예외 허용: Libraries/Libs/ 안의 모든 하위 폴더의 .lib 파일
+!Libraries/Libs/**/
+!Libraries/Libs/**/*.lib
+
+# =========================
+# PyCharm 관련
+# =========================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# =========================
+# 기타
+# =========================
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# VSCode
+.vscode/
