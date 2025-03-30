@@ -1,4 +1,4 @@
-('G:\\Sparta\\FPS26Server\\Protobuf\\PythonProject\\build\\generate_proto\\PYZ-00.pyz',
+('G:\\Sparta\\FPS26Server\\ProtoFileGenerator\\build\\generate_proto\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\JungSeongUk\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\__future__.py',
    'PYMODULE'),

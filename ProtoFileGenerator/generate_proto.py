@@ -30,34 +30,59 @@ if not os.path.exists(excel_path):
     exit(1)
 
 try:
-    # 엑셀 파일의 "Messages" 시트를 읽어옴
-    # 각 row는 하나의 message 필드 정의 (message 이름, 필드 이름, 타입, 주석 포함)
-    messages_df = pd.read_excel(excel_path, sheet_name="Messages", engine="openpyxl")
-
-    # 엑셀 파일의 "PacketEnum" 시트를 읽어옴
-    # 각 row는 하나의 enum 항목 (PacketID용)
-    packet_enum_df = pd.read_excel(excel_path, sheet_name="PacketEnum", engine="openpyxl")
-
+    # 모든 시트의 내용을 딕셔너리 형태로 읽어옴
+    all_sheets = pd.read_excel(excel_path, sheet_name=None, engine="openpyxl")
 except Exception as e:
     print("엑셀 파일 읽는 중 오류 발생:", e)
     input("Enter 키를 눌러 종료합니다.")
     exit(1)
 
-# 메시지 이름을 기준으로 그룹핑
-# 같은 MessageName을 가진 행들을 하나의 message 블록으로 묶음
-grouped = messages_df.groupby("MessageName")
+# 모든 메시지 정의를 저장할 딕셔너리
+messages = {}
 
-# grouped 데이터를 딕셔너리로 변환
-# 구조: { "MessageName": [ {필드1}, {필드2}, ... ] }
-# records : 각 행(row)을 하나의 딕셔너리로 만들어서, 전체를 리스트에 담는 옵션
-messages = {
-    name: group.to_dict(orient="records")
-    for name, group in grouped
-}
+# SC_, CS_로 시작하는 메시지를 따로 모아 PacketID enum 생성용으로 사용
+packet_names_set = set()
+
+# 중복 메시지 이름 체크용 집합
+defined_message_names = set()
+
+# 각 시트를 순회하면서 메시지를 수집
+for sheet_name, df in all_sheets.items():
+    # 필요한 컬럼이 존재하는 시트만 처리
+    if "MessageName" in df.columns and "FieldName" in df.columns and "Type" in df.columns:
+        grouped = df.groupby("MessageName")
+        for name, group in grouped:
+            # 이전 시트에서 이미 정의된 메시지 이름이 다시 등장하면 오류 처리
+            if name in defined_message_names:
+                print(f"[중복 메시지 이름 오류] '{name}' 이(가) 시트 '{sheet_name}'에서 중복 정의되었습니다.")
+                input("Enter 키를 눌러 종료합니다.")
+                exit(1)
+
+            defined_message_names.add(name)
+
+            # 각 메시지 이름에 대해 필드 목록 저장
+            messages[name] = group.to_dict(orient="records")
+
+            # PacketID enum에 넣을 대상이면 따로 기록
+            if name.startswith("SC_") or name.startswith("CS_"):
+                packet_names_set.add(name)
+
+
+# PacketID enum 항목들을 알파벳 순 정렬 후 PascalCase로 변환하여 번호 부여 (1부터 시작)
+def format_packet_name(name):
+    if name.startswith("CS_") or name.startswith("SC_"):
+        prefix = name[:3]
+        rest = name[3:]
+        # 단어 단위로 나눈 후 PascalCase로 변환
+        parts = rest.split('_')
+        pascal_case = ''.join(part.capitalize() for part in parts)
+        return prefix + pascal_case
+    return name
+
+# PacketID enum 항목들을 알파벳 순 정렬 후 번호 부여 (0부터 시작)
+packet_enum = [{"name": format_packet_name(name), "value": i} for i, name in enumerate(sorted(packet_names_set))]
 
 # Jinja2 템플릿 환경 설정
-# trim_blocks: 블록 닫힌 후 남는 줄 제거
-# lstrip_blocks: 블록 시작 시 앞 공백 제거
 env = Environment(
     trim_blocks=True,
     lstrip_blocks=True
@@ -70,25 +95,38 @@ proto_template = env.from_string('''syntax = "proto3";
 package game;
 
 enum PacketID {
-{% for packet in packet_enum %}
-    {{ packet }} = {{ loop.index }};
+// Client → Server
+{% for packet in packet_enum if packet.name.startswith("CS_") %}
+    {{ packet.name }} = {{ packet.value }};
+{% endfor %}
+
+// Server → Client
+{% for packet in packet_enum if packet.name.startswith("SC_") %}
+    {{ packet.name }} = {{ packet.value }};
 {% endfor %}
 }
 
 {% for message_name, fields in messages.items() %}
 message {{ message_name }} {
 {% for field in fields %}
-    {{ field["Type"] }} {{ field["FieldName"] }} = {{ loop.index }};{{ " // " + field["Comment"] if field["Comment"] else "" }}
+    {{ field["Type"] }} {{ field["FieldName"] }} = {{ loop.index }};{{ " // " + field["Comment"] if "Comment" in field and field["Comment"] else "" }}
 {% endfor %}
 }
 {% endfor %}
 ''')
 
+# Comment 필드가 NaN이면 빈 문자열로 치환
+for field_list in messages.values():
+    for field in field_list:
+        comment = field.get("Comment", "")
+        if pd.isna(comment):
+            field["Comment"] = ""
+        else:
+            field["Comment"] = str(comment)
+
 # 템플릿에 실제 데이터 주입하여 문자열 생성
-# packet_enum: 리스트 형태
-# messages: 딕셔너리 형태
 rendered_proto = proto_template.render(
-    packet_enum=packet_enum_df["PacketName"].tolist(),
+    packet_enum=packet_enum,
     messages=messages
 )
 
