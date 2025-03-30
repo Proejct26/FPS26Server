@@ -358,11 +358,12 @@ void CNetIOManager::netProc_Recv(CSession* pSession)
             break;
         }
 
-        // 추가로 수신된 데이터의 크기가 최대 패킷 크기를 넘어서면 검사
-        if (header.bySize > dfMAX_PACKET_SIZE)
-        {
-            DebugBreak();
-        }
+        //// 추가로 수신된 데이터의 크기가 최대 패킷 크기를 넘어서면 검사
+        //if (header.bySize > dfMAX_PACKET_SIZE)
+        //{
+        //    DebugBreak();
+        //}
+        // 이 부분은 나중에 필요하면 추가. 지금은 protobuf를 사용하기 검사하지 않음.
 
         // 4. 헤더의 len값과 RecvQ의 데이터 사이즈 비교
         if ((header.bySize + sizeof(PACKET_HEADER)) > pSession->recvQ.GetUseSize())
@@ -381,7 +382,7 @@ void CNetIOManager::netProc_Recv(CSession* pSession)
             DebugBreak();
         }
 
-        if (!m_callbackPacketProc(pSession, static_cast<PACKET_TYPE>(header.byType), &Packet))
+        if (!m_callbackPacketProc(pSession, static_cast<game::PacketID>(header.byType), &Packet))
         {
             pSession->pObj->m_bDead = true;
             NotifyClientDisconnected(pSession);

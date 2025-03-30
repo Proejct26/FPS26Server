@@ -111,6 +111,12 @@
     <Filter Include="소스 파일\99. Etc\07. PDH\Timer">
       <UniqueIdentifier>{2ad92483-ee08-48ee-a061-cbe4ea85d1e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\03. Packet %28Seriallized Buffer%29\02. ProtoStruct">
+      <UniqueIdentifier>{2d12ecc7-c81e-4356-91f1-c621212a480c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Packet %28Seriallized Buffer%29\03. Proto">
+      <UniqueIdentifier>{3631392f-c4e2-429e-b8a6-78c53111aca2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CustomException.cpp">
@@ -298,10 +304,18 @@
     <ClInclude Include="Timer.h">
       <Filter>소스 파일\99. Etc\07. PDH\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="ProtoStruct.h">
+      <Filter>소스 파일\03. Packet %28Seriallized Buffer%29\02. ProtoStruct</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DFPSServer.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol.proto">
+      <Filter>소스 파일\03. Packet %28Seriallized Buffer%29\03. Proto</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -36,37 +36,45 @@ void LoginAcceptObject(CObject* pObj)
     CSession* pSession = pObj->m_pSession;
     CPlayer* pPlayer = static_cast<CPlayer*>(pObj);
 
+    //=====================================================================================================================================
+    // 1. 연결된 세션에 PACKET_SC_CREATE_MY_CHARACTER 를 전송
+    //=====================================================================================================================================
+    SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID, 1, 2, 3, 11, 12, 13, 100);  // 현재 위치 0,0,0 / 바라보는 방향 0, 0, 0 / 최대 hp 100
+
+
+
+
     //std::string payload;
     //pkt.SerializeToString(&payload);
 
-    char buffer[256];   // 최대 패킷 사이즈. 임의로 256으로 설정해둠.
-    game::SC_CreateMyCharacter pkt;
-    pkt.set_id(pPlayer->m_ID);
-    pkt.set_posx(10);
-    pkt.set_posy(20);
-    pkt.set_posz(30);
-    pkt.set_rotatex(0);
-    pkt.set_rotatey(90);
-    pkt.set_rotatez(0);
-    pkt.set_name("TestPlayer");
+    //char buffer[256];   // 최대 패킷 사이즈. 임의로 256으로 설정해둠.
+    //game::SC_CreateMyCharacter pkt;
+    //pkt.set_id(pPlayer->m_ID);
+    //pkt.set_posx(10);
+    //pkt.set_posy(20);
+    //pkt.set_posz(30);
+    //pkt.set_rotatex(0);
+    //pkt.set_rotatey(90);
+    //pkt.set_rotatez(0);
+    //pkt.set_name("TestPlayer");
 
-    int size = pkt.ByteSizeLong(); // 직렬화 크기 먼저 계산
-    pkt.SerializeToArray(buffer, size); // 여기서 buffer에 바로 씀
+    //int size = pkt.ByteSizeLong(); // 직렬화 크기 먼저 계산
+    //pkt.SerializeToArray(buffer, size); // 여기서 buffer에 바로 씀
 
 
-    PACKET_HEADER header;
-    CPacket* Packet = packetPool.Alloc();
+    //PACKET_HEADER header;
+    //CPacket* Packet = packetPool.Alloc();
 
-    Packet->PutData(buffer, size);
+    //Packet->PutData(buffer, size);
 
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = Packet->GetDataSize();
-    header.byType = dfPACKET_SC_CREATE_MY_CHARACTER;
+    //header.byCode = dfNETWORK_PACKET_CODE;
+    //header.bySize = Packet->GetDataSize();
+    //header.byType = dfPACKET_SC_CREATE_MY_CHARACTER;
 
-    UnicastPacket(pSession, &header, Packet);
+    //UnicastPacket(pSession, &header, Packet);
 
-    Packet->Clear();
-    packetPool.Free(Packet);
+    //Packet->Clear();
+    //packetPool.Free(Packet);
 
     ////=====================================================================================================================================
     //// 1. 연결된 세션에 PACKET_SC_CREATE_MY_CHARACTER 를 전송

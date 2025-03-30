@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Singleton.h"
+#include "Protobuf/Protocol.pb.h"
 
 class CSession;
 class CPacket;
@@ -13,7 +14,7 @@ private:
     friend class SingletonBase<CNetIOManager>;
 
 public: 
-    using PacketProcCallback = bool(*)(CSession*, PACKET_TYPE, CPacket*);
+    using PacketProcCallback = bool(*)(CSession* pSession, game::PacketID packetType, CPacket* pPacket);
     using AcceptCreateCallback = CObject * (*)();
     using AcceptAfterCallback = void(*)(CObject*);
 

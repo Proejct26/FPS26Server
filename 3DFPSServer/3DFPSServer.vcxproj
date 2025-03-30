@@ -218,6 +218,7 @@
     <ClInclude Include="Profile.h" />
     <ClInclude Include="Protobuf\Protocol.pb.h" />
     <ClInclude Include="Protocol.h" />
+    <ClInclude Include="ProtoStruct.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RingBuffer.h" />
     <ClInclude Include="Sector.h" />
@@ -233,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DFPSServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
