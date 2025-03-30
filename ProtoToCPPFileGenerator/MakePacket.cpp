@@ -14,23 +14,19 @@ void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId)
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Attack;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -42,23 +38,19 @@ void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId)
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Attack;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -70,17 +62,14 @@ void SC_ATTACK_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId)
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Attack;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -91,11 +80,9 @@ void SC_ATTACK_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId)
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -108,23 +95,19 @@ void SC_CHANGE_WEAPON_FOR_All(CSession* pSession, UINT32 playerId, UINT32 weapon
     pkt.set_weapon(weapon);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ChangeWeapon;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -137,23 +120,19 @@ void SC_CHANGE_WEAPON_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 wea
     pkt.set_weapon(weapon);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ChangeWeapon;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -166,17 +145,14 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 pl
     pkt.set_weapon(weapon);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ChangeWeapon;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -187,11 +163,9 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 pl
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -203,23 +177,19 @@ void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId)
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterDown;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -231,23 +201,19 @@ void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId)
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterDown;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -259,17 +225,14 @@ void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 p
     pkt.set_playerid(playerId);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterDown;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -280,89 +243,97 @@ void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 p
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, )
+void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, std::vector<PlayerInfo>& playerInfoList)
 {
     game::SC_CHARACTER_KILL_LOG pkt;
 
-    
+    for (const auto& data : playerInfoList) {
+        game::PlayerInfo* item = pkt.add_playerinfolist();
+        item->set_playerid(data.playerId);
+        game::KDAInfo* nested = item->mutable_kda();
+        nested->set_kill(data.kda.kill);
+        nested->set_death(data.kda.death);
+        nested->set_assist(data.kda.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterKillLog;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, )
+void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, std::vector<PlayerInfo>& playerInfoList)
 {
     game::SC_CHARACTER_KILL_LOG pkt;
 
-    
+    for (const auto& data : playerInfoList) {
+        game::PlayerInfo* item = pkt.add_playerinfolist();
+        item->set_playerid(data.playerId);
+        game::KDAInfo* nested = item->mutable_kda();
+        nested->set_kill(data.kda.kill);
+        nested->set_death(data.kda.death);
+        nested->set_assist(data.kda.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterKillLog;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, )
+void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, std::vector<PlayerInfo>& playerInfoList)
 {
     game::SC_CHARACTER_KILL_LOG pkt;
 
-    
+    for (const auto& data : playerInfoList) {
+        game::PlayerInfo* item = pkt.add_playerinfolist();
+        item->set_playerid(data.playerId);
+        game::KDAInfo* nested = item->mutable_kda();
+        nested->set_kill(data.kda.kill);
+        nested->set_death(data.kda.death);
+        nested->set_assist(data.kda.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CharacterKillLog;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -373,11 +344,9 @@ void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, )
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -396,23 +365,19 @@ void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 
     pkt.set_maxhp(maxHP);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateMyCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -431,23 +396,19 @@ void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT
     pkt.set_maxhp(maxHP);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateMyCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -466,17 +427,14 @@ void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UIN
     pkt.set_maxhp(maxHP);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateMyCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -487,16 +445,14 @@ void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UIN
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -510,31 +466,32 @@ void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
-    pkt.set_kdainfo(kdaInfo);
+    {
+        game::KDAInfo* sub = pkt.mutable_kdainfo();
+        sub->set_kill(kdaInfo.kill);
+        sub->set_death(kdaInfo.death);
+        sub->set_assist(kdaInfo.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateOtherCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -548,31 +505,32 @@ void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, U
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
-    pkt.set_kdainfo(kdaInfo);
+    {
+        game::KDAInfo* sub = pkt.mutable_kdainfo();
+        sub->set_kill(kdaInfo.kill);
+        sub->set_death(kdaInfo.death);
+        sub->set_assist(kdaInfo.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateOtherCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -586,20 +544,22 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, 
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
-    pkt.set_kdainfo(kdaInfo);
+    {
+        game::KDAInfo* sub = pkt.mutable_kdainfo();
+        sub->set_kill(kdaInfo.kill);
+        sub->set_death(kdaInfo.death);
+        sub->set_assist(kdaInfo.assist);
+    }
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_CreateOtherCharacter;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -610,11 +570,9 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, 
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -628,23 +586,19 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_All(CSession* pSession, UINT32 posX, UINT32 po
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Grenadeexplositionpos;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -658,23 +612,19 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Grenadeexplositionpos;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -688,17 +638,14 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_AROUND(CSession* pSession, CSector* pSector, U
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_Grenadeexplositionpos;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -709,11 +656,9 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_AROUND(CSession* pSession, CSector* pSector, U
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -732,23 +677,19 @@ void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT
     pkt.set_jump(Jump);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_KeyInput;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -767,23 +708,19 @@ void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, U
     pkt.set_jump(Jump);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_KeyInput;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -802,17 +739,14 @@ void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 player
     pkt.set_jump(Jump);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_KeyInput;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -823,11 +757,9 @@ void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 player
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -841,23 +773,19 @@ void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, 
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_PosInterpolation;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -871,23 +799,19 @@ void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 pos
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_PosInterpolation;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -901,17 +825,14 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CSector* pSector, UINT3
     pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_PosInterpolation;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -922,11 +843,9 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CSector* pSector, UINT3
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -939,23 +858,19 @@ void SC_SHOT_HIT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 hp)
     pkt.set_hp(hp);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ShotHit;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -968,23 +883,19 @@ void SC_SHOT_HIT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 hp)
     pkt.set_hp(hp);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ShotHit;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -997,17 +908,14 @@ void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerI
     pkt.set_hp(hp);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ShotHit;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -1018,11 +926,9 @@ void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerI
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -1039,23 +945,19 @@ void SC_THROW_GRENADE_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT
     pkt.set_dirz(dirZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ThrowGrenade;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     BroadcastData(pSession, Packet, Packet->GetDataSize());
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -1072,23 +974,19 @@ void SC_THROW_GRENADE_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, U
     pkt.set_dirz(dirZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ThrowGrenade;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
     UnicastPacket(pSession, &header, Packet);
-
     Packet->Clear();
     packetPool.Free(Packet);
 }
@@ -1105,17 +1003,14 @@ void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 po
     pkt.set_dirz(dirZ);
 
     int pktSize = pkt.ByteSizeLong();
-
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ThrowGrenade;
 
     int headerSize = sizeof(PACKET_HEADER);
-
     CPacket* Packet = packetPool.Alloc();
     Packet->PutData((const char*)&header, headerSize);
-
     char buffer[512];
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
@@ -1126,11 +1021,9 @@ void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 po
         {
             if (pSession == Object.second->m_pSession)
                 continue;
-
             UnicastPacket(Object.second->m_pSession, &header, Packet);
         }
     }
-
     Packet->Clear();
     packetPool.Free(Packet);
 }

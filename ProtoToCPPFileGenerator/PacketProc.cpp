@@ -31,7 +31,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     {
     case game::PacketID::CS_Attack:
     {
-        UINT32 bAttack;
+        bool bAttack;
 
         game::CS_ATTACK pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
@@ -95,7 +95,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     break;
     case game::PacketID::CS_OnAccept:
     {
-        UINT32 name;
+        std::string name;
 
         game::CS_ON_ACCEPT pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
@@ -167,7 +167,7 @@ void DisconnectSessionProc(CSession* pSession)
 {
     return;
 }
-bool CS_ATTACK(CSession* pSession, UINT32 bAttack)
+bool CS_ATTACK(CSession* pSession, bool bAttack)
 {
     return false;
 }
@@ -187,7 +187,7 @@ bool CS_KEY_INPUT(CSession* pSession, UINT32 keyW, UINT32 keyA, UINT32 keyS, UIN
     return false;
 }
 
-bool CS_ON_ACCEPT(CSession* pSession, UINT32 name)
+bool CS_ON_ACCEPT(CSession* pSession, std::string name)
 {
     return false;
 }

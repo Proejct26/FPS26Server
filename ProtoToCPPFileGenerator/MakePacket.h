@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ProtoStruct.h"
+
 class CSession;
 class CSector;
 
@@ -15,17 +17,17 @@ void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId);
 void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId);
 void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId);
 
-void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, );
-void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, );
-void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, );
+void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, std::vector<PlayerInfo>& playerInfoList);
+void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, std::vector<PlayerInfo>& playerInfoList);
+void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, std::vector<PlayerInfo>& playerInfoList);
 
 void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP);
 void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP);
 void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP);
 
-void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo);
-void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo);
-void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, UINT32 name, UINT32 kdaInfo);
+void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo);
+void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo);
+void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo);
 
 void SC_GRENADEEXPLOSITIONPOS_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ);
 void SC_GRENADEEXPLOSITIONPOS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ);

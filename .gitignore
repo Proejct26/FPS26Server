@@ -807,7 +807,8 @@ FodyWeavers.xsd
 !Libraries/Libs/**/*.lib
 !ProtoFileGenerator/**/
 !ProtoFileGenerator/**/*.exe
-
+!AllInOneGenerator/**/
+!AllInOneGenerator/*.exe
 
 
 

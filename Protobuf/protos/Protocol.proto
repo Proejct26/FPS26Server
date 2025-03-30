@@ -1,639 +1,146 @@
-
-
 syntax = "proto3";
 
 package game;
 
 enum PacketID {
-    // Server ¡æ Client
-    SC_CREATE_MY_CHARACTER     = 0;
-    SC_CREATE_OTHER_CHARACTER  = 1;
-    SC_DELETE_CHARACTER        = 2;
-    SC_MOVE_START              = 11;
-    SC_MOVE_STOP               = 13;
-    SC_CHANGEWEAPON            = 15;
-    SC_ATTACK                  = 21;
-    SC_DAMAGE                  = 30;
-    SC_SYNC                    = 251;
-    SC_ECHO                    = 253;
+// Client â†’ Server
+    CS_Attack = 0;
+    CS_ChangeWeapon = 1;
+    CS_GrenadeExplositionPos = 2;
+    CS_KeyInput = 3;
+    CS_OnAccept = 4;
+    CS_PosInterpolation = 5;
+    CS_ShotHit = 6;
+    CS_ThrowGrenade = 7;
 
-    // Client ¡æ Server
-    CS_MOVE_START         = 10;
-    CS_MOVE_STOP          = 12;
-    CS_CHANGEWEAPON       = 14;
-    CS_ATTACK             = 20;
-    CS_ONACCEPT           = 100;
-    CS_SYNC               = 250;
-    CS_ECHO               = 252;
+// Server â†’ Client
+    SC_Attack = 8;
+    SC_ChangeWeapon = 9;
+    SC_CharacterDown = 10;
+    SC_CharacterKillLog = 11;
+    SC_CreateMyCharacter = 12;
+    SC_CreateOtherCharacter = 13;
+    SC_Grenadeexplositionpos = 14;
+    SC_KeyInput = 15;
+    SC_PosInterpolation = 16;
+    SC_ShotHit = 17;
+    SC_ThrowGrenade = 18;
 }
 
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: Á¢¼Ó ½Ã ÀÌ¸§ Àü´Þ
-message CS_OnAccept {
-  string name = 1; // ÃÖ´ë 20ÀÚ À¯´ÏÄÚµå ¹®ÀÚ¿­ (½ÇÁ¦ Á¦ÇÑÀº ÄÚµå·Î Ã³¸®, Á¦ÇÑÀº ÇÊ¿äÇÒ¶§ ´Ã¸®¸é µÊ)
+message CS_ATTACK {
+    bool bAttack = 1; // ìž„ì˜ì˜ ë³€ìˆ˜, ì˜ë¯¸ ì—†ìŒ.
 }
-
-// KDA Á¤º¸
+message CS_CHANGE_WEAPON {
+    uint32 weapon = 1; // ë¬´ê¸° êµì²´
+}
+message CS_GRENADE_EXPLOSITION_POS {
+    uint32 posX = 1; // í„°ì§ˆ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message CS_KEY_INPUT {
+    uint32 keyW = 1; // í‚¤(WASD)
+    uint32 keyA = 2;
+    uint32 keyS = 3;
+    uint32 keyD = 4;
+    fixed32 rotateAxisX = 5; // ë§ˆìš°ìŠ¤ Xì¶• íšŒì „ê°’
+    fixed32 rotateAxisY = 6; // ë§ˆìš°ìŠ¤ Yì¶• íšŒì „ê°’
+    uint32 Jump = 7; // ì í”„ ì—¬ë¶€
+}
+message CS_ON_ACCEPT {
+    string name = 1; // ìµœëŒ€ 20ìž ìœ ë‹ˆì½”ë“œ ë¬¸ìžì—´ (ì‹¤ì œ ì œí•œì€ ì½”ë“œë¡œ ì²˜ë¦¬, ì œí•œì€ í•„ìš”í• ë•Œ ëŠ˜ë¦¬ë©´ ë¨)
+}
+message CS_POS_INTERPOLATION {
+    uint32 posX = 1; // í”Œë ˆì´ì–´ì˜ í˜„ìž¬ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message CS_SHOT_HIT {
+    uint32 playerId = 1; // í”¼ê²© ëŒ€ìƒ
+    uint32 hp = 2; // í”¼ê²© ëŒ€ìƒì˜ ë‚¨ì€ HP
+}
+message CS_THROW_GRENADE {
+    uint32 posX = 1; // ë˜ì§€ê¸° ì‹œìž‘ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
+    fixed32 dirX = 4; // ë˜ì§€ëŠ” ë°©í–¥
+    fixed32 dirY = 5;
+    fixed32 dirZ = 6;
+}
 message KDAInfo {
-    uint32 kill = 2;
-    uint32 death = 3;
-    uint32 assist = 4;
+    uint32 kill = 1;
+    uint32 death = 2;
+    uint32 assist = 3;
 }
-
-// ÇÃ·¹ÀÌ¾î Á¤º¸
 message PlayerInfo {
-	uint32 playerId = 1;
-	KDAInfo kda = 2;
+    uint32 playerId = 1;
+    KDAInfo kda = 2;
 }
-
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ³» Ä³¸¯ÅÍ »ý¼º Á¤º¸
-message SC_CreateMyCharacter {
-	// ¼­¹ö·Î ºÎÅÍ ºÎ¿©¹ÞÀº ID
-	uint32 playerId = 1;
-	
-	// ÇöÀç À§Ä¡
-	uint32 posX = 2;
-	uint32 posY = 3;
-	uint32 posZ = 4;
-	
-	// º¸´Â ¹æÇâ
-	uint32 posX = 5;
-	uint32 posY = 6;
-	uint32 posZ = 7;
-
-	// ÃÖ´ë Hp
-	UINT32 maxHP = 8;
+message SC_ATTACK {
+    uint32 playerId = 1;
 }
-
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ´Ù¸¥ Ä³¸¯ÅÍ »ý¼º Á¤º¸
-message SC_CreateOtherCharacter {
-	// ¼­¹ö·Î ºÎÅÍ ºÎ¿©¹ÞÀº ID
-	uint32 playerId = 1;
-
-	// ÇöÀç À§Ä¡
-	uint32 posX = 2;
-	uint32 posY = 3;
-	uint32 posZ = 4;
-	
-	// º¸´Â ¹æÇâ
-	uint32 posX = 5;
-	uint32 posY = 6;
-	uint32 posZ = 7;
-
-	// Hp
-	uint32 maxHP = 8;
-	uint32 curHP = 8;
-
-	// ÀÌ¸§
-	string name = 9;
-	
-	// KDA Á¤º¸
-	KDAInfo kdaInfo = 10;
-} 
-
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: Ä³¸¯ÅÍ hp°¡ 0ÀÌ µÉ¶§ Àü¼Û
-message SC_CharacterDown {
-	// ¼­¹ö·Î ºÎÅÍ ºÎ¿©¹ÞÀº ID
-	uint32 playerId = 1;
+message SC_CHANGE_WEAPON {
+    uint32 playerId = 1; // ë‹¤ë¥¸ ìºë¦­í„° ID
+    uint32 weapon = 2; // ë¬´ê¸° êµì²´
 }
-
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: Ä³¸¯ÅÍ°¡ ´Ù¿î‰çÀ» ¶§ ¸ðµç ÇÃ·¹ÀÌ¾îµéÀÇ KDA Á¤º¸¸¦ Àü¼Û
-message SC_CharacterKillLog {
-    repeated PlayerInfo playerInfoList = 1;
+message SC_CHARACTER_DOWN {
+    uint32 playerId = 1; // ì„œë²„ë¡œ ë¶€í„° ë¶€ì—¬ë°›ì€ ID
 }
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ÀÔ·ÂÇÑ Å° Á¤º¸
-message CS_KeyInput {
-	// Å°(WASD)
-	uint32 keyW = 1;
-	uint32 keyA = 2;
-	uint32 keyS = 3;
-	uint32 keyD = 4;
-	
-	// ¸¶¿ì½º XÃà È¸Àü°ª
-	fixed32 rotateAxisX = 5;
-	// ¸¶¿ì½º YÃà È¸Àü°ª
-	fixed32 rotateAxisY = 6;
-	
-	// Á¡ÇÁ ¿©ºÎ
-	uint32 Jump = 7;
+message SC_CHARACTER_KILL_LOG {
+    repeated PlayerInfo playerInfoList = 1; // ëª¨ë“  í”Œë ˆì´ì–´ë“¤ì˜ KDA ì •ë³´
 }
-
-
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ÀÔ·ÂÇÑ Å° Á¤º¸
-message SC_KeyInput {
-	uint32 playerId = 1;
-	
-	// Å°(WASD)
-	uint32 keyW = 2;
-	uint32 keyA = 3;
-	uint32 keyS = 4;
-	uint32 keyD = 5;
-	
-	// ¸¶¿ì½º XÃà È¸Àü°ª
-	fixed32 rotateAxisX = 6;
-	// ¸¶¿ì½º YÃà È¸Àü°ª
-	fixed32 rotateAxisY = 7;
-	
-	// Á¡ÇÁ ¿©ºÎ
-	uint32 Jump = 8;
+message SC_CREATE_MY_CHARACTER {
+    uint32 playerId = 1; // ì„œë²„ë¡œ ë¶€í„° ë¶€ì—¬ë°›ì€ ID
+    uint32 posX = 2; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 posY = 3; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 posZ = 4; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 dirX = 5; // ë³´ëŠ” ë°©í–¥
+    uint32 dirY = 6; // ë³´ëŠ” ë°©í–¥
+    uint32 dirZ = 7; // ë³´ëŠ” ë°©í–¥
+    uint32 maxHP = 8; // ìµœëŒ€ Hp
 }
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ÇöÀç À§Ä¡ Á¤º¸ º¸°£¿ë
-message CS_PosInterpolation {
-	// ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç À§Ä¡
-	uint32 posX = 1;
-	uint32 posY = 2;
-	uint32 posZ = 3;
+message SC_CREATE_OTHER_CHARACTER {
+    uint32 playerId = 1; // ì„œë²„ë¡œ ë¶€í„° ë¶€ì—¬ë°›ì€ ID
+    uint32 posX = 2; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 posY = 3; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 posZ = 4; // í˜„ìž¬ ìœ„ì¹˜
+    uint32 dirX = 5; // ë³´ëŠ” ë°©í–¥
+    uint32 dirY = 6; // ë³´ëŠ” ë°©í–¥
+    uint32 dirZ = 7; // ë³´ëŠ” ë°©í–¥
+    uint32 maxHP = 8; // Hp
+    uint32 curHP = 9; // Hp
+    string name = 10; // ì´ë¦„
+    KDAInfo kdaInfo = 11; // KDA ì •ë³´
 }
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ÇöÀç À§Ä¡ Á¤º¸ º¸°£¿ë
-message SC_PosInterpolation {
-	// ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç À§Ä¡
-	uint32 posX = 1;
-	uint32 posY = 2;
-	uint32 posZ = 3;
+message SC_GRENADEEXPLOSITIONPOS {
+    uint32 posX = 1; // í„°ì§ˆ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
 }
-
-
-// °¡Áö°í ÀÖ´Â ¹«±â »ç¿ë
-// ÃÑÀº ¹ß»ç, ´Ü°ËÀº ÈÖµÎ¸£±â, ¼ö·ùÅºÀº ´øÁö±â
-message CS_Attack {
-	bool bAttack = 1;	// ÀÓÀÇÀÇ º¯¼ö, ÀÇ¹Ì ¾øÀ½.
+message SC_KEY_INPUT {
+    uint32 playerId = 1;
+    uint32 keyW = 2; // í‚¤(WASD)
+    uint32 keyA = 3;
+    uint32 keyS = 4;
+    uint32 keyD = 5;
+    fixed32 rotateAxisX = 6; // ë§ˆìš°ìŠ¤ Xì¶• íšŒì „ê°’
+    fixed32 rotateAxisY = 7; // ë§ˆìš°ìŠ¤ Yì¶• íšŒì „ê°’
+    uint32 Jump = 8; // ì í”„ ì—¬ë¶€
 }
-message SC_Attack {
-	uint32 playerId = 1;
+message SC_POS_INTERPOLATION {
+    uint32 posX = 1; // í”Œë ˆì´ì–´ì˜ í˜„ìž¬ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
 }
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ¸Â¾ÒÀ» °æ¿ì, ÃÑÀÌ³ª ´Ü°ËÀÇ °æ¿ì
-message CS_ShotHit {
-	// ÇÇ°Ý ´ë»ó
-	uint32 playerId = 1;
-
-	// µ¥¹ÌÁö Ã³¸® ÈÄ ÇÇ°Ý ´ë»óÀÇ ³²Àº HP
-	uint32 hp = 2;
+message SC_SHOT_HIT {
+    uint32 playerId = 1; // í”¼ê²© ëŒ€ìƒ
+    uint32 hp = 2; // í”¼ê²© ëŒ€ìƒì˜ ë‚¨ì€ HP
 }
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ¸Â¾ÒÀ» °æ¿ì, ÃÑÀÌ³ª ´Ü°ËÀÇ °æ¿ì
-message SC_ShotHit {
-	// ÇÇ°Ý ´ë»ó
-	uint32 playerId = 1;
-
-	// µ¥¹ÌÁö Ã³¸® ÈÄ ÇÇ°Ý ´ë»óÀÇ ³²Àº HP
-	uint32 hp = 2;
+message SC_THROW_GRENADE {
+    uint32 posX = 1; // ë˜ì§€ê¸° ì‹œìž‘ ìœ„ì¹˜
+    uint32 posY = 2;
+    uint32 posZ = 3;
+    fixed32 dirX = 4; // ë˜ì§€ëŠ” ë°©í–¥
+    fixed32 dirY = 5;
+    fixed32 dirZ = 6;
 }
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ¼ö·ùÅºÀÇ °æ¿ì
-message CS_ThrowGrenade {
-	// ´øÁö±â ½ÃÀÛÇÏ´Â ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡
-	uint32 posX = 1;
-	uint32 posY = 2;
-	uint32 posZ = 3;
-	
-	// ´øÁö´Â ¹æÇâÀÇ º¤ÅÍ
-	fixed32 posX = 4;
-	fixed32 posY = 5;
-	fixed32 posZ = 6;
-}
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ¼ö·ùÅºÀÇ °æ¿ì
-message SC_ThrowGrenade {
-	// ´øÁö±â ½ÃÀÛÇÏ´Â ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡
-	uint32 posX = 1;
-	uint32 posY = 2;
-	uint32 posZ = 3;
-	
-	// ´øÁö´Â ¹æÇâÀÇ º¤ÅÍ
-	fixed32 posX = 4;
-	fixed32 posY = 5;
-	fixed32 posZ = 6;
-}
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ¼ö·ùÅºÀÌ ÅÍÁö´Â À§Ä¡, °è»êÇØ¼­ ´Ù¸¥ Å¬¶óÀÌ¾ðÆ®µé¿¡°Ô Àü¼Û
-message CS_GrenadeExplositionPos {
-  // ÅÍÁú À§Ä¡
-  uint32 posX = 1;
-  uint32 posY = 2;
-  uint32 posZ = 3;
-}
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ¼ö·ùÅºÀÌ ÅÍÁö´Â À§Ä¡, ÇØ´ç Á¤º¸¸¦ ¹Þ¾ÒÀ» ¶§ ¼ö·ùÅºÀÌ ÅÍÁü
-message SC_GrenadeExplositionPos {
-  // ÅÍÁú À§Ä¡
-  uint32 posX = 1;
-  uint32 posY = 2;
-  uint32 posZ = 3;
-}
-
-
-// Å¬¶óÀÌ¾ðÆ® -> ¼­¹ö: ¹«±â ±³Ã¼
-message CS_ChangeWeapon {
-  uint32 weapon = 1;
-}
-// ¼­¹ö -> Å¬¶óÀÌ¾ðÆ®: ´Ù¸¥ Ä³¸¯ÅÍ ¹«±â ±³Ã¼
-message SC_ChangeWeapon {
-  uint32 playerId = 1;
-  uint32 weapon = 2;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------
-// Å¬¶óÀÌ¾ðÆ® ÀÚ½ÅÀÇ Ä³¸¯ÅÍ ÇÒ´ç		Client -> Server
-//
-// ¼­¹ö¿¡ Á¢¼Ó½Ã ÃÖÃÊ·Î Àü¼ÛÇÏ´Â ÆÐÅ¶À¸·Î ÀÌ¸® ¼³Á¤ÇÑ ÀÌ¸§À» º¸³½´Ù.
-// 
-// ÀÌ ÆÐÅ¶À» ¹ÞÀ¸¸é ÀÚ½ÅÀÇ ID,X,Y,Z ÀÌ¸§À» ÀúÀåÇÏ°í Ä³¸¯ÅÍ¸¦ »ý¼º½ÃÄÑ¾ß ÇÑ´Ù.
-// ÀÌ¸§Àº À¯´ÏÄÚµå·Î ÃÖ´ë 20ÀÚ¸¦ ¹Þµµ·Ï ÇÑ´Ù.
-//
-//	40	-	Name
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_ONACCEPT			100
-/*
-	string		Name
-*/
-
-
-
-//---------------------------------------------------------------
-// Å¬¶óÀÌ¾ðÆ® ÀÚ½ÅÀÇ Ä³¸¯ÅÍ ÇÒ´ç		Server -> Client
-//
-// ¼­¹ö¿¡ Á¢¼Ó½Ã ÃÖÃÊ·Î ¹Þ°ÔµÇ´Â ÆÐÅ¶À¸·Î ÀÚ½ÅÀÌ ÇÒ´ç¹ÞÀº ID ¿Í
-// ÀÚ½ÅÀÇ ÃÖÃÊ À§Ä¡, ÀÌ¸§À» ¹Þ°Ô µÈ´Ù. (Ã³À½¿¡ ÇÑ¹ø ¹Þ°Ô µÊ)
-// 
-// ÀÌ ÆÐÅ¶À» ¹ÞÀ¸¸é ÀÚ½ÅÀÇ ID, À§Ä¡(x,y,z), È¸Àü°ª(¿ÀÀÏ·¯ - x,y,z) ÀÌ¸§À» ÀúÀåÇÏ°í Ä³¸¯ÅÍ¸¦ »ý¼º½ÃÄÑ¾ß ÇÑ´Ù.
-//
-//	4	-	ID
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//	2	-	rotateX
-//	2	-	rotateY
-//	2	-	rotateZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_CREATE_MY_CHARACTER			0
-/*
-	UINT32		ID
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-	UINT16		rotateX
-	UINT16		rotateY
-	UINT16		rotateZ
-*/
-
-
-//---------------------------------------------------------------
-// ´Ù¸¥ Å¬¶óÀÌ¾ðÆ®ÀÇ Ä³¸¯ÅÍ »ý¼º ÆÐÅ¶		Server -> Client
-//
-// Ã³À½ ¼­¹ö¿¡ Á¢¼Ó½Ã ÀÌ¹Ì Á¢¼ÓµÇ¾î ÀÖ´ø Ä³¸¯ÅÍµéÀÇ Á¤º¸
-// ¶Ç´Â °ÔÀÓÁß¿¡ Á¢¼ÓµÈ Å¬¶óÀÌ¾ðÆ®µéÀÇ »ý¼º¿ë Á¤º¸.
-//
-//
-//	4	-	ID
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//	2	-	rotateX
-//	2	-	rotateY
-//	2	-	rotateZ
-//	1	-	HP
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_CREATE_OTHER_CHARACTER		1
-/*
-	UINT32		ID
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-	UINT16		rotateX
-	UINT16		rotateY
-	UINT16		rotateZ
-	UINT8		HP
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ »èÁ¦ ÆÐÅ¶						Server -> Client
-//
-// Ä³¸¯ÅÍÀÇ Á¢¼ÓÇØÁ¦ ¶Ç´Â Ä³¸¯ÅÍ°¡ Á×¾úÀ»¶§ Àü¼ÛµÊ.
-//
-//	4	-	ID
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_DELETE_CHARACTER			2
-/*
-	UINT32		ID
-*/
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ÀÌµ¿½ÃÀÛ ÆÐÅ¶						Client -> Server
-//
-// ÀÚ½ÅÀÇ Ä³¸¯ÅÍ ÀÌµ¿½ÃÀÛ½Ã ÀÌ ÆÐÅ¶À» º¸³½´Ù.
-// ÀÌµ¿ Áß¿¡´Â º» ÆÐÅ¶À» º¸³»Áö ¾ÊÀ¸¸ç, Å° ÀÔ·Â + ¸¶¿ì½º È¸Àü°ªÀÌ º¯°æµÇ¾úÀ» °æ¿ì¿¡¸¸
-// º¸³»Áà¾ß ÇÑ´Ù.
-// ÃÖÀûÈ­¸¦ À§ÇØ ¸¶¿ì½º È¸ÀüÀº 360À» 5·Î ³ª´©¾î ±âÁ¸ °ª°ú 5µµ ÀÌ»ó Â÷ÀÌ°¡ ÀÖÀ» ¶§¸¸ Àü¼ÛÇÑ´Ù. Å¬¶óÀÌ¾ðÆ®¿¡¼­ µû·Î º¸°£ÇÏ´Â ¹æ½ÄÀ¸·Î ÁøÇà
-// ÀÌµ¿ º¸°£À» À§ÇØ ÇöÀç À§Ä¡µµ °°ÀÌ º¸³»ÁØ´Ù.
-//
-//
-//	1	-	rotateAxisY	( 3d¿¡¼­ ÇÃ·¹ÀÌ¾î´Â YÃàÀ¸·Î È¸Àü )
-//	2	-	W
-//	2	-	A
-//	2	-	S
-//	2	-	D
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_MOVE_START					10
-/*
-	UINT8		rotateAxisY
-	UINT8		W
-	UINT8		A
-	UINT8		S
-	UINT8		D
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ÀÌµ¿½ÃÀÛ ÆÐÅ¶						Server -> Client
-//
-// ´Ù¸¥ À¯ÀúÀÇ Ä³¸¯ÅÍ ÀÌµ¿½Ã º» ÆÐÅ¶À» ¹Þ´Â´Ù.
-// ÆÐÅ¶ ¼ö½Å½Ã ÇØ´ç Ä³¸¯ÅÍ¸¦ Ã£¾Æ ÀÌµ¿Ã³¸®¸¦ ÇØÁÖµµ·Ï ÇÑ´Ù.
-// 
-// ÆÐÅ¶ ¼ö½Å ½Ã ÇØ´ç Å°°¡ °è¼ÓÇØ¼­ ´­¸°°ÍÀ¸·Î »ý°¢ÇÏ°í
-// ÇØ´ç ¹æÇâÀ¸·Î °è¼Ó ÀÌµ¿À» ÇÏ°í ÀÖ¾î¾ß¸¸ ÇÑ´Ù.
-//
-// ÆÐÅ¶ ¼ö½Å½Ã ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¿Í ºñ½ÁÇÑ À§Ä¡¿¡ ÀÖ´ÂÁö È®ÀÎÇÏ¿©, ¸¸ÀÏ ´Ù¸¦ °æ¿ì º¸°£ÇÑ´Ù.
-//
-//	4	-	ID
-//	1	-	rotateAxisY	( 3d¿¡¼­ ÇÃ·¹ÀÌ¾î´Â YÃàÀ¸·Î È¸Àü )
-//	2	-	W
-//	2	-	A
-//	2	-	S
-//	2	-	D
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_MOVE_START					11
-/*
-	UINT32		ID
-	UINT8		rotateAxisY
-	UINT8		W
-	UINT8		A
-	UINT8		S
-	UINT8		D
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ÀÌµ¿ÁßÁö ÆÐÅ¶						Client -> Server
-//
-// ÀÌµ¿Áß Å°º¸µå ÀÔ·ÂÀÌ ¾ø¾î¼­ Á¤ÁöµÇ¾úÀ» ¶§, ÀÌ ÆÐÅ¶À» ¼­¹ö¿¡ º¸³»ÁØ´Ù.
-// ÀÌµ¿Áß ¹æÇâ ÀüÈ¯½Ã¿¡´Â ½ºÅ¾À» º¸³»Áö ¾Ê´Â´Ù.
-//
-//	1	-	rotateAxisY (YÃà È¸Àü°ª)
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_MOVE_STOP					12
-/*
-	UINT8		rotateAxisY
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ÀÌµ¿ÁßÁö ÆÐÅ¶						Server -> Client
-//
-// ID ¿¡ ÇØ´çÇÏ´Â Ä³¸¯ÅÍ°¡ ÀÌµ¿À» ¸ØÃá°ÍÀÌ¹Ç·Î 
-// Ä³¸¯ÅÍ¸¦ Ã£¾Æ¼­ ¹æÇâ°ú, ÁÂÇ¥¸¦ ÀÔ·ÂÇØÁÖ°í ¸ØÃßµµ·Ï Ã³¸®ÇÑ´Ù.
-//
-//	4	-	ID
-//	1	-	rotateAxisY (YÃà È¸Àü°ª)
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_MOVE_STOP					13
-/*
-	UINT32		ID
-	UINT8		rotateAxisY
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ¹«±â ±³Ã¼ ÆÐÅ¶							Client -> Server
-//
-// °ø°Ý Å° ÀÔ·Â½Ã º» ÆÐÅ¶À» ¼­¹ö¿¡°Ô º¸³½´Ù.
-// °ø°Ý ÆÇÁ¤¿¡ ´ëÇØ¼± Å¬¶óÀÌ¾ðÆ®°¡ ÀÌ¹Ì °è»êÇØ¼­ ¼­¹ö¿¡ º¸³»´Â °ÍÀ¸·Î µ¥¹ÌÁö¿¡ ´ëÇÑ °á°ú´Â ¼­¹ö¿¡¼­ ¾Ë·Á ÁÙ °ÍÀÌ´Ù.
-//
-// °ø°Ý µ¿ÀÛ ½ÃÀÛ½Ã ÇÑ¹ø¸¸ ¼­¹ö¿¡°Ô º¸³»Áà¾ß ÇÑ´Ù.
-//
-//  1	-	Weapon (¹«±â Á¤º¸, µ¥¹ÌÁö °è»ê¿¡ »ç¿ë)
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_CHANGEWEAPON						14
-/*
-	UINT8		Weapon
-*/
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ ¹«±â ±³Ã¼ ÆÐÅ¶							Server -> Client
-//
-// ÆÐÅ¶ ¼ö½Å½Ã 
-// °ø°Ý ÆÇÁ¤¿¡ ´ëÇØ¼± Å¬¶óÀÌ¾ðÆ®°¡ ÀÌ¹Ì °è»êÇØ¼­ ¼­¹ö¿¡ º¸³»´Â °ÍÀ¸·Î µ¥¹ÌÁö¿¡ ´ëÇÑ °á°ú´Â ¼­¹ö¿¡¼­ ¾Ë·Á ÁÙ °ÍÀÌ´Ù.
-//
-// °ø°Ý µ¿ÀÛ ½ÃÀÛ½Ã ÇÑ¹ø¸¸ ¼­¹ö¿¡°Ô º¸³»Áà¾ß ÇÑ´Ù.
-//
-//	4	-	ID
-//  1	-	Weapon (¹«±â Á¤º¸, µ¥¹ÌÁö °è»ê¿¡ »ç¿ë)
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_CHANGEWEAPON						15
-/*
-	UINT32		ID
-	UINT8		Weapon
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ °ø°Ý ÆÐÅ¶							Client -> Server
-//
-// °ø°Ý Å° ÀÔ·Â½Ã º» ÆÐÅ¶À» ¼­¹ö¿¡°Ô º¸³½´Ù.
-// °ø°Ý ÆÇÁ¤¿¡ ´ëÇØ¼± Å¬¶óÀÌ¾ðÆ®°¡ ÀÌ¹Ì °è»êÇØ¼­ ¼­¹ö¿¡ º¸³»´Â °ÍÀ¸·Î µ¥¹ÌÁö¿¡ ´ëÇÑ °á°ú´Â ¼­¹ö¿¡¼­ ¾Ë·Á ÁÙ °ÍÀÌ´Ù.
-//
-// °ø°Ý µ¿ÀÛ ½ÃÀÛ½Ã ÇÑ¹ø¸¸ ¼­¹ö¿¡°Ô º¸³»Áà¾ß ÇÑ´Ù.
-//
-//	4	-	ID (ÇÇ°Ý ´ë»ó ID)
-//	1	-	bAttackSuccess	( °ø°Ý ¼º°ø ¿©ºÎ )
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_ATTACK						20
-/*
-	UINT32		ID
-	UINT8		bAttackSuccess
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ °ø°Ý ÆÐÅ¶							Server -> Client
-//
-// ÆÐÅ¶ ¼ö½Å½Ã ÇØ´ç Ä³¸¯ÅÍ¸¦ Ã£¾Æ¼­ °ø°Ý µ¿ÀÛÀ¸·Î ¾×¼ÇÀ» ÃëÇØÁØ´Ù.
-// È¸Àü ¹æÇâ°ú À§Ä¡°¡ ´Ù¸¦ °æ¿ì¿¡´Â ÇØ´ç À§Ä¡·Î º¸°£ÇÏ¸é¼­ ÇØÁØ´Ù.
-//
-//	4	-	ID
-//	1	-	rotateAxisY (YÃà È¸Àü°ª)
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_ATTACK						21
-/*
-	UINT32		ID
-	UINT8		rotateAxisY
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-
-//---------------------------------------------------------------
-// Ä³¸¯ÅÍ µ¥¹ÌÁö ÆÐÅ¶							Server -> Client
-//
-// °ø°Ý¿¡ ¸ÂÀº Ä³¸¯ÅÍÀÇ Á¤º¸¸¦ º¸³¿. Å¬¶óÀÌ¾ðÆ®´Â ¹«±â Á¤º¸¸¸ º¸³¾ ¼ö ÀÖÁö µ¥¹ÌÁö¸¦ Á÷Á¢ÀûÀ¸·Î º¸³»Áö ¸øÇÔ.
-//
-//	4	-	AttackID	( °ø°ÝÀÚ ID )
-//	4	-	DamageID	( ÇÇÇØÀÚ ID )
-//	1	-	DamageHP	( ÇÇÇØÀÚ HP )
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_DAMAGE						30
-/*
-	UINT32		AttackID
-	UINT32		DamageID
-	UINT8		DamageHP
-*/
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------
-// µ¿±âÈ­¸¦ À§ÇÑ ÆÐÅ¶					Client -> Server
-//
-//
-//	1	-	rotateAxisY (YÃà È¸Àü°ª)
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_SYNC						250
-/*
-	UINT8		rotateAxisY
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-//---------------------------------------------------------------
-// µ¿±âÈ­¸¦ À§ÇÑ ÆÐÅ¶					Server -> Client
-//
-// ¼­¹ö·ÎºÎÅÍ µ¿±âÈ­ ÆÐÅ¶À» ¹ÞÀ¸¸é ÇØ´ç Ä³¸¯ÅÍ¸¦ Ã£¾Æ¼­
-// Ä³¸¯ÅÍ ÁÂÇ¥¸¦ º¸Á¤ÇØÁØ´Ù.
-//
-//	4	-	ID
-//	1	-	rotateAxisY (YÃà È¸Àü°ª)
-//	2	-	posX
-//	2	-	posY
-//	2	-	posZ
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_SYNC						251
-/*
-	UINT32		ID
-	UINT8		rotateAxisY
-	UINT16		posX
-	UINT16		posY
-	UINT16		posZ
-*/
-
-
-
-
-
-//---------------------------------------------------------------
-// Echo ¿ë ÆÐÅ¶					Client -> Server
-//
-//	4	-	Time
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_CS_ECHO						252
-/*
-	UINT32		Time
-*/
-
-
-//---------------------------------------------------------------
-// Echo ÀÀ´ä ÆÐÅ¶				Server -> Client
-//
-//	4	-	Time
-//
-//---------------------------------------------------------------
-//#define	dfPACKET_SC_ECHO						253
-/*
-	UINT32		Time
-*/
-

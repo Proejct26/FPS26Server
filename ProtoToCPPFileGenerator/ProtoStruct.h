@@ -1,12 +1,12 @@
 #pragma once
 
-struct KDAInfoData {
+struct KDAInfo {
     UINT32 kill;
     UINT32 death;
     UINT32 assist;
 };
 
-struct PlayerInfoData {
+struct PlayerInfo {
     UINT32 playerId;
-    KDAInfoData kda;
+    KDAInfo kda;
 };
