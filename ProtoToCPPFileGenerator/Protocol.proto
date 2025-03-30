@@ -1,0 +1,146 @@
+syntax = "proto3";
+
+package game;
+
+enum PacketID {
+// Client → Server
+    CS_ATTACK = 1;
+    CS_CHANGE_WEAPON = 2;
+    CS_GRENADE_EXPLOSITION_POS = 3;
+    CS_KEY_INPUT = 4;
+    CS_ON_ACCEPT = 5;
+    CS_POS_INTERPOLATION = 6;
+    CS_SHOT_HIT = 7;
+    CS_THROW_GRENADE = 8;
+
+// Server → Client
+    SC_ATTACK = 9;
+    SC_CHANGE_WEAPON = 10;
+    SC_CHARACTER_DOWN = 11;
+    SC_CHARACTER_KILL_LOG = 12;
+    SC_CREATE_MY_CHARACTER = 13;
+    SC_CREATE_OTHER_CHARACTER = 14;
+    SC_GRENADEEXPLOSITIONPOS = 15;
+    SC_KEY_INPUT = 16;
+    SC_POS_INTERPOLATION = 17;
+    SC_SHOT_HIT = 18;
+    SC_THROW_GRENADE = 19;
+}
+
+message CS_ATTACK {
+    bool bAttack = 1; // 임의의 변수, 의미 없음.
+}
+message CS_CHANGE_WEAPON {
+    uint32 weapon = 1; // 무기 교체
+}
+message CS_GRENADE_EXPLOSITION_POS {
+    uint32 posX = 1; // 터질 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message CS_KEY_INPUT {
+    uint32 keyW = 1; // 키(WASD)
+    uint32 keyA = 2;
+    uint32 keyS = 3;
+    uint32 keyD = 4;
+    fixed32 rotateAxisX = 5; // 마우스 X축 회전값
+    fixed32 rotateAxisY = 6; // 마우스 Y축 회전값
+    uint32 Jump = 7; // 점프 여부
+}
+message CS_ON_ACCEPT {
+    string name = 1; // 최대 20자 유니코드 문자열 (실제 제한은 코드로 처리, 제한은 필요할때 늘리면 됨)
+}
+message CS_POS_INTERPOLATION {
+    uint32 posX = 1; // 플레이어의 현재 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message CS_SHOT_HIT {
+    uint32 playerId = 1; // 피격 대상
+    uint32 hp = 2; // 피격 대상의 남은 HP
+}
+message CS_THROW_GRENADE {
+    uint32 posX = 1; // 던지기 시작 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+    fixed32 dirX = 4; // 던지는 방향
+    fixed32 dirY = 5;
+    fixed32 dirZ = 6;
+}
+message KDAInfo {
+    uint32 kill = 1;
+    uint32 death = 2;
+    uint32 assist = 3;
+}
+message PlayerInfo {
+    uint32 playerId = 1;
+    KDAInfo kda = 2;
+}
+message SC_ATTACK {
+    uint32 playerId = 1;
+}
+message SC_CHANGE_WEAPON {
+    uint32 playerId = 1; // 다른 캐릭터 ID
+    uint32 weapon = 2; // 무기 교체
+}
+message SC_CHARACTER_DOWN {
+    uint32 playerId = 1; // 서버로 부터 부여받은 ID
+}
+message SC_CHARACTER_KILL_LOG {
+    repeated PlayerInfo playerInfoList = 1; // 모든 플레이어들의 KDA 정보
+}
+message SC_CREATE_MY_CHARACTER {
+    uint32 playerId = 1; // 서버로 부터 부여받은 ID
+    uint32 posX = 2; // 현재 위치
+    uint32 posY = 3; // 현재 위치
+    uint32 posZ = 4; // 현재 위치
+    uint32 dirX = 5; // 보는 방향
+    uint32 dirY = 6; // 보는 방향
+    uint32 dirZ = 7; // 보는 방향
+    uint32 maxHP = 8; // 최대 Hp
+}
+message SC_CREATE_OTHER_CHARACTER {
+    uint32 playerId = 1; // 서버로 부터 부여받은 ID
+    uint32 posX = 2; // 현재 위치
+    uint32 posY = 3; // 현재 위치
+    uint32 posZ = 4; // 현재 위치
+    uint32 dirX = 5; // 보는 방향
+    uint32 dirY = 6; // 보는 방향
+    uint32 dirZ = 7; // 보는 방향
+    uint32 maxHP = 8; // Hp
+    uint32 curHP = 9; // Hp
+    string name = 10; // 이름
+    KDAInfo kdaInfo = 11; // KDA 정보
+}
+message SC_GRENADEEXPLOSITIONPOS {
+    uint32 posX = 1; // 터질 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message SC_KEY_INPUT {
+    uint32 playerId = 1;
+    uint32 keyW = 2; // 키(WASD)
+    uint32 keyA = 3;
+    uint32 keyS = 4;
+    uint32 keyD = 5;
+    fixed32 rotateAxisX = 6; // 마우스 X축 회전값
+    fixed32 rotateAxisY = 7; // 마우스 Y축 회전값
+    uint32 Jump = 8; // 점프 여부
+}
+message SC_POS_INTERPOLATION {
+    uint32 posX = 1; // 플레이어의 현재 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+}
+message SC_SHOT_HIT {
+    uint32 playerId = 1; // 피격 대상
+    uint32 hp = 2; // 피격 대상의 남은 HP
+}
+message SC_THROW_GRENADE {
+    uint32 posX = 1; // 던지기 시작 위치
+    uint32 posY = 2;
+    uint32 posZ = 3;
+    fixed32 dirX = 4; // 던지는 방향
+    fixed32 dirY = 5;
+    fixed32 dirZ = 6;
+}
