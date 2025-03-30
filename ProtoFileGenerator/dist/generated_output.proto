@@ -4,27 +4,27 @@ package game;
 
 enum PacketID {
 // Client → Server
-    CS_ATTACK = 1;
-    CS_CHANGE_WEAPON = 2;
-    CS_GRENADE_EXPLOSITION_POS = 3;
-    CS_KEY_INPUT = 4;
-    CS_ON_ACCEPT = 5;
-    CS_POS_INTERPOLATION = 6;
-    CS_SHOT_HIT = 7;
-    CS_THROW_GRENADE = 8;
+    CS_Attack = 0;
+    CS_ChangeWeapon = 1;
+    CS_GrenadeExplositionPos = 2;
+    CS_KeyInput = 3;
+    CS_OnAccept = 4;
+    CS_PosInterpolation = 5;
+    CS_ShotHit = 6;
+    CS_ThrowGrenade = 7;
 
 // Server → Client
-    SC_ATTACK = 9;
-    SC_CHANGE_WEAPON = 10;
-    SC_CHARACTER_DOWN = 11;
-    SC_CHARACTER_KILL_LOG = 12;
-    SC_CREATE_MY_CHARACTER = 13;
-    SC_CREATE_OTHER_CHARACTER = 14;
-    SC_GRENADEEXPLOSITIONPOS = 15;
-    SC_KEY_INPUT = 16;
-    SC_POS_INTERPOLATION = 17;
-    SC_SHOT_HIT = 18;
-    SC_THROW_GRENADE = 19;
+    SC_Attack = 8;
+    SC_ChangeWeapon = 9;
+    SC_CharacterDown = 10;
+    SC_CharacterKillLog = 11;
+    SC_CreateMyCharacter = 12;
+    SC_CreateOtherCharacter = 13;
+    SC_Grenadeexplositionpos = 14;
+    SC_KeyInput = 15;
+    SC_PosInterpolation = 16;
+    SC_ShotHit = 17;
+    SC_ThrowGrenade = 18;
 }
 
 message CS_ATTACK {
