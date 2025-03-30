@@ -21,7 +21,7 @@ else:
 
 # Excel 파일 경로 및 출력 파일 경로를 base_dir 기준으로 설정
 excel_path = os.path.join(base_dir, "proto_definitions.xlsx")  # 엑셀 파일 경로 (.proto 정의가 들어 있는 파일)
-output_path = os.path.join(base_dir, "generated_output.proto")  # 생성할 .proto 파일의 출력 경로
+output_path = os.path.join(base_dir, "Protocol.proto")  # 생성할 .proto 파일의 출력 경로
 
 # 엑셀 파일이 없을 경우 오류 출력 후 종료
 if not os.path.exists(excel_path):
