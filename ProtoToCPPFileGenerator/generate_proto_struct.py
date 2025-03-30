@@ -40,9 +40,9 @@ def generate_cpp_structs(structs):
     ]
 
     for name, fields in structs.items():
-        lines.append(f"struct {name}Data {{")
+        lines.append(f"struct {name} {{")
         for is_repeated, type_name, field_name in fields:
-            cpp_type = PROTO_TO_CPP_TYPE.get(type_name, f"{type_name}Data")
+            cpp_type = PROTO_TO_CPP_TYPE.get(type_name, type_name)
             if is_repeated:
                 lines.append(f"    std::vector<{cpp_type}> {field_name};")
             else:

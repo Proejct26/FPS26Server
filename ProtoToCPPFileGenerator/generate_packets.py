@@ -4,6 +4,8 @@ from pathlib import Path
 # --- 헤더에 추가할 텍스트 ---
 HEADER_PREFIX = """#pragma once
 
+#include "ProtoStruct.h"
+
 class CSession;
 class CSector;
 """
@@ -17,6 +19,21 @@ CPP_PREFIX = """#include "pch.h"
 #include "MemoryPoolManager.h"
 #include "Protobuf/Protocol.pb.h"
 """
+
+PROTO_TO_CPP_TYPE = {
+    "fixed32": "UINT32",
+    "sfixed32": "INT32",
+    "fixed64": "UINT64",
+    "sfixed64": "INT64",
+    "uint32": "UINT32",
+    "int32": "INT32",
+    "uint64": "UINT64",
+    "int64": "INT64",
+    "float": "float",
+    "double": "double",
+    "bool": "bool",
+    "string": "std::string",
+}
 
 def to_pascal_case(snake_str):
     return ''.join(word.capitalize() for word in snake_str.lower().split('_'))
@@ -34,7 +51,24 @@ def parse_proto(proto_path):
                 enum_dict[match.group(1)] = match.group(1)
 
     message_pattern = re.compile(r'message\s+(SC_[A-Z0-9_]+)\s*{([^}]+)}', re.MULTILINE)
+    struct_pattern = re.compile(r'message\s+([A-Za-z0-9_]+)\s*{([^}]+)}', re.MULTILINE)
     messages = []
+    struct_map = {}
+
+    for struct_match in struct_pattern.finditer(text):
+        name = struct_match.group(1)
+        body = struct_match.group(2)
+        fields = []
+        for line in body.splitlines():
+            repeated_match = re.match(r'\s*repeated\s+(\w+)\s+(\w+)\s*=\s*\d+;', line)
+            single_match = re.match(r'\s*(\w+)\s+(\w+)\s*=\s*\d+;', line)
+            if repeated_match:
+                t, n = repeated_match.groups()
+                fields.append((t.strip(), n.strip(), True))
+            elif single_match:
+                t, n = single_match.groups()
+                fields.append((t.strip(), n.strip(), False))
+        struct_map[name] = fields
 
     for message_match in message_pattern.finditer(text):
         msg_name = message_match.group(1)
@@ -42,106 +76,132 @@ def parse_proto(proto_path):
 
         fields = []
         for line in fields_block.splitlines():
-            field_match = re.match(r'\s*(\w+)\s+(\w+)\s*=\s*\d+;', line)
-            if field_match:
-                field_type, field_name = field_match.groups()
-                fields.append((field_type, field_name))
+            repeated_match = re.match(r'\s*repeated\s+(\w+)\s+(\w+)\s*=\s*\d+;', line)
+            single_match = re.match(r'\s*(\w+)\s+(\w+)\s*=\s*\d+;', line)
+            if repeated_match:
+                field_type, field_name = repeated_match.groups()
+                fields.append((field_type.strip(), field_name, True))
+            elif single_match:
+                field_type, field_name = single_match.groups()
+                fields.append((field_type.strip(), field_name, False))
 
         messages.append((msg_name, fields))
 
-    return messages, enum_dict
+    return messages, enum_dict, struct_map
+
+def expand_repeated_struct(type_name, field_name, struct_map):
+    lines = []
+    if type_name not in struct_map:
+        return [
+            f"    for (const auto& data : {field_name}) {{",
+            f"        auto* item = pkt.add_{field_name.lower()}();",
+            f"        *item = data;",
+            "    }"
+        ]
+
+    lines.append(f"    for (const auto& data : {field_name}) {{")
+    lines.append(f"        game::{type_name}* item = pkt.add_{field_name.lower()}();")
+    for sub_type, sub_name, _ in struct_map[type_name]:
+        if sub_type in struct_map:
+            lines.append(f"        game::{sub_type}* nested = item->mutable_{sub_name.lower()}();")
+            for n_type, n_name, _ in struct_map[sub_type]:
+                lines.append(f"        nested->set_{n_name.lower()}(data.{sub_name}.{n_name});")
+        else:
+            lines.append(f"        item->set_{sub_name.lower()}(data.{sub_name});")
+    lines.append("    }")
+    return lines
+
+def setter_lines(fields, struct_map):
+    result = []
+    for field_type, field_name, is_repeated in fields:
+        if is_repeated:
+            result.extend(expand_repeated_struct(field_type, field_name, struct_map))
+        else:
+            if field_type in struct_map:
+                result.append(f"    {{")
+                result.append(f"        game::{field_type}* sub = pkt.mutable_{field_name.lower()}();")
+                for sub_type, sub_name, _ in struct_map[field_type]:
+                    if sub_type in struct_map:
+                        result.append(f"        game::{sub_type}* nested = sub->mutable_{sub_name.lower()}();")
+                        for n_type, n_name, _ in struct_map[sub_type]:
+                            result.append(f"        nested->set_{n_name.lower()}({field_name}.{sub_name}.{n_name});")
+                    else:
+                        result.append(f"        sub->set_{sub_name.lower()}({field_name}.{sub_name});")
+                result.append(f"    }}")
+            else:
+                result.append(f"    pkt.set_{field_name.lower()}({field_name});")
+    return '\n'.join(result)
 
 def generate_header(messages):
     lines = [HEADER_PREFIX]
     for msg_name, fields in messages:
-        args = ', '.join([f"UINT32 {name}" for _, name in fields])
-        lines.append(f"void {msg_name}_FOR_All(CSession* pSession, {args});")
-        lines.append(f"void {msg_name}_FOR_SINGLE(CSession* pSession, {args});")
-        lines.append(f"void {msg_name}_FOR_AROUND(CSession* pSession, CSector* pSector, {args});\n")
+        args = []
+        for field_type, field_name, is_repeated in fields:
+            cpp_type = PROTO_TO_CPP_TYPE.get(field_type, field_type)
+            if is_repeated:
+                args.append(f"std::vector<{cpp_type}>& {field_name}")
+            else:
+                args.append(f"{cpp_type} {field_name}")
+        arg_str = ', '.join(args)
+        lines.append(f"void {msg_name}_FOR_All(CSession* pSession, {arg_str});")
+        lines.append(f"void {msg_name}_FOR_SINGLE(CSession* pSession, {arg_str});")
+        lines.append(f"void {msg_name}_FOR_AROUND(CSession* pSession, CSector* pSector, {arg_str});\n")
     return '\n'.join(lines)
 
-def setter_lines(fields):
-    return '\n    '.join([f"pkt.set_{name.lower()}({name});" for _, name in fields])
-
-def generate_cpp(messages, enum_dict):
+def generate_cpp(messages, enum_dict, struct_map):
     cpp = [CPP_PREFIX]
 
     for msg_name, fields in messages:
         msg_suffix = msg_name[3:]
         enum_name = f"SC_{to_pascal_case(msg_suffix)}"
-        args = ', '.join([f"UINT32 {name}" for _, name in fields])
-        setter_block = setter_lines(fields)
 
-        # === FOR_ALL ===
-        cpp.append(f"void {msg_name}_FOR_All(CSession* pSession, {args})")
-        cpp.append("{")
-        cpp.append(f"    game::{msg_name} pkt;\n")
-        cpp.append(f"    {setter_block}\n")
-        cpp.append(f"    int pktSize = pkt.ByteSizeLong();\n")
-        cpp.append(f"    PACKET_HEADER header;")
-        cpp.append(f"    header.byCode = dfNETWORK_PACKET_CODE;")
-        cpp.append(f"    header.bySize = pktSize;")
-        cpp.append(f"    header.byType = game::PacketID::{enum_name};\n")
-        cpp.append(f"    int headerSize = sizeof(PACKET_HEADER);\n")
-        cpp.append(f"    CPacket* Packet = packetPool.Alloc();")
-        cpp.append(f"    Packet->PutData((const char*)&header, headerSize);\n")
-        cpp.append(f"    char buffer[512];")
-        cpp.append(f"    pkt.SerializeToArray(buffer, pktSize);")
-        cpp.append(f"    Packet->PutData(buffer, pktSize);\n")
-        cpp.append(f"    BroadcastData(pSession, Packet, Packet->GetDataSize());\n")
-        cpp.append(f"    Packet->Clear();")
-        cpp.append(f"    packetPool.Free(Packet);")
-        cpp.append("}\n")
+        args = []
+        for field_type, field_name, is_repeated in fields:
+            cpp_type = PROTO_TO_CPP_TYPE.get(field_type, field_type)
+            if is_repeated:
+                args.append(f"std::vector<{cpp_type}>& {field_name}")
+            else:
+                args.append(f"{cpp_type} {field_name}")
+        arg_str = ', '.join(args)
+        setter_block = setter_lines(fields, struct_map)
 
-        # === FOR_SINGLE ===
-        cpp.append(f"void {msg_name}_FOR_SINGLE(CSession* pSession, {args})")
-        cpp.append("{")
-        cpp.append(f"    game::{msg_name} pkt;\n")
-        cpp.append(f"    {setter_block}\n")
-        cpp.append(f"    int pktSize = pkt.ByteSizeLong();\n")
-        cpp.append(f"    PACKET_HEADER header;")
-        cpp.append(f"    header.byCode = dfNETWORK_PACKET_CODE;")
-        cpp.append(f"    header.bySize = pktSize;")
-        cpp.append(f"    header.byType = game::PacketID::{enum_name};\n")
-        cpp.append(f"    int headerSize = sizeof(PACKET_HEADER);\n")
-        cpp.append(f"    CPacket* Packet = packetPool.Alloc();")
-        cpp.append(f"    Packet->PutData((const char*)&header, headerSize);\n")
-        cpp.append(f"    char buffer[512];")
-        cpp.append(f"    pkt.SerializeToArray(buffer, pktSize);")
-        cpp.append(f"    Packet->PutData(buffer, pktSize);\n")
-        cpp.append(f"    UnicastPacket(pSession, &header, Packet);\n")
-        cpp.append(f"    Packet->Clear();")
-        cpp.append(f"    packetPool.Free(Packet);")
-        cpp.append("}\n")
+        for suffix, body in [
+            ("FOR_All", "BroadcastData(pSession, Packet, Packet->GetDataSize());"),
+            ("FOR_SINGLE", "UnicastPacket(pSession, &header, Packet);"),
+            ("FOR_AROUND", """for (auto& Sector : pSector->GetAroundSectorList())
+    {
+        for (auto& Object : Sector->GetSectorObjectMap())
+        {
+            if (pSession == Object.second->m_pSession)
+                continue;
+            UnicastPacket(Object.second->m_pSession, &header, Packet);
+        }
+    }""")
+        ]:
+            prefix = f"void {msg_name}_{suffix}(CSession* pSession, "
+            if suffix == "FOR_AROUND":
+                prefix += "CSector* pSector, "
+            prefix += arg_str + ")"
 
-        # === FOR_AROUND ===
-        cpp.append(f"void {msg_name}_FOR_AROUND(CSession* pSession, CSector* pSector, {args})")
-        cpp.append("{")
-        cpp.append(f"    game::{msg_name} pkt;\n")
-        cpp.append(f"    {setter_block}\n")
-        cpp.append(f"    int pktSize = pkt.ByteSizeLong();\n")
-        cpp.append(f"    PACKET_HEADER header;")
-        cpp.append(f"    header.byCode = dfNETWORK_PACKET_CODE;")
-        cpp.append(f"    header.bySize = pktSize;")
-        cpp.append(f"    header.byType = game::PacketID::{enum_name};\n")
-        cpp.append(f"    int headerSize = sizeof(PACKET_HEADER);\n")
-        cpp.append(f"    CPacket* Packet = packetPool.Alloc();")
-        cpp.append(f"    Packet->PutData((const char*)&header, headerSize);\n")
-        cpp.append(f"    char buffer[512];")
-        cpp.append(f"    pkt.SerializeToArray(buffer, pktSize);")
-        cpp.append(f"    Packet->PutData(buffer, pktSize);\n")
-        cpp.append(f"    for (auto& Sector : pSector->GetAroundSectorList())")
-        cpp.append(f"    {{")
-        cpp.append(f"        for (auto& Object : Sector->GetSectorObjectMap())")
-        cpp.append(f"        {{")
-        cpp.append(f"            if (pSession == Object.second->m_pSession)")
-        cpp.append(f"                continue;\n")
-        cpp.append(f"            UnicastPacket(Object.second->m_pSession, &header, Packet);")
-        cpp.append(f"        }}")
-        cpp.append(f"    }}\n")
-        cpp.append(f"    Packet->Clear();")
-        cpp.append(f"    packetPool.Free(Packet);")
-        cpp.append("}\n")
+            cpp.append(prefix)
+            cpp.append("{")
+            cpp.append(f"    game::{msg_name} pkt;\n")
+            cpp.append(setter_block + "\n")
+            cpp.append("    int pktSize = pkt.ByteSizeLong();")
+            cpp.append("    PACKET_HEADER header;")
+            cpp.append("    header.byCode = dfNETWORK_PACKET_CODE;")
+            cpp.append("    header.bySize = pktSize;")
+            cpp.append(f"    header.byType = game::PacketID::{enum_name};\n")
+            cpp.append("    int headerSize = sizeof(PACKET_HEADER);")
+            cpp.append("    CPacket* Packet = packetPool.Alloc();")
+            cpp.append("    Packet->PutData((const char*)&header, headerSize);")
+            cpp.append("    char buffer[512];")
+            cpp.append("    pkt.SerializeToArray(buffer, pktSize);")
+            cpp.append("    Packet->PutData(buffer, pktSize);\n")
+            cpp.append(f"    {body}")
+            cpp.append("    Packet->Clear();")
+            cpp.append("    packetPool.Free(Packet);")
+            cpp.append("}\n")
 
     return '\n'.join(cpp)
 
@@ -150,10 +210,10 @@ def main():
     out_h = "MakePacket.h"
     out_cpp = "MakePacket.cpp"
 
-    messages, enum_dict = parse_proto(proto_file)
+    messages, enum_dict, struct_map = parse_proto(proto_file)
 
     Path(out_h).write_text(generate_header(messages), encoding='utf-8')
-    Path(out_cpp).write_text(generate_cpp(messages, enum_dict), encoding='utf-8')
+    Path(out_cpp).write_text(generate_cpp(messages, enum_dict, struct_map), encoding='utf-8')
 
     print(f"Generated {out_h} and {out_cpp} from {proto_file}")
 

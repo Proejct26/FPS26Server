@@ -1,6 +1,21 @@
 import re
 from pathlib import Path
 
+PROTO_TO_CPP_TYPE = {
+    "uint32": "UINT32",
+    "int32": "INT32",
+    "uint64": "UINT64",
+    "int64": "INT64",
+    "float": "float",
+    "double": "double",
+    "bool": "bool",
+    "string": "std::string",
+    "fixed32": "UINT32",
+    "sfixed32": "INT32",
+    "fixed64": "UINT64",
+    "sfixed64": "INT64",
+}
+
 # PascalCase 변환
 def to_pascal_case(snake_str):
     return ''.join(word.capitalize() for word in snake_str.lower().split('_'))
@@ -21,7 +36,9 @@ def parse_proto(proto_path):
             field_match = re.match(r'\s*(\w+)\s+(\w+)\s*=\s*\d+;', line)
             if field_match:
                 field_type, field_name = field_match.groups()
-                fields.append((field_type, field_name))
+                field_type = field_type.strip().lower()
+                cpp_type = PROTO_TO_CPP_TYPE.get(field_type, field_type)
+                fields.append((cpp_type, field_name))
 
         messages.append((msg_name, fields))
 
@@ -32,6 +49,7 @@ def generate_header(messages):
     header = """#pragma once
 
 #include "Session.h"
+#include "Protobuf/Protocol.pb.h"
 
 extern int g_iSyncCount;
 
@@ -43,7 +61,7 @@ void DisconnectSessionProc(CSession* pSession);
 """
     lines = [header]
     for msg_name, fields in messages:
-        args = ', '.join([f"UINT32 {name}" for _, name in fields])
+        args = ', '.join([f"{typ} {name}" for typ, name in fields])
         lines.append(f"bool {msg_name}(CSession* pSession, {args});")
     return '\n'.join(lines)
 
@@ -86,7 +104,7 @@ int g_iSyncCount = 0;
 
     for msg_name, fields in messages:
         enum_name = f"CS_{to_pascal_case(msg_name[3:])}"
-        vars_decl = '\n        '.join([f"UINT32 {name};" for _, name in fields])
+        vars_decl = '\n        '.join([f"{typ} {name};" for typ, name in fields])
         field_assigns = '\n        '.join([f"{name} = pkt.{name.lower()}();" for _, name in fields])
         call_args = ', '.join([name for _, name in fields])
 
@@ -116,7 +134,7 @@ int g_iSyncCount = 0;
 
     # 각 함수 정의
     for msg_name, fields in messages:
-        args = ', '.join([f"UINT32 {name}" for _, name in fields])
+        args = ', '.join([f"{typ} {name}" for typ, name in fields])
         lines.append(f"bool {msg_name}(CSession* pSession, {args})")
         lines.append("{")
         lines.append("    return false;")
@@ -138,8 +156,8 @@ def main():
     Path(h_file).write_text(h_content, encoding='utf-8')
     Path(cpp_file).write_text(cpp_content, encoding='utf-8')
 
-    print(f"[✓] Generated: {h_file}")
-    print(f"[✓] Generated: {cpp_file}")
+    print(f"[\u2713] Generated: {h_file}")
+    print(f"[\u2713] Generated: {cpp_file}")
 
 if __name__ == "__main__":
     main()
