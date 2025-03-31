@@ -24,9 +24,6 @@
     <Filter Include="소스 파일\01. Manager\02. ObjMgr">
       <UniqueIdentifier>{df0c6bab-7302-4155-b6ba-6a3ffbfa407a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Manager\03. SessionMgr">
-      <UniqueIdentifier>{ad39e341-ed0b-44ab-ab92-84cb600c1b90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01. Manager\04. NetIOMgr">
       <UniqueIdentifier>{63cbb4ae-fdbc-438f-8ae0-125c192af76e}</UniqueIdentifier>
     </Filter>
@@ -51,44 +48,20 @@
     <Filter Include="소스 파일\99. Etc\02. Protocol">
       <UniqueIdentifier>{f75a93b6-05e7-476a-9110-381b56dc7e6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Manager\03. SessionMgr\Session">
-      <UniqueIdentifier>{e9092fb9-058b-4637-a934-375e60464909}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\02. ObjMgr\Object">
-      <UniqueIdentifier>{18052a1a-dfaf-4bfe-a2f0-51bb4db265b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\99. Etc\01. Custom throw Exception">
       <UniqueIdentifier>{208fd565-76fa-47b8-b31d-3c2628f112ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\99. Etc\01. Custom throw Exception\StackWalker">
       <UniqueIdentifier>{78210533-846d-4949-b933-652f2e2da838}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Manager\02. ObjMgr\Object\Player">
-      <UniqueIdentifier>{9ef624b1-d76c-4cfb-b0e0-5103fb84d98c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\05. SectorMgr">
-      <UniqueIdentifier>{43711edb-3044-426d-ab12-aedff0cba4bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\05. SectorMgr\Sector">
-      <UniqueIdentifier>{087773e7-89a4-4ef9-a994-7338bbea9fb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\99. Etc\03. Profile">
       <UniqueIdentifier>{9d603127-4821-4a32-83cb-c0a1a6479535}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\06. MemoryPoolMgr">
-      <UniqueIdentifier>{dc8e71a3-1516-4d2d-bc2f-24edf426b91a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\06. MemoryPoolMgr\MemoryPool">
-      <UniqueIdentifier>{b7ad60c8-85db-447e-9c5c-41adb7c41a7a}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\06. Content">
       <UniqueIdentifier>{22356c94-163c-4a66-84c4-77820e424b30}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\99. Etc\04. Debug_Defines">
       <UniqueIdentifier>{105471b3-095d-447c-bedd-7a9c585ee25a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01. Manager\07. LogMgr">
-      <UniqueIdentifier>{4f153e81-0de9-46d0-ba82-b0c1cfd54188}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\99. Etc\05. CircleQueue">
       <UniqueIdentifier>{bafa0101-28e1-4b13-812c-d322004662ff}</UniqueIdentifier>
@@ -117,6 +90,51 @@
     <Filter Include="소스 파일\03. Packet %28Seriallized Buffer%29\03. Proto">
       <UniqueIdentifier>{3631392f-c4e2-429e-b8a6-78c53111aca2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Manager\02. ObjMgr\Object">
+      <UniqueIdentifier>{18052a1a-dfaf-4bfe-a2f0-51bb4db265b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\01. Managers">
+      <UniqueIdentifier>{8f8d2ad7-c538-47a3-b614-033ad225a877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\00. Objects">
+      <UniqueIdentifier>{44a9aa1b-8435-4ef7-9b1a-847ac7826d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\01. Managers\00. RoomMgr">
+      <UniqueIdentifier>{a1d470c7-7b07-44da-8055-8af867cfdbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\00. Objects\Player">
+      <UniqueIdentifier>{9ef624b1-d76c-4cfb-b0e0-5103fb84d98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\00. Objects\Item">
+      <UniqueIdentifier>{05373b2a-ec2c-413b-a3cc-00b6f010b2df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\01. Managers\00. RoomMgr\Room">
+      <UniqueIdentifier>{89d7920f-9b53-4c82-8dd6-d9da74a515c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\01. Managers\00. RoomMgr\MatchSystem">
+      <UniqueIdentifier>{b833033c-3ef4-49d3-885d-88bb83fa7eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\01. Managers\00. RoomMgr\ItemSpawner">
+      <UniqueIdentifier>{65212c62-ed3d-4002-9dd4-fd5c911c49ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Content\00. Objects\Player\DamageTracker">
+      <UniqueIdentifier>{a8c5b47f-2e5f-4bea-b5be-898ecef0db86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Manager\03. SessionMgr">
+      <UniqueIdentifier>{d55e976f-6b2b-4c05-a79a-4c3916c0a468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Manager\03. SessionMgr\Session">
+      <UniqueIdentifier>{1b695666-4466-4b42-8a69-b61a013af54b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Manager\05. MemoryPoolMgr">
+      <UniqueIdentifier>{dc8e71a3-1516-4d2d-bc2f-24edf426b91a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Manager\05. MemoryPoolMgr\MemoryPool">
+      <UniqueIdentifier>{b7ad60c8-85db-447e-9c5c-41adb7c41a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Manager\06. LogMgr">
+      <UniqueIdentifier>{4f153e81-0de9-46d0-ba82-b0c1cfd54188}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CustomException.cpp">
@@ -124,12 +142,6 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>소스 파일\00. Main</Filter>
-    </ClCompile>
-    <ClCompile Include="SessionManager.cpp">
-      <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Session.cpp">
-      <Filter>소스 파일\01. Manager\03. SessionMgr\Session</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\01. Manager\02. ObjMgr</Filter>
@@ -162,16 +174,10 @@
       <Filter>소스 파일\01. Manager\01. TimeMgr</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\01. Manager\02. ObjMgr\Object\Player</Filter>
+      <Filter>소스 파일\06. Content\00. Objects\Player</Filter>
     </ClCompile>
     <ClCompile Include="Content.cpp">
       <Filter>소스 파일\06. Content</Filter>
-    </ClCompile>
-    <ClCompile Include="SectorManager.cpp">
-      <Filter>소스 파일\01. Manager\05. SectorMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Sector.cpp">
-      <Filter>소스 파일\01. Manager\05. SectorMgr\Sector</Filter>
     </ClCompile>
     <ClCompile Include="Sinleton.cpp">
       <Filter>소스 파일\01. Manager</Filter>
@@ -180,10 +186,10 @@
       <Filter>소스 파일\99. Etc\03. Profile</Filter>
     </ClCompile>
     <ClCompile Include="MemoryPoolManager.cpp">
-      <Filter>소스 파일\01. Manager\06. MemoryPoolMgr</Filter>
+      <Filter>소스 파일\01. Manager\05. MemoryPoolMgr</Filter>
     </ClCompile>
     <ClCompile Include="LogManager.cpp">
-      <Filter>소스 파일\01. Manager\07. LogMgr</Filter>
+      <Filter>소스 파일\01. Manager\06. LogMgr</Filter>
     </ClCompile>
     <ClCompile Include="CircularQueue.cpp">
       <Filter>소스 파일\99. Etc\05. CircleQueue</Filter>
@@ -203,6 +209,30 @@
     <ClCompile Include="Timer.cpp">
       <Filter>소스 파일\99. Etc\07. PDH\Timer</Filter>
     </ClCompile>
+    <ClCompile Include="RoomManager.cpp">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchSystem.cpp">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\MatchSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\06. Content\00. Objects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSpawner.cpp">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\ItemSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageTracker.cpp">
+      <Filter>소스 파일\06. Content\00. Objects\Player\DamageTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>소스 파일\01. Manager\03. SessionMgr\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionManager.cpp">
+      <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Protocol.h">
@@ -210,12 +240,6 @@
     </ClInclude>
     <ClInclude Include="CustomException.h">
       <Filter>소스 파일\99. Etc\01. Custom throw Exception</Filter>
-    </ClInclude>
-    <ClInclude Include="SessionManager.h">
-      <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Session.h">
-      <Filter>소스 파일\01. Manager\03. SessionMgr\Session</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>소스 파일\01. Manager\02. ObjMgr</Filter>
@@ -257,31 +281,25 @@
       <Filter>소스 파일\99. Etc\02. Protocol</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>소스 파일\01. Manager\02. ObjMgr\Object\Player</Filter>
+      <Filter>소스 파일\06. Content\00. Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="Content.h">
       <Filter>소스 파일\06. Content</Filter>
-    </ClInclude>
-    <ClInclude Include="SectorManager.h">
-      <Filter>소스 파일\01. Manager\05. SectorMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Sector.h">
-      <Filter>소스 파일\01. Manager\05. SectorMgr\Sector</Filter>
     </ClInclude>
     <ClInclude Include="Profile.h">
       <Filter>소스 파일\99. Etc\03. Profile</Filter>
     </ClInclude>
     <ClInclude Include="MemoryPool.h">
-      <Filter>소스 파일\01. Manager\06. MemoryPoolMgr\MemoryPool</Filter>
+      <Filter>소스 파일\01. Manager\05. MemoryPoolMgr\MemoryPool</Filter>
     </ClInclude>
     <ClInclude Include="MemoryPoolManager.h">
-      <Filter>소스 파일\01. Manager\06. MemoryPoolMgr</Filter>
+      <Filter>소스 파일\01. Manager\05. MemoryPoolMgr</Filter>
     </ClInclude>
     <ClInclude Include="DebugDefines.h">
       <Filter>소스 파일\99. Etc\04. Debug_Defines</Filter>
     </ClInclude>
     <ClInclude Include="LogManager.h">
-      <Filter>소스 파일\01. Manager\07. LogMgr</Filter>
+      <Filter>소스 파일\01. Manager\06. LogMgr</Filter>
     </ClInclude>
     <ClInclude Include="CrashDump.h">
       <Filter>소스 파일\99. Etc\06. CrashDump</Filter>
@@ -306,6 +324,30 @@
     </ClInclude>
     <ClInclude Include="ProtoStruct.h">
       <Filter>소스 파일\03. Packet %28Seriallized Buffer%29\02. ProtoStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomManager.h">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchSystem.h">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\MatchSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>소스 파일\06. Content\00. Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSpawner.h">
+      <Filter>소스 파일\06. Content\01. Managers\00. RoomMgr\ItemSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageTracker.h">
+      <Filter>소스 파일\06. Content\00. Objects\Player\DamageTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>소스 파일\01. Manager\03. SessionMgr\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionManager.h">
+      <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

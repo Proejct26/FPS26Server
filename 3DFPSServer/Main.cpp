@@ -13,9 +13,7 @@
 #include "TimerManager.h"
 #include "NetIOManager.h"
 #include "ObjectManager.h"
-#include "SectorManager.h"
-
-#include "Sector.h"
+#include "RoomManager.h"
 
 //===================================================
 // 오브젝트 관련
@@ -131,14 +129,6 @@ int main()
     CSessionManager::RegisterDisconnectCallback(DisconnectSessionProc);
 
     //=====================================================================================================================================
-    // 세션이 종료될 때 호출될 함수 등록
-    //=====================================================================================================================================
-    CSectorManager::RegisterCreateSectorObjectCallback(SendCreationPacketBetween);
-    CSectorManager::RegisterDeleteSectorObjectCallback(SendDestructionPacketBetween);
-
-    CSectorManager::GetInstance();
-
-    //=====================================================================================================================================
     // 서버 시간 설정
     //=====================================================================================================================================
     CTimerManager& timerManager = CTimerManager::GetInstance();
@@ -148,7 +138,11 @@ int main()
 
 
 
-
+    //=====================================================================================================================================
+    // 룸 매니저 초기화
+    //=====================================================================================================================================
+    CRoomManager& roomManager = CRoomManager::GetInstance();
+    roomManager.InitRooms();
 
 
 

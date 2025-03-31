@@ -1,57 +1,111 @@
 #pragma once
 
+#include "pch.h"
 #include "Object.h"
-
-#define FLAG_MOVING         0x01
-#define FLAG_DEAD           0x02
+#include "DamageTracker.h"
+#include <array>
+#include "ProtoStruct.h"
 
 void SendCreationPacketBetween(CObject*, CObject*);
 void SendDestructionPacketBetween(CObject*, CObject*);
 
+struct KDA {
+    int kill;
+    int death;
+    int assist;
+};
+
+enum class PLAYER_GAME_STATE {
+    WAITING,
+    ACTIVE,
+    END
+};
+
+enum class PRESS_KEY {
+    W,
+    A,
+    S,
+    D,
+    JUMP,
+    END
+};
+
 class CPlayer : public CObject {
 public:
-    explicit CPlayer(UINT16 _x = 0, UINT16 _y = 0, UINT8 _direction = 0, UINT8 _hp = 0) noexcept;
+    explicit CPlayer(UINT16 _x = 0, UINT16 _y = 0, UINT16 _z = 0, UINT8 _hp = 0) noexcept;
     virtual ~CPlayer();
 
     // 기타 멤버 함수 선언
     virtual void Update(void) override;
     virtual void LateUpdate(void) override;
-    virtual void Move(void) override;
+
+    void Init(UINT16 _x, UINT16 _y, UINT16 _z, UINT8 _hp);
 
 public:
-    void Init(UINT16 _x, UINT16 _y, UINT8 _direction, UINT8 _hp);
+    int GetId() const { return m_ID; }
+    int GetRoomId() const { return m_roomId; }
+    int GetTeamId() const { return m_teamId; }
+
+    void SetRoomId(int roomId) { m_roomId = roomId; }
+    void SetTeamId(int teamId) { m_teamId = teamId; }
+
+    void AddKill() { ++m_kdaInfo.kill; }
+    void AddDeath() { ++m_kdaInfo.death; }
+    void AddAssist() { ++m_kdaInfo.assist; }
+
+    int GetKill() const { return m_kdaInfo.kill; }
+    int GetDeath() const { return m_kdaInfo.death; }
+    int GetAssist() const { return m_kdaInfo.assist; }
+    void GetKDAInfo(KDAInfo& info) const { info = m_kdaInfo; }
+
+    void RecordDamage(int attackerId, float nowTime) { m_damageTracker.RecordDamage(attackerId, nowTime); }
+    void UpdateDamageHistory(float nowTime) { m_damageTracker.Update(nowTime); }
+    std::vector<int> GetAssistCandidates(float nowTime) const { return m_damageTracker.GetAssistCandidates(nowTime); }
 
 public:
-    // 나중에 플레이어를 제외한 다른 오브젝트가 추가되면 이 함수들을 CObject에 넣고, 상속받은 class들이 오버라이딩해서 관련 내용을 작성하면 된다.
-    // 일단 플레이어만 있으니 이렇게 작성.
-    friend void SendCreationPacketBetween(CObject*, CObject*);
-    friend void SendDestructionPacketBetween(CObject*, CObject*);
+    PLAYER_GAME_STATE GetCurGameState(void) { return m_eCurPlayerGameState; }
+    void SetCurGameState(PLAYER_GAME_STATE eState) { m_eCurPlayerGameState = eState; }
 
 public:
-    // Getter 함수
-    constexpr UINT8 GetHp() const { return m_hp; }
-    constexpr UINT8 GetDirection() const { return m_direction; }
-    constexpr UINT8 GetFacingDirection() const { return m_facingDirection; }
-
-    // Setter 함수
-    void SetHp(int _hp) { m_hp = _hp; }
-    void SetDirection(int _direction);
-    void Damaged(int _hp);
-    void SetSpeed(UINT8 speedX, UINT8 speedY);
+    std::array<bool, (int)PRESS_KEY::END> GetMovementKeys() const;
+    void SetMovementKeys(const std::array<bool, (int)PRESS_KEY::END>& keys);
 
 public:
-    void SetFlag(UINT8 flag, bool bOnOff);
-    void ToggleFlag(UINT8 flag);
-    bool isBitSet(UINT8 flag);
+    void GetRotationAxisXY(UINT32& AxisX, UINT32& AxisY) const { AxisX = m_rotationAxisX; AxisY = m_rotationAxisY; }
+    void SetRotationAxisXY(UINT32 AxisX, UINT32 AxisY) { m_rotationAxisX = AxisX, m_rotationAxisY = AxisY; }
 
 public:
-    void SetFlagField(UINT8 pField);
+    UINT8 GetCurHp(void) { return m_curHp; }
+    UINT8 GetMaxHp(void) { return m_maxHp; }
+    void SetCurHp(UINT8 curHp) { m_curHp = curHp; }
+
+public:
+    const std::string& GetName(void) { return m_playerName; }
+    void SetName(const std::string& name) { m_playerName = name; }
+
+public:
+    UINT8 GetWeaponInfo(void) { return m_weaponInfo; }
+    void SetWeaponInfo(UINT8 weapon) { m_weaponInfo = weapon; }
 
 private:
-    UINT8 m_hp;          // 체력
-    UINT8 m_direction;   // 방향
-    UINT8 m_facingDirection;    // 캐릭터가 바라보고 있는 방향
-    UINT8 m_speedX;     // 스피드
-    UINT8 m_speedY;
-    UINT8 m_FlagField;  // 행동 관련 flagField;
+    UINT8 m_curHp;          // 체력
+    UINT8 m_maxHp;
+
+    UINT32 m_rotationAxisX;      // x, y축 회전값
+    UINT32 m_rotationAxisY;
+
+    int m_roomId = -1;
+    int m_teamId = -1;
+
+    KDAInfo m_kdaInfo;
+
+    UINT8 m_weaponInfo;     // 가지고 있는 무기 번호
+
+    bool m_pressedKey[(int)PRESS_KEY::END];
+
+    DamageTracker m_damageTracker;
+
+    PLAYER_GAME_STATE m_eCurPlayerGameState;  // 시작 관련 정보, 처음이나 죽었을 때 WAITING 상태, 게임 플레이 중이면 ACTIVE로 변경됨
+
+    std::string m_playerName;
 };

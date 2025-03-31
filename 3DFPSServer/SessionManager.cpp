@@ -2,7 +2,6 @@
 #include "WinSockManager.h"
 #include "SessionManager.h"
 #include "Packet.h"
-#include "SectorManager.h"
 #include "ObjectManager.h"
 
 #include "Player.h"
@@ -11,7 +10,6 @@
 
 #include "LogManager.h"
 
-static CSectorManager& sectorManager = CSectorManager::GetInstance();
 static CObjectManager& objectManager = CObjectManager::GetInstance();
 static LogManager& logManager = LogManager::GetInstance();
 

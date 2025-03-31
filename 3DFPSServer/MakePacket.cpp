@@ -3,15 +3,21 @@
 #include "SessionManager.h"
 #include "Packet.h"
 #include "Player.h"
-#include "Sector.h"
+#include "Room.h"
 #include "MemoryPoolManager.h"
 #include "Protobuf/Protocol.pb.h"
 
-void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId)
+void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
+    pkt.set_posx(posX);
+    pkt.set_posy(posY);
+    pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -32,11 +38,17 @@ void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId)
+void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
+    pkt.set_posx(posX);
+    pkt.set_posy(posY);
+    pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -57,11 +69,17 @@ void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId)
+void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
+    pkt.set_posx(posX);
+    pkt.set_posy(posY);
+    pkt.set_posz(posZ);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -77,14 +95,11 @@ void SC_ATTACK_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId)
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -142,7 +157,7 @@ void SC_CHANGE_WEAPON_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 wea
     packetPool.Free(Packet);
 }
 
-void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 weapon)
+void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 weapon)
 {
     game::SC_CHANGE_WEAPON pkt;
 
@@ -163,24 +178,22 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 pl
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId)
+void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -201,11 +214,12 @@ void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId)
+void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -226,11 +240,12 @@ void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId)
+void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -246,14 +261,11 @@ void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 p
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -323,7 +335,7 @@ void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, std::vector<PlayerInfo
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, std::vector<PlayerInfo>& playerInfoList)
+void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CRoom* pRoom, std::vector<PlayerInfo>& playerInfoList)
 {
     game::SC_CHARACTER_KILL_LOG pkt;
 
@@ -350,31 +362,27 @@ void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CSector* pSector, std:
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP)
+void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID)
 {
     game::SC_CREATE_MY_CHARACTER pkt;
 
     pkt.set_playerid(playerId);
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
+    pkt.set_posindex(posIndex);
     pkt.set_dirx(dirX);
     pkt.set_diry(dirY);
     pkt.set_dirz(dirZ);
     pkt.set_maxhp(maxHP);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -395,18 +403,17 @@ void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP)
+void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID)
 {
     game::SC_CREATE_MY_CHARACTER pkt;
 
     pkt.set_playerid(playerId);
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
+    pkt.set_posindex(posIndex);
     pkt.set_dirx(dirX);
     pkt.set_diry(dirY);
     pkt.set_dirz(dirZ);
     pkt.set_maxhp(maxHP);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -427,18 +434,17 @@ void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP)
+void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID)
 {
     game::SC_CREATE_MY_CHARACTER pkt;
 
     pkt.set_playerid(playerId);
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
+    pkt.set_posindex(posIndex);
     pkt.set_dirx(dirX);
     pkt.set_diry(dirY);
     pkt.set_dirz(dirZ);
     pkt.set_maxhp(maxHP);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -454,20 +460,17 @@ void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UIN
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -475,9 +478,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
+    pkt.set_rotateaxisx(rotateAxisX);
+    pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
@@ -487,6 +489,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT
         sub->set_death(kdaInfo.death);
         sub->set_assist(kdaInfo.assist);
     }
+    pkt.set_weapon(weapon);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -507,7 +511,7 @@ void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -515,9 +519,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, U
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
+    pkt.set_rotateaxisx(rotateAxisX);
+    pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
@@ -527,6 +530,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, U
         sub->set_death(kdaInfo.death);
         sub->set_assist(kdaInfo.assist);
     }
+    pkt.set_weapon(weapon);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -547,7 +552,7 @@ void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, U
     packetPool.Free(Packet);
 }
 
-void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo)
+void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID)
 {
     game::SC_CREATE_OTHER_CHARACTER pkt;
 
@@ -555,9 +560,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, 
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
+    pkt.set_rotateaxisx(rotateAxisX);
+    pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_maxhp(maxHP);
     pkt.set_curhp(curHP);
     pkt.set_name(name);
@@ -567,6 +571,8 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, 
         sub->set_death(kdaInfo.death);
         sub->set_assist(kdaInfo.assist);
     }
+    pkt.set_weapon(weapon);
+    pkt.set_teamid(teamID);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -582,22 +588,19 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CSector* pSector, 
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
 }
 
-void SC_GRENADEEXPLOSITIONPOS_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_GRENADE_EXPLOSITION_POS_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
-    game::SC_GRENADEEXPLOSITIONPOS pkt;
+    game::SC_GRENADE_EXPLOSITION_POS pkt;
 
     pkt.set_posx(posX);
     pkt.set_posy(posY);
@@ -608,7 +611,7 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_All(CSession* pSession, UINT32 posX, UINT32 po
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_Grenadeexplositionpos;
+    header.byType = game::PacketID::SC_GrenadeExplositionPos;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();
@@ -622,9 +625,9 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_All(CSession* pSession, UINT32 posX, UINT32 po
     packetPool.Free(Packet);
 }
 
-void SC_GRENADEEXPLOSITIONPOS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_GRENADE_EXPLOSITION_POS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
-    game::SC_GRENADEEXPLOSITIONPOS pkt;
+    game::SC_GRENADE_EXPLOSITION_POS pkt;
 
     pkt.set_posx(posX);
     pkt.set_posy(posY);
@@ -635,7 +638,7 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_Grenadeexplositionpos;
+    header.byType = game::PacketID::SC_GrenadeExplositionPos;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();
@@ -649,9 +652,9 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32
     packetPool.Free(Packet);
 }
 
-void SC_GRENADEEXPLOSITIONPOS_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_GRENADE_EXPLOSITION_POS_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
-    game::SC_GRENADEEXPLOSITIONPOS pkt;
+    game::SC_GRENADE_EXPLOSITION_POS pkt;
 
     pkt.set_posx(posX);
     pkt.set_posy(posY);
@@ -662,7 +665,7 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_AROUND(CSession* pSession, CSector* pSector, U
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_Grenadeexplositionpos;
+    header.byType = game::PacketID::SC_GrenadeExplositionPos;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();
@@ -671,14 +674,263 @@ void SC_GRENADEEXPLOSITIONPOS_FOR_AROUND(CSession* pSession, CSector* pSector, U
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_FAIL_FOR_All(CSession* pSession, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_FAIL pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickFail;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_FAIL_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_FAIL pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickFail;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_FAIL_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_FAIL pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickFail;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->GetActivePlayers())
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_SUCCESS_FOR_All(CSession* pSession, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_SUCCESS pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickSuccess;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_SUCCESS_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_SUCCESS pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickSuccess;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_PICK_SUCCESS_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 itemId)
+{
+    game::SC_ITEM_PICK_SUCCESS pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_itemid(itemId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemPickSuccess;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->GetActivePlayers())
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_SPAWNED_FOR_All(CSession* pSession, UINT32 itemId, UINT32 itemType, UINT32 itemPosIndex)
+{
+    game::SC_ITEM_SPAWNED pkt;
+
+    pkt.set_itemid(itemId);
+    pkt.set_itemtype(itemType);
+    pkt.set_itemposindex(itemPosIndex);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemSpawned;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_SPAWNED_FOR_SINGLE(CSession* pSession, UINT32 itemId, UINT32 itemType, UINT32 itemPosIndex)
+{
+    game::SC_ITEM_SPAWNED pkt;
+
+    pkt.set_itemid(itemId);
+    pkt.set_itemtype(itemType);
+    pkt.set_itemposindex(itemPosIndex);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemSpawned;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ITEM_SPAWNED_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 itemId, UINT32 itemType, UINT32 itemPosIndex)
+{
+    game::SC_ITEM_SPAWNED pkt;
+
+    pkt.set_itemid(itemId);
+    pkt.set_itemtype(itemType);
+    pkt.set_itemposindex(itemPosIndex);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_ItemSpawned;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->GetActivePlayers())
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -748,7 +1000,7 @@ void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, U
     packetPool.Free(Packet);
 }
 
-void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
+void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
 {
     game::SC_KEY_INPUT pkt;
 
@@ -775,14 +1027,91 @@ void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 player
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ON_ACCEPT_FOR_All(CSession* pSession, UINT32 playerId)
+{
+    game::SC_ON_ACCEPT pkt;
+
+    pkt.set_playerid(playerId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_OnAccept;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ON_ACCEPT_FOR_SINGLE(CSession* pSession, UINT32 playerId)
+{
+    game::SC_ON_ACCEPT pkt;
+
+    pkt.set_playerid(playerId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_OnAccept;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_ON_ACCEPT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId)
+{
+    game::SC_ON_ACCEPT pkt;
+
+    pkt.set_playerid(playerId);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_OnAccept;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->GetActivePlayers())
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -842,7 +1171,7 @@ void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 pos
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
@@ -864,14 +1193,11 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CSector* pSector, UINT3
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -929,7 +1255,7 @@ void SC_SHOT_HIT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 hp)
     packetPool.Free(Packet);
 }
 
-void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerId, UINT32 hp)
+void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 hp)
 {
     game::SC_SHOT_HIT pkt;
 
@@ -950,14 +1276,11 @@ void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 playerI
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);
@@ -1023,7 +1346,7 @@ void SC_THROW_GRENADE_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, U
     packetPool.Free(Packet);
 }
 
-void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
+void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
 {
     game::SC_THROW_GRENADE pkt;
 
@@ -1048,14 +1371,11 @@ void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CSector* pSector, UINT32 po
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& Sector : pSector->GetAroundSectorList())
+    for (auto& player : pRoom->GetActivePlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }
     Packet->Clear();
     packetPool.Free(Packet);

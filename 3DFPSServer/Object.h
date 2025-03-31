@@ -10,7 +10,7 @@ class CPacket;
 // 기본 CObject 클래스 정의
 class CObject {
 public:
-    explicit CObject(UINT16 _x = 0, UINT16 _y = 0) noexcept;
+    explicit CObject(UINT16 _x = 0, UINT16 _y = 0, UINT16 _z = 0) noexcept;
     virtual ~CObject() = default;
 
     // 메모리 풀에서 사용할 용도
@@ -26,14 +26,16 @@ public:
 
 public:
     // 위치 설정 및 가져오기
-    constexpr void SetPosition(UINT16 _x, UINT16 _y) {
+    constexpr void SetPosition(UINT16 _x, UINT16 _y, UINT16 _z) {
         m_x = _x;
         m_y = _y;
+        m_z = _z;
     }
 
-    constexpr void getPosition(UINT16& _x, UINT16& _y) const {
+    constexpr void getPosition(UINT16& _x, UINT16& _y, UINT16& _z) const {
         _x = m_x;
         _y = m_y;
+        _z = m_z;
     }
 
 public:
@@ -42,18 +44,16 @@ public:
 private:
     void CheckTimeout(void);    // 추기적으로 Timeout을 확인하기 위해 불러주는 함수
     void SetCurTimeout(void);   // Timeout 값을 설정하는 함수. 패킷 처리할 때 마다 호출해서 Timeout 갱신
-    friend bool PacketProc(CSession* pSession, PACKET_TYPE packetType, CPacket* pPacket);
+    friend bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket);
     friend void CNetIOManager::netProc_Recv(CSession* pSession);
 
 public:
-    CSession* m_pSession;
-    UINT32 m_ID; // ID
-    POINT m_preSectorPos;
-    POINT m_curSectorPos;
+    CSession* m_pSession;   // 오브젝트와 연결된 세션
+    UINT32 m_ID;            // ID
 
 public:
-    UINT16 m_x, m_y;
-    bool m_bDead;
+    UINT16 m_x, m_y, m_z;   // 현재 위치(3차원)
+    bool m_bDead;           // 죽었는지 여부
 
 private:
     // Timeout 관련
@@ -62,8 +62,4 @@ private:
 private:
     static UINT32 g_ID; // ID
     static UINT32 m_maxLastTimeoutCheckTime; // timegettime 기준 값
-
-public:
-    // 패킷 타입, 패킷을 받는 시간, 세션 ID
-    CircularQueue<std::tuple<PACKET_TYPE, DWORD, UINT32>> m_packetQueue;
 };

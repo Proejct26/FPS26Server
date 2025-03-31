@@ -4,10 +4,6 @@
 #include "Session.h"
 #include "SessionManager.h"
 
-#include "SectorManager.h"
-
-static CSectorManager& sectorManager = CSectorManager::GetInstance();
-
 CObjectManager::CObjectManager() noexcept
 {
 }
