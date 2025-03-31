@@ -7,7 +7,7 @@ HEADER_PREFIX = """#pragma once
 #include "ProtoStruct.h"
 
 class CSession;
-class CSector;
+class CRoom;
 """
 
 CPP_PREFIX = """#include "pch.h"
@@ -15,7 +15,7 @@ CPP_PREFIX = """#include "pch.h"
 #include "SessionManager.h"
 #include "Packet.h"
 #include "Player.h"
-#include "Sector.h"
+#include "Room.h"
 #include "MemoryPoolManager.h"
 #include "Protobuf/Protocol.pb.h"
 """
@@ -145,7 +145,7 @@ def generate_header(messages):
         arg_str = ', '.join(args)
         lines.append(f"void {msg_name}_FOR_All(CSession* pSession, {arg_str});")
         lines.append(f"void {msg_name}_FOR_SINGLE(CSession* pSession, {arg_str});")
-        lines.append(f"void {msg_name}_FOR_AROUND(CSession* pSession, CSector* pSector, {arg_str});\n")
+        lines.append(f"void {msg_name}_FOR_AROUND(CSession* pSession, CRoom* pRoom, {arg_str});\n")
     return '\n'.join(lines)
 
 def generate_cpp(messages, enum_dict, struct_map):
@@ -168,19 +168,16 @@ def generate_cpp(messages, enum_dict, struct_map):
         for suffix, body in [
             ("FOR_All", "BroadcastData(pSession, Packet, Packet->GetDataSize());"),
             ("FOR_SINGLE", "UnicastPacket(pSession, &header, Packet);"),
-            ("FOR_AROUND", """for (auto& Sector : pSector->GetAroundSectorList())
+            ("FOR_AROUND", """for (auto& player : pRoom->GetPlayers())
     {
-        for (auto& Object : Sector->GetSectorObjectMap())
-        {
-            if (pSession == Object.second->m_pSession)
-                continue;
-            UnicastPacket(Object.second->m_pSession, &header, Packet);
-        }
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
     }""")
         ]:
             prefix = f"void {msg_name}_{suffix}(CSession* pSession, "
             if suffix == "FOR_AROUND":
-                prefix += "CSector* pSector, "
+                prefix += "CRoom* pRoom, "
             prefix += arg_str + ")"
 
             cpp.append(prefix)
