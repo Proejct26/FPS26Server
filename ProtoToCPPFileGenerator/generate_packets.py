@@ -168,7 +168,7 @@ def generate_cpp(messages, enum_dict, struct_map):
         for suffix, body in [
             ("FOR_All", "BroadcastData(pSession, Packet, Packet->GetDataSize());"),
             ("FOR_SINGLE", "UnicastPacket(pSession, &header, Packet);"),
-            ("FOR_AROUND", """for (auto& player : pRoom->GetPlayers())
+            ("FOR_AROUND", """for (auto& player : pRoom->GetActivePlayers())
     {
         if (pSession == player->m_pSession)
             continue;

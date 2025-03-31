@@ -76,21 +76,19 @@ def generate_cpp(messages):
 
 #include "ObjectManager.h"
 
-#include "SectorManager.h"
-#include "Sector.h"
-
 #include "Player.h"
 
 #include "MemoryPoolManager.h"
 #include "TimerManager.h"
 #include "LogManager.h"
+#include "RoomManager.h"
 
 #include "Protobuf/Protocol.pb.h"
 
-static CSectorManager& sectorManager = CSectorManager::GetInstance();
 static CObjectManager& objectManager = CObjectManager::GetInstance();
 static CTimerManager& timerManager = CTimerManager::GetInstance();
 static LogManager& logManager = LogManager::GetInstance();
+static CRoomManager& roomManager = CRoomManager::GetInstance();
 
 int g_iSyncCount = 0;
 """

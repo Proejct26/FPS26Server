@@ -76,9 +76,6 @@ def generate_cpp(messages):
 
 #include "ObjectManager.h"
 
-#include "SectorManager.h"
-#include "Sector.h"
-
 #include "Player.h"
 
 #include "MemoryPoolManager.h"
@@ -87,7 +84,6 @@ def generate_cpp(messages):
 
 #include "Protobuf/Protocol.pb.h"
 
-static CSectorManager& sectorManager = CSectorManager::GetInstance();
 static CObjectManager& objectManager = CObjectManager::GetInstance();
 static CTimerManager& timerManager = CTimerManager::GetInstance();
 static LogManager& logManager = LogManager::GetInstance();

@@ -55,12 +55,36 @@ class PacketHandler
         // TODO: SC_CreateOtherCharacter 패킷 처리 로직을 여기에 구현
     }
 
-    // SC_GRENADEEXPLOSITIONPOS 패킷을 처리하는 함수
-    public static void SC_Grenadeexplositionpos(PacketSession session, IMessage packet)
+    // SC_GRENADE_EXPLOSITION_POS 패킷을 처리하는 함수
+    public static void SC_GrenadeExplositionPos(PacketSession session, IMessage packet)
     {
-        SC_GRENADEEXPLOSITIONPOS grenadeexplositionposPacket = packet as SC_GRENADEEXPLOSITIONPOS;
+        SC_GRENADE_EXPLOSITION_POS grenadeExplositionPosPacket = packet as SC_GRENADE_EXPLOSITION_POS;
 
-        // TODO: SC_Grenadeexplositionpos 패킷 처리 로직을 여기에 구현
+        // TODO: SC_GrenadeExplositionPos 패킷 처리 로직을 여기에 구현
+    }
+
+    // SC_ITEM_PICK_FAIL 패킷을 처리하는 함수
+    public static void SC_ItemPickFail(PacketSession session, IMessage packet)
+    {
+        SC_ITEM_PICK_FAIL itemPickFailPacket = packet as SC_ITEM_PICK_FAIL;
+
+        // TODO: SC_ItemPickFail 패킷 처리 로직을 여기에 구현
+    }
+
+    // SC_ITEM_PICK_SUCCESS 패킷을 처리하는 함수
+    public static void SC_ItemPickSuccess(PacketSession session, IMessage packet)
+    {
+        SC_ITEM_PICK_SUCCESS itemPickSuccessPacket = packet as SC_ITEM_PICK_SUCCESS;
+
+        // TODO: SC_ItemPickSuccess 패킷 처리 로직을 여기에 구현
+    }
+
+    // SC_ITEM_SPAWNED 패킷을 처리하는 함수
+    public static void SC_ItemSpawned(PacketSession session, IMessage packet)
+    {
+        SC_ITEM_SPAWNED itemSpawnedPacket = packet as SC_ITEM_SPAWNED;
+
+        // TODO: SC_ItemSpawned 패킷 처리 로직을 여기에 구현
     }
 
     // SC_KEY_INPUT 패킷을 처리하는 함수
@@ -69,6 +93,14 @@ class PacketHandler
         SC_KEY_INPUT keyInputPacket = packet as SC_KEY_INPUT;
 
         // TODO: SC_KeyInput 패킷 처리 로직을 여기에 구현
+    }
+
+    // SC_ON_ACCEPT 패킷을 처리하는 함수
+    public static void SC_OnAccept(PacketSession session, IMessage packet)
+    {
+        SC_ON_ACCEPT onAcceptPacket = packet as SC_ON_ACCEPT;
+
+        // TODO: SC_OnAccept 패킷 처리 로직을 여기에 구현
     }
 
     // SC_POS_INTERPOLATION 패킷을 처리하는 함수
