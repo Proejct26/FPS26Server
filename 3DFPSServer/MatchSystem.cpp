@@ -2,7 +2,6 @@
 
 MatchSystem::MatchSystem()
 {
-    int a = 10;
 }
 
 MatchSystem::MatchSystem(int roomId) : m_roomId(roomId) {

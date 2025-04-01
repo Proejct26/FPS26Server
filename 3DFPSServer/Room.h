@@ -6,7 +6,6 @@
 
 class CRoom {
 public:
-    CRoom();
     CRoom(int id);
 
     bool AddPlayer(CPlayer* player);
@@ -32,7 +31,7 @@ public:
 private:
     static constexpr int MAX_PLAYERS = 10;
     int m_roomId = -1;
-    MatchSystem m_matchSystem;
-    ItemSpawner m_itemSpawner;
 
+    std::vector<MatchSystem> m_matchSystem;
+    std::vector<ItemSpawner> m_itemSpawner;
 };

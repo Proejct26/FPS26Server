@@ -15,9 +15,11 @@ public:
 
 public:
     void InitRooms() {
+        m_rooms.reserve(MAX_ROOM_COUNT);
         for (int i = 0; i < MAX_ROOM_COUNT; ++i) {
-            m_rooms[i] = new CRoom(i);  // 연속 메모리에 직접 생성
+            m_rooms.push_back(new CRoom(i));
         }
+
     }
 
     CRoom* FindAvailableRoom() {
@@ -39,5 +41,5 @@ public:
 
 private:
     static constexpr int MAX_ROOM_COUNT = 10;
-    CRoom* m_rooms[MAX_ROOM_COUNT];  // 고정 배열로 관리 (연속 메모리)
+    std::vector<CRoom*> m_rooms;
 };
