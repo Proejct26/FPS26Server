@@ -804,6 +804,7 @@ FodyWeavers.xsd
 
 # 예외 허용: Libraries/Libs/ 안의 모든 하위 폴더의 .lib 파일
 !Libraries/Libs/**/
+!Libraries/Libs/**/*.dll
 !Libraries/Libs/**/*.lib
 !ProtoFileGenerator/**/
 !ProtoFileGenerator/**/*.exe
