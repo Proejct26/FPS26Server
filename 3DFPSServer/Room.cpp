@@ -85,9 +85,9 @@ void CRoom::StartGame() {
 
     // 활성 플레이어에게 모든 정보 전송
     for (CPlayer* from : m_activePlayers) {
-        for (CPlayer* to : m_activePlayers) {
+        for (CPlayer* to : m_activePlayers) { 
             if (from == to) continue;
-            // SendPacket(to, PlayerInfoPacket(from));
+            //SendPacket(to, PlayerInfoPacket(from));
         }
     }
 }
