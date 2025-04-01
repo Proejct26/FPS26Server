@@ -32,7 +32,7 @@ enum PacketID {
 }
 
 message CS_ATTACK {
-    bool bAttack = 1; // 임의의 변수, 의미 없음.
+    uint32 hittedTargetId = 1; // 피격 대상
     float normalX = 2; // 이펙트의 노멀 벡터
     float normalY = 3;
     float normalZ = 4;
@@ -86,12 +86,13 @@ message PlayerInfo {
 }
 message SC_ATTACK {
     uint32 playerId = 1; // CS_ATTACK을 전송한 플레이어 Id를 방에 있는 모든 플레이어들에게 전송
-    float normalX = 2; // 이펙트의 노멀 벡터
-    float normalY = 3;
-    float normalZ = 4;
-    float posX = 5; // 이펙트가 터질 위치
-    float posY = 6;
-    float posZ = 7;
+    uint32 hittedTargetId = 2; // 피격 대상
+    float normalX = 3; // 이펙트의 노멀 벡터
+    float normalY = 4;
+    float normalZ = 5;
+    float posX = 6; // 이펙트가 터질 위치
+    float posY = 7;
+    float posZ = 8;
 }
 message SC_CHANGE_WEAPON {
     uint32 playerId = 1; // 다른 캐릭터 ID
@@ -147,9 +148,10 @@ message SC_ON_ACCEPT {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
 }
 message SC_POS_INTERPOLATION {
-    float posX = 1; // 플레이어의 현재 위치
-    float posY = 2;
-    float posZ = 3;
+    uint32 playerId = 1; // 플레이어 Id
+    float posX = 2; // 플레이어의 현재 위치
+    float posY = 3;
+    float posZ = 4;
 }
 message SC_SEND_MESSAGE {
     uint32 playerId = 1; // 플레이어의 고유 ID

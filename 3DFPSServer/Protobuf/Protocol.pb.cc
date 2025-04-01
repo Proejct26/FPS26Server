@@ -23,7 +23,7 @@ namespace _pbi = _pb::internal;
 namespace game {
 PROTOBUF_CONSTEXPR CS_ATTACK::CS_ATTACK(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.battack_)*/false
+    /*decltype(_impl_.hittedtargetid_)*/0u
   , /*decltype(_impl_.normalx_)*/0
   , /*decltype(_impl_.normaly_)*/0
   , /*decltype(_impl_.normalz_)*/0
@@ -187,6 +187,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR SC_ATTACK::SC_ATTACK(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
+  , /*decltype(_impl_.hittedtargetid_)*/0u
   , /*decltype(_impl_.normalx_)*/0
   , /*decltype(_impl_.normaly_)*/0
   , /*decltype(_impl_.normalz_)*/0
@@ -358,7 +359,8 @@ struct SC_ON_ACCEPTDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_ON_ACCEPTDefaultTypeInternal _SC_ON_ACCEPT_default_instance_;
 PROTOBUF_CONSTEXPR SC_POS_INTERPOLATION::SC_POS_INTERPOLATION(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0
+    /*decltype(_impl_.playerid_)*/0u
+  , /*decltype(_impl_.posx_)*/0
   , /*decltype(_impl_.posy_)*/0
   , /*decltype(_impl_.posz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -411,7 +413,7 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::CS_ATTACK, _impl_.battack_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_ATTACK, _impl_.hittedtargetid_),
   PROTOBUF_FIELD_OFFSET(::game::CS_ATTACK, _impl_.normalx_),
   PROTOBUF_FIELD_OFFSET(::game::CS_ATTACK, _impl_.normaly_),
   PROTOBUF_FIELD_OFFSET(::game::CS_ATTACK, _impl_.normalz_),
@@ -509,6 +511,7 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::SC_ATTACK, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_ATTACK, _impl_.hittedtargetid_),
   PROTOBUF_FIELD_OFFSET(::game::SC_ATTACK, _impl_.normalx_),
   PROTOBUF_FIELD_OFFSET(::game::SC_ATTACK, _impl_.normaly_),
   PROTOBUF_FIELD_OFFSET(::game::SC_ATTACK, _impl_.normalz_),
@@ -614,6 +617,7 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.posx_),
   PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.posy_),
   PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.posz_),
@@ -647,19 +651,19 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 80, -1, -1, sizeof(::game::KDAInfo)},
   { 89, -1, -1, sizeof(::game::PlayerInfo)},
   { 97, -1, -1, sizeof(::game::SC_ATTACK)},
-  { 110, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
-  { 118, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
-  { 126, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
-  { 133, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
-  { 143, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
-  { 157, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
-  { 165, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
-  { 173, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
-  { 182, -1, -1, sizeof(::game::SC_KEY_INPUT)},
-  { 196, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
-  { 203, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
-  { 212, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
-  { 220, -1, -1, sizeof(::game::SC_SHOT_HIT)},
+  { 111, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
+  { 119, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
+  { 127, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
+  { 134, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
+  { 144, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
+  { 158, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
+  { 166, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
+  { 174, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
+  { 183, -1, -1, sizeof(::game::SC_KEY_INPUT)},
+  { 197, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
+  { 204, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
+  { 214, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
+  { 222, -1, -1, sizeof(::game::SC_SHOT_HIT)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -691,68 +695,70 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016Protocol.proto\022\004game\"y\n\tCS_ATTACK\022\017\n\007b"
-  "Attack\030\001 \001(\010\022\017\n\007normalX\030\002 \001(\002\022\017\n\007normalY"
-  "\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004posX\030\005 \001(\002\022\014\n"
-  "\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"\"\n\020CS_CHANGE_W"
-  "EAPON\022\016\n\006weapon\030\001 \001(\r\" \n\016CS_ITEM_PICKED\022"
-  "\016\n\006itemId\030\001 \001(\r\"~\n\014CS_KEY_INPUT\022\014\n\004keyW\030"
-  "\001 \001(\r\022\014\n\004keyA\030\002 \001(\r\022\014\n\004keyS\030\003 \001(\r\022\014\n\004key"
-  "D\030\004 \001(\r\022\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013rotateAx"
-  "isY\030\006 \001(\007\022\014\n\004Jump\030\007 \001(\r\"@\n\024CS_POS_INTERP"
-  "OLATION\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004p"
-  "osZ\030\003 \001(\002\"6\n\022CS_REQUEST_RESTART\022\020\n\010playe"
-  "rId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r\"4\n\017CS_SEND_MES"
-  "SAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002 \001(\t\""
-  " \n\020CS_SEND_NICKNAME\022\014\n\004name\030\001 \001(\t\"+\n\013CS_"
-  "SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"6"
-  "\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022\r\n\005death\030\002 \001(\r\022\016"
-  "\n\006assist\030\003 \001(\r\":\n\nPlayerInfo\022\020\n\010playerId"
-  "\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.game.KDAInfo\"z\n\tSC"
-  "_ATTACK\022\020\n\010playerId\030\001 \001(\r\022\017\n\007normalX\030\002 \001"
-  "(\002\022\017\n\007normalY\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004"
-  "posX\030\005 \001(\002\022\014\n\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"4"
-  "\n\020SC_CHANGE_WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006"
-  "weapon\030\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020\n\010pla"
-  "yerId\030\001 \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_CHARAC"
-  "TER_KILL_LOG\022(\n\016playerInfoList\030\001 \003(\0132\020.g"
-  "ame.PlayerInfo\"[\n\026SC_CREATE_MY_CHARACTER"
-  "\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005"
-  "maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_CREAT"
-  "E_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010p"
-  "osIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005curHP\030\004 "
-  "\001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132\r.gam"
-  "e.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID\030\010 \001("
-  "\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010playerId\030\001 \001(\r"
-  "\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SUCCESS"
-  "\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC"
-  "_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010itemTyp"
-  "e\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001\n\014SC_KEY"
-  "_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014"
-  "\n\004keyA\030\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r"
-  "\022\023\n\013rotateAxisX\030\006 \001(\007\022\023\n\013rotateAxisY\030\007 \001"
-  "(\007\022\014\n\004Jump\030\010 \001(\r\" \n\014SC_ON_ACCEPT\022\020\n\010play"
-  "erId\030\001 \001(\r\"@\n\024SC_POS_INTERPOLATION\022\014\n\004po"
-  "sX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004posZ\030\003 \001(\002\"4\n\017"
-  "SC_SEND_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007mes"
-  "sage\030\002 \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010playerId\030\001 "
-  "\001(\r\022\n\n\002hp\030\002 \001(\r*\345\003\n\010PacketID\022\r\n\tCS_Attac"
-  "k\020\000\022\023\n\017CS_ChangeWeapon\020\001\022\021\n\rCS_ItemPicke"
-  "d\020\002\022\017\n\013CS_KeyInput\020\003\022\027\n\023CS_PosInterpolat"
-  "ion\020\004\022\025\n\021CS_RequestRestart\020\005\022\022\n\016CS_SendM"
-  "essage\020\006\022\023\n\017CS_SendNickname\020\007\022\016\n\nCS_Shot"
-  "Hit\020\010\022\r\n\tSC_Attack\020\t\022\023\n\017SC_ChangeWeapon\020"
-  "\n\022\024\n\020SC_CharacterDown\020\013\022\027\n\023SC_CharacterK"
-  "illLog\020\014\022\030\n\024SC_CreateMyCharacter\020\r\022\033\n\027SC"
-  "_CreateOtherCharacter\020\016\022\023\n\017SC_ItemPickFa"
-  "il\020\017\022\026\n\022SC_ItemPickSuccess\020\020\022\022\n\016SC_ItemS"
-  "pawned\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013SC_OnAccept"
-  "\020\023\022\027\n\023SC_PosInterpolation\020\024\022\022\n\016SC_SendMe"
-  "ssage\020\025\022\016\n\nSC_ShotHit\020\026b\006proto3"
+  "\n\016Protocol.proto\022\004game\"\200\001\n\tCS_ATTACK\022\026\n\016"
+  "hittedTargetId\030\001 \001(\r\022\017\n\007normalX\030\002 \001(\002\022\017\n"
+  "\007normalY\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004posX\030"
+  "\005 \001(\002\022\014\n\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"\"\n\020CS_"
+  "CHANGE_WEAPON\022\016\n\006weapon\030\001 \001(\r\" \n\016CS_ITEM"
+  "_PICKED\022\016\n\006itemId\030\001 \001(\r\"~\n\014CS_KEY_INPUT\022"
+  "\014\n\004keyW\030\001 \001(\r\022\014\n\004keyA\030\002 \001(\r\022\014\n\004keyS\030\003 \001("
+  "\r\022\014\n\004keyD\030\004 \001(\r\022\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013"
+  "rotateAxisY\030\006 \001(\007\022\014\n\004Jump\030\007 \001(\r\"@\n\024CS_PO"
+  "S_INTERPOLATION\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 "
+  "\001(\002\022\014\n\004posZ\030\003 \001(\002\"6\n\022CS_REQUEST_RESTART\022"
+  "\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r\"4\n\017CS_"
+  "SEND_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007messag"
+  "e\030\002 \001(\t\" \n\020CS_SEND_NICKNAME\022\014\n\004name\030\001 \001("
+  "\t\"+\n\013CS_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp"
+  "\030\002 \001(\r\"6\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022\r\n\005death"
+  "\030\002 \001(\r\022\016\n\006assist\030\003 \001(\r\":\n\nPlayerInfo\022\020\n\010"
+  "playerId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.game.KDAIn"
+  "fo\"\222\001\n\tSC_ATTACK\022\020\n\010playerId\030\001 \001(\r\022\026\n\016hi"
+  "ttedTargetId\030\002 \001(\r\022\017\n\007normalX\030\003 \001(\002\022\017\n\007n"
+  "ormalY\030\004 \001(\002\022\017\n\007normalZ\030\005 \001(\002\022\014\n\004posX\030\006 "
+  "\001(\002\022\014\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 \001(\002\"4\n\020SC_CH"
+  "ANGE_WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030"
+  "\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020\n\010playerId\030\001"
+  " \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_CHARACTER_KIL"
+  "L_LOG\022(\n\016playerInfoList\030\001 \003(\0132\020.game.Pla"
+  "yerInfo\"[\n\026SC_CREATE_MY_CHARACTER\022\020\n\010pla"
+  "yerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003"
+  " \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_CREATE_OTHER"
+  "_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex"
+  "\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005curHP\030\004 \001(\r\022\014\n\004"
+  "name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132\r.game.KDAIn"
+  "fo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID\030\010 \001(\r\"5\n\021SC"
+  "_ITEM_PICK_FAIL\022\020\n\010playerId\030\001 \001(\r\022\016\n\006ite"
+  "mId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SUCCESS\022\020\n\010pla"
+  "yerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC_ITEM_S"
+  "PAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010itemType\030\002 \001(\r"
+  "\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001\n\014SC_KEY_INPUT\022"
+  "\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014\n\004keyA\030"
+  "\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r\022\023\n\013rot"
+  "ateAxisX\030\006 \001(\007\022\023\n\013rotateAxisY\030\007 \001(\007\022\014\n\004J"
+  "ump\030\010 \001(\r\" \n\014SC_ON_ACCEPT\022\020\n\010playerId\030\001 "
+  "\001(\r\"R\n\024SC_POS_INTERPOLATION\022\020\n\010playerId\030"
+  "\001 \001(\r\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\014\n\004pos"
+  "Z\030\004 \001(\002\"4\n\017SC_SEND_MESSAGE\022\020\n\010playerId\030\001"
+  " \001(\r\022\017\n\007message\030\002 \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010"
+  "playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r*\345\003\n\010PacketID\022"
+  "\r\n\tCS_Attack\020\000\022\023\n\017CS_ChangeWeapon\020\001\022\021\n\rC"
+  "S_ItemPicked\020\002\022\017\n\013CS_KeyInput\020\003\022\027\n\023CS_Po"
+  "sInterpolation\020\004\022\025\n\021CS_RequestRestart\020\005\022"
+  "\022\n\016CS_SendMessage\020\006\022\023\n\017CS_SendNickname\020\007"
+  "\022\016\n\nCS_ShotHit\020\010\022\r\n\tSC_Attack\020\t\022\023\n\017SC_Ch"
+  "angeWeapon\020\n\022\024\n\020SC_CharacterDown\020\013\022\027\n\023SC"
+  "_CharacterKillLog\020\014\022\030\n\024SC_CreateMyCharac"
+  "ter\020\r\022\033\n\027SC_CreateOtherCharacter\020\016\022\023\n\017SC"
+  "_ItemPickFail\020\017\022\026\n\022SC_ItemPickSuccess\020\020\022"
+  "\022\n\016SC_ItemSpawned\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013"
+  "SC_OnAccept\020\023\022\027\n\023SC_PosInterpolation\020\024\022\022"
+  "\n\016SC_SendMessage\020\025\022\016\n\nSC_ShotHit\020\026b\006prot"
+  "o3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 2311, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 2362, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
     &descriptor_table_Protocol_2eproto_once, nullptr, 0, 25,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
@@ -818,7 +824,7 @@ CS_ATTACK::CS_ATTACK(const CS_ATTACK& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   CS_ATTACK* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.battack_){}
+      decltype(_impl_.hittedtargetid_){}
     , decltype(_impl_.normalx_){}
     , decltype(_impl_.normaly_){}
     , decltype(_impl_.normalz_){}
@@ -828,9 +834,9 @@ CS_ATTACK::CS_ATTACK(const CS_ATTACK& from)
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.battack_, &from._impl_.battack_,
+  ::memcpy(&_impl_.hittedtargetid_, &from._impl_.hittedtargetid_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.posz_) -
-    reinterpret_cast<char*>(&_impl_.battack_)) + sizeof(_impl_.posz_));
+    reinterpret_cast<char*>(&_impl_.hittedtargetid_)) + sizeof(_impl_.posz_));
   // @@protoc_insertion_point(copy_constructor:game.CS_ATTACK)
 }
 
@@ -839,7 +845,7 @@ inline void CS_ATTACK::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.battack_){false}
+      decltype(_impl_.hittedtargetid_){0u}
     , decltype(_impl_.normalx_){0}
     , decltype(_impl_.normaly_){0}
     , decltype(_impl_.normalz_){0}
@@ -873,9 +879,9 @@ void CS_ATTACK::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.battack_, 0, static_cast<size_t>(
+  ::memset(&_impl_.hittedtargetid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.posz_) -
-      reinterpret_cast<char*>(&_impl_.battack_)) + sizeof(_impl_.posz_));
+      reinterpret_cast<char*>(&_impl_.hittedtargetid_)) + sizeof(_impl_.posz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -885,10 +891,10 @@ const char* CS_ATTACK::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool bAttack = 1;
+      // uint32 hittedTargetId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.battack_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.hittedtargetid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -970,10 +976,10 @@ uint8_t* CS_ATTACK::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool bAttack = 1;
-  if (this->_internal_battack() != 0) {
+  // uint32 hittedTargetId = 1;
+  if (this->_internal_hittedtargetid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_battack(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_hittedtargetid(), target);
   }
 
   // float normalX = 2;
@@ -1052,9 +1058,9 @@ size_t CS_ATTACK::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bool bAttack = 1;
-  if (this->_internal_battack() != 0) {
-    total_size += 1 + 1;
+  // uint32 hittedTargetId = 1;
+  if (this->_internal_hittedtargetid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_hittedtargetid());
   }
 
   // float normalX = 2;
@@ -1129,8 +1135,8 @@ void CS_ATTACK::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_battack() != 0) {
-    _this->_internal_set_battack(from._internal_battack());
+  if (from._internal_hittedtargetid() != 0) {
+    _this->_internal_set_hittedtargetid(from._internal_hittedtargetid());
   }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalx = from._internal_normalx();
@@ -1194,9 +1200,9 @@ void CS_ATTACK::InternalSwap(CS_ATTACK* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(CS_ATTACK, _impl_.posz_)
       + sizeof(CS_ATTACK::_impl_.posz_)
-      - PROTOBUF_FIELD_OFFSET(CS_ATTACK, _impl_.battack_)>(
-          reinterpret_cast<char*>(&_impl_.battack_),
-          reinterpret_cast<char*>(&other->_impl_.battack_));
+      - PROTOBUF_FIELD_OFFSET(CS_ATTACK, _impl_.hittedtargetid_)>(
+          reinterpret_cast<char*>(&_impl_.hittedtargetid_),
+          reinterpret_cast<char*>(&other->_impl_.hittedtargetid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_ATTACK::GetMetadata() const {
@@ -3494,6 +3500,7 @@ SC_ATTACK::SC_ATTACK(const SC_ATTACK& from)
   SC_ATTACK* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){}
+    , decltype(_impl_.hittedtargetid_){}
     , decltype(_impl_.normalx_){}
     , decltype(_impl_.normaly_){}
     , decltype(_impl_.normalz_){}
@@ -3515,6 +3522,7 @@ inline void SC_ATTACK::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){0u}
+    , decltype(_impl_.hittedtargetid_){0u}
     , decltype(_impl_.normalx_){0}
     , decltype(_impl_.normaly_){0}
     , decltype(_impl_.normalz_){0}
@@ -3568,49 +3576,57 @@ const char* SC_ATTACK::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
-      // float normalX = 2;
+      // uint32 hittedTargetId = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.hittedtargetid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalX = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
           _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float normalY = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+      // float normalY = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
           _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float normalZ = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+      // float normalZ = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
           _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float posX = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+      // float posX = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
           _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float posY = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+      // float posY = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
           _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float posZ = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+      // float posZ = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 69)) {
           _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
@@ -3651,64 +3667,70 @@ uint8_t* SC_ATTACK::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
   }
 
-  // float normalX = 2;
+  // uint32 hittedTargetId = 2;
+  if (this->_internal_hittedtargetid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_hittedtargetid(), target);
+  }
+
+  // float normalX = 3;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalx = this->_internal_normalx();
   uint32_t raw_normalx;
   memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
   if (raw_normalx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_normalx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_normalx(), target);
   }
 
-  // float normalY = 3;
+  // float normalY = 4;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normaly = this->_internal_normaly();
   uint32_t raw_normaly;
   memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
   if (raw_normaly != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_normaly(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_normaly(), target);
   }
 
-  // float normalZ = 4;
+  // float normalZ = 5;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalz = this->_internal_normalz();
   uint32_t raw_normalz;
   memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
   if (raw_normalz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_normalz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_normalz(), target);
   }
 
-  // float posX = 5;
+  // float posX = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posx = this->_internal_posx();
   uint32_t raw_posx;
   memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
   if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_posx(), target);
   }
 
-  // float posY = 6;
+  // float posY = 7;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posy = this->_internal_posy();
   uint32_t raw_posy;
   memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
   if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_posy(), target);
   }
 
-  // float posZ = 7;
+  // float posZ = 8;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posz = this->_internal_posz();
   uint32_t raw_posz;
   memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
   if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3732,7 +3754,12 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
-  // float normalX = 2;
+  // uint32 hittedTargetId = 2;
+  if (this->_internal_hittedtargetid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_hittedtargetid());
+  }
+
+  // float normalX = 3;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalx = this->_internal_normalx();
   uint32_t raw_normalx;
@@ -3741,7 +3768,7 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float normalY = 3;
+  // float normalY = 4;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normaly = this->_internal_normaly();
   uint32_t raw_normaly;
@@ -3750,7 +3777,7 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float normalZ = 4;
+  // float normalZ = 5;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalz = this->_internal_normalz();
   uint32_t raw_normalz;
@@ -3759,7 +3786,7 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float posX = 5;
+  // float posX = 6;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posx = this->_internal_posx();
   uint32_t raw_posx;
@@ -3768,7 +3795,7 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float posY = 6;
+  // float posY = 7;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posy = this->_internal_posy();
   uint32_t raw_posy;
@@ -3777,7 +3804,7 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float posZ = 7;
+  // float posZ = 8;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posz = this->_internal_posz();
   uint32_t raw_posz;
@@ -3806,6 +3833,9 @@ void SC_ATTACK::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
 
   if (from._internal_playerid() != 0) {
     _this->_internal_set_playerid(from._internal_playerid());
+  }
+  if (from._internal_hittedtargetid() != 0) {
+    _this->_internal_set_hittedtargetid(from._internal_hittedtargetid());
   }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_normalx = from._internal_normalx();
@@ -6352,15 +6382,16 @@ SC_POS_INTERPOLATION::SC_POS_INTERPOLATION(const SC_POS_INTERPOLATION& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SC_POS_INTERPOLATION* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.posx_){}
+      decltype(_impl_.playerid_){}
+    , decltype(_impl_.posx_){}
     , decltype(_impl_.posy_){}
     , decltype(_impl_.posz_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.posx_, &from._impl_.posx_,
+  ::memcpy(&_impl_.playerid_, &from._impl_.playerid_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.posz_) -
-    reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
+    reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.posz_));
   // @@protoc_insertion_point(copy_constructor:game.SC_POS_INTERPOLATION)
 }
 
@@ -6369,7 +6400,8 @@ inline void SC_POS_INTERPOLATION::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0}
+      decltype(_impl_.playerid_){0u}
+    , decltype(_impl_.posx_){0}
     , decltype(_impl_.posy_){0}
     , decltype(_impl_.posz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -6399,9 +6431,9 @@ void SC_POS_INTERPOLATION::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.posx_, 0, static_cast<size_t>(
+  ::memset(&_impl_.playerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.posz_) -
-      reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
+      reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.posz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -6411,25 +6443,33 @@ const char* SC_POS_INTERPOLATION::_InternalParse(const char* ptr, ::_pbi::ParseC
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // float posX = 1;
+      // uint32 playerId = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float posX = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
           _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float posY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+      // float posY = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
           _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // float posZ = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+      // float posZ = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
           _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
@@ -6464,34 +6504,40 @@ uint8_t* SC_POS_INTERPOLATION::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // float posX = 1;
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
+  }
+
+  // float posX = 2;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posx = this->_internal_posx();
   uint32_t raw_posx;
   memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
   if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_posx(), target);
   }
 
-  // float posY = 2;
+  // float posY = 3;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posy = this->_internal_posy();
   uint32_t raw_posy;
   memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
   if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_posy(), target);
   }
 
-  // float posZ = 3;
+  // float posZ = 4;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posz = this->_internal_posz();
   uint32_t raw_posz;
   memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
   if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -6510,7 +6556,12 @@ size_t SC_POS_INTERPOLATION::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // float posX = 1;
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
+  }
+
+  // float posX = 2;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posx = this->_internal_posx();
   uint32_t raw_posx;
@@ -6519,7 +6570,7 @@ size_t SC_POS_INTERPOLATION::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float posY = 2;
+  // float posY = 3;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posy = this->_internal_posy();
   uint32_t raw_posy;
@@ -6528,7 +6579,7 @@ size_t SC_POS_INTERPOLATION::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // float posZ = 3;
+  // float posZ = 4;
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posz = this->_internal_posz();
   uint32_t raw_posz;
@@ -6555,6 +6606,9 @@ void SC_POS_INTERPOLATION::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from._internal_playerid() != 0) {
+    _this->_internal_set_playerid(from._internal_playerid());
+  }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_posx = from._internal_posx();
   uint32_t raw_posx;
@@ -6596,9 +6650,9 @@ void SC_POS_INTERPOLATION::InternalSwap(SC_POS_INTERPOLATION* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SC_POS_INTERPOLATION, _impl_.posz_)
       + sizeof(SC_POS_INTERPOLATION::_impl_.posz_)
-      - PROTOBUF_FIELD_OFFSET(SC_POS_INTERPOLATION, _impl_.posx_)>(
-          reinterpret_cast<char*>(&_impl_.posx_),
-          reinterpret_cast<char*>(&other->_impl_.posx_));
+      - PROTOBUF_FIELD_OFFSET(SC_POS_INTERPOLATION, _impl_.playerid_)>(
+          reinterpret_cast<char*>(&_impl_.playerid_),
+          reinterpret_cast<char*>(&other->_impl_.playerid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_POS_INTERPOLATION::GetMetadata() const {

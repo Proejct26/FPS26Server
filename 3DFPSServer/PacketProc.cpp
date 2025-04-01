@@ -31,7 +31,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     {
     case game::PacketID::CS_Attack:
     {
-        bool bAttack;
+        UINT32 hittedTargetId;
         float normalX;
         float normalY;
         float normalZ;
@@ -42,7 +42,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         game::CS_ATTACK pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
 
-        bAttack = pkt.battack();
+        hittedTargetId = pkt.hittedtargetid();
         normalX = pkt.normalx();
         normalY = pkt.normaly();
         normalZ = pkt.normalz();
@@ -50,7 +50,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         posY = pkt.posy();
         posZ = pkt.posz();
 
-        return CS_ATTACK(pSession, bAttack, normalX, normalY, normalZ, posX, posY, posZ);
+        return CS_ATTACK(pSession, hittedTargetId, normalX, normalY, normalZ, posX, posY, posZ);
     }
     break;
     case game::PacketID::CS_ChangeWeapon:
@@ -211,7 +211,7 @@ void DisconnectSessionProc(CSession* pSession)
     return;
 }
 
-bool CS_ATTACK(CSession* pSession, bool bAttack, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
+bool CS_ATTACK(CSession* pSession, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     // 클라이언트가 총을 쐈을 때 보내지는 패킷. 방의 모든 플레이어들에게 전송해야한다.
 
@@ -227,11 +227,11 @@ bool CS_ATTACK(CSession* pSession, bool bAttack, float normalX, float normalY, f
         if (activePlayer == pPlayer)
             continue;
 
-        SC_ATTACK_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, normalX, normalY, normalZ, posX, posY, posZ);
+        SC_ATTACK_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, hittedTargetId, normalX, normalY, normalZ, posX, posY, posZ);
     }
     for (const auto& waitingPlayer : pRoom->m_activePlayers)
     {
-        SC_ATTACK_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, normalX, normalY, normalZ, posX, posY, posZ);
+        SC_ATTACK_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, hittedTargetId, normalX, normalY, normalZ, posX, posY, posZ);
     }
     return true;
 }
@@ -336,11 +336,11 @@ bool CS_POS_INTERPOLATION(CSession* pSession, float posX, float posY, float posZ
         if (activePlayer == pPlayer)
             continue;
 
-        SC_POS_INTERPOLATION_FOR_SINGLE(activePlayer->m_pSession, posX, posY, posZ);
+        SC_POS_INTERPOLATION_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, posX, posY, posZ);
     }
     for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
     {
-        SC_POS_INTERPOLATION_FOR_SINGLE(waitingPlayer->m_pSession, posX, posY, posZ);
+        SC_POS_INTERPOLATION_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, posX, posY, posZ);
     }
 
     return true;

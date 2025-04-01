@@ -7,11 +7,12 @@
 #include "MemoryPoolManager.h"
 #include "Protobuf/Protocol.pb.h"
 
-void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
+void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_hittedtargetid(hittedTargetId);
     pkt.set_normalx(normalX);
     pkt.set_normaly(normalY);
     pkt.set_normalz(normalZ);
@@ -38,11 +39,12 @@ void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, float normalX, float
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
+void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_hittedtargetid(hittedTargetId);
     pkt.set_normalx(normalX);
     pkt.set_normaly(normalY);
     pkt.set_normalz(normalZ);
@@ -69,11 +71,12 @@ void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, float normalX, fl
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
+void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
     pkt.set_playerid(playerId);
+    pkt.set_hittedtargetid(hittedTargetId);
     pkt.set_normalx(normalX);
     pkt.set_normaly(normalY);
     pkt.set_normalz(normalZ);
@@ -1010,10 +1013,11 @@ void SC_ON_ACCEPT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, float posX, float posY, float posZ)
+void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 playerId, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
+    pkt.set_playerid(playerId);
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);
@@ -1037,10 +1041,11 @@ void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, float posX, float posY, fl
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, float posX, float posY, float posZ)
+void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 playerId, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
+    pkt.set_playerid(playerId);
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);
@@ -1064,10 +1069,11 @@ void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, float posX, float posY,
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, float posX, float posY, float posZ)
+void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
+    pkt.set_playerid(playerId);
     pkt.set_posx(posX);
     pkt.set_posy(posY);
     pkt.set_posz(posZ);

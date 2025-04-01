@@ -27,7 +27,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     {
     case game::PacketID::CS_Attack:
     {
-        bool bAttack;
+        UINT32 hittedTargetId;
         float normalX;
         float normalY;
         float normalZ;
@@ -38,7 +38,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         game::CS_ATTACK pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
 
-        bAttack = pkt.battack();
+        hittedTargetId = pkt.hittedtargetid();
         normalX = pkt.normalx();
         normalY = pkt.normaly();
         normalZ = pkt.normalz();
@@ -46,7 +46,7 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         posY = pkt.posy();
         posZ = pkt.posz();
 
-        return CS_ATTACK(pSession, bAttack, normalX, normalY, normalZ, posX, posY, posZ);
+        return CS_ATTACK(pSession, hittedTargetId, normalX, normalY, normalZ, posX, posY, posZ);
     }
     break;
     case game::PacketID::CS_ChangeWeapon:
@@ -177,7 +177,7 @@ void DisconnectSessionProc(CSession* pSession)
 {
     return;
 }
-bool CS_ATTACK(CSession* pSession, bool bAttack, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
+bool CS_ATTACK(CSession* pSession, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     return false;
 }

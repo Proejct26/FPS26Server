@@ -24,62 +24,63 @@ namespace Game {
     static ProtocolReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5Qcm90b2NvbC5wcm90bxIEZ2FtZSJ5CglDU19BVFRBQ0sSDwoHYkF0dGFj",
-            "axgBIAEoCBIPCgdub3JtYWxYGAIgASgCEg8KB25vcm1hbFkYAyABKAISDwoH",
-            "bm9ybWFsWhgEIAEoAhIMCgRwb3NYGAUgASgCEgwKBHBvc1kYBiABKAISDAoE",
-            "cG9zWhgHIAEoAiIiChBDU19DSEFOR0VfV0VBUE9OEg4KBndlYXBvbhgBIAEo",
-            "DSIgCg5DU19JVEVNX1BJQ0tFRBIOCgZpdGVtSWQYASABKA0ifgoMQ1NfS0VZ",
-            "X0lOUFVUEgwKBGtleVcYASABKA0SDAoEa2V5QRgCIAEoDRIMCgRrZXlTGAMg",
-            "ASgNEgwKBGtleUQYBCABKA0SEwoLcm90YXRlQXhpc1gYBSABKAcSEwoLcm90",
-            "YXRlQXhpc1kYBiABKAcSDAoESnVtcBgHIAEoDSJAChRDU19QT1NfSU5URVJQ",
-            "T0xBVElPThIMCgRwb3NYGAEgASgCEgwKBHBvc1kYAiABKAISDAoEcG9zWhgD",
-            "IAEoAiI2ChJDU19SRVFVRVNUX1JFU1RBUlQSEAoIcGxheWVySWQYASABKA0S",
-            "DgoGd2VhcG9uGAIgASgNIjQKD0NTX1NFTkRfTUVTU0FHRRIQCghwbGF5ZXJJ",
-            "ZBgBIAEoDRIPCgdtZXNzYWdlGAIgASgJIiAKEENTX1NFTkRfTklDS05BTUUS",
-            "DAoEbmFtZRgBIAEoCSIrCgtDU19TSE9UX0hJVBIQCghwbGF5ZXJJZBgBIAEo",
-            "DRIKCgJocBgCIAEoDSI2CgdLREFJbmZvEgwKBGtpbGwYASABKA0SDQoFZGVh",
-            "dGgYAiABKA0SDgoGYXNzaXN0GAMgASgNIjoKClBsYXllckluZm8SEAoIcGxh",
-            "eWVySWQYASABKA0SGgoDa2RhGAIgASgLMg0uZ2FtZS5LREFJbmZvInoKCVND",
-            "X0FUVEFDSxIQCghwbGF5ZXJJZBgBIAEoDRIPCgdub3JtYWxYGAIgASgCEg8K",
-            "B25vcm1hbFkYAyABKAISDwoHbm9ybWFsWhgEIAEoAhIMCgRwb3NYGAUgASgC",
-            "EgwKBHBvc1kYBiABKAISDAoEcG9zWhgHIAEoAiI0ChBTQ19DSEFOR0VfV0VB",
-            "UE9OEhAKCHBsYXllcklkGAEgASgNEg4KBndlYXBvbhgCIAEoDSI1ChFTQ19D",
-            "SEFSQUNURVJfRE9XThIQCghwbGF5ZXJJZBgBIAEoDRIOCgZ0ZWFtSUQYAiAB",
-            "KA0iQQoVU0NfQ0hBUkFDVEVSX0tJTExfTE9HEigKDnBsYXllckluZm9MaXN0",
-            "GAEgAygLMhAuZ2FtZS5QbGF5ZXJJbmZvIlsKFlNDX0NSRUFURV9NWV9DSEFS",
-            "QUNURVISEAoIcGxheWVySWQYASABKA0SEAoIcG9zSW5kZXgYAiABKA0SDQoF",
-            "bWF4SFAYAyABKA0SDgoGdGVhbUlEGAQgASgNIqsBChlTQ19DUkVBVEVfT1RI",
-            "RVJfQ0hBUkFDVEVSEhAKCHBsYXllcklkGAEgASgNEhAKCHBvc0luZGV4GAIg",
-            "ASgNEg0KBW1heEhQGAMgASgNEg0KBWN1ckhQGAQgASgNEgwKBG5hbWUYBSAB",
-            "KAkSHgoHa2RhSW5mbxgGIAEoCzINLmdhbWUuS0RBSW5mbxIOCgZ3ZWFwb24Y",
-            "ByABKA0SDgoGdGVhbUlEGAggASgNIjUKEVNDX0lURU1fUElDS19GQUlMEhAK",
-            "CHBsYXllcklkGAEgASgNEg4KBml0ZW1JZBgCIAEoDSI4ChRTQ19JVEVNX1BJ",
-            "Q0tfU1VDQ0VTUxIQCghwbGF5ZXJJZBgBIAEoDRIOCgZpdGVtSWQYAiABKA0i",
-            "SQoPU0NfSVRFTV9TUEFXTkVEEg4KBml0ZW1JZBgBIAEoDRIQCghpdGVtVHlw",
-            "ZRgCIAEoDRIUCgxpdGVtUG9zSW5kZXgYAyABKA0ikAEKDFNDX0tFWV9JTlBV",
-            "VBIQCghwbGF5ZXJJZBgBIAEoDRIMCgRrZXlXGAIgASgNEgwKBGtleUEYAyAB",
-            "KA0SDAoEa2V5UxgEIAEoDRIMCgRrZXlEGAUgASgNEhMKC3JvdGF0ZUF4aXNY",
-            "GAYgASgHEhMKC3JvdGF0ZUF4aXNZGAcgASgHEgwKBEp1bXAYCCABKA0iIAoM",
-            "U0NfT05fQUNDRVBUEhAKCHBsYXllcklkGAEgASgNIkAKFFNDX1BPU19JTlRF",
-            "UlBPTEFUSU9OEgwKBHBvc1gYASABKAISDAoEcG9zWRgCIAEoAhIMCgRwb3Na",
-            "GAMgASgCIjQKD1NDX1NFTkRfTUVTU0FHRRIQCghwbGF5ZXJJZBgBIAEoDRIP",
-            "CgdtZXNzYWdlGAIgASgJIisKC1NDX1NIT1RfSElUEhAKCHBsYXllcklkGAEg",
-            "ASgNEgoKAmhwGAIgASgNKuUDCghQYWNrZXRJRBINCglDU19BdHRhY2sQABIT",
-            "Cg9DU19DaGFuZ2VXZWFwb24QARIRCg1DU19JdGVtUGlja2VkEAISDwoLQ1Nf",
-            "S2V5SW5wdXQQAxIXChNDU19Qb3NJbnRlcnBvbGF0aW9uEAQSFQoRQ1NfUmVx",
-            "dWVzdFJlc3RhcnQQBRISCg5DU19TZW5kTWVzc2FnZRAGEhMKD0NTX1NlbmRO",
-            "aWNrbmFtZRAHEg4KCkNTX1Nob3RIaXQQCBINCglTQ19BdHRhY2sQCRITCg9T",
-            "Q19DaGFuZ2VXZWFwb24QChIUChBTQ19DaGFyYWN0ZXJEb3duEAsSFwoTU0Nf",
-            "Q2hhcmFjdGVyS2lsbExvZxAMEhgKFFNDX0NyZWF0ZU15Q2hhcmFjdGVyEA0S",
-            "GwoXU0NfQ3JlYXRlT3RoZXJDaGFyYWN0ZXIQDhITCg9TQ19JdGVtUGlja0Zh",
-            "aWwQDxIWChJTQ19JdGVtUGlja1N1Y2Nlc3MQEBISCg5TQ19JdGVtU3Bhd25l",
-            "ZBAREg8KC1NDX0tleUlucHV0EBISDwoLU0NfT25BY2NlcHQQExIXChNTQ19Q",
-            "b3NJbnRlcnBvbGF0aW9uEBQSEgoOU0NfU2VuZE1lc3NhZ2UQFRIOCgpTQ19T",
-            "aG90SGl0EBZiBnByb3RvMw=="));
+            "Cg5Qcm90b2NvbC5wcm90bxIEZ2FtZSKAAQoJQ1NfQVRUQUNLEhYKDmhpdHRl",
+            "ZFRhcmdldElkGAEgASgNEg8KB25vcm1hbFgYAiABKAISDwoHbm9ybWFsWRgD",
+            "IAEoAhIPCgdub3JtYWxaGAQgASgCEgwKBHBvc1gYBSABKAISDAoEcG9zWRgG",
+            "IAEoAhIMCgRwb3NaGAcgASgCIiIKEENTX0NIQU5HRV9XRUFQT04SDgoGd2Vh",
+            "cG9uGAEgASgNIiAKDkNTX0lURU1fUElDS0VEEg4KBml0ZW1JZBgBIAEoDSJ+",
+            "CgxDU19LRVlfSU5QVVQSDAoEa2V5VxgBIAEoDRIMCgRrZXlBGAIgASgNEgwK",
+            "BGtleVMYAyABKA0SDAoEa2V5RBgEIAEoDRITCgtyb3RhdGVBeGlzWBgFIAEo",
+            "BxITCgtyb3RhdGVBeGlzWRgGIAEoBxIMCgRKdW1wGAcgASgNIkAKFENTX1BP",
+            "U19JTlRFUlBPTEFUSU9OEgwKBHBvc1gYASABKAISDAoEcG9zWRgCIAEoAhIM",
+            "CgRwb3NaGAMgASgCIjYKEkNTX1JFUVVFU1RfUkVTVEFSVBIQCghwbGF5ZXJJ",
+            "ZBgBIAEoDRIOCgZ3ZWFwb24YAiABKA0iNAoPQ1NfU0VORF9NRVNTQUdFEhAK",
+            "CHBsYXllcklkGAEgASgNEg8KB21lc3NhZ2UYAiABKAkiIAoQQ1NfU0VORF9O",
+            "SUNLTkFNRRIMCgRuYW1lGAEgASgJIisKC0NTX1NIT1RfSElUEhAKCHBsYXll",
+            "cklkGAEgASgNEgoKAmhwGAIgASgNIjYKB0tEQUluZm8SDAoEa2lsbBgBIAEo",
+            "DRINCgVkZWF0aBgCIAEoDRIOCgZhc3Npc3QYAyABKA0iOgoKUGxheWVySW5m",
+            "bxIQCghwbGF5ZXJJZBgBIAEoDRIaCgNrZGEYAiABKAsyDS5nYW1lLktEQUlu",
+            "Zm8ikgEKCVNDX0FUVEFDSxIQCghwbGF5ZXJJZBgBIAEoDRIWCg5oaXR0ZWRU",
+            "YXJnZXRJZBgCIAEoDRIPCgdub3JtYWxYGAMgASgCEg8KB25vcm1hbFkYBCAB",
+            "KAISDwoHbm9ybWFsWhgFIAEoAhIMCgRwb3NYGAYgASgCEgwKBHBvc1kYByAB",
+            "KAISDAoEcG9zWhgIIAEoAiI0ChBTQ19DSEFOR0VfV0VBUE9OEhAKCHBsYXll",
+            "cklkGAEgASgNEg4KBndlYXBvbhgCIAEoDSI1ChFTQ19DSEFSQUNURVJfRE9X",
+            "ThIQCghwbGF5ZXJJZBgBIAEoDRIOCgZ0ZWFtSUQYAiABKA0iQQoVU0NfQ0hB",
+            "UkFDVEVSX0tJTExfTE9HEigKDnBsYXllckluZm9MaXN0GAEgAygLMhAuZ2Ft",
+            "ZS5QbGF5ZXJJbmZvIlsKFlNDX0NSRUFURV9NWV9DSEFSQUNURVISEAoIcGxh",
+            "eWVySWQYASABKA0SEAoIcG9zSW5kZXgYAiABKA0SDQoFbWF4SFAYAyABKA0S",
+            "DgoGdGVhbUlEGAQgASgNIqsBChlTQ19DUkVBVEVfT1RIRVJfQ0hBUkFDVEVS",
+            "EhAKCHBsYXllcklkGAEgASgNEhAKCHBvc0luZGV4GAIgASgNEg0KBW1heEhQ",
+            "GAMgASgNEg0KBWN1ckhQGAQgASgNEgwKBG5hbWUYBSABKAkSHgoHa2RhSW5m",
+            "bxgGIAEoCzINLmdhbWUuS0RBSW5mbxIOCgZ3ZWFwb24YByABKA0SDgoGdGVh",
+            "bUlEGAggASgNIjUKEVNDX0lURU1fUElDS19GQUlMEhAKCHBsYXllcklkGAEg",
+            "ASgNEg4KBml0ZW1JZBgCIAEoDSI4ChRTQ19JVEVNX1BJQ0tfU1VDQ0VTUxIQ",
+            "CghwbGF5ZXJJZBgBIAEoDRIOCgZpdGVtSWQYAiABKA0iSQoPU0NfSVRFTV9T",
+            "UEFXTkVEEg4KBml0ZW1JZBgBIAEoDRIQCghpdGVtVHlwZRgCIAEoDRIUCgxp",
+            "dGVtUG9zSW5kZXgYAyABKA0ikAEKDFNDX0tFWV9JTlBVVBIQCghwbGF5ZXJJ",
+            "ZBgBIAEoDRIMCgRrZXlXGAIgASgNEgwKBGtleUEYAyABKA0SDAoEa2V5UxgE",
+            "IAEoDRIMCgRrZXlEGAUgASgNEhMKC3JvdGF0ZUF4aXNYGAYgASgHEhMKC3Jv",
+            "dGF0ZUF4aXNZGAcgASgHEgwKBEp1bXAYCCABKA0iIAoMU0NfT05fQUNDRVBU",
+            "EhAKCHBsYXllcklkGAEgASgNIlIKFFNDX1BPU19JTlRFUlBPTEFUSU9OEhAK",
+            "CHBsYXllcklkGAEgASgNEgwKBHBvc1gYAiABKAISDAoEcG9zWRgDIAEoAhIM",
+            "CgRwb3NaGAQgASgCIjQKD1NDX1NFTkRfTUVTU0FHRRIQCghwbGF5ZXJJZBgB",
+            "IAEoDRIPCgdtZXNzYWdlGAIgASgJIisKC1NDX1NIT1RfSElUEhAKCHBsYXll",
+            "cklkGAEgASgNEgoKAmhwGAIgASgNKuUDCghQYWNrZXRJRBINCglDU19BdHRh",
+            "Y2sQABITCg9DU19DaGFuZ2VXZWFwb24QARIRCg1DU19JdGVtUGlja2VkEAIS",
+            "DwoLQ1NfS2V5SW5wdXQQAxIXChNDU19Qb3NJbnRlcnBvbGF0aW9uEAQSFQoR",
+            "Q1NfUmVxdWVzdFJlc3RhcnQQBRISCg5DU19TZW5kTWVzc2FnZRAGEhMKD0NT",
+            "X1NlbmROaWNrbmFtZRAHEg4KCkNTX1Nob3RIaXQQCBINCglTQ19BdHRhY2sQ",
+            "CRITCg9TQ19DaGFuZ2VXZWFwb24QChIUChBTQ19DaGFyYWN0ZXJEb3duEAsS",
+            "FwoTU0NfQ2hhcmFjdGVyS2lsbExvZxAMEhgKFFNDX0NyZWF0ZU15Q2hhcmFj",
+            "dGVyEA0SGwoXU0NfQ3JlYXRlT3RoZXJDaGFyYWN0ZXIQDhITCg9TQ19JdGVt",
+            "UGlja0ZhaWwQDxIWChJTQ19JdGVtUGlja1N1Y2Nlc3MQEBISCg5TQ19JdGVt",
+            "U3Bhd25lZBAREg8KC1NDX0tleUlucHV0EBISDwoLU0NfT25BY2NlcHQQExIX",
+            "ChNTQ19Qb3NJbnRlcnBvbGF0aW9uEBQSEgoOU0NfU2VuZE1lc3NhZ2UQFRIO",
+            "CgpTQ19TaG90SGl0EBZiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Game.PacketID), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_ATTACK), global::Game.CS_ATTACK.Parser, new[]{ "BAttack", "NormalX", "NormalY", "NormalZ", "PosX", "PosY", "PosZ" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_ATTACK), global::Game.CS_ATTACK.Parser, new[]{ "HittedTargetId", "NormalX", "NormalY", "NormalZ", "PosX", "PosY", "PosZ" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_CHANGE_WEAPON), global::Game.CS_CHANGE_WEAPON.Parser, new[]{ "Weapon" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_ITEM_PICKED), global::Game.CS_ITEM_PICKED.Parser, new[]{ "ItemId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_KEY_INPUT), global::Game.CS_KEY_INPUT.Parser, new[]{ "KeyW", "KeyA", "KeyS", "KeyD", "RotateAxisX", "RotateAxisY", "Jump" }, null, null, null, null),
@@ -90,7 +91,7 @@ namespace Game {
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.CS_SHOT_HIT), global::Game.CS_SHOT_HIT.Parser, new[]{ "PlayerId", "Hp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.KDAInfo), global::Game.KDAInfo.Parser, new[]{ "Kill", "Death", "Assist" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.PlayerInfo), global::Game.PlayerInfo.Parser, new[]{ "PlayerId", "Kda" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_ATTACK), global::Game.SC_ATTACK.Parser, new[]{ "PlayerId", "NormalX", "NormalY", "NormalZ", "PosX", "PosY", "PosZ" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_ATTACK), global::Game.SC_ATTACK.Parser, new[]{ "PlayerId", "HittedTargetId", "NormalX", "NormalY", "NormalZ", "PosX", "PosY", "PosZ" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_CHANGE_WEAPON), global::Game.SC_CHANGE_WEAPON.Parser, new[]{ "PlayerId", "Weapon" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_CHARACTER_DOWN), global::Game.SC_CHARACTER_DOWN.Parser, new[]{ "PlayerId", "TeamID" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_CHARACTER_KILL_LOG), global::Game.SC_CHARACTER_KILL_LOG.Parser, new[]{ "PlayerInfoList" }, null, null, null, null),
@@ -101,7 +102,7 @@ namespace Game {
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_ITEM_SPAWNED), global::Game.SC_ITEM_SPAWNED.Parser, new[]{ "ItemId", "ItemType", "ItemPosIndex" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_KEY_INPUT), global::Game.SC_KEY_INPUT.Parser, new[]{ "PlayerId", "KeyW", "KeyA", "KeyS", "KeyD", "RotateAxisX", "RotateAxisY", "Jump" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_ON_ACCEPT), global::Game.SC_ON_ACCEPT.Parser, new[]{ "PlayerId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_POS_INTERPOLATION), global::Game.SC_POS_INTERPOLATION.Parser, new[]{ "PosX", "PosY", "PosZ" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_POS_INTERPOLATION), global::Game.SC_POS_INTERPOLATION.Parser, new[]{ "PlayerId", "PosX", "PosY", "PosZ" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_SEND_MESSAGE), global::Game.SC_SEND_MESSAGE.Parser, new[]{ "PlayerId", "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Game.SC_SHOT_HIT), global::Game.SC_SHOT_HIT.Parser, new[]{ "PlayerId", "Hp" }, null, null, null, null)
           }));
@@ -179,7 +180,7 @@ namespace Game {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CS_ATTACK(CS_ATTACK other) : this() {
-      bAttack_ = other.bAttack_;
+      hittedTargetId_ = other.hittedTargetId_;
       normalX_ = other.normalX_;
       normalY_ = other.normalY_;
       normalZ_ = other.normalZ_;
@@ -195,18 +196,18 @@ namespace Game {
       return new CS_ATTACK(this);
     }
 
-    /// <summary>Field number for the "bAttack" field.</summary>
-    public const int BAttackFieldNumber = 1;
-    private bool bAttack_;
+    /// <summary>Field number for the "hittedTargetId" field.</summary>
+    public const int HittedTargetIdFieldNumber = 1;
+    private uint hittedTargetId_;
     /// <summary>
-    /// 임의의 변수, 의미 없음.
+    /// 피격 대상
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool BAttack {
-      get { return bAttack_; }
+    public uint HittedTargetId {
+      get { return hittedTargetId_; }
       set {
-        bAttack_ = value;
+        hittedTargetId_ = value;
       }
     }
 
@@ -303,7 +304,7 @@ namespace Game {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BAttack != other.BAttack) return false;
+      if (HittedTargetId != other.HittedTargetId) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalX, other.NormalX)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalY, other.NormalY)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalZ, other.NormalZ)) return false;
@@ -317,7 +318,7 @@ namespace Game {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BAttack != false) hash ^= BAttack.GetHashCode();
+      if (HittedTargetId != 0) hash ^= HittedTargetId.GetHashCode();
       if (NormalX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalX);
       if (NormalY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalY);
       if (NormalZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalZ);
@@ -342,9 +343,9 @@ namespace Game {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BAttack != false) {
+      if (HittedTargetId != 0) {
         output.WriteRawTag(8);
-        output.WriteBool(BAttack);
+        output.WriteUInt32(HittedTargetId);
       }
       if (NormalX != 0F) {
         output.WriteRawTag(21);
@@ -380,9 +381,9 @@ namespace Game {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BAttack != false) {
+      if (HittedTargetId != 0) {
         output.WriteRawTag(8);
-        output.WriteBool(BAttack);
+        output.WriteUInt32(HittedTargetId);
       }
       if (NormalX != 0F) {
         output.WriteRawTag(21);
@@ -418,8 +419,8 @@ namespace Game {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BAttack != false) {
-        size += 1 + 1;
+      if (HittedTargetId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HittedTargetId);
       }
       if (NormalX != 0F) {
         size += 1 + 4;
@@ -451,8 +452,8 @@ namespace Game {
       if (other == null) {
         return;
       }
-      if (other.BAttack != false) {
-        BAttack = other.BAttack;
+      if (other.HittedTargetId != 0) {
+        HittedTargetId = other.HittedTargetId;
       }
       if (other.NormalX != 0F) {
         NormalX = other.NormalX;
@@ -488,7 +489,7 @@ namespace Game {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            BAttack = input.ReadBool();
+            HittedTargetId = input.ReadUInt32();
             break;
           }
           case 21: {
@@ -531,7 +532,7 @@ namespace Game {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            BAttack = input.ReadBool();
+            HittedTargetId = input.ReadUInt32();
             break;
           }
           case 21: {
@@ -3059,6 +3060,7 @@ namespace Game {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SC_ATTACK(SC_ATTACK other) : this() {
       playerId_ = other.playerId_;
+      hittedTargetId_ = other.hittedTargetId_;
       normalX_ = other.normalX_;
       normalY_ = other.normalY_;
       normalZ_ = other.normalZ_;
@@ -3089,8 +3091,23 @@ namespace Game {
       }
     }
 
+    /// <summary>Field number for the "hittedTargetId" field.</summary>
+    public const int HittedTargetIdFieldNumber = 2;
+    private uint hittedTargetId_;
+    /// <summary>
+    /// 피격 대상
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint HittedTargetId {
+      get { return hittedTargetId_; }
+      set {
+        hittedTargetId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "normalX" field.</summary>
-    public const int NormalXFieldNumber = 2;
+    public const int NormalXFieldNumber = 3;
     private float normalX_;
     /// <summary>
     /// 이펙트의 노멀 벡터
@@ -3105,7 +3122,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "normalY" field.</summary>
-    public const int NormalYFieldNumber = 3;
+    public const int NormalYFieldNumber = 4;
     private float normalY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3117,7 +3134,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "normalZ" field.</summary>
-    public const int NormalZFieldNumber = 4;
+    public const int NormalZFieldNumber = 5;
     private float normalZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3129,7 +3146,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "posX" field.</summary>
-    public const int PosXFieldNumber = 5;
+    public const int PosXFieldNumber = 6;
     private float posX_;
     /// <summary>
     /// 이펙트가 터질 위치
@@ -3144,7 +3161,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "posY" field.</summary>
-    public const int PosYFieldNumber = 6;
+    public const int PosYFieldNumber = 7;
     private float posY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3156,7 +3173,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "posZ" field.</summary>
-    public const int PosZFieldNumber = 7;
+    public const int PosZFieldNumber = 8;
     private float posZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3183,6 +3200,7 @@ namespace Game {
         return true;
       }
       if (PlayerId != other.PlayerId) return false;
+      if (HittedTargetId != other.HittedTargetId) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalX, other.NormalX)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalY, other.NormalY)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalZ, other.NormalZ)) return false;
@@ -3197,6 +3215,7 @@ namespace Game {
     public override int GetHashCode() {
       int hash = 1;
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (HittedTargetId != 0) hash ^= HittedTargetId.GetHashCode();
       if (NormalX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalX);
       if (NormalY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalY);
       if (NormalZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalZ);
@@ -3225,28 +3244,32 @@ namespace Game {
         output.WriteRawTag(8);
         output.WriteUInt32(PlayerId);
       }
+      if (HittedTargetId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(HittedTargetId);
+      }
       if (NormalX != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(NormalX);
       }
       if (NormalY != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(NormalY);
       }
       if (NormalZ != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(45);
         output.WriteFloat(NormalZ);
       }
       if (PosX != 0F) {
-        output.WriteRawTag(45);
+        output.WriteRawTag(53);
         output.WriteFloat(PosX);
       }
       if (PosY != 0F) {
-        output.WriteRawTag(53);
+        output.WriteRawTag(61);
         output.WriteFloat(PosY);
       }
       if (PosZ != 0F) {
-        output.WriteRawTag(61);
+        output.WriteRawTag(69);
         output.WriteFloat(PosZ);
       }
       if (_unknownFields != null) {
@@ -3263,28 +3286,32 @@ namespace Game {
         output.WriteRawTag(8);
         output.WriteUInt32(PlayerId);
       }
+      if (HittedTargetId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(HittedTargetId);
+      }
       if (NormalX != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(NormalX);
       }
       if (NormalY != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(NormalY);
       }
       if (NormalZ != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(45);
         output.WriteFloat(NormalZ);
       }
       if (PosX != 0F) {
-        output.WriteRawTag(45);
+        output.WriteRawTag(53);
         output.WriteFloat(PosX);
       }
       if (PosY != 0F) {
-        output.WriteRawTag(53);
+        output.WriteRawTag(61);
         output.WriteFloat(PosY);
       }
       if (PosZ != 0F) {
-        output.WriteRawTag(61);
+        output.WriteRawTag(69);
         output.WriteFloat(PosZ);
       }
       if (_unknownFields != null) {
@@ -3299,6 +3326,9 @@ namespace Game {
       int size = 0;
       if (PlayerId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+      }
+      if (HittedTargetId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HittedTargetId);
       }
       if (NormalX != 0F) {
         size += 1 + 4;
@@ -3332,6 +3362,9 @@ namespace Game {
       }
       if (other.PlayerId != 0) {
         PlayerId = other.PlayerId;
+      }
+      if (other.HittedTargetId != 0) {
+        HittedTargetId = other.HittedTargetId;
       }
       if (other.NormalX != 0F) {
         NormalX = other.NormalX;
@@ -3370,27 +3403,31 @@ namespace Game {
             PlayerId = input.ReadUInt32();
             break;
           }
-          case 21: {
-            NormalX = input.ReadFloat();
+          case 16: {
+            HittedTargetId = input.ReadUInt32();
             break;
           }
           case 29: {
-            NormalY = input.ReadFloat();
+            NormalX = input.ReadFloat();
             break;
           }
           case 37: {
-            NormalZ = input.ReadFloat();
+            NormalY = input.ReadFloat();
             break;
           }
           case 45: {
-            PosX = input.ReadFloat();
+            NormalZ = input.ReadFloat();
             break;
           }
           case 53: {
-            PosY = input.ReadFloat();
+            PosX = input.ReadFloat();
             break;
           }
           case 61: {
+            PosY = input.ReadFloat();
+            break;
+          }
+          case 69: {
             PosZ = input.ReadFloat();
             break;
           }
@@ -3413,27 +3450,31 @@ namespace Game {
             PlayerId = input.ReadUInt32();
             break;
           }
-          case 21: {
-            NormalX = input.ReadFloat();
+          case 16: {
+            HittedTargetId = input.ReadUInt32();
             break;
           }
           case 29: {
-            NormalY = input.ReadFloat();
+            NormalX = input.ReadFloat();
             break;
           }
           case 37: {
-            NormalZ = input.ReadFloat();
+            NormalY = input.ReadFloat();
             break;
           }
           case 45: {
-            PosX = input.ReadFloat();
+            NormalZ = input.ReadFloat();
             break;
           }
           case 53: {
-            PosY = input.ReadFloat();
+            PosX = input.ReadFloat();
             break;
           }
           case 61: {
+            PosY = input.ReadFloat();
+            break;
+          }
+          case 69: {
             PosZ = input.ReadFloat();
             break;
           }
@@ -6301,6 +6342,7 @@ namespace Game {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SC_POS_INTERPOLATION(SC_POS_INTERPOLATION other) : this() {
+      playerId_ = other.playerId_;
       posX_ = other.posX_;
       posY_ = other.posY_;
       posZ_ = other.posZ_;
@@ -6313,8 +6355,23 @@ namespace Game {
       return new SC_POS_INTERPOLATION(this);
     }
 
+    /// <summary>Field number for the "playerId" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private uint playerId_;
+    /// <summary>
+    /// 플레이어 Id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "posX" field.</summary>
-    public const int PosXFieldNumber = 1;
+    public const int PosXFieldNumber = 2;
     private float posX_;
     /// <summary>
     /// 플레이어의 현재 위치
@@ -6329,7 +6386,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "posY" field.</summary>
-    public const int PosYFieldNumber = 2;
+    public const int PosYFieldNumber = 3;
     private float posY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6341,7 +6398,7 @@ namespace Game {
     }
 
     /// <summary>Field number for the "posZ" field.</summary>
-    public const int PosZFieldNumber = 3;
+    public const int PosZFieldNumber = 4;
     private float posZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -6367,6 +6424,7 @@ namespace Game {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PlayerId != other.PlayerId) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosX, other.PosX)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosY, other.PosY)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosZ, other.PosZ)) return false;
@@ -6377,6 +6435,7 @@ namespace Game {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (PosX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosX);
       if (PosY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosY);
       if (PosZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosZ);
@@ -6398,16 +6457,20 @@ namespace Game {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PlayerId);
+      }
       if (PosX != 0F) {
-        output.WriteRawTag(13);
+        output.WriteRawTag(21);
         output.WriteFloat(PosX);
       }
       if (PosY != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(PosY);
       }
       if (PosZ != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(PosZ);
       }
       if (_unknownFields != null) {
@@ -6420,16 +6483,20 @@ namespace Game {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PlayerId);
+      }
       if (PosX != 0F) {
-        output.WriteRawTag(13);
+        output.WriteRawTag(21);
         output.WriteFloat(PosX);
       }
       if (PosY != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(PosY);
       }
       if (PosZ != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(PosZ);
       }
       if (_unknownFields != null) {
@@ -6442,6 +6509,9 @@ namespace Game {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerId);
+      }
       if (PosX != 0F) {
         size += 1 + 4;
       }
@@ -6462,6 +6532,9 @@ namespace Game {
     public void MergeFrom(SC_POS_INTERPOLATION other) {
       if (other == null) {
         return;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       if (other.PosX != 0F) {
         PosX = other.PosX;
@@ -6487,15 +6560,19 @@ namespace Game {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 13: {
-            PosX = input.ReadFloat();
+          case 8: {
+            PlayerId = input.ReadUInt32();
             break;
           }
           case 21: {
-            PosY = input.ReadFloat();
+            PosX = input.ReadFloat();
             break;
           }
           case 29: {
+            PosY = input.ReadFloat();
+            break;
+          }
+          case 37: {
             PosZ = input.ReadFloat();
             break;
           }
@@ -6514,15 +6591,19 @@ namespace Game {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 13: {
-            PosX = input.ReadFloat();
+          case 8: {
+            PlayerId = input.ReadUInt32();
             break;
           }
           case 21: {
-            PosY = input.ReadFloat();
+            PosX = input.ReadFloat();
             break;
           }
           case 29: {
+            PosY = input.ReadFloat();
+            break;
+          }
+          case 37: {
             PosZ = input.ReadFloat();
             break;
           }

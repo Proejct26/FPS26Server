@@ -320,7 +320,7 @@ class CS_ATTACK final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kBAttackFieldNumber = 1,
+    kHittedTargetIdFieldNumber = 1,
     kNormalXFieldNumber = 2,
     kNormalYFieldNumber = 3,
     kNormalZFieldNumber = 4,
@@ -328,13 +328,13 @@ class CS_ATTACK final :
     kPosYFieldNumber = 6,
     kPosZFieldNumber = 7,
   };
-  // bool bAttack = 1;
-  void clear_battack();
-  bool battack() const;
-  void set_battack(bool value);
+  // uint32 hittedTargetId = 1;
+  void clear_hittedtargetid();
+  uint32_t hittedtargetid() const;
+  void set_hittedtargetid(uint32_t value);
   private:
-  bool _internal_battack() const;
-  void _internal_set_battack(bool value);
+  uint32_t _internal_hittedtargetid() const;
+  void _internal_set_hittedtargetid(uint32_t value);
   public:
 
   // float normalX = 2;
@@ -399,7 +399,7 @@ class CS_ATTACK final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    bool battack_;
+    uint32_t hittedtargetid_;
     float normalx_;
     float normaly_;
     float normalz_;
@@ -2188,12 +2188,13 @@ class SC_ATTACK final :
 
   enum : int {
     kPlayerIdFieldNumber = 1,
-    kNormalXFieldNumber = 2,
-    kNormalYFieldNumber = 3,
-    kNormalZFieldNumber = 4,
-    kPosXFieldNumber = 5,
-    kPosYFieldNumber = 6,
-    kPosZFieldNumber = 7,
+    kHittedTargetIdFieldNumber = 2,
+    kNormalXFieldNumber = 3,
+    kNormalYFieldNumber = 4,
+    kNormalZFieldNumber = 5,
+    kPosXFieldNumber = 6,
+    kPosYFieldNumber = 7,
+    kPosZFieldNumber = 8,
   };
   // uint32 playerId = 1;
   void clear_playerid();
@@ -2204,7 +2205,16 @@ class SC_ATTACK final :
   void _internal_set_playerid(uint32_t value);
   public:
 
-  // float normalX = 2;
+  // uint32 hittedTargetId = 2;
+  void clear_hittedtargetid();
+  uint32_t hittedtargetid() const;
+  void set_hittedtargetid(uint32_t value);
+  private:
+  uint32_t _internal_hittedtargetid() const;
+  void _internal_set_hittedtargetid(uint32_t value);
+  public:
+
+  // float normalX = 3;
   void clear_normalx();
   float normalx() const;
   void set_normalx(float value);
@@ -2213,7 +2223,7 @@ class SC_ATTACK final :
   void _internal_set_normalx(float value);
   public:
 
-  // float normalY = 3;
+  // float normalY = 4;
   void clear_normaly();
   float normaly() const;
   void set_normaly(float value);
@@ -2222,7 +2232,7 @@ class SC_ATTACK final :
   void _internal_set_normaly(float value);
   public:
 
-  // float normalZ = 4;
+  // float normalZ = 5;
   void clear_normalz();
   float normalz() const;
   void set_normalz(float value);
@@ -2231,7 +2241,7 @@ class SC_ATTACK final :
   void _internal_set_normalz(float value);
   public:
 
-  // float posX = 5;
+  // float posX = 6;
   void clear_posx();
   float posx() const;
   void set_posx(float value);
@@ -2240,7 +2250,7 @@ class SC_ATTACK final :
   void _internal_set_posx(float value);
   public:
 
-  // float posY = 6;
+  // float posY = 7;
   void clear_posy();
   float posy() const;
   void set_posy(float value);
@@ -2249,7 +2259,7 @@ class SC_ATTACK final :
   void _internal_set_posy(float value);
   public:
 
-  // float posZ = 7;
+  // float posZ = 8;
   void clear_posz();
   float posz() const;
   void set_posz(float value);
@@ -2267,6 +2277,7 @@ class SC_ATTACK final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     uint32_t playerid_;
+    uint32_t hittedtargetid_;
     float normalx_;
     float normaly_;
     float normalz_;
@@ -4157,11 +4168,21 @@ class SC_POS_INTERPOLATION final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPosXFieldNumber = 1,
-    kPosYFieldNumber = 2,
-    kPosZFieldNumber = 3,
+    kPlayerIdFieldNumber = 1,
+    kPosXFieldNumber = 2,
+    kPosYFieldNumber = 3,
+    kPosZFieldNumber = 4,
   };
-  // float posX = 1;
+  // uint32 playerId = 1;
+  void clear_playerid();
+  uint32_t playerid() const;
+  void set_playerid(uint32_t value);
+  private:
+  uint32_t _internal_playerid() const;
+  void _internal_set_playerid(uint32_t value);
+  public:
+
+  // float posX = 2;
   void clear_posx();
   float posx() const;
   void set_posx(float value);
@@ -4170,7 +4191,7 @@ class SC_POS_INTERPOLATION final :
   void _internal_set_posx(float value);
   public:
 
-  // float posY = 2;
+  // float posY = 3;
   void clear_posy();
   float posy() const;
   void set_posy(float value);
@@ -4179,7 +4200,7 @@ class SC_POS_INTERPOLATION final :
   void _internal_set_posy(float value);
   public:
 
-  // float posZ = 3;
+  // float posZ = 4;
   void clear_posz();
   float posz() const;
   void set_posz(float value);
@@ -4196,6 +4217,7 @@ class SC_POS_INTERPOLATION final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    uint32_t playerid_;
     float posx_;
     float posy_;
     float posz_;
@@ -4538,24 +4560,24 @@ class SC_SHOT_HIT final :
 #endif  // __GNUC__
 // CS_ATTACK
 
-// bool bAttack = 1;
-inline void CS_ATTACK::clear_battack() {
-  _impl_.battack_ = false;
+// uint32 hittedTargetId = 1;
+inline void CS_ATTACK::clear_hittedtargetid() {
+  _impl_.hittedtargetid_ = 0u;
 }
-inline bool CS_ATTACK::_internal_battack() const {
-  return _impl_.battack_;
+inline uint32_t CS_ATTACK::_internal_hittedtargetid() const {
+  return _impl_.hittedtargetid_;
 }
-inline bool CS_ATTACK::battack() const {
-  // @@protoc_insertion_point(field_get:game.CS_ATTACK.bAttack)
-  return _internal_battack();
+inline uint32_t CS_ATTACK::hittedtargetid() const {
+  // @@protoc_insertion_point(field_get:game.CS_ATTACK.hittedTargetId)
+  return _internal_hittedtargetid();
 }
-inline void CS_ATTACK::_internal_set_battack(bool value) {
+inline void CS_ATTACK::_internal_set_hittedtargetid(uint32_t value) {
   
-  _impl_.battack_ = value;
+  _impl_.hittedtargetid_ = value;
 }
-inline void CS_ATTACK::set_battack(bool value) {
-  _internal_set_battack(value);
-  // @@protoc_insertion_point(field_set:game.CS_ATTACK.bAttack)
+inline void CS_ATTACK::set_hittedtargetid(uint32_t value) {
+  _internal_set_hittedtargetid(value);
+  // @@protoc_insertion_point(field_set:game.CS_ATTACK.hittedTargetId)
 }
 
 // float normalX = 2;
@@ -5352,7 +5374,27 @@ inline void SC_ATTACK::set_playerid(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.playerId)
 }
 
-// float normalX = 2;
+// uint32 hittedTargetId = 2;
+inline void SC_ATTACK::clear_hittedtargetid() {
+  _impl_.hittedtargetid_ = 0u;
+}
+inline uint32_t SC_ATTACK::_internal_hittedtargetid() const {
+  return _impl_.hittedtargetid_;
+}
+inline uint32_t SC_ATTACK::hittedtargetid() const {
+  // @@protoc_insertion_point(field_get:game.SC_ATTACK.hittedTargetId)
+  return _internal_hittedtargetid();
+}
+inline void SC_ATTACK::_internal_set_hittedtargetid(uint32_t value) {
+  
+  _impl_.hittedtargetid_ = value;
+}
+inline void SC_ATTACK::set_hittedtargetid(uint32_t value) {
+  _internal_set_hittedtargetid(value);
+  // @@protoc_insertion_point(field_set:game.SC_ATTACK.hittedTargetId)
+}
+
+// float normalX = 3;
 inline void SC_ATTACK::clear_normalx() {
   _impl_.normalx_ = 0;
 }
@@ -5372,7 +5414,7 @@ inline void SC_ATTACK::set_normalx(float value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalX)
 }
 
-// float normalY = 3;
+// float normalY = 4;
 inline void SC_ATTACK::clear_normaly() {
   _impl_.normaly_ = 0;
 }
@@ -5392,7 +5434,7 @@ inline void SC_ATTACK::set_normaly(float value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalY)
 }
 
-// float normalZ = 4;
+// float normalZ = 5;
 inline void SC_ATTACK::clear_normalz() {
   _impl_.normalz_ = 0;
 }
@@ -5412,7 +5454,7 @@ inline void SC_ATTACK::set_normalz(float value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalZ)
 }
 
-// float posX = 5;
+// float posX = 6;
 inline void SC_ATTACK::clear_posx() {
   _impl_.posx_ = 0;
 }
@@ -5432,7 +5474,7 @@ inline void SC_ATTACK::set_posx(float value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.posX)
 }
 
-// float posY = 6;
+// float posY = 7;
 inline void SC_ATTACK::clear_posy() {
   _impl_.posy_ = 0;
 }
@@ -5452,7 +5494,7 @@ inline void SC_ATTACK::set_posy(float value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.posY)
 }
 
-// float posZ = 7;
+// float posZ = 8;
 inline void SC_ATTACK::clear_posz() {
   _impl_.posz_ = 0;
 }
@@ -6296,7 +6338,27 @@ inline void SC_ON_ACCEPT::set_playerid(uint32_t value) {
 
 // SC_POS_INTERPOLATION
 
-// float posX = 1;
+// uint32 playerId = 1;
+inline void SC_POS_INTERPOLATION::clear_playerid() {
+  _impl_.playerid_ = 0u;
+}
+inline uint32_t SC_POS_INTERPOLATION::_internal_playerid() const {
+  return _impl_.playerid_;
+}
+inline uint32_t SC_POS_INTERPOLATION::playerid() const {
+  // @@protoc_insertion_point(field_get:game.SC_POS_INTERPOLATION.playerId)
+  return _internal_playerid();
+}
+inline void SC_POS_INTERPOLATION::_internal_set_playerid(uint32_t value) {
+  
+  _impl_.playerid_ = value;
+}
+inline void SC_POS_INTERPOLATION::set_playerid(uint32_t value) {
+  _internal_set_playerid(value);
+  // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.playerId)
+}
+
+// float posX = 2;
 inline void SC_POS_INTERPOLATION::clear_posx() {
   _impl_.posx_ = 0;
 }
@@ -6316,7 +6378,7 @@ inline void SC_POS_INTERPOLATION::set_posx(float value) {
   // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.posX)
 }
 
-// float posY = 2;
+// float posY = 3;
 inline void SC_POS_INTERPOLATION::clear_posy() {
   _impl_.posy_ = 0;
 }
@@ -6336,7 +6398,7 @@ inline void SC_POS_INTERPOLATION::set_posy(float value) {
   // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.posY)
 }
 
-// float posZ = 3;
+// float posZ = 4;
 inline void SC_POS_INTERPOLATION::clear_posz() {
   _impl_.posz_ = 0;
 }

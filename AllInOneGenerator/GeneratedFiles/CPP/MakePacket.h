@@ -5,9 +5,9 @@
 class CSession;
 class CRoom;
 
-void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
-void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
-void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
+void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
+void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
+void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 hittedTargetId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ);
 
 void SC_CHANGE_WEAPON_FOR_All(CSession* pSession, UINT32 playerId, UINT32 weapon);
 void SC_CHANGE_WEAPON_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 weapon);
@@ -49,9 +49,9 @@ void SC_ON_ACCEPT_FOR_All(CSession* pSession, UINT32 playerId);
 void SC_ON_ACCEPT_FOR_SINGLE(CSession* pSession, UINT32 playerId);
 void SC_ON_ACCEPT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId);
 
-void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, float posX, float posY, float posZ);
-void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, float posX, float posY, float posZ);
-void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, float posX, float posY, float posZ);
+void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 playerId, float posX, float posY, float posZ);
+void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 playerId, float posX, float posY, float posZ);
+void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, float posX, float posY, float posZ);
 
 void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string message);
 void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message);
