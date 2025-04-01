@@ -409,23 +409,36 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
     );
 
 
-    // 5. 기존 active 플레이어들에게 새로 접속한 플레이어 정보 전송
-    for (const auto& existingPlayer : pRoom->m_activePlayers)
+    // 5. 방에 있는 모든 플레이어들에게 새로 접속한 플레이어 정보 전송
+    KDAInfo kdaInfo;
+    for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
     {
-        UINT16 x, y, z;
-        pPlayer->getPosition(x, y, z);
-
-        KDAInfo kdaInfo;
         pPlayer->GetKDAInfo(kdaInfo);
 
-        UINT32 rx, ry;
-        pPlayer->GetRotationAxisXY(rx, ry);
-
         // 자기 자신은 제외
-        if (existingPlayer != pPlayer)
+        if (waitingPlayer != pPlayer)
         {
             SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
-                existingPlayer->m_pSession,
+                waitingPlayer->m_pSession,
+                pPlayer->m_ID,
+                0,
+                100, pPlayer->GetCurHp(),
+                pPlayer->GetName(),
+                kdaInfo,
+                pPlayer->GetWeaponInfo(),
+                pPlayer->GetTeamId()
+            );
+        }
+    }
+    for (const auto& activePlayer : pRoom->m_activePlayers)
+    {
+        pPlayer->GetKDAInfo(kdaInfo);
+
+        // 자기 자신은 제외
+        if (activePlayer != pPlayer)
+        {
+            SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                activePlayer->m_pSession,
                 pPlayer->m_ID,
                 0,
                 100, pPlayer->GetCurHp(),
