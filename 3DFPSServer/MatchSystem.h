@@ -1,6 +1,7 @@
 
 #pragma once
 #include <vector>
+#include <queue>
 #include "Player.h"
 
 class MatchSystem {
@@ -19,4 +20,7 @@ private:
     int m_roomId;
     std::vector<CPlayer*> m_red;
     std::vector<CPlayer*> m_blue;
+
+    std::queue<int> m_redSpawnIndex;
+    std::queue<int> m_blueSpawnIndex;
 };

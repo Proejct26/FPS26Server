@@ -8,13 +8,14 @@ class CRoom {
 public:
     CRoom(int id);
 
+    void Init(void);
+
     bool AddPlayer(CPlayer* player);
     void RemovePlayer(int playerId);
     void Update(float deltaTime);
     bool IsFull() const;
 
     bool OnItemPickupRequest(int playerId, int itemId);
-    void StartGame();
 
     void MoveToActive(int playerId);
     void MoveToWaiting(int playerId);
@@ -32,6 +33,6 @@ private:
     static constexpr int MAX_PLAYERS = 10;
     int m_roomId = -1;
 
-    std::vector<MatchSystem> m_matchSystem;
-    std::vector<ItemSpawner> m_itemSpawner;
+    MatchSystem* m_pMatchSystem;
+    ItemSpawner* m_pItemSpawner;
 };

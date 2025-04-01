@@ -16,10 +16,13 @@ public:
 public:
     void InitRooms() {
         m_rooms.reserve(MAX_ROOM_COUNT);
+        CRoom* pRoom = nullptr;
         for (int i = 0; i < MAX_ROOM_COUNT; ++i) {
-            m_rooms.push_back(new CRoom(i));
-        }
+            pRoom = new CRoom(i);
+            pRoom->Init();
 
+            m_rooms.push_back(pRoom);
+        }
     }
 
     CRoom* FindAvailableRoom() {

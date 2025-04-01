@@ -42,6 +42,19 @@ void CPlayer::Init(float _x, float _y, float _z, UINT8 _hp)
     m_kdaInfo.kill = 0;
     m_kdaInfo.death = 0;
     m_kdaInfo.assist = 0;
+
+    m_rotationAxisX = 0;      // x, y축 회전값
+    m_rotationAxisY = 0;
+
+    m_roomId = -1;
+    m_teamId = -1;
+    m_spawnPosIndex = -1;
+
+    m_weaponInfo = 0;     // 가지고 있는 무기 번호
+
+    memset(m_pressedKey, 0, sizeof(bool) * (int)PRESS_KEY::END);
+
+    m_eCurPlayerGameState = PLAYER_GAME_STATE::END;
 }
 
 std::array<bool, (int)PRESS_KEY::END> CPlayer::GetMovementKeys() const {

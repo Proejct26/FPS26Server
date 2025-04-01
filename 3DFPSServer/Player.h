@@ -45,9 +45,11 @@ public:
     int GetId() const { return m_ID; }
     int GetRoomId() const { return m_roomId; }
     int GetTeamId() const { return m_teamId; }
+    int GetSpawnPosIndex() const { return m_spawnPosIndex; }
 
     void SetRoomId(int roomId) { m_roomId = roomId; }
     void SetTeamId(int teamId) { m_teamId = teamId; }
+    void SetSpawnPosIndex(int spawnPosIndex) { m_spawnPosIndex = spawnPosIndex; }
 
     void AddKill() { ++m_kdaInfo.kill; }
     void AddDeath() { ++m_kdaInfo.death; }
@@ -88,18 +90,19 @@ public:
     void SetWeaponInfo(UINT8 weapon) { m_weaponInfo = weapon; }
 
 private:
-    UINT8 m_curHp;          // 체력
-    UINT8 m_maxHp;
+    UINT8 m_curHp = 0;          // 체력
+    UINT8 m_maxHp = 0;
 
-    UINT32 m_rotationAxisX;      // x, y축 회전값
-    UINT32 m_rotationAxisY;
+    UINT32 m_rotationAxisX = 0;      // x, y축 회전값
+    UINT32 m_rotationAxisY = 0;
 
     int m_roomId = -1;
     int m_teamId = -1;
+    int m_spawnPosIndex = -1;
 
     KDAInfo m_kdaInfo;
 
-    UINT8 m_weaponInfo;     // 가지고 있는 무기 번호
+    UINT8 m_weaponInfo = 0;     // 가지고 있는 무기 번호
 
     bool m_pressedKey[(int)PRESS_KEY::END];
 

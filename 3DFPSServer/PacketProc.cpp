@@ -355,15 +355,17 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
     // 1. 연결된 플레이어 추출
     CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
 
-    // 2. waiting에서 active로 이동
+    // 2. 방 정보 추출
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
+
+    // 3. Waiting에서 Active로 이동
     pRoom->MoveToActive(pPlayer->m_ID);
 
-    // 3. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
+    // 4. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
     SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID,
-        0,                      // 원래 팀 id에 따라서 번호를 부여해야하지만 일단 0으로 부여
-        100,                    // 최대 HP
-        pPlayer->GetTeamId()    // 팀 ID
+        pPlayer->GetSpawnPosIndex(),    // 팀 id에 따라서 부여된 스폰 번호
+        100,                            // 최대 HP
+        pPlayer->GetTeamId()            // 팀 ID
     );
 
     return true;
@@ -403,7 +405,7 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
 
     // 4. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
     SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID,
-        0,                      // 원래 팀 id에 따라서 번호를 부여해야하지만 일단 0으로 부여
+        pPlayer->GetSpawnPosIndex(),    // 팀 id에 따라서 부여된 스폰 번호
         100,                    // 최대 HP
         pPlayer->GetTeamId()    // 팀 ID
     );
@@ -421,7 +423,7 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
             SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
                 waitingPlayer->m_pSession,
                 pPlayer->m_ID,
-                0,
+                pPlayer->GetSpawnPosIndex(),
                 100, pPlayer->GetCurHp(),
                 pPlayer->GetName(),
                 kdaInfo,
@@ -440,7 +442,7 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
             SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
                 activePlayer->m_pSession,
                 pPlayer->m_ID,
-                0,
+                pPlayer->GetSpawnPosIndex(),
                 100, pPlayer->GetCurHp(),
                 pPlayer->GetName(),
                 kdaInfo,

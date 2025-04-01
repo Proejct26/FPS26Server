@@ -7,17 +7,29 @@
 extern unsigned int g_iTime;
 
 CRoom::CRoom(int id) : m_roomId(id) {
+}
+
+void CRoom::Init(void)
+{
     std::vector<std::tuple<float, float, float>> spawnPoints = {
         {2.0f, 0.0f, 2.0f}, {5.0f, 0.0f, 5.0f}, {8.0f, 0.0f, 1.0f}
     };
 
-    m_matchSystem.clear();
-    m_itemSpawner.clear();
+    try
+    {
+        m_pMatchSystem = new MatchSystem(m_roomId);
+        m_pItemSpawner = new ItemSpawner;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << "예외 발생: " << e.what() << std::endl;
+    }
+    catch (...)
+    {
+        std::cout << "알 수 없는 예외 발생" << std::endl;
+    }
 
-    m_matchSystem.push_back(MatchSystem(id));
-    m_itemSpawner.push_back(ItemSpawner());
-
-    m_itemSpawner[0].Init(spawnPoints);
+    m_pItemSpawner->Init(spawnPoints);
 
     m_activePlayers.clear();
     m_waitingPlayers.clear();
@@ -30,13 +42,13 @@ bool CRoom::AddPlayer(CPlayer* player) {
     player->SetRoomId(m_roomId);
     player->SetCurGameState(PLAYER_GAME_STATE::WAITING);
 
-    m_matchSystem[0].OnPlayerJoin(player);
+    m_pMatchSystem->OnPlayerJoin(player);
 
     return true;
 }
 
 void CRoom::RemovePlayer(int playerId) {
-    m_matchSystem[0].OnPlayerLeave(playerId);
+    m_pMatchSystem->OnPlayerLeave(playerId);
     auto remove = [playerId](std::vector<CPlayer*>& list) {
         list.erase(std::remove_if(list.begin(), list.end(),
             [playerId](CPlayer* p) { return p->GetId() == playerId; }), list.end());
@@ -51,7 +63,7 @@ void CRoom::Update(float deltaTime) {
     for (CPlayer* p : m_activePlayers) {
         p->UpdateDamageHistory(now);
     }
-    m_itemSpawner[0].Update(deltaTime);
+    m_pItemSpawner->Update(deltaTime);
 }
 
 bool CRoom::IsFull() const {
@@ -64,7 +76,7 @@ bool CRoom::OnItemPickupRequest(int playerId, int itemId) {
     if (!player) return false;  // 이건 기능적으로 완전 잘못된 것이기에 이쪽에서 return 되면 서버를 멈추는게 맞다.
 
     // 아이템이 없을 경우
-    Item* item = m_itemSpawner[0].GetItemById(itemId);
+    Item* item = m_pItemSpawner->GetItemById(itemId);
     if (!item) {
         // 반환받는쪽에서 플레이어에게 아이템 획득 실패 패킷 전송
         return false;
@@ -72,26 +84,10 @@ bool CRoom::OnItemPickupRequest(int playerId, int itemId) {
     else
     {
         // 아이템 지우고
-        m_itemSpawner[0].RemoveItemById(itemId);
+        m_pItemSpawner->RemoveItemById(itemId);
 
         // 반환받는쪽에서 플레이어에게 아이템 획득 성공 패킷 전송
         return true;
-    }
-}
-
-void CRoom::StartGame() {
-    for (CPlayer* player : m_waitingPlayers) {
-        // SendPacket(player, GameStartPacket());
-        m_activePlayers.push_back(player);
-    }
-    m_waitingPlayers.clear();
-
-    // 활성 플레이어에게 모든 정보 전송
-    for (CPlayer* from : m_activePlayers) {
-        for (CPlayer* to : m_activePlayers) { 
-            if (from == to) continue;
-            //SendPacket(to, PlayerInfoPacket(from));
-        }
     }
 }
 

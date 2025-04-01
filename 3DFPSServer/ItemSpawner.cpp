@@ -6,7 +6,6 @@
 void ItemSpawner::Init(const std::vector<std::tuple<float, float, float>>& spawnPoints) {
     m_spawnPoints = spawnPoints;
     m_items.clear();
-    srand(static_cast<unsigned int>(time(nullptr)));
 }
 
 void ItemSpawner::Update(float deltaTime) {

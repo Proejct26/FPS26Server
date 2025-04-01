@@ -93,6 +93,9 @@ unsigned int WINAPI MonitorThread(void* pArg);
 
 int main()
 {
+    // 랜덤 시드 설정
+    srand(static_cast<unsigned int>(time(nullptr)));
+
     // 모니터 스레드 생성
     HANDLE hMonitorThread;   // 모니터 스레드 핸들값
     DWORD dwThreadID;
