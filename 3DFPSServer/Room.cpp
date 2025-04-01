@@ -15,6 +15,9 @@ CRoom::CRoom(int id) : m_roomId(id), m_matchSystem(id) {
         {2.0f, 0.0f, 2.0f}, {5.0f, 0.0f, 5.0f}, {8.0f, 0.0f, 1.0f}
     };
     m_itemSpawner.Init(spawnPoints);
+
+    m_activePlayers.clear();
+    m_waitingPlayers.clear();
 }
 
 bool CRoom::AddPlayer(CPlayer* player) {

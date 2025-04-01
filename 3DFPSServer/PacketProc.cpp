@@ -217,7 +217,7 @@ bool CS_ATTACK(CSession* pSession, bool bAttack, UINT32 normalX, UINT32 normalY,
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
 
     // 3. 방에 있는 모든 플레이어들에게 패킷 전송. 단, 자기 자신은 제외한다.
-    for (const auto& activePlayer : pRoom->GetActivePlayers())
+    for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         // CS_POS_INTERPOLATION를 클라이언트에서 서버로 보낸다는 것은 activePlayer라는 의미
         if (activePlayer == pPlayer)
@@ -225,7 +225,7 @@ bool CS_ATTACK(CSession* pSession, bool bAttack, UINT32 normalX, UINT32 normalY,
 
         SC_POS_INTERPOLATION_FOR_SINGLE(activePlayer->m_pSession, posX, posY, posZ);
     }
-    for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+    for (const auto& waitingPlayer : pRoom->m_activePlayers)
     {
         SC_POS_INTERPOLATION_FOR_SINGLE(waitingPlayer->m_pSession, posX, posY, posZ);
     }
@@ -243,11 +243,11 @@ bool CS_CHANGE_WEAPON(CSession* pSession, UINT32 weapon)
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
 
     // 3. 방에 있는 모든 플레이어들에게 패킷 전송. 단, 자기자신은 제외
-    for (const auto& activePlayer : pRoom->GetActivePlayers())
+    for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         SC_CHANGE_WEAPON_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, weapon);
     }
-    for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+    for (const auto& waitingPlayer : pRoom->m_activePlayers)
     {
         SC_CHANGE_WEAPON_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, weapon);
     }
@@ -310,11 +310,11 @@ bool CS_KEY_INPUT(CSession* pSession, UINT32 keyW, UINT32 keyA, UINT32 keyS, UIN
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
 
     // 4. 방에 있는 모든 플레이어들에게 패킷 전송
-    for (const auto& activePlayer : pRoom->GetActivePlayers())
+    for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         SC_KEY_INPUT_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, keyW, keyA, keyS, keyD, rotateAxisX, rotateAxisY, Jump);
     }
-    for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+    for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
     {
         SC_KEY_INPUT_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, keyW, keyA, keyS, keyD, rotateAxisX, rotateAxisY, Jump);
     }
@@ -333,7 +333,7 @@ bool CS_POS_INTERPOLATION(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 p
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
 
     // 3. 방에 있는 모든 플레이어들에게 패킷 전송. 단, 자기 자신은 제외한다.
-    for (const auto& activePlayer : pRoom->GetActivePlayers())
+    for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         // CS_POS_INTERPOLATION를 클라이언트에서 서버로 보낸다는 것은 activePlayer라는 의미
         if (activePlayer == pPlayer)
@@ -341,7 +341,7 @@ bool CS_POS_INTERPOLATION(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 p
 
         SC_POS_INTERPOLATION_FOR_SINGLE(activePlayer->m_pSession, posX, posY, posZ);
     }
-    for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+    for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
     {
         SC_POS_INTERPOLATION_FOR_SINGLE(waitingPlayer->m_pSession, posX, posY, posZ);
     }
@@ -421,11 +421,11 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
             pRoom->MoveToWaiting(playerId);
 
             // 플레이어가 다운되었음을 방의 모든 플레이어들에게 전송
-            for (const auto& activePlayer : pRoom->GetActivePlayers())
+            for (const auto& activePlayer : pRoom->m_activePlayers)
             {
                 SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId());
             }
-            for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+            for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
             {
                 SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId());
             }
@@ -436,11 +436,11 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
             pTargetPlayer->SetCurHp(hp);
 
             // 관련 정보를 방의 모든 플레이어들에게 전송
-            for (const auto& activePlayer : pRoom->GetActivePlayers())
+            for (const auto& activePlayer : pRoom->m_activePlayers)
             {
                 SC_SHOT_HIT_FOR_SINGLE(activePlayer->m_pSession, playerId, hp);
             }
-            for (const auto& waitingPlayer : pRoom->GetWaitingPlayers())
+            for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
             {
                 SC_SHOT_HIT_FOR_SINGLE(waitingPlayer->m_pSession, playerId, hp);
             }

@@ -58,18 +58,21 @@ void LoginAcceptObject(CObject* pObj)
     UINT16 posX, posY, posZ;
     UINT32 rotationAxisX, rotationAxisY;
     KDAInfo kdaInfo;
-    for (const auto& activePlayer : room->GetActivePlayers())
+    for (const auto& activePlayer : room->m_activePlayers)
     {
-        activePlayer->getPosition(posX, posY, posZ);
-        activePlayer->GetRotationAxisXY(rotationAxisX, rotationAxisY);
-        activePlayer->GetKDAInfo(kdaInfo);
+        if (activePlayer)
+        {
+            activePlayer->getPosition(posX, posY, posZ);
+            activePlayer->GetRotationAxisXY(rotationAxisX, rotationAxisY);
+            activePlayer->GetKDAInfo(kdaInfo);
 
-        SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
-            pSession, activePlayer->m_ID, 
-            posX, posY, posZ, 
-            rotationAxisX, rotationAxisY, 
-            activePlayer->GetMaxHp(), activePlayer->GetCurHp(),
-            activePlayer->GetName(), kdaInfo,
-            activePlayer->GetWeaponInfo(), activePlayer->GetTeamId());
+            SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                pSession, activePlayer->m_ID,
+                posX, posY, posZ,
+                rotationAxisX, rotationAxisY,
+                activePlayer->GetMaxHp(), activePlayer->GetCurHp(),
+                activePlayer->GetName(), kdaInfo,
+                activePlayer->GetWeaponInfo(), activePlayer->GetTeamId());
+        }
     }
 }
