@@ -392,7 +392,6 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
     // 3. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
     SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID,
         0,                      // 원래 팀 id에 따라서 번호를 부여해야하지만 일단 0으로 부여
-        0, 0, 1,                // 원래 이것도 팀에 따라서 방향 벡터를 부여해야하지만 일단 +z 단위벡터 부여
         100,                    // 최대 HP
         pPlayer->GetTeamId()    // 팀 ID
     );
@@ -417,40 +416,38 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
     // 4. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
     SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID,
         0,                      // 원래 팀 id에 따라서 번호를 부여해야하지만 일단 0으로 부여
-        0, 0, 1,                // 원래 이것도 팀에 따라서 방향 벡터를 부여해야하지만 일단 +z 단위벡터 부여
         100,                    // 최대 HP
         pPlayer->GetTeamId()    // 팀 ID
     );
 
-     
+
     // 5. 기존 active 플레이어들에게 새로 접속한 플레이어 정보 전송
     for (const auto& existingPlayer : pRoom->m_activePlayers)
     {
-            UINT16 x, y, z;
-            pPlayer->getPosition(x, y, z);
+        UINT16 x, y, z;
+        pPlayer->getPosition(x, y, z);
 
-            KDAInfo kdaInfo;
-            pPlayer->GetKDAInfo(kdaInfo); 
+        KDAInfo kdaInfo;
+        pPlayer->GetKDAInfo(kdaInfo);
 
-            UINT32 rx, ry;
-            pPlayer->GetRotationAxisXY(rx, ry); 
+        UINT32 rx, ry;
+        pPlayer->GetRotationAxisXY(rx, ry);
 
-            // 자기 자신은 제외
-            if (existingPlayer !=  pPlayer)
-            {
-                    SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
-                            existingPlayer->m_pSession,
-                            pPlayer->m_ID,
-                            x, y, z,  // 위치
-                            rx, ry, // 각도
-                            100, pPlayer->GetCurHp(),
-                            pPlayer->GetName(),
-                            kdaInfo,
-                            pPlayer->GetWeaponInfo(),
-                            pPlayer->GetTeamId()
-                    );
-            }
-    } 
+        // 자기 자신은 제외
+        if (existingPlayer != pPlayer)
+        {
+            SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                existingPlayer->m_pSession,
+                pPlayer->m_ID,
+                0,
+                100, pPlayer->GetCurHp(),
+                pPlayer->GetName(),
+                kdaInfo,
+                pPlayer->GetWeaponInfo(),
+                pPlayer->GetTeamId()
+            );
+        }
+    }
 
     return true;
 }

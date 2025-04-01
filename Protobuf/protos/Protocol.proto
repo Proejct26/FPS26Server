@@ -118,25 +118,18 @@ message SC_CHARACTER_KILL_LOG {
 message SC_CREATE_MY_CHARACTER {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
     uint32 posIndex = 2; // 생성될 위치 인덱스 정보
-    uint32 dirX = 3; // 보는 방향
-    uint32 dirY = 4; // 보는 방향
-    uint32 dirZ = 5; // 보는 방향
-    uint32 maxHP = 6; // 최대 Hp
-    uint32 teamID = 7; // 접속한 팀 ID
+    uint32 maxHP = 3; // 최대 Hp
+    uint32 teamID = 4; // 접속한 팀 ID
 }
 message SC_CREATE_OTHER_CHARACTER {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
-    uint32 posX = 2; // 현재 위치
-    uint32 posY = 3;
-    uint32 posZ = 4;
-    fixed32 rotateAxisX = 5; // 마우스 X축 회전값
-    fixed32 rotateAxisY = 6; // 마우스 Y축 회전값
-    uint32 maxHP = 7; // Hp
-    uint32 curHP = 8;
-    string name = 9; // 이름
-    KDAInfo kdaInfo = 10; // KDA 정보
-    uint32 weapon = 11; // 들고 있는 무기 정보
-    uint32 teamID = 12; // 접속한 팀 ID
+    uint32 posIndex = 2; // 생성될 위치 인덱스 정보
+    uint32 maxHP = 3; // Hp
+    uint32 curHP = 4;
+    string name = 5; // 이름
+    KDAInfo kdaInfo = 6; // KDA 정보
+    uint32 weapon = 7; // 들고 있는 무기 정보
+    uint32 teamID = 8; // 접속한 팀 ID
 }
 message SC_GRENADE_EXPLOSITION_POS {
     uint32 posX = 1; // 터질 위치

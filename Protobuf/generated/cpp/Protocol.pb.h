@@ -3097,11 +3097,8 @@ class SC_CREATE_MY_CHARACTER final :
   enum : int {
     kPlayerIdFieldNumber = 1,
     kPosIndexFieldNumber = 2,
-    kDirXFieldNumber = 3,
-    kDirYFieldNumber = 4,
-    kDirZFieldNumber = 5,
-    kMaxHPFieldNumber = 6,
-    kTeamIDFieldNumber = 7,
+    kMaxHPFieldNumber = 3,
+    kTeamIDFieldNumber = 4,
   };
   // uint32 playerId = 1;
   void clear_playerid();
@@ -3121,34 +3118,7 @@ class SC_CREATE_MY_CHARACTER final :
   void _internal_set_posindex(uint32_t value);
   public:
 
-  // uint32 dirX = 3;
-  void clear_dirx();
-  uint32_t dirx() const;
-  void set_dirx(uint32_t value);
-  private:
-  uint32_t _internal_dirx() const;
-  void _internal_set_dirx(uint32_t value);
-  public:
-
-  // uint32 dirY = 4;
-  void clear_diry();
-  uint32_t diry() const;
-  void set_diry(uint32_t value);
-  private:
-  uint32_t _internal_diry() const;
-  void _internal_set_diry(uint32_t value);
-  public:
-
-  // uint32 dirZ = 5;
-  void clear_dirz();
-  uint32_t dirz() const;
-  void set_dirz(uint32_t value);
-  private:
-  uint32_t _internal_dirz() const;
-  void _internal_set_dirz(uint32_t value);
-  public:
-
-  // uint32 maxHP = 6;
+  // uint32 maxHP = 3;
   void clear_maxhp();
   uint32_t maxhp() const;
   void set_maxhp(uint32_t value);
@@ -3157,7 +3127,7 @@ class SC_CREATE_MY_CHARACTER final :
   void _internal_set_maxhp(uint32_t value);
   public:
 
-  // uint32 teamID = 7;
+  // uint32 teamID = 4;
   void clear_teamid();
   uint32_t teamid() const;
   void set_teamid(uint32_t value);
@@ -3176,9 +3146,6 @@ class SC_CREATE_MY_CHARACTER final :
   struct Impl_ {
     uint32_t playerid_;
     uint32_t posindex_;
-    uint32_t dirx_;
-    uint32_t diry_;
-    uint32_t dirz_;
     uint32_t maxhp_;
     uint32_t teamid_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3309,20 +3276,16 @@ class SC_CREATE_OTHER_CHARACTER final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNameFieldNumber = 9,
-    kKdaInfoFieldNumber = 10,
+    kNameFieldNumber = 5,
+    kKdaInfoFieldNumber = 6,
     kPlayerIdFieldNumber = 1,
-    kPosXFieldNumber = 2,
-    kPosYFieldNumber = 3,
-    kPosZFieldNumber = 4,
-    kRotateAxisXFieldNumber = 5,
-    kRotateAxisYFieldNumber = 6,
-    kMaxHPFieldNumber = 7,
-    kCurHPFieldNumber = 8,
-    kWeaponFieldNumber = 11,
-    kTeamIDFieldNumber = 12,
+    kPosIndexFieldNumber = 2,
+    kMaxHPFieldNumber = 3,
+    kCurHPFieldNumber = 4,
+    kWeaponFieldNumber = 7,
+    kTeamIDFieldNumber = 8,
   };
-  // string name = 9;
+  // string name = 5;
   void clear_name();
   const std::string& name() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -3336,7 +3299,7 @@ class SC_CREATE_OTHER_CHARACTER final :
   std::string* _internal_mutable_name();
   public:
 
-  // .game.KDAInfo kdaInfo = 10;
+  // .game.KDAInfo kdaInfo = 6;
   bool has_kdainfo() const;
   private:
   bool _internal_has_kdainfo() const;
@@ -3363,52 +3326,16 @@ class SC_CREATE_OTHER_CHARACTER final :
   void _internal_set_playerid(uint32_t value);
   public:
 
-  // uint32 posX = 2;
-  void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
+  // uint32 posIndex = 2;
+  void clear_posindex();
+  uint32_t posindex() const;
+  void set_posindex(uint32_t value);
   private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
+  uint32_t _internal_posindex() const;
+  void _internal_set_posindex(uint32_t value);
   public:
 
-  // uint32 posY = 3;
-  void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
-  private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
-  public:
-
-  // uint32 posZ = 4;
-  void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
-  private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
-  public:
-
-  // fixed32 rotateAxisX = 5;
-  void clear_rotateaxisx();
-  uint32_t rotateaxisx() const;
-  void set_rotateaxisx(uint32_t value);
-  private:
-  uint32_t _internal_rotateaxisx() const;
-  void _internal_set_rotateaxisx(uint32_t value);
-  public:
-
-  // fixed32 rotateAxisY = 6;
-  void clear_rotateaxisy();
-  uint32_t rotateaxisy() const;
-  void set_rotateaxisy(uint32_t value);
-  private:
-  uint32_t _internal_rotateaxisy() const;
-  void _internal_set_rotateaxisy(uint32_t value);
-  public:
-
-  // uint32 maxHP = 7;
+  // uint32 maxHP = 3;
   void clear_maxhp();
   uint32_t maxhp() const;
   void set_maxhp(uint32_t value);
@@ -3417,7 +3344,7 @@ class SC_CREATE_OTHER_CHARACTER final :
   void _internal_set_maxhp(uint32_t value);
   public:
 
-  // uint32 curHP = 8;
+  // uint32 curHP = 4;
   void clear_curhp();
   uint32_t curhp() const;
   void set_curhp(uint32_t value);
@@ -3426,7 +3353,7 @@ class SC_CREATE_OTHER_CHARACTER final :
   void _internal_set_curhp(uint32_t value);
   public:
 
-  // uint32 weapon = 11;
+  // uint32 weapon = 7;
   void clear_weapon();
   uint32_t weapon() const;
   void set_weapon(uint32_t value);
@@ -3435,7 +3362,7 @@ class SC_CREATE_OTHER_CHARACTER final :
   void _internal_set_weapon(uint32_t value);
   public:
 
-  // uint32 teamID = 12;
+  // uint32 teamID = 8;
   void clear_teamid();
   uint32_t teamid() const;
   void set_teamid(uint32_t value);
@@ -3455,11 +3382,7 @@ class SC_CREATE_OTHER_CHARACTER final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::game::KDAInfo* kdainfo_;
     uint32_t playerid_;
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
-    uint32_t rotateaxisx_;
-    uint32_t rotateaxisy_;
+    uint32_t posindex_;
     uint32_t maxhp_;
     uint32_t curhp_;
     uint32_t weapon_;
@@ -6267,67 +6190,7 @@ inline void SC_CREATE_MY_CHARACTER::set_posindex(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_MY_CHARACTER.posIndex)
 }
 
-// uint32 dirX = 3;
-inline void SC_CREATE_MY_CHARACTER::clear_dirx() {
-  _impl_.dirx_ = 0u;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::_internal_dirx() const {
-  return _impl_.dirx_;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::dirx() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_MY_CHARACTER.dirX)
-  return _internal_dirx();
-}
-inline void SC_CREATE_MY_CHARACTER::_internal_set_dirx(uint32_t value) {
-  
-  _impl_.dirx_ = value;
-}
-inline void SC_CREATE_MY_CHARACTER::set_dirx(uint32_t value) {
-  _internal_set_dirx(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_MY_CHARACTER.dirX)
-}
-
-// uint32 dirY = 4;
-inline void SC_CREATE_MY_CHARACTER::clear_diry() {
-  _impl_.diry_ = 0u;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::_internal_diry() const {
-  return _impl_.diry_;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::diry() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_MY_CHARACTER.dirY)
-  return _internal_diry();
-}
-inline void SC_CREATE_MY_CHARACTER::_internal_set_diry(uint32_t value) {
-  
-  _impl_.diry_ = value;
-}
-inline void SC_CREATE_MY_CHARACTER::set_diry(uint32_t value) {
-  _internal_set_diry(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_MY_CHARACTER.dirY)
-}
-
-// uint32 dirZ = 5;
-inline void SC_CREATE_MY_CHARACTER::clear_dirz() {
-  _impl_.dirz_ = 0u;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::_internal_dirz() const {
-  return _impl_.dirz_;
-}
-inline uint32_t SC_CREATE_MY_CHARACTER::dirz() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_MY_CHARACTER.dirZ)
-  return _internal_dirz();
-}
-inline void SC_CREATE_MY_CHARACTER::_internal_set_dirz(uint32_t value) {
-  
-  _impl_.dirz_ = value;
-}
-inline void SC_CREATE_MY_CHARACTER::set_dirz(uint32_t value) {
-  _internal_set_dirz(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_MY_CHARACTER.dirZ)
-}
-
-// uint32 maxHP = 6;
+// uint32 maxHP = 3;
 inline void SC_CREATE_MY_CHARACTER::clear_maxhp() {
   _impl_.maxhp_ = 0u;
 }
@@ -6347,7 +6210,7 @@ inline void SC_CREATE_MY_CHARACTER::set_maxhp(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_MY_CHARACTER.maxHP)
 }
 
-// uint32 teamID = 7;
+// uint32 teamID = 4;
 inline void SC_CREATE_MY_CHARACTER::clear_teamid() {
   _impl_.teamid_ = 0u;
 }
@@ -6391,107 +6254,27 @@ inline void SC_CREATE_OTHER_CHARACTER::set_playerid(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.playerId)
 }
 
-// uint32 posX = 2;
-inline void SC_CREATE_OTHER_CHARACTER::clear_posx() {
-  _impl_.posx_ = 0u;
+// uint32 posIndex = 2;
+inline void SC_CREATE_OTHER_CHARACTER::clear_posindex() {
+  _impl_.posindex_ = 0u;
 }
-inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_posx() const {
-  return _impl_.posx_;
+inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_posindex() const {
+  return _impl_.posindex_;
 }
-inline uint32_t SC_CREATE_OTHER_CHARACTER::posx() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.posX)
-  return _internal_posx();
+inline uint32_t SC_CREATE_OTHER_CHARACTER::posindex() const {
+  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.posIndex)
+  return _internal_posindex();
 }
-inline void SC_CREATE_OTHER_CHARACTER::_internal_set_posx(uint32_t value) {
+inline void SC_CREATE_OTHER_CHARACTER::_internal_set_posindex(uint32_t value) {
   
-  _impl_.posx_ = value;
+  _impl_.posindex_ = value;
 }
-inline void SC_CREATE_OTHER_CHARACTER::set_posx(uint32_t value) {
-  _internal_set_posx(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.posX)
+inline void SC_CREATE_OTHER_CHARACTER::set_posindex(uint32_t value) {
+  _internal_set_posindex(value);
+  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.posIndex)
 }
 
-// uint32 posY = 3;
-inline void SC_CREATE_OTHER_CHARACTER::clear_posy() {
-  _impl_.posy_ = 0u;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_posy() const {
-  return _impl_.posy_;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::posy() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.posY)
-  return _internal_posy();
-}
-inline void SC_CREATE_OTHER_CHARACTER::_internal_set_posy(uint32_t value) {
-  
-  _impl_.posy_ = value;
-}
-inline void SC_CREATE_OTHER_CHARACTER::set_posy(uint32_t value) {
-  _internal_set_posy(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.posY)
-}
-
-// uint32 posZ = 4;
-inline void SC_CREATE_OTHER_CHARACTER::clear_posz() {
-  _impl_.posz_ = 0u;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_posz() const {
-  return _impl_.posz_;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::posz() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.posZ)
-  return _internal_posz();
-}
-inline void SC_CREATE_OTHER_CHARACTER::_internal_set_posz(uint32_t value) {
-  
-  _impl_.posz_ = value;
-}
-inline void SC_CREATE_OTHER_CHARACTER::set_posz(uint32_t value) {
-  _internal_set_posz(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.posZ)
-}
-
-// fixed32 rotateAxisX = 5;
-inline void SC_CREATE_OTHER_CHARACTER::clear_rotateaxisx() {
-  _impl_.rotateaxisx_ = 0u;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_rotateaxisx() const {
-  return _impl_.rotateaxisx_;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::rotateaxisx() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.rotateAxisX)
-  return _internal_rotateaxisx();
-}
-inline void SC_CREATE_OTHER_CHARACTER::_internal_set_rotateaxisx(uint32_t value) {
-  
-  _impl_.rotateaxisx_ = value;
-}
-inline void SC_CREATE_OTHER_CHARACTER::set_rotateaxisx(uint32_t value) {
-  _internal_set_rotateaxisx(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.rotateAxisX)
-}
-
-// fixed32 rotateAxisY = 6;
-inline void SC_CREATE_OTHER_CHARACTER::clear_rotateaxisy() {
-  _impl_.rotateaxisy_ = 0u;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::_internal_rotateaxisy() const {
-  return _impl_.rotateaxisy_;
-}
-inline uint32_t SC_CREATE_OTHER_CHARACTER::rotateaxisy() const {
-  // @@protoc_insertion_point(field_get:game.SC_CREATE_OTHER_CHARACTER.rotateAxisY)
-  return _internal_rotateaxisy();
-}
-inline void SC_CREATE_OTHER_CHARACTER::_internal_set_rotateaxisy(uint32_t value) {
-  
-  _impl_.rotateaxisy_ = value;
-}
-inline void SC_CREATE_OTHER_CHARACTER::set_rotateaxisy(uint32_t value) {
-  _internal_set_rotateaxisy(value);
-  // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.rotateAxisY)
-}
-
-// uint32 maxHP = 7;
+// uint32 maxHP = 3;
 inline void SC_CREATE_OTHER_CHARACTER::clear_maxhp() {
   _impl_.maxhp_ = 0u;
 }
@@ -6511,7 +6294,7 @@ inline void SC_CREATE_OTHER_CHARACTER::set_maxhp(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.maxHP)
 }
 
-// uint32 curHP = 8;
+// uint32 curHP = 4;
 inline void SC_CREATE_OTHER_CHARACTER::clear_curhp() {
   _impl_.curhp_ = 0u;
 }
@@ -6531,7 +6314,7 @@ inline void SC_CREATE_OTHER_CHARACTER::set_curhp(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.curHP)
 }
 
-// string name = 9;
+// string name = 5;
 inline void SC_CREATE_OTHER_CHARACTER::clear_name() {
   _impl_.name_.ClearToEmpty();
 }
@@ -6581,7 +6364,7 @@ inline void SC_CREATE_OTHER_CHARACTER::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:game.SC_CREATE_OTHER_CHARACTER.name)
 }
 
-// .game.KDAInfo kdaInfo = 10;
+// .game.KDAInfo kdaInfo = 6;
 inline bool SC_CREATE_OTHER_CHARACTER::_internal_has_kdainfo() const {
   return this != internal_default_instance() && _impl_.kdainfo_ != nullptr;
 }
@@ -6671,7 +6454,7 @@ inline void SC_CREATE_OTHER_CHARACTER::set_allocated_kdainfo(::game::KDAInfo* kd
   // @@protoc_insertion_point(field_set_allocated:game.SC_CREATE_OTHER_CHARACTER.kdaInfo)
 }
 
-// uint32 weapon = 11;
+// uint32 weapon = 7;
 inline void SC_CREATE_OTHER_CHARACTER::clear_weapon() {
   _impl_.weapon_ = 0u;
 }
@@ -6691,7 +6474,7 @@ inline void SC_CREATE_OTHER_CHARACTER::set_weapon(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CREATE_OTHER_CHARACTER.weapon)
 }
 
-// uint32 teamID = 12;
+// uint32 teamID = 8;
 inline void SC_CREATE_OTHER_CHARACTER::clear_teamid() {
   _impl_.teamid_ = 0u;
 }

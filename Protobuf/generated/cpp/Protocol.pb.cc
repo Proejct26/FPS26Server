@@ -267,9 +267,6 @@ PROTOBUF_CONSTEXPR SC_CREATE_MY_CHARACTER::SC_CREATE_MY_CHARACTER(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
   , /*decltype(_impl_.posindex_)*/0u
-  , /*decltype(_impl_.dirx_)*/0u
-  , /*decltype(_impl_.diry_)*/0u
-  , /*decltype(_impl_.dirz_)*/0u
   , /*decltype(_impl_.maxhp_)*/0u
   , /*decltype(_impl_.teamid_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -287,11 +284,7 @@ PROTOBUF_CONSTEXPR SC_CREATE_OTHER_CHARACTER::SC_CREATE_OTHER_CHARACTER(
     /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.kdainfo_)*/nullptr
   , /*decltype(_impl_.playerid_)*/0u
-  , /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
-  , /*decltype(_impl_.rotateaxisx_)*/0u
-  , /*decltype(_impl_.rotateaxisy_)*/0u
+  , /*decltype(_impl_.posindex_)*/0u
   , /*decltype(_impl_.maxhp_)*/0u
   , /*decltype(_impl_.curhp_)*/0u
   , /*decltype(_impl_.weapon_)*/0u
@@ -604,9 +597,6 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.posindex_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.dirx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.diry_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.dirz_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.maxhp_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_MY_CHARACTER, _impl_.teamid_),
   ~0u,  // no _has_bits_
@@ -616,11 +606,7 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.playerid_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.posx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.posy_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.posz_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.rotateaxisx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.rotateaxisy_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.posindex_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.maxhp_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.curhp_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.name_),
@@ -730,16 +716,16 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 131, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
   { 139, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
   { 146, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
-  { 159, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
-  { 177, -1, -1, sizeof(::game::SC_GRENADE_EXPLOSITION_POS)},
-  { 186, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
-  { 194, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
-  { 202, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
-  { 211, -1, -1, sizeof(::game::SC_KEY_INPUT)},
-  { 225, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
-  { 232, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
-  { 241, -1, -1, sizeof(::game::SC_SHOT_HIT)},
-  { 249, -1, -1, sizeof(::game::SC_THROW_GRENADE)},
+  { 156, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
+  { 170, -1, -1, sizeof(::game::SC_GRENADE_EXPLOSITION_POS)},
+  { 179, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
+  { 187, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
+  { 195, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
+  { 204, -1, -1, sizeof(::game::SC_KEY_INPUT)},
+  { 218, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
+  { 225, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
+  { 234, -1, -1, sizeof(::game::SC_SHOT_HIT)},
+  { 242, -1, -1, sizeof(::game::SC_THROW_GRENADE)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -801,51 +787,48 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "\n\006weapon\030\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020\n\010p"
   "layerId\030\001 \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_CHAR"
   "ACTER_KILL_LOG\022(\n\016playerInfoList\030\001 \003(\0132\020"
-  ".game.PlayerInfo\"\205\001\n\026SC_CREATE_MY_CHARAC"
-  "TER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022"
-  "\014\n\004dirX\030\003 \001(\r\022\014\n\004dirY\030\004 \001(\r\022\014\n\004dirZ\030\005 \001("
-  "\r\022\r\n\005maxHP\030\006 \001(\r\022\016\n\006teamID\030\007 \001(\r\"\355\001\n\031SC_"
-  "CREATE_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r"
-  "\022\014\n\004posX\030\002 \001(\r\022\014\n\004posY\030\003 \001(\r\022\014\n\004posZ\030\004 \001"
-  "(\r\022\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013rotateAxisY\030\006"
-  " \001(\007\022\r\n\005maxHP\030\007 \001(\r\022\r\n\005curHP\030\010 \001(\r\022\014\n\004na"
-  "me\030\t \001(\t\022\036\n\007kdaInfo\030\n \001(\0132\r.game.KDAInfo"
-  "\022\016\n\006weapon\030\013 \001(\r\022\016\n\006teamID\030\014 \001(\r\"F\n\032SC_G"
-  "RENADE_EXPLOSITION_POS\022\014\n\004posX\030\001 \001(\r\022\014\n\004"
-  "posY\030\002 \001(\r\022\014\n\004posZ\030\003 \001(\r\"5\n\021SC_ITEM_PICK"
-  "_FAIL\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\""
-  "8\n\024SC_ITEM_PICK_SUCCESS\022\020\n\010playerId\030\001 \001("
-  "\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC_ITEM_SPAWNED\022\016\n\006"
-  "itemId\030\001 \001(\r\022\020\n\010itemType\030\002 \001(\r\022\024\n\014itemPo"
-  "sIndex\030\003 \001(\r\"\220\001\n\014SC_KEY_INPUT\022\020\n\010playerI"
-  "d\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014\n\004keyA\030\003 \001(\r\022\014\n\004k"
-  "eyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r\022\023\n\013rotateAxisX\030\006"
-  " \001(\007\022\023\n\013rotateAxisY\030\007 \001(\007\022\014\n\004Jump\030\010 \001(\r\""
-  " \n\014SC_ON_ACCEPT\022\020\n\010playerId\030\001 \001(\r\"@\n\024SC_"
-  "POS_INTERPOLATION\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030"
-  "\002 \001(\r\022\014\n\004posZ\030\003 \001(\r\"+\n\013SC_SHOT_HIT\022\020\n\010pl"
-  "ayerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"f\n\020SC_THROW_GRE"
-  "NADE\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ"
-  "\030\003 \001(\r\022\014\n\004dirX\030\004 \001(\007\022\014\n\004dirY\030\005 \001(\007\022\014\n\004di"
-  "rZ\030\006 \001(\007*\243\004\n\010PacketID\022\r\n\tCS_Attack\020\000\022\023\n\017"
-  "CS_ChangeWeapon\020\001\022\034\n\030CS_GrenadeExplositi"
-  "onPos\020\002\022\021\n\rCS_ItemPicked\020\003\022\017\n\013CS_KeyInpu"
-  "t\020\004\022\027\n\023CS_PosInterpolation\020\005\022\025\n\021CS_Reque"
-  "stRestart\020\006\022\023\n\017CS_SendNickname\020\007\022\016\n\nCS_S"
-  "hotHit\020\010\022\023\n\017CS_ThrowGrenade\020\t\022\r\n\tSC_Atta"
-  "ck\020\n\022\023\n\017SC_ChangeWeapon\020\013\022\024\n\020SC_Characte"
-  "rDown\020\014\022\027\n\023SC_CharacterKillLog\020\r\022\030\n\024SC_C"
-  "reateMyCharacter\020\016\022\033\n\027SC_CreateOtherChar"
-  "acter\020\017\022\034\n\030SC_GrenadeExplositionPos\020\020\022\023\n"
-  "\017SC_ItemPickFail\020\021\022\026\n\022SC_ItemPickSuccess"
-  "\020\022\022\022\n\016SC_ItemSpawned\020\023\022\017\n\013SC_KeyInput\020\024\022"
-  "\017\n\013SC_OnAccept\020\025\022\027\n\023SC_PosInterpolation\020"
-  "\026\022\016\n\nSC_ShotHit\020\027\022\023\n\017SC_ThrowGrenade\020\030b\006"
-  "proto3"
+  ".game.PlayerInfo\"[\n\026SC_CREATE_MY_CHARACT"
+  "ER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r"
+  "\n\005maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_CRE"
+  "ATE_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n"
+  "\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005curHP\030"
+  "\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132\r.g"
+  "ame.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID\030\010 "
+  "\001(\r\"F\n\032SC_GRENADE_EXPLOSITION_POS\022\014\n\004pos"
+  "X\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ\030\003 \001(\r\"5\n\021S"
+  "C_ITEM_PICK_FAIL\022\020\n\010playerId\030\001 \001(\r\022\016\n\006it"
+  "emId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SUCCESS\022\020\n\010pl"
+  "ayerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC_ITEM_"
+  "SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010itemType\030\002 \001("
+  "\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001\n\014SC_KEY_INPUT"
+  "\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014\n\004keyA"
+  "\030\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r\022\023\n\013ro"
+  "tateAxisX\030\006 \001(\007\022\023\n\013rotateAxisY\030\007 \001(\007\022\014\n\004"
+  "Jump\030\010 \001(\r\" \n\014SC_ON_ACCEPT\022\020\n\010playerId\030\001"
+  " \001(\r\"@\n\024SC_POS_INTERPOLATION\022\014\n\004posX\030\001 \001"
+  "(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ\030\003 \001(\r\"+\n\013SC_SHO"
+  "T_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"f\n\020S"
+  "C_THROW_GRENADE\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 "
+  "\001(\r\022\014\n\004posZ\030\003 \001(\r\022\014\n\004dirX\030\004 \001(\007\022\014\n\004dirY\030"
+  "\005 \001(\007\022\014\n\004dirZ\030\006 \001(\007*\243\004\n\010PacketID\022\r\n\tCS_A"
+  "ttack\020\000\022\023\n\017CS_ChangeWeapon\020\001\022\034\n\030CS_Grena"
+  "deExplositionPos\020\002\022\021\n\rCS_ItemPicked\020\003\022\017\n"
+  "\013CS_KeyInput\020\004\022\027\n\023CS_PosInterpolation\020\005\022"
+  "\025\n\021CS_RequestRestart\020\006\022\023\n\017CS_SendNicknam"
+  "e\020\007\022\016\n\nCS_ShotHit\020\010\022\023\n\017CS_ThrowGrenade\020\t"
+  "\022\r\n\tSC_Attack\020\n\022\023\n\017SC_ChangeWeapon\020\013\022\024\n\020"
+  "SC_CharacterDown\020\014\022\027\n\023SC_CharacterKillLo"
+  "g\020\r\022\030\n\024SC_CreateMyCharacter\020\016\022\033\n\027SC_Crea"
+  "teOtherCharacter\020\017\022\034\n\030SC_GrenadeExplosit"
+  "ionPos\020\020\022\023\n\017SC_ItemPickFail\020\021\022\026\n\022SC_Item"
+  "PickSuccess\020\022\022\022\n\016SC_ItemSpawned\020\023\022\017\n\013SC_"
+  "KeyInput\020\024\022\017\n\013SC_OnAccept\020\025\022\027\n\023SC_PosInt"
+  "erpolation\020\026\022\016\n\nSC_ShotHit\020\027\022\023\n\017SC_Throw"
+  "Grenade\020\030b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 2726, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 2617, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
     &descriptor_table_Protocol_2eproto_once, nullptr, 0, 27,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
@@ -4732,9 +4715,6 @@ SC_CREATE_MY_CHARACTER::SC_CREATE_MY_CHARACTER(const SC_CREATE_MY_CHARACTER& fro
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){}
     , decltype(_impl_.posindex_){}
-    , decltype(_impl_.dirx_){}
-    , decltype(_impl_.diry_){}
-    , decltype(_impl_.dirz_){}
     , decltype(_impl_.maxhp_){}
     , decltype(_impl_.teamid_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -4753,9 +4733,6 @@ inline void SC_CREATE_MY_CHARACTER::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){0u}
     , decltype(_impl_.posindex_){0u}
-    , decltype(_impl_.dirx_){0u}
-    , decltype(_impl_.diry_){0u}
-    , decltype(_impl_.dirz_){0u}
     , decltype(_impl_.maxhp_){0u}
     , decltype(_impl_.teamid_){0u}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -4813,41 +4790,17 @@ const char* SC_CREATE_MY_CHARACTER::_InternalParse(const char* ptr, ::_pbi::Pars
         } else
           goto handle_unusual;
         continue;
-      // uint32 dirX = 3;
+      // uint32 maxHP = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.dirx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 dirY = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.diry_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 dirZ = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          _impl_.dirz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 maxHP = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           _impl_.maxhp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 teamID = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+      // uint32 teamID = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _impl_.teamid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -4894,34 +4847,16 @@ uint8_t* SC_CREATE_MY_CHARACTER::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posindex(), target);
   }
 
-  // uint32 dirX = 3;
-  if (this->_internal_dirx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_dirx(), target);
-  }
-
-  // uint32 dirY = 4;
-  if (this->_internal_diry() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_diry(), target);
-  }
-
-  // uint32 dirZ = 5;
-  if (this->_internal_dirz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_dirz(), target);
-  }
-
-  // uint32 maxHP = 6;
+  // uint32 maxHP = 3;
   if (this->_internal_maxhp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_maxhp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_maxhp(), target);
   }
 
-  // uint32 teamID = 7;
+  // uint32 teamID = 4;
   if (this->_internal_teamid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_teamid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_teamid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4950,27 +4885,12 @@ size_t SC_CREATE_MY_CHARACTER::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posindex());
   }
 
-  // uint32 dirX = 3;
-  if (this->_internal_dirx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_dirx());
-  }
-
-  // uint32 dirY = 4;
-  if (this->_internal_diry() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_diry());
-  }
-
-  // uint32 dirZ = 5;
-  if (this->_internal_dirz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_dirz());
-  }
-
-  // uint32 maxHP = 6;
+  // uint32 maxHP = 3;
   if (this->_internal_maxhp() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_maxhp());
   }
 
-  // uint32 teamID = 7;
+  // uint32 teamID = 4;
   if (this->_internal_teamid() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_teamid());
   }
@@ -4998,15 +4918,6 @@ void SC_CREATE_MY_CHARACTER::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   }
   if (from._internal_posindex() != 0) {
     _this->_internal_set_posindex(from._internal_posindex());
-  }
-  if (from._internal_dirx() != 0) {
-    _this->_internal_set_dirx(from._internal_dirx());
-  }
-  if (from._internal_diry() != 0) {
-    _this->_internal_set_diry(from._internal_diry());
-  }
-  if (from._internal_dirz() != 0) {
-    _this->_internal_set_dirz(from._internal_dirz());
   }
   if (from._internal_maxhp() != 0) {
     _this->_internal_set_maxhp(from._internal_maxhp());
@@ -5069,11 +4980,7 @@ SC_CREATE_OTHER_CHARACTER::SC_CREATE_OTHER_CHARACTER(const SC_CREATE_OTHER_CHARA
       decltype(_impl_.name_){}
     , decltype(_impl_.kdainfo_){nullptr}
     , decltype(_impl_.playerid_){}
-    , decltype(_impl_.posx_){}
-    , decltype(_impl_.posy_){}
-    , decltype(_impl_.posz_){}
-    , decltype(_impl_.rotateaxisx_){}
-    , decltype(_impl_.rotateaxisy_){}
+    , decltype(_impl_.posindex_){}
     , decltype(_impl_.maxhp_){}
     , decltype(_impl_.curhp_){}
     , decltype(_impl_.weapon_){}
@@ -5106,11 +5013,7 @@ inline void SC_CREATE_OTHER_CHARACTER::SharedCtor(
       decltype(_impl_.name_){}
     , decltype(_impl_.kdainfo_){nullptr}
     , decltype(_impl_.playerid_){0u}
-    , decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
-    , decltype(_impl_.rotateaxisx_){0u}
-    , decltype(_impl_.rotateaxisy_){0u}
+    , decltype(_impl_.posindex_){0u}
     , decltype(_impl_.maxhp_){0u}
     , decltype(_impl_.curhp_){0u}
     , decltype(_impl_.weapon_){0u}
@@ -5173,65 +5076,33 @@ const char* SC_CREATE_OTHER_CHARACTER::_InternalParse(const char* ptr, ::_pbi::P
         } else
           goto handle_unusual;
         continue;
-      // uint32 posX = 2;
+      // uint32 posIndex = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.posindex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posY = 3;
+      // uint32 maxHP = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posZ = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 rotateAxisX = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
-          _impl_.rotateaxisx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 rotateAxisY = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
-          _impl_.rotateaxisy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 maxHP = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           _impl_.maxhp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 curHP = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+      // uint32 curHP = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _impl_.curhp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string name = 9;
-      case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+      // string name = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -5239,25 +5110,25 @@ const char* SC_CREATE_OTHER_CHARACTER::_InternalParse(const char* ptr, ::_pbi::P
         } else
           goto handle_unusual;
         continue;
-      // .game.KDAInfo kdaInfo = 10;
-      case 10:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+      // .game.KDAInfo kdaInfo = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           ptr = ctx->ParseMessage(_internal_mutable_kdainfo(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 weapon = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
+      // uint32 weapon = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           _impl_.weapon_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 teamID = 12;
-      case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
+      // uint32 teamID = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _impl_.teamid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -5298,75 +5169,51 @@ uint8_t* SC_CREATE_OTHER_CHARACTER::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
   }
 
-  // uint32 posX = 2;
-  if (this->_internal_posx() != 0) {
+  // uint32 posIndex = 2;
+  if (this->_internal_posindex() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posindex(), target);
   }
 
-  // uint32 posY = 3;
-  if (this->_internal_posy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posy(), target);
-  }
-
-  // uint32 posZ = 4;
-  if (this->_internal_posz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_posz(), target);
-  }
-
-  // fixed32 rotateAxisX = 5;
-  if (this->_internal_rotateaxisx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(5, this->_internal_rotateaxisx(), target);
-  }
-
-  // fixed32 rotateAxisY = 6;
-  if (this->_internal_rotateaxisy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(6, this->_internal_rotateaxisy(), target);
-  }
-
-  // uint32 maxHP = 7;
+  // uint32 maxHP = 3;
   if (this->_internal_maxhp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_maxhp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_maxhp(), target);
   }
 
-  // uint32 curHP = 8;
+  // uint32 curHP = 4;
   if (this->_internal_curhp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_curhp(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_curhp(), target);
   }
 
-  // string name = 9;
+  // string name = 5;
   if (!this->_internal_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "game.SC_CREATE_OTHER_CHARACTER.name");
     target = stream->WriteStringMaybeAliased(
-        9, this->_internal_name(), target);
+        5, this->_internal_name(), target);
   }
 
-  // .game.KDAInfo kdaInfo = 10;
+  // .game.KDAInfo kdaInfo = 6;
   if (this->_internal_has_kdainfo()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(10, _Internal::kdainfo(this),
+      InternalWriteMessage(6, _Internal::kdainfo(this),
         _Internal::kdainfo(this).GetCachedSize(), target, stream);
   }
 
-  // uint32 weapon = 11;
+  // uint32 weapon = 7;
   if (this->_internal_weapon() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(11, this->_internal_weapon(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_weapon(), target);
   }
 
-  // uint32 teamID = 12;
+  // uint32 teamID = 8;
   if (this->_internal_teamid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(12, this->_internal_teamid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_teamid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -5385,14 +5232,14 @@ size_t SC_CREATE_OTHER_CHARACTER::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string name = 9;
+  // string name = 5;
   if (!this->_internal_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_name());
   }
 
-  // .game.KDAInfo kdaInfo = 10;
+  // .game.KDAInfo kdaInfo = 6;
   if (this->_internal_has_kdainfo()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -5404,47 +5251,27 @@ size_t SC_CREATE_OTHER_CHARACTER::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
-  // uint32 posX = 2;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
+  // uint32 posIndex = 2;
+  if (this->_internal_posindex() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posindex());
   }
 
-  // uint32 posY = 3;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
-  }
-
-  // uint32 posZ = 4;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
-  }
-
-  // fixed32 rotateAxisX = 5;
-  if (this->_internal_rotateaxisx() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // fixed32 rotateAxisY = 6;
-  if (this->_internal_rotateaxisy() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // uint32 maxHP = 7;
+  // uint32 maxHP = 3;
   if (this->_internal_maxhp() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_maxhp());
   }
 
-  // uint32 curHP = 8;
+  // uint32 curHP = 4;
   if (this->_internal_curhp() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_curhp());
   }
 
-  // uint32 weapon = 11;
+  // uint32 weapon = 7;
   if (this->_internal_weapon() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_weapon());
   }
 
-  // uint32 teamID = 12;
+  // uint32 teamID = 8;
   if (this->_internal_teamid() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_teamid());
   }
@@ -5477,20 +5304,8 @@ void SC_CREATE_OTHER_CHARACTER::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   if (from._internal_playerid() != 0) {
     _this->_internal_set_playerid(from._internal_playerid());
   }
-  if (from._internal_posx() != 0) {
-    _this->_internal_set_posx(from._internal_posx());
-  }
-  if (from._internal_posy() != 0) {
-    _this->_internal_set_posy(from._internal_posy());
-  }
-  if (from._internal_posz() != 0) {
-    _this->_internal_set_posz(from._internal_posz());
-  }
-  if (from._internal_rotateaxisx() != 0) {
-    _this->_internal_set_rotateaxisx(from._internal_rotateaxisx());
-  }
-  if (from._internal_rotateaxisy() != 0) {
-    _this->_internal_set_rotateaxisy(from._internal_rotateaxisy());
+  if (from._internal_posindex() != 0) {
+    _this->_internal_set_posindex(from._internal_posindex());
   }
   if (from._internal_maxhp() != 0) {
     _this->_internal_set_maxhp(from._internal_maxhp());

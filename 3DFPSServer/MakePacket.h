@@ -21,13 +21,13 @@ void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, std::vector<PlayerInfo>& 
 void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, std::vector<PlayerInfo>& playerInfoList);
 void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CRoom* pRoom, std::vector<PlayerInfo>& playerInfoList);
 
-void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID);
-void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID);
-void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posIndex, UINT32 dirX, UINT32 dirY, UINT32 dirZ, UINT32 maxHP, UINT32 teamID);
+void SC_CREATE_MY_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 teamID);
+void SC_CREATE_MY_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 teamID);
+void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 teamID);
 
-void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
-void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
-void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
+void SC_CREATE_OTHER_CHARACTER_FOR_All(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
+void SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
+void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 posIndex, UINT32 maxHP, UINT32 curHP, std::string name, KDAInfo kdaInfo, UINT32 weapon, UINT32 teamID);
 
 void SC_GRENADE_EXPLOSITION_POS_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ);
 void SC_GRENADE_EXPLOSITION_POS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ);

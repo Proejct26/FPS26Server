@@ -68,8 +68,7 @@ void LoginAcceptObject(CObject* pObj)
 
             SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
                 pSession, activePlayer->m_ID,
-                posX, posY, posZ,
-                rotationAxisX, rotationAxisY,
+                0,
                 activePlayer->GetMaxHp(), activePlayer->GetCurHp(),
                 activePlayer->GetName(), kdaInfo,
                 activePlayer->GetWeaponInfo(), activePlayer->GetTeamId());
