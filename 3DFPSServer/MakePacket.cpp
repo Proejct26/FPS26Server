@@ -1182,6 +1182,89 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 po
     packetPool.Free(Packet);
 }
 
+void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessage;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessage;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_SEND_MESSAGE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessage;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->m_activePlayers)
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
 void SC_SHOT_HIT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 hp)
 {
     game::SC_SHOT_HIT pkt;

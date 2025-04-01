@@ -57,6 +57,10 @@ void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, 
 void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ);
 void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ);
 
+void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string message);
+void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message);
+void SC_SEND_MESSAGE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, std::string message);
+
 void SC_SHOT_HIT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 hp);
 void SC_SHOT_HIT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 hp);
 void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 hp);

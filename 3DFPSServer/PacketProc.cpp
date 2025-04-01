@@ -399,6 +399,11 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
     return false;
 }
 
+bool CS_SEND_MESSAGE(CSession* pSession, UINT32 playerId, std::string message)
+{
+    return false;
+}
+
 bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
 {
     // 닉네임이 왔다는 것은 이제 waiting에서 active로 옮긴다는 의미
