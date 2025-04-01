@@ -61,14 +61,14 @@ void CObject::CheckTimeout(void)
 
 	if ((currSeverTime - m_lastTimeoutCheckTime) > dfNETWORK_PACKET_RECV_TIMEOUT)
 	{
-		m_bDead = true;
+		/*m_bDead = true;
 
 		logManager.LogDebug(
 			"Timeout Error!!!\n",
 			"SessionID : ", m_pSession->SessionID,
 			"\nMaxLastTimeoutCheckTime : ", m_maxLastTimeoutCheckTime,
 			"Port : ", m_pSession->port
-		);
+		);*/
 
 		//DebugBreak();
 	}

@@ -2,11 +2,15 @@
 
 MatchSystem::MatchSystem()
 {
+    int a = 10;
 }
 
 MatchSystem::MatchSystem(int roomId) : m_roomId(roomId) {
     m_red.reserve(5);
     m_blue.reserve(5);
+
+    m_red.clear();
+    m_blue.clear();
 }
 
 void MatchSystem::OnPlayerJoin(CPlayer* player) {
