@@ -95,7 +95,7 @@ void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UIN
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -178,7 +178,7 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 player
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -261,7 +261,7 @@ void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playe
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -362,7 +362,7 @@ void SC_CHARACTER_KILL_LOG_FOR_AROUND(CSession* pSession, CRoom* pRoom, std::vec
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -460,7 +460,7 @@ void SC_CREATE_MY_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -588,7 +588,7 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -674,7 +674,7 @@ void SC_GRENADE_EXPLOSITION_POS_FOR_AROUND(CSession* pSession, CRoom* pRoom, UIN
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -757,7 +757,7 @@ void SC_ITEM_PICK_FAIL_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playe
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -840,7 +840,7 @@ void SC_ITEM_PICK_SUCCESS_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 pl
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -926,7 +926,7 @@ void SC_ITEM_SPAWNED_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 itemId,
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -1027,7 +1027,7 @@ void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, 
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -1107,7 +1107,7 @@ void SC_ON_ACCEPT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId)
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -1193,7 +1193,7 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 po
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -1276,7 +1276,7 @@ void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, U
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
@@ -1371,7 +1371,7 @@ void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, 
     pkt.SerializeToArray(buffer, pktSize);
     Packet->PutData(buffer, pktSize);
 
-    for (auto& player : pRoom->GetActivePlayers())
+    for (auto& player : pRoom->m_activePlayers)
     {
         if (pSession == player->m_pSession)
             continue;
