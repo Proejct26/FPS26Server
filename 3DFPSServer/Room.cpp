@@ -95,22 +95,26 @@ void CRoom::StartGame() {
 void CRoom::MoveToActive(int playerId) {
     auto it = std::find_if(m_waitingPlayers.begin(), m_waitingPlayers.end(),
         [playerId](CPlayer* p) { return p->GetId() == playerId; });
-    if (it != m_waitingPlayers.end()) {
-        m_activePlayers.push_back(*it);
-        m_waitingPlayers.erase(it);
 
-        (*it)->SetCurGameState(PLAYER_GAME_STATE::ACTIVE);
+    if (it != m_waitingPlayers.end()) {
+        CPlayer* player = *it;
+        m_activePlayers.push_back(player);
+        m_waitingPlayers.erase(it); 
+
+        player->SetCurGameState(PLAYER_GAME_STATE::ACTIVE);  
     }
 }
 
 void CRoom::MoveToWaiting(int playerId) {
     auto it = std::find_if(m_activePlayers.begin(), m_activePlayers.end(),
         [playerId](CPlayer* p) { return p->GetId() == playerId; });
+
     if (it != m_activePlayers.end()) {
+        CPlayer* player = *it;
         m_waitingPlayers.push_back(*it);
         m_activePlayers.erase(it);
 
-        (*it)->SetCurGameState(PLAYER_GAME_STATE::WAITING);
+        player->SetCurGameState(PLAYER_GAME_STATE::WAITING); 
     }
 }
 

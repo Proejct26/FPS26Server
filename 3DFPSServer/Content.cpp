@@ -43,7 +43,7 @@ void LoginAcceptObject(CObject* pObj)
     // 룸에 등록되었고, 해당 플레이어에게 룸에 대한 정보가 전송될 예정
     // 처음엔 Waiting 쪽에 들어감. 플레이어가 참가할 방의 정보를 보내기 시작. 방의 정보는 [ 새로 접속한 플레이어를 제외한 나머지 플레이어들의 KDA 정보, 키 입력 정보와 위치 정보 ]
     if (!room->AddPlayer(pPlayer))
-    {
+    { 
         // 룸에 추가 실패 처리
         return;
     }
