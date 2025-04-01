@@ -201,7 +201,34 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
 
 void DisconnectSessionProc(CSession* pSession)
 {
-    // 연결이 끊겼다는 것은 세션 접속을 해제해야한다는 의미. 추후 관련 처리
+    // 연결이 끊겼다는 것은 세션 접속을 해제해야한다는 의미
+
+    // 1. 연결된 플레이어 추출
+    CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
+
+    // 2. 방 정보 검색
+    CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
+
+    // 3. 현재 플레이어를 제외한 모든 플레이어에게 해당 캐릭이 나갔음을 알리는 패킷 전송. 단, 자기 자신은 제외한다.
+    for (const auto& activePlayer : pRoom->m_activePlayers)
+    {
+        if (activePlayer == pPlayer)
+            continue;
+
+        // 캐릭터의 hp가 0이 되었음을 알리는 패킷을 전송. 나간 것이나 hp가 0이 된 것이나 같은 의미로 사용
+        SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId());
+    }
+    for (const auto& waitingPlayer : pRoom->m_activePlayers)
+    {
+        if (waitingPlayer == pPlayer)
+            continue;
+
+        // 캐릭터의 hp가 0이 되었음을 알리는 패킷을 전송. 나간 것이나 hp가 0이 된 것이나 같은 의미로 사용
+        SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId());
+    }
+
+    // 4. 방을 나감
+    pRoom->RemovePlayer(pPlayer->m_ID);
 
     return;
 }
