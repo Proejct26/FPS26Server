@@ -246,15 +246,14 @@ bool CS_ATTACK(CSession* pSession, bool bAttack, UINT32 normalX, UINT32 normalY,
     // 3. 방에 있는 모든 플레이어들에게 패킷 전송. 단, 자기 자신은 제외한다.
     for (const auto& activePlayer : pRoom->m_activePlayers)
     {
-        // CS_POS_INTERPOLATION를 클라이언트에서 서버로 보낸다는 것은 activePlayer라는 의미
         if (activePlayer == pPlayer)
             continue;
 
-        SC_POS_INTERPOLATION_FOR_SINGLE(activePlayer->m_pSession, posX, posY, posZ);
+        SC_ATTACK_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, normalX, normalY, normalZ, posX, posY, posZ);
     }
     for (const auto& waitingPlayer : pRoom->m_activePlayers)
     {
-        SC_POS_INTERPOLATION_FOR_SINGLE(waitingPlayer->m_pSession, posX, posY, posZ);
+        SC_ATTACK_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, normalX, normalY, normalZ, posX, posY, posZ);
     }
     return true;
 }
