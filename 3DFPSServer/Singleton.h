@@ -9,14 +9,8 @@ public:
 
     // 싱글턴 인스턴스를 얻는 정적 메서드
     static T& GetInstance() {
-        static std::unique_ptr<T> instance; // 유일한 인스턴스를 보관하는 unique_ptr
-        static std::once_flag initFlag; // 인스턴스 초기화를 보장하기 위한 flag
-
-        std::call_once(initFlag, []() {
-            instance.reset(new T()); // 인스턴스 생성
-            });
-
-        return *instance; // 인스턴스 반환
+        static T instance;
+        return instance;
     }
 
 protected:
