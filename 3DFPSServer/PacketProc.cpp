@@ -422,8 +422,39 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
         pPlayer->GetTeamId()    // 팀 ID
     );
 
+     
+    // 5. 기존 active 플레이어들에게 새로 접속한 플레이어 정보 전송
+    for (const auto& existingPlayer : pRoom->m_activePlayers)
+    {
+            UINT16 x, y, z;
+            pPlayer->getPosition(x, y, z);
+
+            KDAInfo kdaInfo;
+            pPlayer->GetKDAInfo(kdaInfo); 
+
+            UINT32 rx, ry;
+            pPlayer->GetRotationAxisXY(rx, ry); 
+
+            // 자기 자신은 제외
+            if (existingPlayer !=  pPlayer)
+            {
+                    SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                            existingPlayer->m_pSession,
+                            pPlayer->m_ID,
+                            x, y, z,  // 위치
+                            rx, ry, // 각도
+                            100, pPlayer->GetCurHp(),
+                            pPlayer->GetName(),
+                            kdaInfo,
+                            pPlayer->GetWeaponInfo(),
+                            pPlayer->GetTeamId()
+                    );
+            }
+    } 
+
     return true;
 }
+
 
 bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
 {
