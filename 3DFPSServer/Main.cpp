@@ -45,7 +45,6 @@
 
 #include "SystemMonitor.h"
 
-
 #ifdef _DEBUG
 #pragma comment(lib, "Protobuf/Debug/libprotobufd.lib")
 #else
@@ -92,18 +91,12 @@ ULONGLONG g_fpsCheck;
 
 unsigned int WINAPI MonitorThread(void* pArg);
 
-
 int main()
 {
     // 모니터 스레드 생성
     HANDLE hMonitorThread;   // 모니터 스레드 핸들값
     DWORD dwThreadID;
-    hMonitorThread = (HANDLE)_beginthreadex(NULL, 0, MonitorThread, NULL , 0, (unsigned int*)&dwThreadID);
-
-    
-
-
-
+    hMonitorThread = (HANDLE)_beginthreadex(NULL, 0, MonitorThread, NULL, 0, (unsigned int*)&dwThreadID);
 
     //=====================================================================================================================================
     // listen 소켓 준비
@@ -196,6 +189,7 @@ int main()
 
     // 윈도우 소켓 매니저 정리
     winSockManager.Cleanup();
+    // 예외 발생 가능 코드
 }
 
 // 메인 로직

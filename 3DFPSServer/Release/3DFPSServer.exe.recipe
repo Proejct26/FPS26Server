@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\Git\3DFPSServer\x64\Release\3DFPSServer.exe</FullPath>
+      <FullPath>G:\Sparta\FPS26Server\x64\Release\3DFPSServer.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
