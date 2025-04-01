@@ -143,6 +143,20 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         return CS_REQUEST_RESTART(pSession, playerId, weapon);
     }
     break;
+    case game::PacketID::CS_SendMessage:
+    {
+        UINT32 playerId;
+        std::string message;
+
+        game::CS_SEND_MESSAGE pkt;
+        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
+
+        playerId = pkt.playerid();
+        message = pkt.message();
+
+        return CS_SEND_MESSAGE(pSession, playerId, message);
+    }
+    break;
     case game::PacketID::CS_SendNickname:
     {
         std::string name;
@@ -232,6 +246,11 @@ bool CS_POS_INTERPOLATION(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 p
 }
 
 bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
+{
+    return false;
+}
+
+bool CS_SEND_MESSAGE(CSession* pSession, UINT32 playerId, std::string message)
 {
     return false;
 }

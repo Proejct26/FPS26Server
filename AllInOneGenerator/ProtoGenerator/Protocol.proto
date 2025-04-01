@@ -11,26 +11,28 @@ enum PacketID {
     CS_KeyInput = 4;
     CS_PosInterpolation = 5;
     CS_RequestRestart = 6;
-    CS_SendNickname = 7;
-    CS_ShotHit = 8;
-    CS_ThrowGrenade = 9;
+    CS_SendMessage = 7;
+    CS_SendNickname = 8;
+    CS_ShotHit = 9;
+    CS_ThrowGrenade = 10;
 
 // Server → Client
-    SC_Attack = 10;
-    SC_ChangeWeapon = 11;
-    SC_CharacterDown = 12;
-    SC_CharacterKillLog = 13;
-    SC_CreateMyCharacter = 14;
-    SC_CreateOtherCharacter = 15;
-    SC_GrenadeExplositionPos = 16;
-    SC_ItemPickFail = 17;
-    SC_ItemPickSuccess = 18;
-    SC_ItemSpawned = 19;
-    SC_KeyInput = 20;
-    SC_OnAccept = 21;
-    SC_PosInterpolation = 22;
-    SC_ShotHit = 23;
-    SC_ThrowGrenade = 24;
+    SC_Attack = 11;
+    SC_ChangeWeapon = 12;
+    SC_CharacterDown = 13;
+    SC_CharacterKillLog = 14;
+    SC_CreateMyCharacter = 15;
+    SC_CreateOtherCharacter = 16;
+    SC_GrenadeExplositionPos = 17;
+    SC_ItemPickFail = 18;
+    SC_ItemPickSuccess = 19;
+    SC_ItemSpawned = 20;
+    SC_KeyInput = 21;
+    SC_OnAccept = 22;
+    SC_PosInterpolation = 23;
+    SC_SendMessage = 24;
+    SC_ShotHit = 25;
+    SC_ThrowGrenade = 26;
 }
 
 message CS_ATTACK {
@@ -70,6 +72,10 @@ message CS_POS_INTERPOLATION {
 message CS_REQUEST_RESTART {
     uint32 playerId = 1; // 플레이어의 고유 ID
     uint32 weapon = 2; // 들고 있는 무기 정보
+}
+message CS_SEND_MESSAGE {
+    uint32 playerId = 1; // 플레이어의 고유 ID
+    string message = 2; // 전송할 문자열
 }
 message CS_SEND_NICKNAME {
     string name = 1; // 최대 20자 유니코드 문자열 (실제 제한은 코드로 처리, 제한은 필요할때 늘리면 됨)
@@ -166,6 +172,10 @@ message SC_POS_INTERPOLATION {
     uint32 posX = 1; // 플레이어의 현재 위치
     uint32 posY = 2;
     uint32 posZ = 3;
+}
+message SC_SEND_MESSAGE {
+    uint32 playerId = 1; // 플레이어의 고유 ID
+    string message = 2; // 전송할 문자열
 }
 message SC_SHOT_HIT {
     uint32 playerId = 1; // 피격 대상

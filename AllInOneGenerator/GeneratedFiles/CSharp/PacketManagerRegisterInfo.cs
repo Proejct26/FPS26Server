@@ -42,6 +42,9 @@ public class PacketManagerRegisterInfo
         _onRecv.Add((ushort)Game.PacketID.ScPosInterpolation, MakePacket<SC_POS_INTERPOLATION>);
         _handler.Add((ushort)Game.PacketID.ScPosInterpolation, PacketHandler.SC_PosInterpolation);
 
+        _onRecv.Add((ushort)Game.PacketID.ScSendMessage, MakePacket<SC_SEND_MESSAGE>);
+        _handler.Add((ushort)Game.PacketID.ScSendMessage, PacketHandler.SC_SendMessage);
+
         _onRecv.Add((ushort)Game.PacketID.ScShotHit, MakePacket<SC_SHOT_HIT>);
         _handler.Add((ushort)Game.PacketID.ScShotHit, PacketHandler.SC_ShotHit);
 

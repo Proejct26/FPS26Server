@@ -13,6 +13,12 @@ _ = openpyxl.__version__  # PyInstaller가 openpyxl을 포함하도록 강제로
 
 import sys
 
+# 오류 발생 시 메시지 출력 후 종료
+def error_exit(message):
+    print(message)
+    input("Enter 키를 눌러 종료합니다.")
+    exit(1)
+
 # 실행 중인 파일(.py 또는 .exe)의 디렉토리 경로
 if getattr(sys, 'frozen', False):
     base_dir = os.path.dirname(sys.executable)
@@ -20,22 +26,18 @@ else:
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Excel 파일 경로 및 출력 파일 경로를 base_dir 기준으로 설정
-excel_path = os.path.join(base_dir, "proto_definitions.xlsx")  # 엑셀 파일 경로 (.proto 정의가 들어 있는 파일)
-output_path = os.path.join(base_dir, "Protocol.proto")  # 생성할 .proto 파일의 출력 경로
+excel_path = os.path.join(base_dir, "proto_definitions.xlsx")
+output_path = os.path.join(base_dir, "Protocol.proto")
 
 # 엑셀 파일이 없을 경우 오류 출력 후 종료
 if not os.path.exists(excel_path):
-    print(f"엑셀 파일을 찾을 수 없습니다: {excel_path}")
-    input("Enter 키를 눌러 종료합니다.")
-    exit(1)
+    error_exit(f"엑셀 파일을 찾을 수 없습니다: {excel_path}")
 
 try:
     # 모든 시트의 내용을 딕셔너리 형태로 읽어옴
     all_sheets = pd.read_excel(excel_path, sheet_name=None, engine="openpyxl")
 except Exception as e:
-    print("엑셀 파일 읽는 중 오류 발생:", e)
-    input("Enter 키를 눌러 종료합니다.")
-    exit(1)
+    error_exit(f"엑셀 파일 읽는 중 오류 발생: {e}")
 
 # 모든 메시지 정의를 저장할 딕셔너리
 messages = {}
@@ -48,32 +50,23 @@ defined_message_names = set()
 
 # 각 시트를 순회하면서 메시지를 수집
 for sheet_name, df in all_sheets.items():
-    # 필요한 컬럼이 존재하는 시트만 처리
     if "MessageName" in df.columns and "FieldName" in df.columns and "Type" in df.columns:
         grouped = df.groupby("MessageName")
         for name, group in grouped:
-            # 이전 시트에서 이미 정의된 메시지 이름이 다시 등장하면 오류 처리
             if name in defined_message_names:
-                print(f"[중복 메시지 이름 오류] '{name}' 이(가) 시트 '{sheet_name}'에서 중복 정의되었습니다.")
-                input("Enter 키를 눌러 종료합니다.")
-                exit(1)
+                error_exit(f"[중복 메시지 이름 오류] '{name}' 이(가) 시트 '{sheet_name}'에서 중복 정의되었습니다.")
 
             defined_message_names.add(name)
-
-            # 각 메시지 이름에 대해 필드 목록 저장
             messages[name] = group.to_dict(orient="records")
 
-            # PacketID enum에 넣을 대상이면 따로 기록
             if name.startswith("SC_") or name.startswith("CS_"):
                 packet_names_set.add(name)
 
-
-# PacketID enum 항목들을 알파벳 순 정렬 후 PascalCase로 변환하여 번호 부여 (1부터 시작)
+# PacketID enum 항목들을 PascalCase로 변환
 def format_packet_name(name):
     if name.startswith("CS_") or name.startswith("SC_"):
         prefix = name[:3]
         rest = name[3:]
-        # 단어 단위로 나눈 후 PascalCase로 변환
         parts = rest.split('_')
         pascal_case = ''.join(part.capitalize() for part in parts)
         return prefix + pascal_case
@@ -88,8 +81,7 @@ env = Environment(
     lstrip_blocks=True
 )
 
-# Jinja2 템플릿 문자열 정의 (.proto 포맷 구조)
-# PacketID enum과 message 정의를 자동 생성함
+# 템플릿 정의 (.proto 포맷)
 proto_template = env.from_string('''syntax = "proto3";
 
 package game;
@@ -119,10 +111,7 @@ message {{ message_name }} {
 for field_list in messages.values():
     for field in field_list:
         comment = field.get("Comment", "")
-        if pd.isna(comment):
-            field["Comment"] = ""
-        else:
-            field["Comment"] = str(comment)
+        field["Comment"] = "" if pd.isna(comment) else str(comment)
 
 # 템플릿에 실제 데이터 주입하여 문자열 생성
 rendered_proto = proto_template.render(
@@ -131,9 +120,9 @@ rendered_proto = proto_template.render(
 )
 
 # 생성된 .proto 내용을 파일로 저장
-with open(output_path, "w", encoding="utf-8") as f:
-    f.write(rendered_proto)
-
-# 완료 메시지 출력
-print(f".proto 파일이 생성되었습니다: {output_path}")
-input("Enter 키를 누르면 종료됩니다.")
+try:
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(rendered_proto)
+    print(f".proto 파일이 성공적으로 생성되었습니다: {output_path}")
+except Exception as e:
+    error_exit(f".proto 파일 저장 중 오류 발생: {e}")
