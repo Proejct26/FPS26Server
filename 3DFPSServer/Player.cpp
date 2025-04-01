@@ -3,7 +3,7 @@
 #include "SessionManager.h"
 #include "MakePacket.h"
 
-CPlayer::CPlayer(UINT16 _x, UINT16 _y, UINT16 _z, UINT8 _hp) noexcept
+CPlayer::CPlayer(float _x, float _y, float _z, UINT8 _hp) noexcept
 	: CObject{ _x, _y, _z }
 {
     m_maxHp = _hp;
@@ -28,7 +28,7 @@ void CPlayer::LateUpdate(void)
     __super::LateUpdate();
 }
 
-void CPlayer::Init(UINT16 _x, UINT16 _y, UINT16 _z, UINT8 _hp)
+void CPlayer::Init(float _x, float _y, float _z, UINT8 _hp)
 {
     __super::Init();
 

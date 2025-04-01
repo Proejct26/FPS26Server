@@ -32,14 +32,14 @@ enum class PRESS_KEY {
 
 class CPlayer : public CObject {
 public:
-    explicit CPlayer(UINT16 _x = 0, UINT16 _y = 0, UINT16 _z = 0, UINT8 _hp = 0) noexcept;
+    explicit CPlayer(float _x = 0, float _y = 0, float _z = 0, UINT8 _hp = 0) noexcept;
     virtual ~CPlayer();
 
     // 기타 멤버 함수 선언
     virtual void Update(void) override;
     virtual void LateUpdate(void) override;
 
-    void Init(UINT16 _x, UINT16 _y, UINT16 _z, UINT8 _hp);
+    void Init(float _x, float _y, float _z, UINT8 _hp);
 
 public:
     int GetId() const { return m_ID; }

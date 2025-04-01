@@ -10,7 +10,7 @@ class CPacket;
 // 기본 CObject 클래스 정의
 class CObject {
 public:
-    explicit CObject(UINT16 _x = 0, UINT16 _y = 0, UINT16 _z = 0) noexcept;
+    explicit CObject(float _x = 0, float _y = 0, float _z = 0) noexcept;
     virtual ~CObject() = default;
 
     // 메모리 풀에서 사용할 용도
@@ -26,13 +26,13 @@ public:
 
 public:
     // 위치 설정 및 가져오기
-    constexpr void SetPosition(UINT16 _x, UINT16 _y, UINT16 _z) {
+    constexpr void SetPosition(float _x, float _y, float _z) {
         m_x = _x;
         m_y = _y;
         m_z = _z;
     }
 
-    constexpr void getPosition(UINT16& _x, UINT16& _y, UINT16& _z) const {
+    constexpr void getPosition(float& _x, float& _y, float& _z) const {
         _x = m_x;
         _y = m_y;
         _z = m_z;
@@ -52,7 +52,7 @@ public:
     UINT32 m_ID;            // ID
 
 public:
-    UINT16 m_x, m_y, m_z;   // 현재 위치(3차원)
+    float m_x, m_y, m_z;   // 현재 위치(3차원)
     bool m_bDead;           // 죽었는지 여부
 
 private:

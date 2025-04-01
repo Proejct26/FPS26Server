@@ -17,7 +17,7 @@ UINT32 CObject::m_maxLastTimeoutCheckTime = 0;
 static CTimerManager& timerManager = CTimerManager::GetInstance();
 static LogManager& logManager = LogManager::GetInstance();
 
-CObject::CObject(UINT16 _x, UINT16 _y, UINT16 _z) noexcept
+CObject::CObject(float _x, float _y, float _z) noexcept
 	: m_x(_x), m_y(_y), m_z(_z), m_pSession(nullptr), m_bDead(false)
 {
 	m_ID = g_ID;
