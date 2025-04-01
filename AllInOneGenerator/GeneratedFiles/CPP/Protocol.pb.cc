@@ -24,12 +24,12 @@ namespace game {
 PROTOBUF_CONSTEXPR CS_ATTACK::CS_ATTACK(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.battack_)*/false
-  , /*decltype(_impl_.normalx_)*/0u
-  , /*decltype(_impl_.normaly_)*/0u
-  , /*decltype(_impl_.normalz_)*/0u
-  , /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
+  , /*decltype(_impl_.normalx_)*/0
+  , /*decltype(_impl_.normaly_)*/0
+  , /*decltype(_impl_.normalz_)*/0
+  , /*decltype(_impl_.posx_)*/0
+  , /*decltype(_impl_.posy_)*/0
+  , /*decltype(_impl_.posz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CS_ATTACKDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CS_ATTACKDefaultTypeInternal()
@@ -53,21 +53,6 @@ struct CS_CHANGE_WEAPONDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_CHANGE_WEAPONDefaultTypeInternal _CS_CHANGE_WEAPON_default_instance_;
-PROTOBUF_CONSTEXPR CS_GRENADE_EXPLOSITION_POS::CS_GRENADE_EXPLOSITION_POS(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal() {}
-  union {
-    CS_GRENADE_EXPLOSITION_POS _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal _CS_GRENADE_EXPLOSITION_POS_default_instance_;
 PROTOBUF_CONSTEXPR CS_ITEM_PICKED::CS_ITEM_PICKED(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.itemid_)*/0u
@@ -102,9 +87,9 @@ struct CS_KEY_INPUTDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_KEY_INPUTDefaultTypeInternal _CS_KEY_INPUT_default_instance_;
 PROTOBUF_CONSTEXPR CS_POS_INTERPOLATION::CS_POS_INTERPOLATION(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
+    /*decltype(_impl_.posx_)*/0
+  , /*decltype(_impl_.posy_)*/0
+  , /*decltype(_impl_.posz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CS_POS_INTERPOLATIONDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CS_POS_INTERPOLATIONDefaultTypeInternal()
@@ -170,24 +155,6 @@ struct CS_SHOT_HITDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_SHOT_HITDefaultTypeInternal _CS_SHOT_HIT_default_instance_;
-PROTOBUF_CONSTEXPR CS_THROW_GRENADE::CS_THROW_GRENADE(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
-  , /*decltype(_impl_.dirx_)*/0u
-  , /*decltype(_impl_.diry_)*/0u
-  , /*decltype(_impl_.dirz_)*/0u
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct CS_THROW_GRENADEDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CS_THROW_GRENADEDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CS_THROW_GRENADEDefaultTypeInternal() {}
-  union {
-    CS_THROW_GRENADE _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_THROW_GRENADEDefaultTypeInternal _CS_THROW_GRENADE_default_instance_;
 PROTOBUF_CONSTEXPR KDAInfo::KDAInfo(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.kill_)*/0u
@@ -220,12 +187,12 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR SC_ATTACK::SC_ATTACK(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
-  , /*decltype(_impl_.normalx_)*/0u
-  , /*decltype(_impl_.normaly_)*/0u
-  , /*decltype(_impl_.normalz_)*/0u
-  , /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
+  , /*decltype(_impl_.normalx_)*/0
+  , /*decltype(_impl_.normaly_)*/0
+  , /*decltype(_impl_.normalz_)*/0
+  , /*decltype(_impl_.posx_)*/0
+  , /*decltype(_impl_.posy_)*/0
+  , /*decltype(_impl_.posz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SC_ATTACKDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SC_ATTACKDefaultTypeInternal()
@@ -313,21 +280,6 @@ struct SC_CREATE_OTHER_CHARACTERDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_CREATE_OTHER_CHARACTERDefaultTypeInternal _SC_CREATE_OTHER_CHARACTER_default_instance_;
-PROTOBUF_CONSTEXPR SC_GRENADE_EXPLOSITION_POS::SC_GRENADE_EXPLOSITION_POS(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal() {}
-  union {
-    SC_GRENADE_EXPLOSITION_POS _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal _SC_GRENADE_EXPLOSITION_POS_default_instance_;
 PROTOBUF_CONSTEXPR SC_ITEM_PICK_FAIL::SC_ITEM_PICK_FAIL(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
@@ -406,9 +358,9 @@ struct SC_ON_ACCEPTDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_ON_ACCEPTDefaultTypeInternal _SC_ON_ACCEPT_default_instance_;
 PROTOBUF_CONSTEXPR SC_POS_INTERPOLATION::SC_POS_INTERPOLATION(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
+    /*decltype(_impl_.posx_)*/0
+  , /*decltype(_impl_.posy_)*/0
+  , /*decltype(_impl_.posz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SC_POS_INTERPOLATIONDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SC_POS_INTERPOLATIONDefaultTypeInternal()
@@ -447,26 +399,8 @@ struct SC_SHOT_HITDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SHOT_HITDefaultTypeInternal _SC_SHOT_HIT_default_instance_;
-PROTOBUF_CONSTEXPR SC_THROW_GRENADE::SC_THROW_GRENADE(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.posx_)*/0u
-  , /*decltype(_impl_.posy_)*/0u
-  , /*decltype(_impl_.posz_)*/0u
-  , /*decltype(_impl_.dirx_)*/0u
-  , /*decltype(_impl_.diry_)*/0u
-  , /*decltype(_impl_.dirz_)*/0u
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct SC_THROW_GRENADEDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SC_THROW_GRENADEDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SC_THROW_GRENADEDefaultTypeInternal() {}
-  union {
-    SC_THROW_GRENADE _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_THROW_GRENADEDefaultTypeInternal _SC_THROW_GRENADE_default_instance_;
 }  // namespace game
-static ::_pb::Metadata file_level_metadata_Protocol_2eproto[29];
+static ::_pb::Metadata file_level_metadata_Protocol_2eproto[25];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Protocol_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Protocol_2eproto = nullptr;
 
@@ -491,15 +425,6 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::CS_CHANGE_WEAPON, _impl_.weapon_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::CS_GRENADE_EXPLOSITION_POS, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::CS_GRENADE_EXPLOSITION_POS, _impl_.posx_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_GRENADE_EXPLOSITION_POS, _impl_.posy_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_GRENADE_EXPLOSITION_POS, _impl_.posz_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::CS_ITEM_PICKED, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -560,18 +485,6 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::CS_SHOT_HIT, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::CS_SHOT_HIT, _impl_.hp_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.posx_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.posy_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.posz_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.dirx_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.diry_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_THROW_GRENADE, _impl_.dirz_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::KDAInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -650,15 +563,6 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.weapon_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CREATE_OTHER_CHARACTER, _impl_.teamid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::SC_GRENADE_EXPLOSITION_POS, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::SC_GRENADE_EXPLOSITION_POS, _impl_.posx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_GRENADE_EXPLOSITION_POS, _impl_.posy_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_GRENADE_EXPLOSITION_POS, _impl_.posz_),
-  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::SC_ITEM_PICK_FAIL, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -729,55 +633,38 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::SC_SHOT_HIT, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::SC_SHOT_HIT, _impl_.hp_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.posx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.posy_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.posz_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.dirx_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.diry_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_THROW_GRENADE, _impl_.dirz_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::game::CS_ATTACK)},
   { 13, -1, -1, sizeof(::game::CS_CHANGE_WEAPON)},
-  { 20, -1, -1, sizeof(::game::CS_GRENADE_EXPLOSITION_POS)},
-  { 29, -1, -1, sizeof(::game::CS_ITEM_PICKED)},
-  { 36, -1, -1, sizeof(::game::CS_KEY_INPUT)},
-  { 49, -1, -1, sizeof(::game::CS_POS_INTERPOLATION)},
-  { 58, -1, -1, sizeof(::game::CS_REQUEST_RESTART)},
-  { 66, -1, -1, sizeof(::game::CS_SEND_MESSAGE)},
-  { 74, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
-  { 81, -1, -1, sizeof(::game::CS_SHOT_HIT)},
-  { 89, -1, -1, sizeof(::game::CS_THROW_GRENADE)},
-  { 101, -1, -1, sizeof(::game::KDAInfo)},
-  { 110, -1, -1, sizeof(::game::PlayerInfo)},
-  { 118, -1, -1, sizeof(::game::SC_ATTACK)},
-  { 131, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
-  { 139, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
-  { 147, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
-  { 154, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
-  { 164, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
-  { 178, -1, -1, sizeof(::game::SC_GRENADE_EXPLOSITION_POS)},
-  { 187, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
-  { 195, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
-  { 203, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
-  { 212, -1, -1, sizeof(::game::SC_KEY_INPUT)},
-  { 226, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
-  { 233, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
-  { 242, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
-  { 250, -1, -1, sizeof(::game::SC_SHOT_HIT)},
-  { 258, -1, -1, sizeof(::game::SC_THROW_GRENADE)},
+  { 20, -1, -1, sizeof(::game::CS_ITEM_PICKED)},
+  { 27, -1, -1, sizeof(::game::CS_KEY_INPUT)},
+  { 40, -1, -1, sizeof(::game::CS_POS_INTERPOLATION)},
+  { 49, -1, -1, sizeof(::game::CS_REQUEST_RESTART)},
+  { 57, -1, -1, sizeof(::game::CS_SEND_MESSAGE)},
+  { 65, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
+  { 72, -1, -1, sizeof(::game::CS_SHOT_HIT)},
+  { 80, -1, -1, sizeof(::game::KDAInfo)},
+  { 89, -1, -1, sizeof(::game::PlayerInfo)},
+  { 97, -1, -1, sizeof(::game::SC_ATTACK)},
+  { 110, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
+  { 118, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
+  { 126, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
+  { 133, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
+  { 143, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
+  { 157, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
+  { 165, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
+  { 173, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
+  { 182, -1, -1, sizeof(::game::SC_KEY_INPUT)},
+  { 196, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
+  { 203, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
+  { 212, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
+  { 220, -1, -1, sizeof(::game::SC_SHOT_HIT)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::game::_CS_ATTACK_default_instance_._instance,
   &::game::_CS_CHANGE_WEAPON_default_instance_._instance,
-  &::game::_CS_GRENADE_EXPLOSITION_POS_default_instance_._instance,
   &::game::_CS_ITEM_PICKED_default_instance_._instance,
   &::game::_CS_KEY_INPUT_default_instance_._instance,
   &::game::_CS_POS_INTERPOLATION_default_instance_._instance,
@@ -785,7 +672,6 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::game::_CS_SEND_MESSAGE_default_instance_._instance,
   &::game::_CS_SEND_NICKNAME_default_instance_._instance,
   &::game::_CS_SHOT_HIT_default_instance_._instance,
-  &::game::_CS_THROW_GRENADE_default_instance_._instance,
   &::game::_KDAInfo_default_instance_._instance,
   &::game::_PlayerInfo_default_instance_._instance,
   &::game::_SC_ATTACK_default_instance_._instance,
@@ -794,7 +680,6 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::game::_SC_CHARACTER_KILL_LOG_default_instance_._instance,
   &::game::_SC_CREATE_MY_CHARACTER_default_instance_._instance,
   &::game::_SC_CREATE_OTHER_CHARACTER_default_instance_._instance,
-  &::game::_SC_GRENADE_EXPLOSITION_POS_default_instance_._instance,
   &::game::_SC_ITEM_PICK_FAIL_default_instance_._instance,
   &::game::_SC_ITEM_PICK_SUCCESS_default_instance_._instance,
   &::game::_SC_ITEM_SPAWNED_default_instance_._instance,
@@ -803,86 +688,73 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::game::_SC_POS_INTERPOLATION_default_instance_._instance,
   &::game::_SC_SEND_MESSAGE_default_instance_._instance,
   &::game::_SC_SHOT_HIT_default_instance_._instance,
-  &::game::_SC_THROW_GRENADE_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\016Protocol.proto\022\004game\"y\n\tCS_ATTACK\022\017\n\007b"
-  "Attack\030\001 \001(\010\022\017\n\007normalX\030\002 \001(\r\022\017\n\007normalY"
-  "\030\003 \001(\r\022\017\n\007normalZ\030\004 \001(\r\022\014\n\004posX\030\005 \001(\r\022\014\n"
-  "\004posY\030\006 \001(\r\022\014\n\004posZ\030\007 \001(\r\"\"\n\020CS_CHANGE_W"
-  "EAPON\022\016\n\006weapon\030\001 \001(\r\"F\n\032CS_GRENADE_EXPL"
-  "OSITION_POS\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022"
-  "\014\n\004posZ\030\003 \001(\r\" \n\016CS_ITEM_PICKED\022\016\n\006itemI"
-  "d\030\001 \001(\r\"~\n\014CS_KEY_INPUT\022\014\n\004keyW\030\001 \001(\r\022\014\n"
-  "\004keyA\030\002 \001(\r\022\014\n\004keyS\030\003 \001(\r\022\014\n\004keyD\030\004 \001(\r\022"
-  "\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013rotateAxisY\030\006 \001("
-  "\007\022\014\n\004Jump\030\007 \001(\r\"@\n\024CS_POS_INTERPOLATION\022"
-  "\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ\030\003 \001("
-  "\r\"6\n\022CS_REQUEST_RESTART\022\020\n\010playerId\030\001 \001("
-  "\r\022\016\n\006weapon\030\002 \001(\r\"4\n\017CS_SEND_MESSAGE\022\020\n\010"
-  "playerId\030\001 \001(\r\022\017\n\007message\030\002 \001(\t\" \n\020CS_SE"
-  "ND_NICKNAME\022\014\n\004name\030\001 \001(\t\"+\n\013CS_SHOT_HIT"
-  "\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"f\n\020CS_THR"
-  "OW_GRENADE\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014"
-  "\n\004posZ\030\003 \001(\r\022\014\n\004dirX\030\004 \001(\007\022\014\n\004dirY\030\005 \001(\007"
-  "\022\014\n\004dirZ\030\006 \001(\007\"6\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022"
-  "\r\n\005death\030\002 \001(\r\022\016\n\006assist\030\003 \001(\r\":\n\nPlayer"
-  "Info\022\020\n\010playerId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.ga"
-  "me.KDAInfo\"z\n\tSC_ATTACK\022\020\n\010playerId\030\001 \001("
-  "\r\022\017\n\007normalX\030\002 \001(\r\022\017\n\007normalY\030\003 \001(\r\022\017\n\007n"
-  "ormalZ\030\004 \001(\r\022\014\n\004posX\030\005 \001(\r\022\014\n\004posY\030\006 \001(\r"
-  "\022\014\n\004posZ\030\007 \001(\r\"4\n\020SC_CHANGE_WEAPON\022\020\n\010pl"
-  "ayerId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r\"5\n\021SC_CHARA"
-  "CTER_DOWN\022\020\n\010playerId\030\001 \001(\r\022\016\n\006teamID\030\002 "
-  "\001(\r\"A\n\025SC_CHARACTER_KILL_LOG\022(\n\016playerIn"
-  "foList\030\001 \003(\0132\020.game.PlayerInfo\"[\n\026SC_CRE"
-  "ATE_MY_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010po"
-  "sIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 "
-  "\001(\r\"\253\001\n\031SC_CREATE_OTHER_CHARACTER\022\020\n\010pla"
-  "yerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003"
-  " \001(\r\022\r\n\005curHP\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kda"
-  "Info\030\006 \001(\0132\r.game.KDAInfo\022\016\n\006weapon\030\007 \001("
-  "\r\022\016\n\006teamID\030\010 \001(\r\"F\n\032SC_GRENADE_EXPLOSIT"
-  "ION_POS\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004p"
-  "osZ\030\003 \001(\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010player"
-  "Id\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_PICK"
-  "_SUCCESS\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001"
-  "(\r\"I\n\017SC_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n"
-  "\010itemType\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001"
-  "\n\014SC_KEY_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW"
-  "\030\002 \001(\r\022\014\n\004keyA\030\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004ke"
-  "yD\030\005 \001(\r\022\023\n\013rotateAxisX\030\006 \001(\007\022\023\n\013rotateA"
-  "xisY\030\007 \001(\007\022\014\n\004Jump\030\010 \001(\r\" \n\014SC_ON_ACCEPT"
-  "\022\020\n\010playerId\030\001 \001(\r\"@\n\024SC_POS_INTERPOLATI"
-  "ON\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ\030\003"
-  " \001(\r\"4\n\017SC_SEND_MESSAGE\022\020\n\010playerId\030\001 \001("
-  "\r\022\017\n\007message\030\002 \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010pla"
-  "yerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"f\n\020SC_THROW_GREN"
-  "ADE\022\014\n\004posX\030\001 \001(\r\022\014\n\004posY\030\002 \001(\r\022\014\n\004posZ\030"
-  "\003 \001(\r\022\014\n\004dirX\030\004 \001(\007\022\014\n\004dirY\030\005 \001(\007\022\014\n\004dir"
-  "Z\030\006 \001(\007*\313\004\n\010PacketID\022\r\n\tCS_Attack\020\000\022\023\n\017C"
-  "S_ChangeWeapon\020\001\022\034\n\030CS_GrenadeExplositio"
-  "nPos\020\002\022\021\n\rCS_ItemPicked\020\003\022\017\n\013CS_KeyInput"
-  "\020\004\022\027\n\023CS_PosInterpolation\020\005\022\025\n\021CS_Reques"
-  "tRestart\020\006\022\022\n\016CS_SendMessage\020\007\022\023\n\017CS_Sen"
-  "dNickname\020\010\022\016\n\nCS_ShotHit\020\t\022\023\n\017CS_ThrowG"
-  "renade\020\n\022\r\n\tSC_Attack\020\013\022\023\n\017SC_ChangeWeap"
-  "on\020\014\022\024\n\020SC_CharacterDown\020\r\022\027\n\023SC_Charact"
-  "erKillLog\020\016\022\030\n\024SC_CreateMyCharacter\020\017\022\033\n"
-  "\027SC_CreateOtherCharacter\020\020\022\034\n\030SC_Grenade"
-  "ExplositionPos\020\021\022\023\n\017SC_ItemPickFail\020\022\022\026\n"
-  "\022SC_ItemPickSuccess\020\023\022\022\n\016SC_ItemSpawned\020"
-  "\024\022\017\n\013SC_KeyInput\020\025\022\017\n\013SC_OnAccept\020\026\022\027\n\023S"
-  "C_PosInterpolation\020\027\022\022\n\016SC_SendMessage\020\030"
-  "\022\016\n\nSC_ShotHit\020\031\022\023\n\017SC_ThrowGrenade\020\032b\006p"
-  "roto3"
+  "Attack\030\001 \001(\010\022\017\n\007normalX\030\002 \001(\002\022\017\n\007normalY"
+  "\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004posX\030\005 \001(\002\022\014\n"
+  "\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"\"\n\020CS_CHANGE_W"
+  "EAPON\022\016\n\006weapon\030\001 \001(\r\" \n\016CS_ITEM_PICKED\022"
+  "\016\n\006itemId\030\001 \001(\r\"~\n\014CS_KEY_INPUT\022\014\n\004keyW\030"
+  "\001 \001(\r\022\014\n\004keyA\030\002 \001(\r\022\014\n\004keyS\030\003 \001(\r\022\014\n\004key"
+  "D\030\004 \001(\r\022\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013rotateAx"
+  "isY\030\006 \001(\007\022\014\n\004Jump\030\007 \001(\r\"@\n\024CS_POS_INTERP"
+  "OLATION\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004p"
+  "osZ\030\003 \001(\002\"6\n\022CS_REQUEST_RESTART\022\020\n\010playe"
+  "rId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r\"4\n\017CS_SEND_MES"
+  "SAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002 \001(\t\""
+  " \n\020CS_SEND_NICKNAME\022\014\n\004name\030\001 \001(\t\"+\n\013CS_"
+  "SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"6"
+  "\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022\r\n\005death\030\002 \001(\r\022\016"
+  "\n\006assist\030\003 \001(\r\":\n\nPlayerInfo\022\020\n\010playerId"
+  "\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.game.KDAInfo\"z\n\tSC"
+  "_ATTACK\022\020\n\010playerId\030\001 \001(\r\022\017\n\007normalX\030\002 \001"
+  "(\002\022\017\n\007normalY\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004"
+  "posX\030\005 \001(\002\022\014\n\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"4"
+  "\n\020SC_CHANGE_WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006"
+  "weapon\030\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020\n\010pla"
+  "yerId\030\001 \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_CHARAC"
+  "TER_KILL_LOG\022(\n\016playerInfoList\030\001 \003(\0132\020.g"
+  "ame.PlayerInfo\"[\n\026SC_CREATE_MY_CHARACTER"
+  "\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005"
+  "maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_CREAT"
+  "E_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010p"
+  "osIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005curHP\030\004 "
+  "\001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132\r.gam"
+  "e.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID\030\010 \001("
+  "\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010playerId\030\001 \001(\r"
+  "\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SUCCESS"
+  "\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC"
+  "_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010itemTyp"
+  "e\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001\n\014SC_KEY"
+  "_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014"
+  "\n\004keyA\030\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r"
+  "\022\023\n\013rotateAxisX\030\006 \001(\007\022\023\n\013rotateAxisY\030\007 \001"
+  "(\007\022\014\n\004Jump\030\010 \001(\r\" \n\014SC_ON_ACCEPT\022\020\n\010play"
+  "erId\030\001 \001(\r\"@\n\024SC_POS_INTERPOLATION\022\014\n\004po"
+  "sX\030\001 \001(\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004posZ\030\003 \001(\002\"4\n\017"
+  "SC_SEND_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007mes"
+  "sage\030\002 \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010playerId\030\001 "
+  "\001(\r\022\n\n\002hp\030\002 \001(\r*\345\003\n\010PacketID\022\r\n\tCS_Attac"
+  "k\020\000\022\023\n\017CS_ChangeWeapon\020\001\022\021\n\rCS_ItemPicke"
+  "d\020\002\022\017\n\013CS_KeyInput\020\003\022\027\n\023CS_PosInterpolat"
+  "ion\020\004\022\025\n\021CS_RequestRestart\020\005\022\022\n\016CS_SendM"
+  "essage\020\006\022\023\n\017CS_SendNickname\020\007\022\016\n\nCS_Shot"
+  "Hit\020\010\022\r\n\tSC_Attack\020\t\022\023\n\017SC_ChangeWeapon\020"
+  "\n\022\024\n\020SC_CharacterDown\020\013\022\027\n\023SC_CharacterK"
+  "illLog\020\014\022\030\n\024SC_CreateMyCharacter\020\r\022\033\n\027SC"
+  "_CreateOtherCharacter\020\016\022\023\n\017SC_ItemPickFa"
+  "il\020\017\022\026\n\022SC_ItemPickSuccess\020\020\022\022\n\016SC_ItemS"
+  "pawned\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013SC_OnAccept"
+  "\020\023\022\027\n\023SC_PosInterpolation\020\024\022\022\n\016SC_SendMe"
+  "ssage\020\025\022\016\n\nSC_ShotHit\020\026b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 2765, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 2311, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
-    &descriptor_table_Protocol_2eproto_once, nullptr, 0, 29,
+    &descriptor_table_Protocol_2eproto_once, nullptr, 0, 25,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
     file_level_metadata_Protocol_2eproto, file_level_enum_descriptors_Protocol_2eproto,
     file_level_service_descriptors_Protocol_2eproto,
@@ -923,10 +795,6 @@ bool PacketID_IsValid(int value) {
     case 20:
     case 21:
     case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
       return true;
     default:
       return false;
@@ -972,12 +840,12 @@ inline void CS_ATTACK::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.battack_){false}
-    , decltype(_impl_.normalx_){0u}
-    , decltype(_impl_.normaly_){0u}
-    , decltype(_impl_.normalz_){0u}
-    , decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
+    , decltype(_impl_.normalx_){0}
+    , decltype(_impl_.normaly_){0}
+    , decltype(_impl_.normalz_){0}
+    , decltype(_impl_.posx_){0}
+    , decltype(_impl_.posy_){0}
+    , decltype(_impl_.posz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -1025,51 +893,51 @@ const char* CS_ATTACK::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalX = 2;
+      // float normalX = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalY = 3;
+      // float normalY = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalZ = 4;
+      // float normalZ = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posX = 5;
+      // float posX = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posY = 6;
+      // float posY = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posZ = 7;
+      // float posZ = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1108,40 +976,64 @@ uint8_t* CS_ATTACK::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_battack(), target);
   }
 
-  // uint32 normalX = 2;
-  if (this->_internal_normalx() != 0) {
+  // float normalX = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_normalx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_normalx(), target);
   }
 
-  // uint32 normalY = 3;
-  if (this->_internal_normaly() != 0) {
+  // float normalY = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_normaly(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_normaly(), target);
   }
 
-  // uint32 normalZ = 4;
-  if (this->_internal_normalz() != 0) {
+  // float normalZ = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_normalz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_normalz(), target);
   }
 
-  // uint32 posX = 5;
-  if (this->_internal_posx() != 0) {
+  // float posX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_posx(), target);
   }
 
-  // uint32 posY = 6;
-  if (this->_internal_posy() != 0) {
+  // float posY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_posy(), target);
   }
 
-  // uint32 posZ = 7;
-  if (this->_internal_posz() != 0) {
+  // float posZ = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1165,34 +1057,58 @@ size_t CS_ATTACK::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  // uint32 normalX = 2;
-  if (this->_internal_normalx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normalx());
+  // float normalX = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 normalY = 3;
-  if (this->_internal_normaly() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normaly());
+  // float normalY = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 normalZ = 4;
-  if (this->_internal_normalz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normalz());
+  // float normalZ = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posX = 5;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
+  // float posX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posY = 6;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
+  // float posY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posZ = 7;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
+  // float posZ = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1216,22 +1132,46 @@ void CS_ATTACK::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
   if (from._internal_battack() != 0) {
     _this->_internal_set_battack(from._internal_battack());
   }
-  if (from._internal_normalx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = from._internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
     _this->_internal_set_normalx(from._internal_normalx());
   }
-  if (from._internal_normaly() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = from._internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
     _this->_internal_set_normaly(from._internal_normaly());
   }
-  if (from._internal_normalz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = from._internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
     _this->_internal_set_normalz(from._internal_normalz());
   }
-  if (from._internal_posx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = from._internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     _this->_internal_set_posx(from._internal_posx());
   }
-  if (from._internal_posy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = from._internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     _this->_internal_set_posy(from._internal_posy());
   }
-  if (from._internal_posz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = from._internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     _this->_internal_set_posz(from._internal_posz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1445,241 +1385,6 @@ void CS_CHANGE_WEAPON::InternalSwap(CS_CHANGE_WEAPON* other) {
 
 // ===================================================================
 
-class CS_GRENADE_EXPLOSITION_POS::_Internal {
- public:
-};
-
-CS_GRENADE_EXPLOSITION_POS::CS_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.CS_GRENADE_EXPLOSITION_POS)
-}
-CS_GRENADE_EXPLOSITION_POS::CS_GRENADE_EXPLOSITION_POS(const CS_GRENADE_EXPLOSITION_POS& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  CS_GRENADE_EXPLOSITION_POS* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){}
-    , decltype(_impl_.posy_){}
-    , decltype(_impl_.posz_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.posx_, &from._impl_.posx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.posz_) -
-    reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
-  // @@protoc_insertion_point(copy_constructor:game.CS_GRENADE_EXPLOSITION_POS)
-}
-
-inline void CS_GRENADE_EXPLOSITION_POS::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-}
-
-CS_GRENADE_EXPLOSITION_POS::~CS_GRENADE_EXPLOSITION_POS() {
-  // @@protoc_insertion_point(destructor:game.CS_GRENADE_EXPLOSITION_POS)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void CS_GRENADE_EXPLOSITION_POS::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void CS_GRENADE_EXPLOSITION_POS::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void CS_GRENADE_EXPLOSITION_POS::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.CS_GRENADE_EXPLOSITION_POS)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.posx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.posz_) -
-      reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* CS_GRENADE_EXPLOSITION_POS::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 posX = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posZ = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* CS_GRENADE_EXPLOSITION_POS::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.CS_GRENADE_EXPLOSITION_POS)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:game.CS_GRENADE_EXPLOSITION_POS)
-  return target;
-}
-
-size_t CS_GRENADE_EXPLOSITION_POS::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.CS_GRENADE_EXPLOSITION_POS)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CS_GRENADE_EXPLOSITION_POS::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CS_GRENADE_EXPLOSITION_POS::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CS_GRENADE_EXPLOSITION_POS::GetClassData() const { return &_class_data_; }
-
-
-void CS_GRENADE_EXPLOSITION_POS::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CS_GRENADE_EXPLOSITION_POS*>(&to_msg);
-  auto& from = static_cast<const CS_GRENADE_EXPLOSITION_POS&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.CS_GRENADE_EXPLOSITION_POS)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_posx() != 0) {
-    _this->_internal_set_posx(from._internal_posx());
-  }
-  if (from._internal_posy() != 0) {
-    _this->_internal_set_posy(from._internal_posy());
-  }
-  if (from._internal_posz() != 0) {
-    _this->_internal_set_posz(from._internal_posz());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void CS_GRENADE_EXPLOSITION_POS::CopyFrom(const CS_GRENADE_EXPLOSITION_POS& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.CS_GRENADE_EXPLOSITION_POS)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool CS_GRENADE_EXPLOSITION_POS::IsInitialized() const {
-  return true;
-}
-
-void CS_GRENADE_EXPLOSITION_POS::InternalSwap(CS_GRENADE_EXPLOSITION_POS* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CS_GRENADE_EXPLOSITION_POS, _impl_.posz_)
-      + sizeof(CS_GRENADE_EXPLOSITION_POS::_impl_.posz_)
-      - PROTOBUF_FIELD_OFFSET(CS_GRENADE_EXPLOSITION_POS, _impl_.posx_)>(
-          reinterpret_cast<char*>(&_impl_.posx_),
-          reinterpret_cast<char*>(&other->_impl_.posx_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata CS_GRENADE_EXPLOSITION_POS::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[2]);
-}
-
-// ===================================================================
-
 class CS_ITEM_PICKED::_Internal {
  public:
 };
@@ -1853,7 +1558,7 @@ void CS_ITEM_PICKED::InternalSwap(CS_ITEM_PICKED* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_ITEM_PICKED::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[3]);
+      file_level_metadata_Protocol_2eproto[2]);
 }
 
 // ===================================================================
@@ -2184,7 +1889,7 @@ void CS_KEY_INPUT::InternalSwap(CS_KEY_INPUT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_KEY_INPUT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[4]);
+      file_level_metadata_Protocol_2eproto[3]);
 }
 
 // ===================================================================
@@ -2220,9 +1925,9 @@ inline void CS_POS_INTERPOLATION::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
+      decltype(_impl_.posx_){0}
+    , decltype(_impl_.posy_){0}
+    , decltype(_impl_.posz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -2262,27 +1967,27 @@ const char* CS_POS_INTERPOLATION::_InternalParse(const char* ptr, ::_pbi::ParseC
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 posX = 1;
+      // float posX = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posY = 2;
+      // float posY = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posZ = 3;
+      // float posZ = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -2315,22 +2020,34 @@ uint8_t* CS_POS_INTERPOLATION::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
+  // float posX = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_posx(), target);
   }
 
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
+  // float posY = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_posy(), target);
   }
 
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
+  // float posZ = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2349,19 +2066,31 @@ size_t CS_POS_INTERPOLATION::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
+  // float posX = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
+  // float posY = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
+  // float posZ = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -2382,13 +2111,25 @@ void CS_POS_INTERPOLATION::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_posx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = from._internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     _this->_internal_set_posx(from._internal_posx());
   }
-  if (from._internal_posy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = from._internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     _this->_internal_set_posy(from._internal_posy());
   }
-  if (from._internal_posz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = from._internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     _this->_internal_set_posz(from._internal_posz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2419,7 +2160,7 @@ void CS_POS_INTERPOLATION::InternalSwap(CS_POS_INTERPOLATION* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_POS_INTERPOLATION::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[5]);
+      file_level_metadata_Protocol_2eproto[4]);
 }
 
 // ===================================================================
@@ -2630,7 +2371,7 @@ void CS_REQUEST_RESTART::InternalSwap(CS_REQUEST_RESTART* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_REQUEST_RESTART::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[6]);
+      file_level_metadata_Protocol_2eproto[5]);
 }
 
 // ===================================================================
@@ -2860,7 +2601,7 @@ void CS_SEND_MESSAGE::InternalSwap(CS_SEND_MESSAGE* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_MESSAGE::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[7]);
+      file_level_metadata_Protocol_2eproto[6]);
 }
 
 // ===================================================================
@@ -3063,7 +2804,7 @@ void CS_SEND_NICKNAME::InternalSwap(CS_SEND_NICKNAME* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_NICKNAME::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[8]);
+      file_level_metadata_Protocol_2eproto[7]);
 }
 
 // ===================================================================
@@ -3274,314 +3015,7 @@ void CS_SHOT_HIT::InternalSwap(CS_SHOT_HIT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_SHOT_HIT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[9]);
-}
-
-// ===================================================================
-
-class CS_THROW_GRENADE::_Internal {
- public:
-};
-
-CS_THROW_GRENADE::CS_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.CS_THROW_GRENADE)
-}
-CS_THROW_GRENADE::CS_THROW_GRENADE(const CS_THROW_GRENADE& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  CS_THROW_GRENADE* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){}
-    , decltype(_impl_.posy_){}
-    , decltype(_impl_.posz_){}
-    , decltype(_impl_.dirx_){}
-    , decltype(_impl_.diry_){}
-    , decltype(_impl_.dirz_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.posx_, &from._impl_.posx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.dirz_) -
-    reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.dirz_));
-  // @@protoc_insertion_point(copy_constructor:game.CS_THROW_GRENADE)
-}
-
-inline void CS_THROW_GRENADE::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
-    , decltype(_impl_.dirx_){0u}
-    , decltype(_impl_.diry_){0u}
-    , decltype(_impl_.dirz_){0u}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-}
-
-CS_THROW_GRENADE::~CS_THROW_GRENADE() {
-  // @@protoc_insertion_point(destructor:game.CS_THROW_GRENADE)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void CS_THROW_GRENADE::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void CS_THROW_GRENADE::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void CS_THROW_GRENADE::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.CS_THROW_GRENADE)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.posx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.dirz_) -
-      reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.dirz_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* CS_THROW_GRENADE::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 posX = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posZ = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirX = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
-          _impl_.dirx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirY = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
-          _impl_.diry_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirZ = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
-          _impl_.dirz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* CS_THROW_GRENADE::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.CS_THROW_GRENADE)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
-  }
-
-  // fixed32 dirX = 4;
-  if (this->_internal_dirx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(4, this->_internal_dirx(), target);
-  }
-
-  // fixed32 dirY = 5;
-  if (this->_internal_diry() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(5, this->_internal_diry(), target);
-  }
-
-  // fixed32 dirZ = 6;
-  if (this->_internal_dirz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(6, this->_internal_dirz(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:game.CS_THROW_GRENADE)
-  return target;
-}
-
-size_t CS_THROW_GRENADE::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.CS_THROW_GRENADE)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
-  }
-
-  // fixed32 dirX = 4;
-  if (this->_internal_dirx() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // fixed32 dirY = 5;
-  if (this->_internal_diry() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // fixed32 dirZ = 6;
-  if (this->_internal_dirz() != 0) {
-    total_size += 1 + 4;
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CS_THROW_GRENADE::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CS_THROW_GRENADE::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CS_THROW_GRENADE::GetClassData() const { return &_class_data_; }
-
-
-void CS_THROW_GRENADE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CS_THROW_GRENADE*>(&to_msg);
-  auto& from = static_cast<const CS_THROW_GRENADE&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.CS_THROW_GRENADE)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_posx() != 0) {
-    _this->_internal_set_posx(from._internal_posx());
-  }
-  if (from._internal_posy() != 0) {
-    _this->_internal_set_posy(from._internal_posy());
-  }
-  if (from._internal_posz() != 0) {
-    _this->_internal_set_posz(from._internal_posz());
-  }
-  if (from._internal_dirx() != 0) {
-    _this->_internal_set_dirx(from._internal_dirx());
-  }
-  if (from._internal_diry() != 0) {
-    _this->_internal_set_diry(from._internal_diry());
-  }
-  if (from._internal_dirz() != 0) {
-    _this->_internal_set_dirz(from._internal_dirz());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void CS_THROW_GRENADE::CopyFrom(const CS_THROW_GRENADE& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.CS_THROW_GRENADE)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool CS_THROW_GRENADE::IsInitialized() const {
-  return true;
-}
-
-void CS_THROW_GRENADE::InternalSwap(CS_THROW_GRENADE* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CS_THROW_GRENADE, _impl_.dirz_)
-      + sizeof(CS_THROW_GRENADE::_impl_.dirz_)
-      - PROTOBUF_FIELD_OFFSET(CS_THROW_GRENADE, _impl_.posx_)>(
-          reinterpret_cast<char*>(&_impl_.posx_),
-          reinterpret_cast<char*>(&other->_impl_.posx_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata CS_THROW_GRENADE::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[10]);
+      file_level_metadata_Protocol_2eproto[8]);
 }
 
 // ===================================================================
@@ -3816,7 +3250,7 @@ void KDAInfo::InternalSwap(KDAInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata KDAInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[11]);
+      file_level_metadata_Protocol_2eproto[9]);
 }
 
 // ===================================================================
@@ -4040,7 +3474,7 @@ void PlayerInfo::InternalSwap(PlayerInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[12]);
+      file_level_metadata_Protocol_2eproto[10]);
 }
 
 // ===================================================================
@@ -4081,12 +3515,12 @@ inline void SC_ATTACK::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){0u}
-    , decltype(_impl_.normalx_){0u}
-    , decltype(_impl_.normaly_){0u}
-    , decltype(_impl_.normalz_){0u}
-    , decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
+    , decltype(_impl_.normalx_){0}
+    , decltype(_impl_.normaly_){0}
+    , decltype(_impl_.normalz_){0}
+    , decltype(_impl_.posx_){0}
+    , decltype(_impl_.posy_){0}
+    , decltype(_impl_.posz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -4134,51 +3568,51 @@ const char* SC_ATTACK::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalX = 2;
+      // float normalX = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalY = 3;
+      // float normalY = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 normalZ = 4;
+      // float normalZ = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posX = 5;
+      // float posX = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posY = 6;
+      // float posY = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posZ = 7;
+      // float posZ = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -4217,40 +3651,64 @@ uint8_t* SC_ATTACK::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
   }
 
-  // uint32 normalX = 2;
-  if (this->_internal_normalx() != 0) {
+  // float normalX = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_normalx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_normalx(), target);
   }
 
-  // uint32 normalY = 3;
-  if (this->_internal_normaly() != 0) {
+  // float normalY = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_normaly(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_normaly(), target);
   }
 
-  // uint32 normalZ = 4;
-  if (this->_internal_normalz() != 0) {
+  // float normalZ = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_normalz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_normalz(), target);
   }
 
-  // uint32 posX = 5;
-  if (this->_internal_posx() != 0) {
+  // float posX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_posx(), target);
   }
 
-  // uint32 posY = 6;
-  if (this->_internal_posy() != 0) {
+  // float posY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_posy(), target);
   }
 
-  // uint32 posZ = 7;
-  if (this->_internal_posz() != 0) {
+  // float posZ = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4274,34 +3732,58 @@ size_t SC_ATTACK::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
-  // uint32 normalX = 2;
-  if (this->_internal_normalx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normalx());
+  // float normalX = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 normalY = 3;
-  if (this->_internal_normaly() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normaly());
+  // float normalY = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 normalZ = 4;
-  if (this->_internal_normalz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_normalz());
+  // float normalZ = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posX = 5;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
+  // float posX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posY = 6;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
+  // float posY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posZ = 7;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
+  // float posZ = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -4325,22 +3807,46 @@ void SC_ATTACK::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
   if (from._internal_playerid() != 0) {
     _this->_internal_set_playerid(from._internal_playerid());
   }
-  if (from._internal_normalx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = from._internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
     _this->_internal_set_normalx(from._internal_normalx());
   }
-  if (from._internal_normaly() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = from._internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
     _this->_internal_set_normaly(from._internal_normaly());
   }
-  if (from._internal_normalz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = from._internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
     _this->_internal_set_normalz(from._internal_normalz());
   }
-  if (from._internal_posx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = from._internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     _this->_internal_set_posx(from._internal_posx());
   }
-  if (from._internal_posy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = from._internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     _this->_internal_set_posy(from._internal_posy());
   }
-  if (from._internal_posz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = from._internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     _this->_internal_set_posz(from._internal_posz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -4371,7 +3877,7 @@ void SC_ATTACK::InternalSwap(SC_ATTACK* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ATTACK::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[13]);
+      file_level_metadata_Protocol_2eproto[11]);
 }
 
 // ===================================================================
@@ -4582,7 +4088,7 @@ void SC_CHANGE_WEAPON::InternalSwap(SC_CHANGE_WEAPON* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHANGE_WEAPON::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[14]);
+      file_level_metadata_Protocol_2eproto[12]);
 }
 
 // ===================================================================
@@ -4793,7 +4299,7 @@ void SC_CHARACTER_DOWN::InternalSwap(SC_CHARACTER_DOWN* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHARACTER_DOWN::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[15]);
+      file_level_metadata_Protocol_2eproto[13]);
 }
 
 // ===================================================================
@@ -4978,7 +4484,7 @@ void SC_CHARACTER_KILL_LOG::InternalSwap(SC_CHARACTER_KILL_LOG* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHARACTER_KILL_LOG::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[16]);
+      file_level_metadata_Protocol_2eproto[14]);
 }
 
 // ===================================================================
@@ -5237,7 +4743,7 @@ void SC_CREATE_MY_CHARACTER::InternalSwap(SC_CREATE_MY_CHARACTER* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CREATE_MY_CHARACTER::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[17]);
+      file_level_metadata_Protocol_2eproto[15]);
 }
 
 // ===================================================================
@@ -5637,242 +5143,7 @@ void SC_CREATE_OTHER_CHARACTER::InternalSwap(SC_CREATE_OTHER_CHARACTER* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CREATE_OTHER_CHARACTER::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[18]);
-}
-
-// ===================================================================
-
-class SC_GRENADE_EXPLOSITION_POS::_Internal {
- public:
-};
-
-SC_GRENADE_EXPLOSITION_POS::SC_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.SC_GRENADE_EXPLOSITION_POS)
-}
-SC_GRENADE_EXPLOSITION_POS::SC_GRENADE_EXPLOSITION_POS(const SC_GRENADE_EXPLOSITION_POS& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  SC_GRENADE_EXPLOSITION_POS* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){}
-    , decltype(_impl_.posy_){}
-    , decltype(_impl_.posz_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.posx_, &from._impl_.posx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.posz_) -
-    reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
-  // @@protoc_insertion_point(copy_constructor:game.SC_GRENADE_EXPLOSITION_POS)
-}
-
-inline void SC_GRENADE_EXPLOSITION_POS::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-}
-
-SC_GRENADE_EXPLOSITION_POS::~SC_GRENADE_EXPLOSITION_POS() {
-  // @@protoc_insertion_point(destructor:game.SC_GRENADE_EXPLOSITION_POS)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void SC_GRENADE_EXPLOSITION_POS::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void SC_GRENADE_EXPLOSITION_POS::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void SC_GRENADE_EXPLOSITION_POS::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.SC_GRENADE_EXPLOSITION_POS)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.posx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.posz_) -
-      reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.posz_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* SC_GRENADE_EXPLOSITION_POS::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 posX = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posZ = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* SC_GRENADE_EXPLOSITION_POS::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.SC_GRENADE_EXPLOSITION_POS)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:game.SC_GRENADE_EXPLOSITION_POS)
-  return target;
-}
-
-size_t SC_GRENADE_EXPLOSITION_POS::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.SC_GRENADE_EXPLOSITION_POS)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SC_GRENADE_EXPLOSITION_POS::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    SC_GRENADE_EXPLOSITION_POS::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SC_GRENADE_EXPLOSITION_POS::GetClassData() const { return &_class_data_; }
-
-
-void SC_GRENADE_EXPLOSITION_POS::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<SC_GRENADE_EXPLOSITION_POS*>(&to_msg);
-  auto& from = static_cast<const SC_GRENADE_EXPLOSITION_POS&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.SC_GRENADE_EXPLOSITION_POS)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_posx() != 0) {
-    _this->_internal_set_posx(from._internal_posx());
-  }
-  if (from._internal_posy() != 0) {
-    _this->_internal_set_posy(from._internal_posy());
-  }
-  if (from._internal_posz() != 0) {
-    _this->_internal_set_posz(from._internal_posz());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void SC_GRENADE_EXPLOSITION_POS::CopyFrom(const SC_GRENADE_EXPLOSITION_POS& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.SC_GRENADE_EXPLOSITION_POS)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool SC_GRENADE_EXPLOSITION_POS::IsInitialized() const {
-  return true;
-}
-
-void SC_GRENADE_EXPLOSITION_POS::InternalSwap(SC_GRENADE_EXPLOSITION_POS* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SC_GRENADE_EXPLOSITION_POS, _impl_.posz_)
-      + sizeof(SC_GRENADE_EXPLOSITION_POS::_impl_.posz_)
-      - PROTOBUF_FIELD_OFFSET(SC_GRENADE_EXPLOSITION_POS, _impl_.posx_)>(
-          reinterpret_cast<char*>(&_impl_.posx_),
-          reinterpret_cast<char*>(&other->_impl_.posx_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata SC_GRENADE_EXPLOSITION_POS::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[19]);
+      file_level_metadata_Protocol_2eproto[16]);
 }
 
 // ===================================================================
@@ -6083,7 +5354,7 @@ void SC_ITEM_PICK_FAIL::InternalSwap(SC_ITEM_PICK_FAIL* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_PICK_FAIL::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[20]);
+      file_level_metadata_Protocol_2eproto[17]);
 }
 
 // ===================================================================
@@ -6294,7 +5565,7 @@ void SC_ITEM_PICK_SUCCESS::InternalSwap(SC_ITEM_PICK_SUCCESS* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_PICK_SUCCESS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[21]);
+      file_level_metadata_Protocol_2eproto[18]);
 }
 
 // ===================================================================
@@ -6529,7 +5800,7 @@ void SC_ITEM_SPAWNED::InternalSwap(SC_ITEM_SPAWNED* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_SPAWNED::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[22]);
+      file_level_metadata_Protocol_2eproto[19]);
 }
 
 // ===================================================================
@@ -6884,7 +6155,7 @@ void SC_KEY_INPUT::InternalSwap(SC_KEY_INPUT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_KEY_INPUT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[23]);
+      file_level_metadata_Protocol_2eproto[20]);
 }
 
 // ===================================================================
@@ -7062,7 +6333,7 @@ void SC_ON_ACCEPT::InternalSwap(SC_ON_ACCEPT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ON_ACCEPT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[24]);
+      file_level_metadata_Protocol_2eproto[21]);
 }
 
 // ===================================================================
@@ -7098,9 +6369,9 @@ inline void SC_POS_INTERPOLATION::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
+      decltype(_impl_.posx_){0}
+    , decltype(_impl_.posy_){0}
+    , decltype(_impl_.posz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -7140,27 +6411,27 @@ const char* SC_POS_INTERPOLATION::_InternalParse(const char* ptr, ::_pbi::ParseC
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 posX = 1;
+      // float posX = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posY = 2;
+      // float posY = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // uint32 posZ = 3;
+      // float posZ = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -7193,22 +6464,34 @@ uint8_t* SC_POS_INTERPOLATION::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
+  // float posX = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_posx(), target);
   }
 
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
+  // float posY = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_posy(), target);
   }
 
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
+  // float posZ = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_posz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -7227,19 +6510,31 @@ size_t SC_POS_INTERPOLATION::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
+  // float posX = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = this->_internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
+  // float posY = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = this->_internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
+    total_size += 1 + 4;
   }
 
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
+  // float posZ = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = this->_internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -7260,13 +6555,25 @@ void SC_POS_INTERPOLATION::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_posx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posx = from._internal_posx();
+  uint32_t raw_posx;
+  memcpy(&raw_posx, &tmp_posx, sizeof(tmp_posx));
+  if (raw_posx != 0) {
     _this->_internal_set_posx(from._internal_posx());
   }
-  if (from._internal_posy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posy = from._internal_posy();
+  uint32_t raw_posy;
+  memcpy(&raw_posy, &tmp_posy, sizeof(tmp_posy));
+  if (raw_posy != 0) {
     _this->_internal_set_posy(from._internal_posy());
   }
-  if (from._internal_posz() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_posz = from._internal_posz();
+  uint32_t raw_posz;
+  memcpy(&raw_posz, &tmp_posz, sizeof(tmp_posz));
+  if (raw_posz != 0) {
     _this->_internal_set_posz(from._internal_posz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -7297,7 +6604,7 @@ void SC_POS_INTERPOLATION::InternalSwap(SC_POS_INTERPOLATION* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_POS_INTERPOLATION::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[25]);
+      file_level_metadata_Protocol_2eproto[22]);
 }
 
 // ===================================================================
@@ -7527,7 +6834,7 @@ void SC_SEND_MESSAGE::InternalSwap(SC_SEND_MESSAGE* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_SEND_MESSAGE::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[26]);
+      file_level_metadata_Protocol_2eproto[23]);
 }
 
 // ===================================================================
@@ -7738,314 +7045,7 @@ void SC_SHOT_HIT::InternalSwap(SC_SHOT_HIT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_SHOT_HIT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[27]);
-}
-
-// ===================================================================
-
-class SC_THROW_GRENADE::_Internal {
- public:
-};
-
-SC_THROW_GRENADE::SC_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.SC_THROW_GRENADE)
-}
-SC_THROW_GRENADE::SC_THROW_GRENADE(const SC_THROW_GRENADE& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  SC_THROW_GRENADE* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){}
-    , decltype(_impl_.posy_){}
-    , decltype(_impl_.posz_){}
-    , decltype(_impl_.dirx_){}
-    , decltype(_impl_.diry_){}
-    , decltype(_impl_.dirz_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.posx_, &from._impl_.posx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.dirz_) -
-    reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.dirz_));
-  // @@protoc_insertion_point(copy_constructor:game.SC_THROW_GRENADE)
-}
-
-inline void SC_THROW_GRENADE::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.posx_){0u}
-    , decltype(_impl_.posy_){0u}
-    , decltype(_impl_.posz_){0u}
-    , decltype(_impl_.dirx_){0u}
-    , decltype(_impl_.diry_){0u}
-    , decltype(_impl_.dirz_){0u}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-}
-
-SC_THROW_GRENADE::~SC_THROW_GRENADE() {
-  // @@protoc_insertion_point(destructor:game.SC_THROW_GRENADE)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void SC_THROW_GRENADE::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void SC_THROW_GRENADE::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void SC_THROW_GRENADE::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.SC_THROW_GRENADE)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.posx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.dirz_) -
-      reinterpret_cast<char*>(&_impl_.posx_)) + sizeof(_impl_.dirz_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* SC_THROW_GRENADE::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 posX = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.posx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posY = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.posy_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // uint32 posZ = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.posz_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirX = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
-          _impl_.dirx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirY = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
-          _impl_.diry_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      // fixed32 dirZ = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
-          _impl_.dirz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* SC_THROW_GRENADE::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.SC_THROW_GRENADE)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_posx(), target);
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_posy(), target);
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_posz(), target);
-  }
-
-  // fixed32 dirX = 4;
-  if (this->_internal_dirx() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(4, this->_internal_dirx(), target);
-  }
-
-  // fixed32 dirY = 5;
-  if (this->_internal_diry() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(5, this->_internal_diry(), target);
-  }
-
-  // fixed32 dirZ = 6;
-  if (this->_internal_dirz() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(6, this->_internal_dirz(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:game.SC_THROW_GRENADE)
-  return target;
-}
-
-size_t SC_THROW_GRENADE::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.SC_THROW_GRENADE)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // uint32 posX = 1;
-  if (this->_internal_posx() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posx());
-  }
-
-  // uint32 posY = 2;
-  if (this->_internal_posy() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posy());
-  }
-
-  // uint32 posZ = 3;
-  if (this->_internal_posz() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_posz());
-  }
-
-  // fixed32 dirX = 4;
-  if (this->_internal_dirx() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // fixed32 dirY = 5;
-  if (this->_internal_diry() != 0) {
-    total_size += 1 + 4;
-  }
-
-  // fixed32 dirZ = 6;
-  if (this->_internal_dirz() != 0) {
-    total_size += 1 + 4;
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SC_THROW_GRENADE::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    SC_THROW_GRENADE::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SC_THROW_GRENADE::GetClassData() const { return &_class_data_; }
-
-
-void SC_THROW_GRENADE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<SC_THROW_GRENADE*>(&to_msg);
-  auto& from = static_cast<const SC_THROW_GRENADE&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.SC_THROW_GRENADE)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_posx() != 0) {
-    _this->_internal_set_posx(from._internal_posx());
-  }
-  if (from._internal_posy() != 0) {
-    _this->_internal_set_posy(from._internal_posy());
-  }
-  if (from._internal_posz() != 0) {
-    _this->_internal_set_posz(from._internal_posz());
-  }
-  if (from._internal_dirx() != 0) {
-    _this->_internal_set_dirx(from._internal_dirx());
-  }
-  if (from._internal_diry() != 0) {
-    _this->_internal_set_diry(from._internal_diry());
-  }
-  if (from._internal_dirz() != 0) {
-    _this->_internal_set_dirz(from._internal_dirz());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void SC_THROW_GRENADE::CopyFrom(const SC_THROW_GRENADE& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.SC_THROW_GRENADE)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool SC_THROW_GRENADE::IsInitialized() const {
-  return true;
-}
-
-void SC_THROW_GRENADE::InternalSwap(SC_THROW_GRENADE* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SC_THROW_GRENADE, _impl_.dirz_)
-      + sizeof(SC_THROW_GRENADE::_impl_.dirz_)
-      - PROTOBUF_FIELD_OFFSET(SC_THROW_GRENADE, _impl_.posx_)>(
-          reinterpret_cast<char*>(&_impl_.posx_),
-          reinterpret_cast<char*>(&other->_impl_.posx_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata SC_THROW_GRENADE::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[28]);
+      file_level_metadata_Protocol_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -8058,10 +7058,6 @@ Arena::CreateMaybeMessage< ::game::CS_ATTACK >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::game::CS_CHANGE_WEAPON*
 Arena::CreateMaybeMessage< ::game::CS_CHANGE_WEAPON >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::CS_CHANGE_WEAPON >(arena);
-}
-template<> PROTOBUF_NOINLINE ::game::CS_GRENADE_EXPLOSITION_POS*
-Arena::CreateMaybeMessage< ::game::CS_GRENADE_EXPLOSITION_POS >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::CS_GRENADE_EXPLOSITION_POS >(arena);
 }
 template<> PROTOBUF_NOINLINE ::game::CS_ITEM_PICKED*
 Arena::CreateMaybeMessage< ::game::CS_ITEM_PICKED >(Arena* arena) {
@@ -8090,10 +7086,6 @@ Arena::CreateMaybeMessage< ::game::CS_SEND_NICKNAME >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::game::CS_SHOT_HIT*
 Arena::CreateMaybeMessage< ::game::CS_SHOT_HIT >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::CS_SHOT_HIT >(arena);
-}
-template<> PROTOBUF_NOINLINE ::game::CS_THROW_GRENADE*
-Arena::CreateMaybeMessage< ::game::CS_THROW_GRENADE >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::CS_THROW_GRENADE >(arena);
 }
 template<> PROTOBUF_NOINLINE ::game::KDAInfo*
 Arena::CreateMaybeMessage< ::game::KDAInfo >(Arena* arena) {
@@ -8127,10 +7119,6 @@ template<> PROTOBUF_NOINLINE ::game::SC_CREATE_OTHER_CHARACTER*
 Arena::CreateMaybeMessage< ::game::SC_CREATE_OTHER_CHARACTER >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::SC_CREATE_OTHER_CHARACTER >(arena);
 }
-template<> PROTOBUF_NOINLINE ::game::SC_GRENADE_EXPLOSITION_POS*
-Arena::CreateMaybeMessage< ::game::SC_GRENADE_EXPLOSITION_POS >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::SC_GRENADE_EXPLOSITION_POS >(arena);
-}
 template<> PROTOBUF_NOINLINE ::game::SC_ITEM_PICK_FAIL*
 Arena::CreateMaybeMessage< ::game::SC_ITEM_PICK_FAIL >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::SC_ITEM_PICK_FAIL >(arena);
@@ -8162,10 +7150,6 @@ Arena::CreateMaybeMessage< ::game::SC_SEND_MESSAGE >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::game::SC_SHOT_HIT*
 Arena::CreateMaybeMessage< ::game::SC_SHOT_HIT >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::SC_SHOT_HIT >(arena);
-}
-template<> PROTOBUF_NOINLINE ::game::SC_THROW_GRENADE*
-Arena::CreateMaybeMessage< ::game::SC_THROW_GRENADE >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::SC_THROW_GRENADE >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

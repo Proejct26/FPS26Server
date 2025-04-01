@@ -30,12 +30,12 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     case game::PacketID::CS_Attack:
     {
         bool bAttack;
-        UINT32 normalX;
-        UINT32 normalY;
-        UINT32 normalZ;
-        UINT32 posX;
-        UINT32 posY;
-        UINT32 posZ;
+        float normalX;
+        float normalY;
+        float normalZ;
+        float posX;
+        float posY;
+        float posZ;
 
         game::CS_ATTACK pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
@@ -61,22 +61,6 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         weapon = pkt.weapon();
 
         return CS_CHANGE_WEAPON(pSession, weapon);
-    }
-    break;
-    case game::PacketID::CS_GrenadeExplositionPos:
-    {
-        UINT32 posX;
-        UINT32 posY;
-        UINT32 posZ;
-
-        game::CS_GRENADE_EXPLOSITION_POS pkt;
-        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
-
-        posX = pkt.posx();
-        posY = pkt.posy();
-        posZ = pkt.posz();
-
-        return CS_GRENADE_EXPLOSITION_POS(pSession, posX, posY, posZ);
     }
     break;
     case game::PacketID::CS_ItemPicked:
@@ -117,9 +101,9 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     break;
     case game::PacketID::CS_PosInterpolation:
     {
-        UINT32 posX;
-        UINT32 posY;
-        UINT32 posZ;
+        float posX;
+        float posY;
+        float posZ;
 
         game::CS_POS_INTERPOLATION pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
@@ -143,6 +127,20 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         weapon = pkt.weapon();
 
         return CS_REQUEST_RESTART(pSession, playerId, weapon);
+    }
+    break;
+    case game::PacketID::CS_SendMessage:
+    {
+        UINT32 playerId;
+        std::string message;
+
+        game::CS_SEND_MESSAGE pkt;
+        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
+
+        playerId = pkt.playerid();
+        message = pkt.message();
+
+        return CS_SEND_MESSAGE(pSession, playerId, message);
     }
     break;
     case game::PacketID::CS_SendNickname:
@@ -169,28 +167,6 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         hp = pkt.hp();
 
         return CS_SHOT_HIT(pSession, playerId, hp);
-    }
-    break;
-    case game::PacketID::CS_ThrowGrenade:
-    {
-        UINT32 posX;
-        UINT32 posY;
-        UINT32 posZ;
-        UINT32 dirX;
-        UINT32 dirY;
-        UINT32 dirZ;
-
-        game::CS_THROW_GRENADE pkt;
-        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
-
-        posX = pkt.posx();
-        posY = pkt.posy();
-        posZ = pkt.posz();
-        dirX = pkt.dirx();
-        dirY = pkt.diry();
-        dirZ = pkt.dirz();
-
-        return CS_THROW_GRENADE(pSession, posX, posY, posZ, dirX, dirY, dirZ);
     }
     break;
     default:
@@ -233,7 +209,7 @@ void DisconnectSessionProc(CSession* pSession)
     return;
 }
 
-bool CS_ATTACK(CSession* pSession, bool bAttack, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
+bool CS_ATTACK(CSession* pSession, bool bAttack, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     // 클라이언트가 총을 쐈을 때 보내지는 패킷. 방의 모든 플레이어들에게 전송해야한다.
 
@@ -348,7 +324,7 @@ bool CS_KEY_INPUT(CSession* pSession, UINT32 keyW, UINT32 keyA, UINT32 keyS, UIN
     return true;
 }
 
-bool CS_POS_INTERPOLATION(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
+bool CS_POS_INTERPOLATION(CSession* pSession, float posX, float posY, float posZ)
 {
     // 위치 정보는 방에 있는 모든 플레이어들에게 전송되어야한다.
 

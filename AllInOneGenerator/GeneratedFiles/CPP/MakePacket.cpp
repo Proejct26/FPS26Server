@@ -7,7 +7,7 @@
 #include "MemoryPoolManager.h"
 #include "Protobuf/Protocol.pb.h"
 
-void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
@@ -38,7 +38,7 @@ void SC_ATTACK_FOR_All(CSession* pSession, UINT32 playerId, UINT32 normalX, UINT
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
@@ -69,7 +69,7 @@ void SC_ATTACK_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 normalX, U
     packetPool.Free(Packet);
 }
 
-void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 normalX, UINT32 normalY, UINT32 normalZ, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_ATTACK_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, float normalX, float normalY, float normalZ, float posX, float posY, float posZ)
 {
     game::SC_ATTACK pkt;
 
@@ -577,92 +577,6 @@ void SC_CREATE_OTHER_CHARACTER_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT
     packetPool.Free(Packet);
 }
 
-void SC_GRENADE_EXPLOSITION_POS_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
-{
-    game::SC_GRENADE_EXPLOSITION_POS pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_GrenadeExplositionPos;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    BroadcastData(pSession, Packet, Packet->GetDataSize());
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
-void SC_GRENADE_EXPLOSITION_POS_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
-{
-    game::SC_GRENADE_EXPLOSITION_POS pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_GrenadeExplositionPos;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    UnicastPacket(pSession, &header, Packet);
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
-void SC_GRENADE_EXPLOSITION_POS_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ)
-{
-    game::SC_GRENADE_EXPLOSITION_POS pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_GrenadeExplositionPos;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    for (auto& player : pRoom->m_activePlayers)
-    {
-        if (pSession == player->m_pSession)
-            continue;
-        UnicastPacket(player->m_pSession, &header, Packet);
-    }
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
 void SC_ITEM_PICK_FAIL_FOR_All(CSession* pSession, UINT32 playerId, UINT32 itemId)
 {
     game::SC_ITEM_PICK_FAIL pkt;
@@ -1096,7 +1010,7 @@ void SC_ON_ACCEPT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId)
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
@@ -1123,7 +1037,7 @@ void SC_POS_INTERPOLATION_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, 
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
@@ -1150,7 +1064,7 @@ void SC_POS_INTERPOLATION_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 pos
     packetPool.Free(Packet);
 }
 
-void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ)
+void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, float posX, float posY, float posZ)
 {
     game::SC_POS_INTERPOLATION pkt;
 
@@ -1330,101 +1244,6 @@ void SC_SHOT_HIT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, U
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
     header.byType = game::PacketID::SC_ShotHit;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    for (auto& player : pRoom->m_activePlayers)
-    {
-        if (pSession == player->m_pSession)
-            continue;
-        UnicastPacket(player->m_pSession, &header, Packet);
-    }
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
-void SC_THROW_GRENADE_FOR_All(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
-{
-    game::SC_THROW_GRENADE pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_ThrowGrenade;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    BroadcastData(pSession, Packet, Packet->GetDataSize());
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
-void SC_THROW_GRENADE_FOR_SINGLE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
-{
-    game::SC_THROW_GRENADE pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_ThrowGrenade;
-
-    int headerSize = sizeof(PACKET_HEADER);
-    CPacket* Packet = packetPool.Alloc();
-
-    char buffer[512];
-    pkt.SerializeToArray(buffer, pktSize);
-    Packet->PutData(buffer, pktSize);
-
-    UnicastPacket(pSession, &header, Packet);
-    Packet->Clear();
-    packetPool.Free(Packet);
-}
-
-void SC_THROW_GRENADE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
-{
-    game::SC_THROW_GRENADE pkt;
-
-    pkt.set_posx(posX);
-    pkt.set_posy(posY);
-    pkt.set_posz(posZ);
-    pkt.set_dirx(dirX);
-    pkt.set_diry(dirY);
-    pkt.set_dirz(dirZ);
-
-    int pktSize = pkt.ByteSizeLong();
-
-    PACKET_HEADER header;
-    header.byCode = dfNETWORK_PACKET_CODE;
-    header.bySize = pktSize;
-    header.byType = game::PacketID::SC_ThrowGrenade;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();

@@ -1,79 +1,11 @@
-﻿  Content.cpp
-  Main.cpp
+﻿  SessionManager.cpp
 G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
-  (소스 파일 'Main.cpp'을(를) 컴파일하는 중)
+  (소스 파일 'SessionManager.cpp'을(를) 컴파일하는 중)
   
-  MakePacket.cpp
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(22,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(53,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(84,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(115,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(141,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(167,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(198,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(224,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(250,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(287,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(319,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(351,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(384,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(412,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(440,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(482,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(519,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(556,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(588,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(615,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(642,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(673,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(699,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(725,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(756,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(782,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(808,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(840,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(867,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(894,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(931,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(963,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(995,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1025,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1050,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1075,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1107,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1134,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1161,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1192,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1218,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1244,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1275,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1301,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1327,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1362,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1392,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\MakePacket.cpp(1422,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  MatchSystem.cpp
-  MemoryPoolManager.cpp
-  NetIOManager.cpp
-G:\Sparta\FPS26Server\3DFPSServer\NetIOManager.cpp(40,26): warning C4267: '초기화 중': 'size_t'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Object.cpp
-G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
-  (소스 파일 'Object.cpp'을(를) 컴파일하는 중)
-  
-  ObjectManager.cpp
   PacketProc.cpp
 G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
   (소스 파일 'PacketProc.cpp'을(를) 컴파일하는 중)
   
   Player.cpp
-  Protocol.pb.cc
-  Room.cpp
-G:\Sparta\FPS26Server\3DFPSServer\Room.cpp(49,15): warning C4244: '초기화 중': 'unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  RoomManager.cpp
-  Session.cpp
-  SessionManager.cpp
-G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
-  (소스 파일 'SessionManager.cpp'을(를) 컴파일하는 중)
-  
   코드를 생성하고 있습니다...
   3DFPSServer.vcxproj -> G:\Sparta\FPS26Server\x64\Debug\3DFPSServer.exe

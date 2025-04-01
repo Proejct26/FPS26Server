@@ -52,9 +52,6 @@ extern CS_ATTACKDefaultTypeInternal _CS_ATTACK_default_instance_;
 class CS_CHANGE_WEAPON;
 struct CS_CHANGE_WEAPONDefaultTypeInternal;
 extern CS_CHANGE_WEAPONDefaultTypeInternal _CS_CHANGE_WEAPON_default_instance_;
-class CS_GRENADE_EXPLOSITION_POS;
-struct CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal;
-extern CS_GRENADE_EXPLOSITION_POSDefaultTypeInternal _CS_GRENADE_EXPLOSITION_POS_default_instance_;
 class CS_ITEM_PICKED;
 struct CS_ITEM_PICKEDDefaultTypeInternal;
 extern CS_ITEM_PICKEDDefaultTypeInternal _CS_ITEM_PICKED_default_instance_;
@@ -76,9 +73,6 @@ extern CS_SEND_NICKNAMEDefaultTypeInternal _CS_SEND_NICKNAME_default_instance_;
 class CS_SHOT_HIT;
 struct CS_SHOT_HITDefaultTypeInternal;
 extern CS_SHOT_HITDefaultTypeInternal _CS_SHOT_HIT_default_instance_;
-class CS_THROW_GRENADE;
-struct CS_THROW_GRENADEDefaultTypeInternal;
-extern CS_THROW_GRENADEDefaultTypeInternal _CS_THROW_GRENADE_default_instance_;
 class KDAInfo;
 struct KDAInfoDefaultTypeInternal;
 extern KDAInfoDefaultTypeInternal _KDAInfo_default_instance_;
@@ -103,9 +97,6 @@ extern SC_CREATE_MY_CHARACTERDefaultTypeInternal _SC_CREATE_MY_CHARACTER_default
 class SC_CREATE_OTHER_CHARACTER;
 struct SC_CREATE_OTHER_CHARACTERDefaultTypeInternal;
 extern SC_CREATE_OTHER_CHARACTERDefaultTypeInternal _SC_CREATE_OTHER_CHARACTER_default_instance_;
-class SC_GRENADE_EXPLOSITION_POS;
-struct SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal;
-extern SC_GRENADE_EXPLOSITION_POSDefaultTypeInternal _SC_GRENADE_EXPLOSITION_POS_default_instance_;
 class SC_ITEM_PICK_FAIL;
 struct SC_ITEM_PICK_FAILDefaultTypeInternal;
 extern SC_ITEM_PICK_FAILDefaultTypeInternal _SC_ITEM_PICK_FAIL_default_instance_;
@@ -130,14 +121,10 @@ extern SC_SEND_MESSAGEDefaultTypeInternal _SC_SEND_MESSAGE_default_instance_;
 class SC_SHOT_HIT;
 struct SC_SHOT_HITDefaultTypeInternal;
 extern SC_SHOT_HITDefaultTypeInternal _SC_SHOT_HIT_default_instance_;
-class SC_THROW_GRENADE;
-struct SC_THROW_GRENADEDefaultTypeInternal;
-extern SC_THROW_GRENADEDefaultTypeInternal _SC_THROW_GRENADE_default_instance_;
 }  // namespace game
 PROTOBUF_NAMESPACE_OPEN
 template<> ::game::CS_ATTACK* Arena::CreateMaybeMessage<::game::CS_ATTACK>(Arena*);
 template<> ::game::CS_CHANGE_WEAPON* Arena::CreateMaybeMessage<::game::CS_CHANGE_WEAPON>(Arena*);
-template<> ::game::CS_GRENADE_EXPLOSITION_POS* Arena::CreateMaybeMessage<::game::CS_GRENADE_EXPLOSITION_POS>(Arena*);
 template<> ::game::CS_ITEM_PICKED* Arena::CreateMaybeMessage<::game::CS_ITEM_PICKED>(Arena*);
 template<> ::game::CS_KEY_INPUT* Arena::CreateMaybeMessage<::game::CS_KEY_INPUT>(Arena*);
 template<> ::game::CS_POS_INTERPOLATION* Arena::CreateMaybeMessage<::game::CS_POS_INTERPOLATION>(Arena*);
@@ -145,7 +132,6 @@ template<> ::game::CS_REQUEST_RESTART* Arena::CreateMaybeMessage<::game::CS_REQU
 template<> ::game::CS_SEND_MESSAGE* Arena::CreateMaybeMessage<::game::CS_SEND_MESSAGE>(Arena*);
 template<> ::game::CS_SEND_NICKNAME* Arena::CreateMaybeMessage<::game::CS_SEND_NICKNAME>(Arena*);
 template<> ::game::CS_SHOT_HIT* Arena::CreateMaybeMessage<::game::CS_SHOT_HIT>(Arena*);
-template<> ::game::CS_THROW_GRENADE* Arena::CreateMaybeMessage<::game::CS_THROW_GRENADE>(Arena*);
 template<> ::game::KDAInfo* Arena::CreateMaybeMessage<::game::KDAInfo>(Arena*);
 template<> ::game::PlayerInfo* Arena::CreateMaybeMessage<::game::PlayerInfo>(Arena*);
 template<> ::game::SC_ATTACK* Arena::CreateMaybeMessage<::game::SC_ATTACK>(Arena*);
@@ -154,7 +140,6 @@ template<> ::game::SC_CHARACTER_DOWN* Arena::CreateMaybeMessage<::game::SC_CHARA
 template<> ::game::SC_CHARACTER_KILL_LOG* Arena::CreateMaybeMessage<::game::SC_CHARACTER_KILL_LOG>(Arena*);
 template<> ::game::SC_CREATE_MY_CHARACTER* Arena::CreateMaybeMessage<::game::SC_CREATE_MY_CHARACTER>(Arena*);
 template<> ::game::SC_CREATE_OTHER_CHARACTER* Arena::CreateMaybeMessage<::game::SC_CREATE_OTHER_CHARACTER>(Arena*);
-template<> ::game::SC_GRENADE_EXPLOSITION_POS* Arena::CreateMaybeMessage<::game::SC_GRENADE_EXPLOSITION_POS>(Arena*);
 template<> ::game::SC_ITEM_PICK_FAIL* Arena::CreateMaybeMessage<::game::SC_ITEM_PICK_FAIL>(Arena*);
 template<> ::game::SC_ITEM_PICK_SUCCESS* Arena::CreateMaybeMessage<::game::SC_ITEM_PICK_SUCCESS>(Arena*);
 template<> ::game::SC_ITEM_SPAWNED* Arena::CreateMaybeMessage<::game::SC_ITEM_SPAWNED>(Arena*);
@@ -163,44 +148,39 @@ template<> ::game::SC_ON_ACCEPT* Arena::CreateMaybeMessage<::game::SC_ON_ACCEPT>
 template<> ::game::SC_POS_INTERPOLATION* Arena::CreateMaybeMessage<::game::SC_POS_INTERPOLATION>(Arena*);
 template<> ::game::SC_SEND_MESSAGE* Arena::CreateMaybeMessage<::game::SC_SEND_MESSAGE>(Arena*);
 template<> ::game::SC_SHOT_HIT* Arena::CreateMaybeMessage<::game::SC_SHOT_HIT>(Arena*);
-template<> ::game::SC_THROW_GRENADE* Arena::CreateMaybeMessage<::game::SC_THROW_GRENADE>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace game {
 
 enum PacketID : int {
   CS_Attack = 0,
   CS_ChangeWeapon = 1,
-  CS_GrenadeExplositionPos = 2,
-  CS_ItemPicked = 3,
-  CS_KeyInput = 4,
-  CS_PosInterpolation = 5,
-  CS_RequestRestart = 6,
-  CS_SendMessage = 7,
-  CS_SendNickname = 8,
-  CS_ShotHit = 9,
-  CS_ThrowGrenade = 10,
-  SC_Attack = 11,
-  SC_ChangeWeapon = 12,
-  SC_CharacterDown = 13,
-  SC_CharacterKillLog = 14,
-  SC_CreateMyCharacter = 15,
-  SC_CreateOtherCharacter = 16,
-  SC_GrenadeExplositionPos = 17,
-  SC_ItemPickFail = 18,
-  SC_ItemPickSuccess = 19,
-  SC_ItemSpawned = 20,
-  SC_KeyInput = 21,
-  SC_OnAccept = 22,
-  SC_PosInterpolation = 23,
-  SC_SendMessage = 24,
-  SC_ShotHit = 25,
-  SC_ThrowGrenade = 26,
+  CS_ItemPicked = 2,
+  CS_KeyInput = 3,
+  CS_PosInterpolation = 4,
+  CS_RequestRestart = 5,
+  CS_SendMessage = 6,
+  CS_SendNickname = 7,
+  CS_ShotHit = 8,
+  SC_Attack = 9,
+  SC_ChangeWeapon = 10,
+  SC_CharacterDown = 11,
+  SC_CharacterKillLog = 12,
+  SC_CreateMyCharacter = 13,
+  SC_CreateOtherCharacter = 14,
+  SC_ItemPickFail = 15,
+  SC_ItemPickSuccess = 16,
+  SC_ItemSpawned = 17,
+  SC_KeyInput = 18,
+  SC_OnAccept = 19,
+  SC_PosInterpolation = 20,
+  SC_SendMessage = 21,
+  SC_ShotHit = 22,
   PacketID_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   PacketID_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool PacketID_IsValid(int value);
 constexpr PacketID PacketID_MIN = CS_Attack;
-constexpr PacketID PacketID_MAX = SC_ThrowGrenade;
+constexpr PacketID PacketID_MAX = SC_ShotHit;
 constexpr int PacketID_ARRAYSIZE = PacketID_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PacketID_descriptor();
@@ -357,58 +337,58 @@ class CS_ATTACK final :
   void _internal_set_battack(bool value);
   public:
 
-  // uint32 normalX = 2;
+  // float normalX = 2;
   void clear_normalx();
-  uint32_t normalx() const;
-  void set_normalx(uint32_t value);
+  float normalx() const;
+  void set_normalx(float value);
   private:
-  uint32_t _internal_normalx() const;
-  void _internal_set_normalx(uint32_t value);
+  float _internal_normalx() const;
+  void _internal_set_normalx(float value);
   public:
 
-  // uint32 normalY = 3;
+  // float normalY = 3;
   void clear_normaly();
-  uint32_t normaly() const;
-  void set_normaly(uint32_t value);
+  float normaly() const;
+  void set_normaly(float value);
   private:
-  uint32_t _internal_normaly() const;
-  void _internal_set_normaly(uint32_t value);
+  float _internal_normaly() const;
+  void _internal_set_normaly(float value);
   public:
 
-  // uint32 normalZ = 4;
+  // float normalZ = 4;
   void clear_normalz();
-  uint32_t normalz() const;
-  void set_normalz(uint32_t value);
+  float normalz() const;
+  void set_normalz(float value);
   private:
-  uint32_t _internal_normalz() const;
-  void _internal_set_normalz(uint32_t value);
+  float _internal_normalz() const;
+  void _internal_set_normalz(float value);
   public:
 
-  // uint32 posX = 5;
+  // float posX = 5;
   void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
+  float posx() const;
+  void set_posx(float value);
   private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
+  float _internal_posx() const;
+  void _internal_set_posx(float value);
   public:
 
-  // uint32 posY = 6;
+  // float posY = 6;
   void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
+  float posy() const;
+  void set_posy(float value);
   private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
+  float _internal_posy() const;
+  void _internal_set_posy(float value);
   public:
 
-  // uint32 posZ = 7;
+  // float posZ = 7;
   void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
+  float posz() const;
+  void set_posz(float value);
   private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
+  float _internal_posz() const;
+  void _internal_set_posz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:game.CS_ATTACK)
@@ -420,12 +400,12 @@ class CS_ATTACK final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     bool battack_;
-    uint32_t normalx_;
-    uint32_t normaly_;
-    uint32_t normalz_;
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
+    float normalx_;
+    float normaly_;
+    float normalz_;
+    float posx_;
+    float posy_;
+    float posz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -581,176 +561,6 @@ class CS_CHANGE_WEAPON final :
 };
 // -------------------------------------------------------------------
 
-class CS_GRENADE_EXPLOSITION_POS final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.CS_GRENADE_EXPLOSITION_POS) */ {
- public:
-  inline CS_GRENADE_EXPLOSITION_POS() : CS_GRENADE_EXPLOSITION_POS(nullptr) {}
-  ~CS_GRENADE_EXPLOSITION_POS() override;
-  explicit PROTOBUF_CONSTEXPR CS_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  CS_GRENADE_EXPLOSITION_POS(const CS_GRENADE_EXPLOSITION_POS& from);
-  CS_GRENADE_EXPLOSITION_POS(CS_GRENADE_EXPLOSITION_POS&& from) noexcept
-    : CS_GRENADE_EXPLOSITION_POS() {
-    *this = ::std::move(from);
-  }
-
-  inline CS_GRENADE_EXPLOSITION_POS& operator=(const CS_GRENADE_EXPLOSITION_POS& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline CS_GRENADE_EXPLOSITION_POS& operator=(CS_GRENADE_EXPLOSITION_POS&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const CS_GRENADE_EXPLOSITION_POS& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const CS_GRENADE_EXPLOSITION_POS* internal_default_instance() {
-    return reinterpret_cast<const CS_GRENADE_EXPLOSITION_POS*>(
-               &_CS_GRENADE_EXPLOSITION_POS_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(CS_GRENADE_EXPLOSITION_POS& a, CS_GRENADE_EXPLOSITION_POS& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(CS_GRENADE_EXPLOSITION_POS* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(CS_GRENADE_EXPLOSITION_POS* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  CS_GRENADE_EXPLOSITION_POS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<CS_GRENADE_EXPLOSITION_POS>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const CS_GRENADE_EXPLOSITION_POS& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const CS_GRENADE_EXPLOSITION_POS& from) {
-    CS_GRENADE_EXPLOSITION_POS::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(CS_GRENADE_EXPLOSITION_POS* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "game.CS_GRENADE_EXPLOSITION_POS";
-  }
-  protected:
-  explicit CS_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPosXFieldNumber = 1,
-    kPosYFieldNumber = 2,
-    kPosZFieldNumber = 3,
-  };
-  // uint32 posX = 1;
-  void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
-  private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
-  public:
-
-  // uint32 posY = 2;
-  void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
-  private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
-  public:
-
-  // uint32 posZ = 3;
-  void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
-  private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:game.CS_GRENADE_EXPLOSITION_POS)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_Protocol_2eproto;
-};
-// -------------------------------------------------------------------
-
 class CS_ITEM_PICKED final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.CS_ITEM_PICKED) */ {
  public:
@@ -799,7 +609,7 @@ class CS_ITEM_PICKED final :
                &_CS_ITEM_PICKED_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(CS_ITEM_PICKED& a, CS_ITEM_PICKED& b) {
     a.Swap(&b);
@@ -947,7 +757,7 @@ class CS_KEY_INPUT final :
                &_CS_KEY_INPUT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    3;
 
   friend void swap(CS_KEY_INPUT& a, CS_KEY_INPUT& b) {
     a.Swap(&b);
@@ -1161,7 +971,7 @@ class CS_POS_INTERPOLATION final :
                &_CS_POS_INTERPOLATION_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    4;
 
   friend void swap(CS_POS_INTERPOLATION& a, CS_POS_INTERPOLATION& b) {
     a.Swap(&b);
@@ -1238,31 +1048,31 @@ class CS_POS_INTERPOLATION final :
     kPosYFieldNumber = 2,
     kPosZFieldNumber = 3,
   };
-  // uint32 posX = 1;
+  // float posX = 1;
   void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
+  float posx() const;
+  void set_posx(float value);
   private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
+  float _internal_posx() const;
+  void _internal_set_posx(float value);
   public:
 
-  // uint32 posY = 2;
+  // float posY = 2;
   void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
+  float posy() const;
+  void set_posy(float value);
   private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
+  float _internal_posy() const;
+  void _internal_set_posy(float value);
   public:
 
-  // uint32 posZ = 3;
+  // float posZ = 3;
   void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
+  float posz() const;
+  void set_posz(float value);
   private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
+  float _internal_posz() const;
+  void _internal_set_posz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:game.CS_POS_INTERPOLATION)
@@ -1273,9 +1083,9 @@ class CS_POS_INTERPOLATION final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
+    float posx_;
+    float posy_;
+    float posz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1331,7 +1141,7 @@ class CS_REQUEST_RESTART final :
                &_CS_REQUEST_RESTART_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    5;
 
   friend void swap(CS_REQUEST_RESTART& a, CS_REQUEST_RESTART& b) {
     a.Swap(&b);
@@ -1490,7 +1300,7 @@ class CS_SEND_MESSAGE final :
                &_CS_SEND_MESSAGE_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    6;
 
   friend void swap(CS_SEND_MESSAGE& a, CS_SEND_MESSAGE& b) {
     a.Swap(&b);
@@ -1654,7 +1464,7 @@ class CS_SEND_NICKNAME final :
                &_CS_SEND_NICKNAME_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    7;
 
   friend void swap(CS_SEND_NICKNAME& a, CS_SEND_NICKNAME& b) {
     a.Swap(&b);
@@ -1807,7 +1617,7 @@ class CS_SHOT_HIT final :
                &_CS_SHOT_HIT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    8;
 
   friend void swap(CS_SHOT_HIT& a, CS_SHOT_HIT& b) {
     a.Swap(&b);
@@ -1918,209 +1728,6 @@ class CS_SHOT_HIT final :
 };
 // -------------------------------------------------------------------
 
-class CS_THROW_GRENADE final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.CS_THROW_GRENADE) */ {
- public:
-  inline CS_THROW_GRENADE() : CS_THROW_GRENADE(nullptr) {}
-  ~CS_THROW_GRENADE() override;
-  explicit PROTOBUF_CONSTEXPR CS_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  CS_THROW_GRENADE(const CS_THROW_GRENADE& from);
-  CS_THROW_GRENADE(CS_THROW_GRENADE&& from) noexcept
-    : CS_THROW_GRENADE() {
-    *this = ::std::move(from);
-  }
-
-  inline CS_THROW_GRENADE& operator=(const CS_THROW_GRENADE& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline CS_THROW_GRENADE& operator=(CS_THROW_GRENADE&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const CS_THROW_GRENADE& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const CS_THROW_GRENADE* internal_default_instance() {
-    return reinterpret_cast<const CS_THROW_GRENADE*>(
-               &_CS_THROW_GRENADE_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    10;
-
-  friend void swap(CS_THROW_GRENADE& a, CS_THROW_GRENADE& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(CS_THROW_GRENADE* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(CS_THROW_GRENADE* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  CS_THROW_GRENADE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<CS_THROW_GRENADE>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const CS_THROW_GRENADE& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const CS_THROW_GRENADE& from) {
-    CS_THROW_GRENADE::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(CS_THROW_GRENADE* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "game.CS_THROW_GRENADE";
-  }
-  protected:
-  explicit CS_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPosXFieldNumber = 1,
-    kPosYFieldNumber = 2,
-    kPosZFieldNumber = 3,
-    kDirXFieldNumber = 4,
-    kDirYFieldNumber = 5,
-    kDirZFieldNumber = 6,
-  };
-  // uint32 posX = 1;
-  void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
-  private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
-  public:
-
-  // uint32 posY = 2;
-  void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
-  private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
-  public:
-
-  // uint32 posZ = 3;
-  void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
-  private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
-  public:
-
-  // fixed32 dirX = 4;
-  void clear_dirx();
-  uint32_t dirx() const;
-  void set_dirx(uint32_t value);
-  private:
-  uint32_t _internal_dirx() const;
-  void _internal_set_dirx(uint32_t value);
-  public:
-
-  // fixed32 dirY = 5;
-  void clear_diry();
-  uint32_t diry() const;
-  void set_diry(uint32_t value);
-  private:
-  uint32_t _internal_diry() const;
-  void _internal_set_diry(uint32_t value);
-  public:
-
-  // fixed32 dirZ = 6;
-  void clear_dirz();
-  uint32_t dirz() const;
-  void set_dirz(uint32_t value);
-  private:
-  uint32_t _internal_dirz() const;
-  void _internal_set_dirz(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:game.CS_THROW_GRENADE)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
-    uint32_t dirx_;
-    uint32_t diry_;
-    uint32_t dirz_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_Protocol_2eproto;
-};
-// -------------------------------------------------------------------
-
 class KDAInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.KDAInfo) */ {
  public:
@@ -2169,7 +1776,7 @@ class KDAInfo final :
                &_KDAInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    9;
 
   friend void swap(KDAInfo& a, KDAInfo& b) {
     a.Swap(&b);
@@ -2339,7 +1946,7 @@ class PlayerInfo final :
                &_PlayerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    10;
 
   friend void swap(PlayerInfo& a, PlayerInfo& b) {
     a.Swap(&b);
@@ -2507,7 +2114,7 @@ class SC_ATTACK final :
                &_SC_ATTACK_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    11;
 
   friend void swap(SC_ATTACK& a, SC_ATTACK& b) {
     a.Swap(&b);
@@ -2597,58 +2204,58 @@ class SC_ATTACK final :
   void _internal_set_playerid(uint32_t value);
   public:
 
-  // uint32 normalX = 2;
+  // float normalX = 2;
   void clear_normalx();
-  uint32_t normalx() const;
-  void set_normalx(uint32_t value);
+  float normalx() const;
+  void set_normalx(float value);
   private:
-  uint32_t _internal_normalx() const;
-  void _internal_set_normalx(uint32_t value);
+  float _internal_normalx() const;
+  void _internal_set_normalx(float value);
   public:
 
-  // uint32 normalY = 3;
+  // float normalY = 3;
   void clear_normaly();
-  uint32_t normaly() const;
-  void set_normaly(uint32_t value);
+  float normaly() const;
+  void set_normaly(float value);
   private:
-  uint32_t _internal_normaly() const;
-  void _internal_set_normaly(uint32_t value);
+  float _internal_normaly() const;
+  void _internal_set_normaly(float value);
   public:
 
-  // uint32 normalZ = 4;
+  // float normalZ = 4;
   void clear_normalz();
-  uint32_t normalz() const;
-  void set_normalz(uint32_t value);
+  float normalz() const;
+  void set_normalz(float value);
   private:
-  uint32_t _internal_normalz() const;
-  void _internal_set_normalz(uint32_t value);
+  float _internal_normalz() const;
+  void _internal_set_normalz(float value);
   public:
 
-  // uint32 posX = 5;
+  // float posX = 5;
   void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
+  float posx() const;
+  void set_posx(float value);
   private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
+  float _internal_posx() const;
+  void _internal_set_posx(float value);
   public:
 
-  // uint32 posY = 6;
+  // float posY = 6;
   void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
+  float posy() const;
+  void set_posy(float value);
   private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
+  float _internal_posy() const;
+  void _internal_set_posy(float value);
   public:
 
-  // uint32 posZ = 7;
+  // float posZ = 7;
   void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
+  float posz() const;
+  void set_posz(float value);
   private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
+  float _internal_posz() const;
+  void _internal_set_posz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:game.SC_ATTACK)
@@ -2660,12 +2267,12 @@ class SC_ATTACK final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     uint32_t playerid_;
-    uint32_t normalx_;
-    uint32_t normaly_;
-    uint32_t normalz_;
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
+    float normalx_;
+    float normaly_;
+    float normalz_;
+    float posx_;
+    float posy_;
+    float posz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2721,7 +2328,7 @@ class SC_CHANGE_WEAPON final :
                &_SC_CHANGE_WEAPON_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    12;
 
   friend void swap(SC_CHANGE_WEAPON& a, SC_CHANGE_WEAPON& b) {
     a.Swap(&b);
@@ -2880,7 +2487,7 @@ class SC_CHARACTER_DOWN final :
                &_SC_CHARACTER_DOWN_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    13;
 
   friend void swap(SC_CHARACTER_DOWN& a, SC_CHARACTER_DOWN& b) {
     a.Swap(&b);
@@ -3039,7 +2646,7 @@ class SC_CHARACTER_KILL_LOG final :
                &_SC_CHARACTER_KILL_LOG_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    14;
 
   friend void swap(SC_CHARACTER_KILL_LOG& a, SC_CHARACTER_KILL_LOG& b) {
     a.Swap(&b);
@@ -3196,7 +2803,7 @@ class SC_CREATE_MY_CHARACTER final :
                &_SC_CREATE_MY_CHARACTER_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    15;
 
   friend void swap(SC_CREATE_MY_CHARACTER& a, SC_CREATE_MY_CHARACTER& b) {
     a.Swap(&b);
@@ -3377,7 +2984,7 @@ class SC_CREATE_OTHER_CHARACTER final :
                &_SC_CREATE_OTHER_CHARACTER_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    16;
 
   friend void swap(SC_CREATE_OTHER_CHARACTER& a, SC_CREATE_OTHER_CHARACTER& b) {
     a.Swap(&b);
@@ -3568,176 +3175,6 @@ class SC_CREATE_OTHER_CHARACTER final :
 };
 // -------------------------------------------------------------------
 
-class SC_GRENADE_EXPLOSITION_POS final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.SC_GRENADE_EXPLOSITION_POS) */ {
- public:
-  inline SC_GRENADE_EXPLOSITION_POS() : SC_GRENADE_EXPLOSITION_POS(nullptr) {}
-  ~SC_GRENADE_EXPLOSITION_POS() override;
-  explicit PROTOBUF_CONSTEXPR SC_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  SC_GRENADE_EXPLOSITION_POS(const SC_GRENADE_EXPLOSITION_POS& from);
-  SC_GRENADE_EXPLOSITION_POS(SC_GRENADE_EXPLOSITION_POS&& from) noexcept
-    : SC_GRENADE_EXPLOSITION_POS() {
-    *this = ::std::move(from);
-  }
-
-  inline SC_GRENADE_EXPLOSITION_POS& operator=(const SC_GRENADE_EXPLOSITION_POS& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline SC_GRENADE_EXPLOSITION_POS& operator=(SC_GRENADE_EXPLOSITION_POS&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const SC_GRENADE_EXPLOSITION_POS& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const SC_GRENADE_EXPLOSITION_POS* internal_default_instance() {
-    return reinterpret_cast<const SC_GRENADE_EXPLOSITION_POS*>(
-               &_SC_GRENADE_EXPLOSITION_POS_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    19;
-
-  friend void swap(SC_GRENADE_EXPLOSITION_POS& a, SC_GRENADE_EXPLOSITION_POS& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(SC_GRENADE_EXPLOSITION_POS* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(SC_GRENADE_EXPLOSITION_POS* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  SC_GRENADE_EXPLOSITION_POS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SC_GRENADE_EXPLOSITION_POS>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SC_GRENADE_EXPLOSITION_POS& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SC_GRENADE_EXPLOSITION_POS& from) {
-    SC_GRENADE_EXPLOSITION_POS::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SC_GRENADE_EXPLOSITION_POS* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "game.SC_GRENADE_EXPLOSITION_POS";
-  }
-  protected:
-  explicit SC_GRENADE_EXPLOSITION_POS(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPosXFieldNumber = 1,
-    kPosYFieldNumber = 2,
-    kPosZFieldNumber = 3,
-  };
-  // uint32 posX = 1;
-  void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
-  private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
-  public:
-
-  // uint32 posY = 2;
-  void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
-  private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
-  public:
-
-  // uint32 posZ = 3;
-  void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
-  private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:game.SC_GRENADE_EXPLOSITION_POS)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_Protocol_2eproto;
-};
-// -------------------------------------------------------------------
-
 class SC_ITEM_PICK_FAIL final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.SC_ITEM_PICK_FAIL) */ {
  public:
@@ -3786,7 +3223,7 @@ class SC_ITEM_PICK_FAIL final :
                &_SC_ITEM_PICK_FAIL_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    17;
 
   friend void swap(SC_ITEM_PICK_FAIL& a, SC_ITEM_PICK_FAIL& b) {
     a.Swap(&b);
@@ -3945,7 +3382,7 @@ class SC_ITEM_PICK_SUCCESS final :
                &_SC_ITEM_PICK_SUCCESS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    18;
 
   friend void swap(SC_ITEM_PICK_SUCCESS& a, SC_ITEM_PICK_SUCCESS& b) {
     a.Swap(&b);
@@ -4104,7 +3541,7 @@ class SC_ITEM_SPAWNED final :
                &_SC_ITEM_SPAWNED_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    19;
 
   friend void swap(SC_ITEM_SPAWNED& a, SC_ITEM_SPAWNED& b) {
     a.Swap(&b);
@@ -4274,7 +3711,7 @@ class SC_KEY_INPUT final :
                &_SC_KEY_INPUT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    20;
 
   friend void swap(SC_KEY_INPUT& a, SC_KEY_INPUT& b) {
     a.Swap(&b);
@@ -4499,7 +3936,7 @@ class SC_ON_ACCEPT final :
                &_SC_ON_ACCEPT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    21;
 
   friend void swap(SC_ON_ACCEPT& a, SC_ON_ACCEPT& b) {
     a.Swap(&b);
@@ -4647,7 +4084,7 @@ class SC_POS_INTERPOLATION final :
                &_SC_POS_INTERPOLATION_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    22;
 
   friend void swap(SC_POS_INTERPOLATION& a, SC_POS_INTERPOLATION& b) {
     a.Swap(&b);
@@ -4724,31 +4161,31 @@ class SC_POS_INTERPOLATION final :
     kPosYFieldNumber = 2,
     kPosZFieldNumber = 3,
   };
-  // uint32 posX = 1;
+  // float posX = 1;
   void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
+  float posx() const;
+  void set_posx(float value);
   private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
+  float _internal_posx() const;
+  void _internal_set_posx(float value);
   public:
 
-  // uint32 posY = 2;
+  // float posY = 2;
   void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
+  float posy() const;
+  void set_posy(float value);
   private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
+  float _internal_posy() const;
+  void _internal_set_posy(float value);
   public:
 
-  // uint32 posZ = 3;
+  // float posZ = 3;
   void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
+  float posz() const;
+  void set_posz(float value);
   private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
+  float _internal_posz() const;
+  void _internal_set_posz(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:game.SC_POS_INTERPOLATION)
@@ -4759,9 +4196,9 @@ class SC_POS_INTERPOLATION final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
+    float posx_;
+    float posy_;
+    float posz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4817,7 +4254,7 @@ class SC_SEND_MESSAGE final :
                &_SC_SEND_MESSAGE_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    23;
 
   friend void swap(SC_SEND_MESSAGE& a, SC_SEND_MESSAGE& b) {
     a.Swap(&b);
@@ -4981,7 +4418,7 @@ class SC_SHOT_HIT final :
                &_SC_SHOT_HIT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    24;
 
   friend void swap(SC_SHOT_HIT& a, SC_SHOT_HIT& b) {
     a.Swap(&b);
@@ -5090,209 +4527,6 @@ class SC_SHOT_HIT final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
-// -------------------------------------------------------------------
-
-class SC_THROW_GRENADE final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:game.SC_THROW_GRENADE) */ {
- public:
-  inline SC_THROW_GRENADE() : SC_THROW_GRENADE(nullptr) {}
-  ~SC_THROW_GRENADE() override;
-  explicit PROTOBUF_CONSTEXPR SC_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  SC_THROW_GRENADE(const SC_THROW_GRENADE& from);
-  SC_THROW_GRENADE(SC_THROW_GRENADE&& from) noexcept
-    : SC_THROW_GRENADE() {
-    *this = ::std::move(from);
-  }
-
-  inline SC_THROW_GRENADE& operator=(const SC_THROW_GRENADE& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline SC_THROW_GRENADE& operator=(SC_THROW_GRENADE&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const SC_THROW_GRENADE& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const SC_THROW_GRENADE* internal_default_instance() {
-    return reinterpret_cast<const SC_THROW_GRENADE*>(
-               &_SC_THROW_GRENADE_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    28;
-
-  friend void swap(SC_THROW_GRENADE& a, SC_THROW_GRENADE& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(SC_THROW_GRENADE* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(SC_THROW_GRENADE* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  SC_THROW_GRENADE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SC_THROW_GRENADE>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SC_THROW_GRENADE& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SC_THROW_GRENADE& from) {
-    SC_THROW_GRENADE::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SC_THROW_GRENADE* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "game.SC_THROW_GRENADE";
-  }
-  protected:
-  explicit SC_THROW_GRENADE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPosXFieldNumber = 1,
-    kPosYFieldNumber = 2,
-    kPosZFieldNumber = 3,
-    kDirXFieldNumber = 4,
-    kDirYFieldNumber = 5,
-    kDirZFieldNumber = 6,
-  };
-  // uint32 posX = 1;
-  void clear_posx();
-  uint32_t posx() const;
-  void set_posx(uint32_t value);
-  private:
-  uint32_t _internal_posx() const;
-  void _internal_set_posx(uint32_t value);
-  public:
-
-  // uint32 posY = 2;
-  void clear_posy();
-  uint32_t posy() const;
-  void set_posy(uint32_t value);
-  private:
-  uint32_t _internal_posy() const;
-  void _internal_set_posy(uint32_t value);
-  public:
-
-  // uint32 posZ = 3;
-  void clear_posz();
-  uint32_t posz() const;
-  void set_posz(uint32_t value);
-  private:
-  uint32_t _internal_posz() const;
-  void _internal_set_posz(uint32_t value);
-  public:
-
-  // fixed32 dirX = 4;
-  void clear_dirx();
-  uint32_t dirx() const;
-  void set_dirx(uint32_t value);
-  private:
-  uint32_t _internal_dirx() const;
-  void _internal_set_dirx(uint32_t value);
-  public:
-
-  // fixed32 dirY = 5;
-  void clear_diry();
-  uint32_t diry() const;
-  void set_diry(uint32_t value);
-  private:
-  uint32_t _internal_diry() const;
-  void _internal_set_diry(uint32_t value);
-  public:
-
-  // fixed32 dirZ = 6;
-  void clear_dirz();
-  uint32_t dirz() const;
-  void set_dirz(uint32_t value);
-  private:
-  uint32_t _internal_dirz() const;
-  void _internal_set_dirz(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:game.SC_THROW_GRENADE)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    uint32_t posx_;
-    uint32_t posy_;
-    uint32_t posz_;
-    uint32_t dirx_;
-    uint32_t diry_;
-    uint32_t dirz_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_Protocol_2eproto;
-};
 // ===================================================================
 
 
@@ -5324,122 +4558,122 @@ inline void CS_ATTACK::set_battack(bool value) {
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.bAttack)
 }
 
-// uint32 normalX = 2;
+// float normalX = 2;
 inline void CS_ATTACK::clear_normalx() {
-  _impl_.normalx_ = 0u;
+  _impl_.normalx_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_normalx() const {
+inline float CS_ATTACK::_internal_normalx() const {
   return _impl_.normalx_;
 }
-inline uint32_t CS_ATTACK::normalx() const {
+inline float CS_ATTACK::normalx() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.normalX)
   return _internal_normalx();
 }
-inline void CS_ATTACK::_internal_set_normalx(uint32_t value) {
+inline void CS_ATTACK::_internal_set_normalx(float value) {
   
   _impl_.normalx_ = value;
 }
-inline void CS_ATTACK::set_normalx(uint32_t value) {
+inline void CS_ATTACK::set_normalx(float value) {
   _internal_set_normalx(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.normalX)
 }
 
-// uint32 normalY = 3;
+// float normalY = 3;
 inline void CS_ATTACK::clear_normaly() {
-  _impl_.normaly_ = 0u;
+  _impl_.normaly_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_normaly() const {
+inline float CS_ATTACK::_internal_normaly() const {
   return _impl_.normaly_;
 }
-inline uint32_t CS_ATTACK::normaly() const {
+inline float CS_ATTACK::normaly() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.normalY)
   return _internal_normaly();
 }
-inline void CS_ATTACK::_internal_set_normaly(uint32_t value) {
+inline void CS_ATTACK::_internal_set_normaly(float value) {
   
   _impl_.normaly_ = value;
 }
-inline void CS_ATTACK::set_normaly(uint32_t value) {
+inline void CS_ATTACK::set_normaly(float value) {
   _internal_set_normaly(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.normalY)
 }
 
-// uint32 normalZ = 4;
+// float normalZ = 4;
 inline void CS_ATTACK::clear_normalz() {
-  _impl_.normalz_ = 0u;
+  _impl_.normalz_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_normalz() const {
+inline float CS_ATTACK::_internal_normalz() const {
   return _impl_.normalz_;
 }
-inline uint32_t CS_ATTACK::normalz() const {
+inline float CS_ATTACK::normalz() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.normalZ)
   return _internal_normalz();
 }
-inline void CS_ATTACK::_internal_set_normalz(uint32_t value) {
+inline void CS_ATTACK::_internal_set_normalz(float value) {
   
   _impl_.normalz_ = value;
 }
-inline void CS_ATTACK::set_normalz(uint32_t value) {
+inline void CS_ATTACK::set_normalz(float value) {
   _internal_set_normalz(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.normalZ)
 }
 
-// uint32 posX = 5;
+// float posX = 5;
 inline void CS_ATTACK::clear_posx() {
-  _impl_.posx_ = 0u;
+  _impl_.posx_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_posx() const {
+inline float CS_ATTACK::_internal_posx() const {
   return _impl_.posx_;
 }
-inline uint32_t CS_ATTACK::posx() const {
+inline float CS_ATTACK::posx() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.posX)
   return _internal_posx();
 }
-inline void CS_ATTACK::_internal_set_posx(uint32_t value) {
+inline void CS_ATTACK::_internal_set_posx(float value) {
   
   _impl_.posx_ = value;
 }
-inline void CS_ATTACK::set_posx(uint32_t value) {
+inline void CS_ATTACK::set_posx(float value) {
   _internal_set_posx(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.posX)
 }
 
-// uint32 posY = 6;
+// float posY = 6;
 inline void CS_ATTACK::clear_posy() {
-  _impl_.posy_ = 0u;
+  _impl_.posy_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_posy() const {
+inline float CS_ATTACK::_internal_posy() const {
   return _impl_.posy_;
 }
-inline uint32_t CS_ATTACK::posy() const {
+inline float CS_ATTACK::posy() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.posY)
   return _internal_posy();
 }
-inline void CS_ATTACK::_internal_set_posy(uint32_t value) {
+inline void CS_ATTACK::_internal_set_posy(float value) {
   
   _impl_.posy_ = value;
 }
-inline void CS_ATTACK::set_posy(uint32_t value) {
+inline void CS_ATTACK::set_posy(float value) {
   _internal_set_posy(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.posY)
 }
 
-// uint32 posZ = 7;
+// float posZ = 7;
 inline void CS_ATTACK::clear_posz() {
-  _impl_.posz_ = 0u;
+  _impl_.posz_ = 0;
 }
-inline uint32_t CS_ATTACK::_internal_posz() const {
+inline float CS_ATTACK::_internal_posz() const {
   return _impl_.posz_;
 }
-inline uint32_t CS_ATTACK::posz() const {
+inline float CS_ATTACK::posz() const {
   // @@protoc_insertion_point(field_get:game.CS_ATTACK.posZ)
   return _internal_posz();
 }
-inline void CS_ATTACK::_internal_set_posz(uint32_t value) {
+inline void CS_ATTACK::_internal_set_posz(float value) {
   
   _impl_.posz_ = value;
 }
-inline void CS_ATTACK::set_posz(uint32_t value) {
+inline void CS_ATTACK::set_posz(float value) {
   _internal_set_posz(value);
   // @@protoc_insertion_point(field_set:game.CS_ATTACK.posZ)
 }
@@ -5466,70 +4700,6 @@ inline void CS_CHANGE_WEAPON::_internal_set_weapon(uint32_t value) {
 inline void CS_CHANGE_WEAPON::set_weapon(uint32_t value) {
   _internal_set_weapon(value);
   // @@protoc_insertion_point(field_set:game.CS_CHANGE_WEAPON.weapon)
-}
-
-// -------------------------------------------------------------------
-
-// CS_GRENADE_EXPLOSITION_POS
-
-// uint32 posX = 1;
-inline void CS_GRENADE_EXPLOSITION_POS::clear_posx() {
-  _impl_.posx_ = 0u;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::_internal_posx() const {
-  return _impl_.posx_;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::posx() const {
-  // @@protoc_insertion_point(field_get:game.CS_GRENADE_EXPLOSITION_POS.posX)
-  return _internal_posx();
-}
-inline void CS_GRENADE_EXPLOSITION_POS::_internal_set_posx(uint32_t value) {
-  
-  _impl_.posx_ = value;
-}
-inline void CS_GRENADE_EXPLOSITION_POS::set_posx(uint32_t value) {
-  _internal_set_posx(value);
-  // @@protoc_insertion_point(field_set:game.CS_GRENADE_EXPLOSITION_POS.posX)
-}
-
-// uint32 posY = 2;
-inline void CS_GRENADE_EXPLOSITION_POS::clear_posy() {
-  _impl_.posy_ = 0u;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::_internal_posy() const {
-  return _impl_.posy_;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::posy() const {
-  // @@protoc_insertion_point(field_get:game.CS_GRENADE_EXPLOSITION_POS.posY)
-  return _internal_posy();
-}
-inline void CS_GRENADE_EXPLOSITION_POS::_internal_set_posy(uint32_t value) {
-  
-  _impl_.posy_ = value;
-}
-inline void CS_GRENADE_EXPLOSITION_POS::set_posy(uint32_t value) {
-  _internal_set_posy(value);
-  // @@protoc_insertion_point(field_set:game.CS_GRENADE_EXPLOSITION_POS.posY)
-}
-
-// uint32 posZ = 3;
-inline void CS_GRENADE_EXPLOSITION_POS::clear_posz() {
-  _impl_.posz_ = 0u;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::_internal_posz() const {
-  return _impl_.posz_;
-}
-inline uint32_t CS_GRENADE_EXPLOSITION_POS::posz() const {
-  // @@protoc_insertion_point(field_get:game.CS_GRENADE_EXPLOSITION_POS.posZ)
-  return _internal_posz();
-}
-inline void CS_GRENADE_EXPLOSITION_POS::_internal_set_posz(uint32_t value) {
-  
-  _impl_.posz_ = value;
-}
-inline void CS_GRENADE_EXPLOSITION_POS::set_posz(uint32_t value) {
-  _internal_set_posz(value);
-  // @@protoc_insertion_point(field_set:game.CS_GRENADE_EXPLOSITION_POS.posZ)
 }
 
 // -------------------------------------------------------------------
@@ -5704,62 +4874,62 @@ inline void CS_KEY_INPUT::set_jump(uint32_t value) {
 
 // CS_POS_INTERPOLATION
 
-// uint32 posX = 1;
+// float posX = 1;
 inline void CS_POS_INTERPOLATION::clear_posx() {
-  _impl_.posx_ = 0u;
+  _impl_.posx_ = 0;
 }
-inline uint32_t CS_POS_INTERPOLATION::_internal_posx() const {
+inline float CS_POS_INTERPOLATION::_internal_posx() const {
   return _impl_.posx_;
 }
-inline uint32_t CS_POS_INTERPOLATION::posx() const {
+inline float CS_POS_INTERPOLATION::posx() const {
   // @@protoc_insertion_point(field_get:game.CS_POS_INTERPOLATION.posX)
   return _internal_posx();
 }
-inline void CS_POS_INTERPOLATION::_internal_set_posx(uint32_t value) {
+inline void CS_POS_INTERPOLATION::_internal_set_posx(float value) {
   
   _impl_.posx_ = value;
 }
-inline void CS_POS_INTERPOLATION::set_posx(uint32_t value) {
+inline void CS_POS_INTERPOLATION::set_posx(float value) {
   _internal_set_posx(value);
   // @@protoc_insertion_point(field_set:game.CS_POS_INTERPOLATION.posX)
 }
 
-// uint32 posY = 2;
+// float posY = 2;
 inline void CS_POS_INTERPOLATION::clear_posy() {
-  _impl_.posy_ = 0u;
+  _impl_.posy_ = 0;
 }
-inline uint32_t CS_POS_INTERPOLATION::_internal_posy() const {
+inline float CS_POS_INTERPOLATION::_internal_posy() const {
   return _impl_.posy_;
 }
-inline uint32_t CS_POS_INTERPOLATION::posy() const {
+inline float CS_POS_INTERPOLATION::posy() const {
   // @@protoc_insertion_point(field_get:game.CS_POS_INTERPOLATION.posY)
   return _internal_posy();
 }
-inline void CS_POS_INTERPOLATION::_internal_set_posy(uint32_t value) {
+inline void CS_POS_INTERPOLATION::_internal_set_posy(float value) {
   
   _impl_.posy_ = value;
 }
-inline void CS_POS_INTERPOLATION::set_posy(uint32_t value) {
+inline void CS_POS_INTERPOLATION::set_posy(float value) {
   _internal_set_posy(value);
   // @@protoc_insertion_point(field_set:game.CS_POS_INTERPOLATION.posY)
 }
 
-// uint32 posZ = 3;
+// float posZ = 3;
 inline void CS_POS_INTERPOLATION::clear_posz() {
-  _impl_.posz_ = 0u;
+  _impl_.posz_ = 0;
 }
-inline uint32_t CS_POS_INTERPOLATION::_internal_posz() const {
+inline float CS_POS_INTERPOLATION::_internal_posz() const {
   return _impl_.posz_;
 }
-inline uint32_t CS_POS_INTERPOLATION::posz() const {
+inline float CS_POS_INTERPOLATION::posz() const {
   // @@protoc_insertion_point(field_get:game.CS_POS_INTERPOLATION.posZ)
   return _internal_posz();
 }
-inline void CS_POS_INTERPOLATION::_internal_set_posz(uint32_t value) {
+inline void CS_POS_INTERPOLATION::_internal_set_posz(float value) {
   
   _impl_.posz_ = value;
 }
-inline void CS_POS_INTERPOLATION::set_posz(uint32_t value) {
+inline void CS_POS_INTERPOLATION::set_posz(float value) {
   _internal_set_posz(value);
   // @@protoc_insertion_point(field_set:game.CS_POS_INTERPOLATION.posZ)
 }
@@ -5982,130 +5152,6 @@ inline void CS_SHOT_HIT::set_hp(uint32_t value) {
 
 // -------------------------------------------------------------------
 
-// CS_THROW_GRENADE
-
-// uint32 posX = 1;
-inline void CS_THROW_GRENADE::clear_posx() {
-  _impl_.posx_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_posx() const {
-  return _impl_.posx_;
-}
-inline uint32_t CS_THROW_GRENADE::posx() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.posX)
-  return _internal_posx();
-}
-inline void CS_THROW_GRENADE::_internal_set_posx(uint32_t value) {
-  
-  _impl_.posx_ = value;
-}
-inline void CS_THROW_GRENADE::set_posx(uint32_t value) {
-  _internal_set_posx(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.posX)
-}
-
-// uint32 posY = 2;
-inline void CS_THROW_GRENADE::clear_posy() {
-  _impl_.posy_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_posy() const {
-  return _impl_.posy_;
-}
-inline uint32_t CS_THROW_GRENADE::posy() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.posY)
-  return _internal_posy();
-}
-inline void CS_THROW_GRENADE::_internal_set_posy(uint32_t value) {
-  
-  _impl_.posy_ = value;
-}
-inline void CS_THROW_GRENADE::set_posy(uint32_t value) {
-  _internal_set_posy(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.posY)
-}
-
-// uint32 posZ = 3;
-inline void CS_THROW_GRENADE::clear_posz() {
-  _impl_.posz_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_posz() const {
-  return _impl_.posz_;
-}
-inline uint32_t CS_THROW_GRENADE::posz() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.posZ)
-  return _internal_posz();
-}
-inline void CS_THROW_GRENADE::_internal_set_posz(uint32_t value) {
-  
-  _impl_.posz_ = value;
-}
-inline void CS_THROW_GRENADE::set_posz(uint32_t value) {
-  _internal_set_posz(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.posZ)
-}
-
-// fixed32 dirX = 4;
-inline void CS_THROW_GRENADE::clear_dirx() {
-  _impl_.dirx_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_dirx() const {
-  return _impl_.dirx_;
-}
-inline uint32_t CS_THROW_GRENADE::dirx() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.dirX)
-  return _internal_dirx();
-}
-inline void CS_THROW_GRENADE::_internal_set_dirx(uint32_t value) {
-  
-  _impl_.dirx_ = value;
-}
-inline void CS_THROW_GRENADE::set_dirx(uint32_t value) {
-  _internal_set_dirx(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.dirX)
-}
-
-// fixed32 dirY = 5;
-inline void CS_THROW_GRENADE::clear_diry() {
-  _impl_.diry_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_diry() const {
-  return _impl_.diry_;
-}
-inline uint32_t CS_THROW_GRENADE::diry() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.dirY)
-  return _internal_diry();
-}
-inline void CS_THROW_GRENADE::_internal_set_diry(uint32_t value) {
-  
-  _impl_.diry_ = value;
-}
-inline void CS_THROW_GRENADE::set_diry(uint32_t value) {
-  _internal_set_diry(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.dirY)
-}
-
-// fixed32 dirZ = 6;
-inline void CS_THROW_GRENADE::clear_dirz() {
-  _impl_.dirz_ = 0u;
-}
-inline uint32_t CS_THROW_GRENADE::_internal_dirz() const {
-  return _impl_.dirz_;
-}
-inline uint32_t CS_THROW_GRENADE::dirz() const {
-  // @@protoc_insertion_point(field_get:game.CS_THROW_GRENADE.dirZ)
-  return _internal_dirz();
-}
-inline void CS_THROW_GRENADE::_internal_set_dirz(uint32_t value) {
-  
-  _impl_.dirz_ = value;
-}
-inline void CS_THROW_GRENADE::set_dirz(uint32_t value) {
-  _internal_set_dirz(value);
-  // @@protoc_insertion_point(field_set:game.CS_THROW_GRENADE.dirZ)
-}
-
-// -------------------------------------------------------------------
-
 // KDAInfo
 
 // uint32 kill = 1;
@@ -6306,122 +5352,122 @@ inline void SC_ATTACK::set_playerid(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.playerId)
 }
 
-// uint32 normalX = 2;
+// float normalX = 2;
 inline void SC_ATTACK::clear_normalx() {
-  _impl_.normalx_ = 0u;
+  _impl_.normalx_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_normalx() const {
+inline float SC_ATTACK::_internal_normalx() const {
   return _impl_.normalx_;
 }
-inline uint32_t SC_ATTACK::normalx() const {
+inline float SC_ATTACK::normalx() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.normalX)
   return _internal_normalx();
 }
-inline void SC_ATTACK::_internal_set_normalx(uint32_t value) {
+inline void SC_ATTACK::_internal_set_normalx(float value) {
   
   _impl_.normalx_ = value;
 }
-inline void SC_ATTACK::set_normalx(uint32_t value) {
+inline void SC_ATTACK::set_normalx(float value) {
   _internal_set_normalx(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalX)
 }
 
-// uint32 normalY = 3;
+// float normalY = 3;
 inline void SC_ATTACK::clear_normaly() {
-  _impl_.normaly_ = 0u;
+  _impl_.normaly_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_normaly() const {
+inline float SC_ATTACK::_internal_normaly() const {
   return _impl_.normaly_;
 }
-inline uint32_t SC_ATTACK::normaly() const {
+inline float SC_ATTACK::normaly() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.normalY)
   return _internal_normaly();
 }
-inline void SC_ATTACK::_internal_set_normaly(uint32_t value) {
+inline void SC_ATTACK::_internal_set_normaly(float value) {
   
   _impl_.normaly_ = value;
 }
-inline void SC_ATTACK::set_normaly(uint32_t value) {
+inline void SC_ATTACK::set_normaly(float value) {
   _internal_set_normaly(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalY)
 }
 
-// uint32 normalZ = 4;
+// float normalZ = 4;
 inline void SC_ATTACK::clear_normalz() {
-  _impl_.normalz_ = 0u;
+  _impl_.normalz_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_normalz() const {
+inline float SC_ATTACK::_internal_normalz() const {
   return _impl_.normalz_;
 }
-inline uint32_t SC_ATTACK::normalz() const {
+inline float SC_ATTACK::normalz() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.normalZ)
   return _internal_normalz();
 }
-inline void SC_ATTACK::_internal_set_normalz(uint32_t value) {
+inline void SC_ATTACK::_internal_set_normalz(float value) {
   
   _impl_.normalz_ = value;
 }
-inline void SC_ATTACK::set_normalz(uint32_t value) {
+inline void SC_ATTACK::set_normalz(float value) {
   _internal_set_normalz(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.normalZ)
 }
 
-// uint32 posX = 5;
+// float posX = 5;
 inline void SC_ATTACK::clear_posx() {
-  _impl_.posx_ = 0u;
+  _impl_.posx_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_posx() const {
+inline float SC_ATTACK::_internal_posx() const {
   return _impl_.posx_;
 }
-inline uint32_t SC_ATTACK::posx() const {
+inline float SC_ATTACK::posx() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.posX)
   return _internal_posx();
 }
-inline void SC_ATTACK::_internal_set_posx(uint32_t value) {
+inline void SC_ATTACK::_internal_set_posx(float value) {
   
   _impl_.posx_ = value;
 }
-inline void SC_ATTACK::set_posx(uint32_t value) {
+inline void SC_ATTACK::set_posx(float value) {
   _internal_set_posx(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.posX)
 }
 
-// uint32 posY = 6;
+// float posY = 6;
 inline void SC_ATTACK::clear_posy() {
-  _impl_.posy_ = 0u;
+  _impl_.posy_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_posy() const {
+inline float SC_ATTACK::_internal_posy() const {
   return _impl_.posy_;
 }
-inline uint32_t SC_ATTACK::posy() const {
+inline float SC_ATTACK::posy() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.posY)
   return _internal_posy();
 }
-inline void SC_ATTACK::_internal_set_posy(uint32_t value) {
+inline void SC_ATTACK::_internal_set_posy(float value) {
   
   _impl_.posy_ = value;
 }
-inline void SC_ATTACK::set_posy(uint32_t value) {
+inline void SC_ATTACK::set_posy(float value) {
   _internal_set_posy(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.posY)
 }
 
-// uint32 posZ = 7;
+// float posZ = 7;
 inline void SC_ATTACK::clear_posz() {
-  _impl_.posz_ = 0u;
+  _impl_.posz_ = 0;
 }
-inline uint32_t SC_ATTACK::_internal_posz() const {
+inline float SC_ATTACK::_internal_posz() const {
   return _impl_.posz_;
 }
-inline uint32_t SC_ATTACK::posz() const {
+inline float SC_ATTACK::posz() const {
   // @@protoc_insertion_point(field_get:game.SC_ATTACK.posZ)
   return _internal_posz();
 }
-inline void SC_ATTACK::_internal_set_posz(uint32_t value) {
+inline void SC_ATTACK::_internal_set_posz(float value) {
   
   _impl_.posz_ = value;
 }
-inline void SC_ATTACK::set_posz(uint32_t value) {
+inline void SC_ATTACK::set_posz(float value) {
   _internal_set_posz(value);
   // @@protoc_insertion_point(field_set:game.SC_ATTACK.posZ)
 }
@@ -6908,70 +5954,6 @@ inline void SC_CREATE_OTHER_CHARACTER::set_teamid(uint32_t value) {
 
 // -------------------------------------------------------------------
 
-// SC_GRENADE_EXPLOSITION_POS
-
-// uint32 posX = 1;
-inline void SC_GRENADE_EXPLOSITION_POS::clear_posx() {
-  _impl_.posx_ = 0u;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::_internal_posx() const {
-  return _impl_.posx_;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::posx() const {
-  // @@protoc_insertion_point(field_get:game.SC_GRENADE_EXPLOSITION_POS.posX)
-  return _internal_posx();
-}
-inline void SC_GRENADE_EXPLOSITION_POS::_internal_set_posx(uint32_t value) {
-  
-  _impl_.posx_ = value;
-}
-inline void SC_GRENADE_EXPLOSITION_POS::set_posx(uint32_t value) {
-  _internal_set_posx(value);
-  // @@protoc_insertion_point(field_set:game.SC_GRENADE_EXPLOSITION_POS.posX)
-}
-
-// uint32 posY = 2;
-inline void SC_GRENADE_EXPLOSITION_POS::clear_posy() {
-  _impl_.posy_ = 0u;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::_internal_posy() const {
-  return _impl_.posy_;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::posy() const {
-  // @@protoc_insertion_point(field_get:game.SC_GRENADE_EXPLOSITION_POS.posY)
-  return _internal_posy();
-}
-inline void SC_GRENADE_EXPLOSITION_POS::_internal_set_posy(uint32_t value) {
-  
-  _impl_.posy_ = value;
-}
-inline void SC_GRENADE_EXPLOSITION_POS::set_posy(uint32_t value) {
-  _internal_set_posy(value);
-  // @@protoc_insertion_point(field_set:game.SC_GRENADE_EXPLOSITION_POS.posY)
-}
-
-// uint32 posZ = 3;
-inline void SC_GRENADE_EXPLOSITION_POS::clear_posz() {
-  _impl_.posz_ = 0u;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::_internal_posz() const {
-  return _impl_.posz_;
-}
-inline uint32_t SC_GRENADE_EXPLOSITION_POS::posz() const {
-  // @@protoc_insertion_point(field_get:game.SC_GRENADE_EXPLOSITION_POS.posZ)
-  return _internal_posz();
-}
-inline void SC_GRENADE_EXPLOSITION_POS::_internal_set_posz(uint32_t value) {
-  
-  _impl_.posz_ = value;
-}
-inline void SC_GRENADE_EXPLOSITION_POS::set_posz(uint32_t value) {
-  _internal_set_posz(value);
-  // @@protoc_insertion_point(field_set:game.SC_GRENADE_EXPLOSITION_POS.posZ)
-}
-
-// -------------------------------------------------------------------
-
 // SC_ITEM_PICK_FAIL
 
 // uint32 playerId = 1;
@@ -7314,62 +6296,62 @@ inline void SC_ON_ACCEPT::set_playerid(uint32_t value) {
 
 // SC_POS_INTERPOLATION
 
-// uint32 posX = 1;
+// float posX = 1;
 inline void SC_POS_INTERPOLATION::clear_posx() {
-  _impl_.posx_ = 0u;
+  _impl_.posx_ = 0;
 }
-inline uint32_t SC_POS_INTERPOLATION::_internal_posx() const {
+inline float SC_POS_INTERPOLATION::_internal_posx() const {
   return _impl_.posx_;
 }
-inline uint32_t SC_POS_INTERPOLATION::posx() const {
+inline float SC_POS_INTERPOLATION::posx() const {
   // @@protoc_insertion_point(field_get:game.SC_POS_INTERPOLATION.posX)
   return _internal_posx();
 }
-inline void SC_POS_INTERPOLATION::_internal_set_posx(uint32_t value) {
+inline void SC_POS_INTERPOLATION::_internal_set_posx(float value) {
   
   _impl_.posx_ = value;
 }
-inline void SC_POS_INTERPOLATION::set_posx(uint32_t value) {
+inline void SC_POS_INTERPOLATION::set_posx(float value) {
   _internal_set_posx(value);
   // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.posX)
 }
 
-// uint32 posY = 2;
+// float posY = 2;
 inline void SC_POS_INTERPOLATION::clear_posy() {
-  _impl_.posy_ = 0u;
+  _impl_.posy_ = 0;
 }
-inline uint32_t SC_POS_INTERPOLATION::_internal_posy() const {
+inline float SC_POS_INTERPOLATION::_internal_posy() const {
   return _impl_.posy_;
 }
-inline uint32_t SC_POS_INTERPOLATION::posy() const {
+inline float SC_POS_INTERPOLATION::posy() const {
   // @@protoc_insertion_point(field_get:game.SC_POS_INTERPOLATION.posY)
   return _internal_posy();
 }
-inline void SC_POS_INTERPOLATION::_internal_set_posy(uint32_t value) {
+inline void SC_POS_INTERPOLATION::_internal_set_posy(float value) {
   
   _impl_.posy_ = value;
 }
-inline void SC_POS_INTERPOLATION::set_posy(uint32_t value) {
+inline void SC_POS_INTERPOLATION::set_posy(float value) {
   _internal_set_posy(value);
   // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.posY)
 }
 
-// uint32 posZ = 3;
+// float posZ = 3;
 inline void SC_POS_INTERPOLATION::clear_posz() {
-  _impl_.posz_ = 0u;
+  _impl_.posz_ = 0;
 }
-inline uint32_t SC_POS_INTERPOLATION::_internal_posz() const {
+inline float SC_POS_INTERPOLATION::_internal_posz() const {
   return _impl_.posz_;
 }
-inline uint32_t SC_POS_INTERPOLATION::posz() const {
+inline float SC_POS_INTERPOLATION::posz() const {
   // @@protoc_insertion_point(field_get:game.SC_POS_INTERPOLATION.posZ)
   return _internal_posz();
 }
-inline void SC_POS_INTERPOLATION::_internal_set_posz(uint32_t value) {
+inline void SC_POS_INTERPOLATION::_internal_set_posz(float value) {
   
   _impl_.posz_ = value;
 }
-inline void SC_POS_INTERPOLATION::set_posz(uint32_t value) {
+inline void SC_POS_INTERPOLATION::set_posz(float value) {
   _internal_set_posz(value);
   // @@protoc_insertion_point(field_set:game.SC_POS_INTERPOLATION.posZ)
 }
@@ -7492,141 +6474,9 @@ inline void SC_SHOT_HIT::set_hp(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_SHOT_HIT.hp)
 }
 
-// -------------------------------------------------------------------
-
-// SC_THROW_GRENADE
-
-// uint32 posX = 1;
-inline void SC_THROW_GRENADE::clear_posx() {
-  _impl_.posx_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_posx() const {
-  return _impl_.posx_;
-}
-inline uint32_t SC_THROW_GRENADE::posx() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.posX)
-  return _internal_posx();
-}
-inline void SC_THROW_GRENADE::_internal_set_posx(uint32_t value) {
-  
-  _impl_.posx_ = value;
-}
-inline void SC_THROW_GRENADE::set_posx(uint32_t value) {
-  _internal_set_posx(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.posX)
-}
-
-// uint32 posY = 2;
-inline void SC_THROW_GRENADE::clear_posy() {
-  _impl_.posy_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_posy() const {
-  return _impl_.posy_;
-}
-inline uint32_t SC_THROW_GRENADE::posy() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.posY)
-  return _internal_posy();
-}
-inline void SC_THROW_GRENADE::_internal_set_posy(uint32_t value) {
-  
-  _impl_.posy_ = value;
-}
-inline void SC_THROW_GRENADE::set_posy(uint32_t value) {
-  _internal_set_posy(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.posY)
-}
-
-// uint32 posZ = 3;
-inline void SC_THROW_GRENADE::clear_posz() {
-  _impl_.posz_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_posz() const {
-  return _impl_.posz_;
-}
-inline uint32_t SC_THROW_GRENADE::posz() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.posZ)
-  return _internal_posz();
-}
-inline void SC_THROW_GRENADE::_internal_set_posz(uint32_t value) {
-  
-  _impl_.posz_ = value;
-}
-inline void SC_THROW_GRENADE::set_posz(uint32_t value) {
-  _internal_set_posz(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.posZ)
-}
-
-// fixed32 dirX = 4;
-inline void SC_THROW_GRENADE::clear_dirx() {
-  _impl_.dirx_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_dirx() const {
-  return _impl_.dirx_;
-}
-inline uint32_t SC_THROW_GRENADE::dirx() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.dirX)
-  return _internal_dirx();
-}
-inline void SC_THROW_GRENADE::_internal_set_dirx(uint32_t value) {
-  
-  _impl_.dirx_ = value;
-}
-inline void SC_THROW_GRENADE::set_dirx(uint32_t value) {
-  _internal_set_dirx(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.dirX)
-}
-
-// fixed32 dirY = 5;
-inline void SC_THROW_GRENADE::clear_diry() {
-  _impl_.diry_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_diry() const {
-  return _impl_.diry_;
-}
-inline uint32_t SC_THROW_GRENADE::diry() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.dirY)
-  return _internal_diry();
-}
-inline void SC_THROW_GRENADE::_internal_set_diry(uint32_t value) {
-  
-  _impl_.diry_ = value;
-}
-inline void SC_THROW_GRENADE::set_diry(uint32_t value) {
-  _internal_set_diry(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.dirY)
-}
-
-// fixed32 dirZ = 6;
-inline void SC_THROW_GRENADE::clear_dirz() {
-  _impl_.dirz_ = 0u;
-}
-inline uint32_t SC_THROW_GRENADE::_internal_dirz() const {
-  return _impl_.dirz_;
-}
-inline uint32_t SC_THROW_GRENADE::dirz() const {
-  // @@protoc_insertion_point(field_get:game.SC_THROW_GRENADE.dirZ)
-  return _internal_dirz();
-}
-inline void SC_THROW_GRENADE::_internal_set_dirz(uint32_t value) {
-  
-  _impl_.dirz_ = value;
-}
-inline void SC_THROW_GRENADE::set_dirz(uint32_t value) {
-  _internal_set_dirz(value);
-  // @@protoc_insertion_point(field_set:game.SC_THROW_GRENADE.dirZ)
-}
-
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

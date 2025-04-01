@@ -6,51 +6,42 @@ enum PacketID {
 // Client → Server
     CS_Attack = 0;
     CS_ChangeWeapon = 1;
-    CS_GrenadeExplositionPos = 2;
-    CS_ItemPicked = 3;
-    CS_KeyInput = 4;
-    CS_PosInterpolation = 5;
-    CS_RequestRestart = 6;
-    CS_SendMessage = 7;
-    CS_SendNickname = 8;
-    CS_ShotHit = 9;
-    CS_ThrowGrenade = 10;
+    CS_ItemPicked = 2;
+    CS_KeyInput = 3;
+    CS_PosInterpolation = 4;
+    CS_RequestRestart = 5;
+    CS_SendMessage = 6;
+    CS_SendNickname = 7;
+    CS_ShotHit = 8;
 
 // Server → Client
-    SC_Attack = 11;
-    SC_ChangeWeapon = 12;
-    SC_CharacterDown = 13;
-    SC_CharacterKillLog = 14;
-    SC_CreateMyCharacter = 15;
-    SC_CreateOtherCharacter = 16;
-    SC_GrenadeExplositionPos = 17;
-    SC_ItemPickFail = 18;
-    SC_ItemPickSuccess = 19;
-    SC_ItemSpawned = 20;
-    SC_KeyInput = 21;
-    SC_OnAccept = 22;
-    SC_PosInterpolation = 23;
-    SC_SendMessage = 24;
-    SC_ShotHit = 25;
-    SC_ThrowGrenade = 26;
+    SC_Attack = 9;
+    SC_ChangeWeapon = 10;
+    SC_CharacterDown = 11;
+    SC_CharacterKillLog = 12;
+    SC_CreateMyCharacter = 13;
+    SC_CreateOtherCharacter = 14;
+    SC_ItemPickFail = 15;
+    SC_ItemPickSuccess = 16;
+    SC_ItemSpawned = 17;
+    SC_KeyInput = 18;
+    SC_OnAccept = 19;
+    SC_PosInterpolation = 20;
+    SC_SendMessage = 21;
+    SC_ShotHit = 22;
 }
 
 message CS_ATTACK {
     bool bAttack = 1; // 임의의 변수, 의미 없음.
-    uint32 normalX = 2; // 이펙트의 노멀 벡터
-    uint32 normalY = 3;
-    uint32 normalZ = 4;
-    uint32 posX = 5; // 이펙트가 터질 위치
-    uint32 posY = 6;
-    uint32 posZ = 7;
+    float normalX = 2; // 이펙트의 노멀 벡터
+    float normalY = 3;
+    float normalZ = 4;
+    float posX = 5; // 이펙트가 터질 위치
+    float posY = 6;
+    float posZ = 7;
 }
 message CS_CHANGE_WEAPON {
     uint32 weapon = 1; // 무기 교체
-}
-message CS_GRENADE_EXPLOSITION_POS {
-    uint32 posX = 1; // 터질 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
 }
 message CS_ITEM_PICKED {
     uint32 itemId = 1; // 획득 시도한 아이템의 정보
@@ -65,9 +56,9 @@ message CS_KEY_INPUT {
     uint32 Jump = 7; // 점프 여부
 }
 message CS_POS_INTERPOLATION {
-    uint32 posX = 1; // 플레이어의 현재 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
+    float posX = 1; // 플레이어의 현재 위치
+    float posY = 2;
+    float posZ = 3;
 }
 message CS_REQUEST_RESTART {
     uint32 playerId = 1; // 플레이어의 고유 ID
@@ -84,14 +75,6 @@ message CS_SHOT_HIT {
     uint32 playerId = 1; // 피격 대상
     uint32 hp = 2; // 피격 대상의 남은 HP
 }
-message CS_THROW_GRENADE {
-    uint32 posX = 1; // 던지기 시작 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
-    fixed32 dirX = 4; // 던지는 방향
-    fixed32 dirY = 5;
-    fixed32 dirZ = 6;
-}
 message KDAInfo {
     uint32 kill = 1;
     uint32 death = 2;
@@ -103,12 +86,12 @@ message PlayerInfo {
 }
 message SC_ATTACK {
     uint32 playerId = 1; // CS_ATTACK을 전송한 플레이어 Id를 방에 있는 모든 플레이어들에게 전송
-    uint32 normalX = 2; // 이펙트의 노멀 벡터
-    uint32 normalY = 3;
-    uint32 normalZ = 4;
-    uint32 posX = 5; // 이펙트가 터질 위치
-    uint32 posY = 6;
-    uint32 posZ = 7;
+    float normalX = 2; // 이펙트의 노멀 벡터
+    float normalY = 3;
+    float normalZ = 4;
+    float posX = 5; // 이펙트가 터질 위치
+    float posY = 6;
+    float posZ = 7;
 }
 message SC_CHANGE_WEAPON {
     uint32 playerId = 1; // 다른 캐릭터 ID
@@ -137,11 +120,6 @@ message SC_CREATE_OTHER_CHARACTER {
     uint32 weapon = 7; // 들고 있는 무기 정보
     uint32 teamID = 8; // 접속한 팀 ID
 }
-message SC_GRENADE_EXPLOSITION_POS {
-    uint32 posX = 1; // 터질 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
-}
 message SC_ITEM_PICK_FAIL {
     uint32 playerId = 1; // 획득 실패한 플레이어의 고유 ID
     uint32 itemId = 2; // 아이템의 고유 ID
@@ -169,9 +147,9 @@ message SC_ON_ACCEPT {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
 }
 message SC_POS_INTERPOLATION {
-    uint32 posX = 1; // 플레이어의 현재 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
+    float posX = 1; // 플레이어의 현재 위치
+    float posY = 2;
+    float posZ = 3;
 }
 message SC_SEND_MESSAGE {
     uint32 playerId = 1; // 플레이어의 고유 ID
@@ -180,12 +158,4 @@ message SC_SEND_MESSAGE {
 message SC_SHOT_HIT {
     uint32 playerId = 1; // 피격 대상
     uint32 hp = 2; // 피격 대상의 남은 HP
-}
-message SC_THROW_GRENADE {
-    uint32 posX = 1; // 던지기 시작 위치
-    uint32 posY = 2;
-    uint32 posZ = 3;
-    fixed32 dirX = 4; // 던지는 방향
-    fixed32 dirY = 5;
-    fixed32 dirZ = 6;
 }
