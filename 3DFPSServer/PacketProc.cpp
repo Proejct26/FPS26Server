@@ -16,6 +16,8 @@
 
 #include "Protobuf/Protocol.pb.h"
 
+#include "EncodingUtils.h"
+
 static CObjectManager& objectManager = CObjectManager::GetInstance();
 static CTimerManager& timerManager = CTimerManager::GetInstance();
 static LogManager& logManager = LogManager::GetInstance();
@@ -257,13 +259,6 @@ bool CS_CHANGE_WEAPON(CSession* pSession, UINT32 weapon)
     return true;
 }
 
-bool CS_GRENADE_EXPLOSITION_POS(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ)
-{
-    // 아직 작업 x
-
-    return false;
-}
-
 bool CS_ITEM_PICKED(CSession* pSession, UINT32 itemId)
 {
     // 클라이언트가 아이템을 주웠을 때 전송하는 패킷
@@ -371,12 +366,14 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
         pPlayer->GetTeamId()    // 팀 ID
     );
 
-    return false;
+    return true;
 }
 
 bool CS_SEND_MESSAGE(CSession* pSession, UINT32 playerId, std::string message)
 {
-    return false;
+    int a = 10;
+
+    return true;
 }
 
 bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
@@ -386,8 +383,19 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
     // 1. 연결된 플레이어 추출
     CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
 
+
+
+
+    // 채팅 메시지 예제
+    // 확인용. 한글을 보내면 wideStr에서 한글을 확인할 수 있다.
+    std::wstring wideStr = Utf8ToWString(name);
+    SC_SEND_MESSAGE_FOR_SINGLE(pSession, pPlayer->m_ID, WStringToUtf8(wideStr));
+
+
+
+
     // 2. 이름 부여
-    pPlayer->SetName(name);
+    pPlayer->SetName(WStringToUtf8(wideStr));
 
     // 3. waiting에서 active로 이동
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
@@ -483,11 +491,4 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
     }
 
     return true;
-}
-
-bool CS_THROW_GRENADE(CSession* pSession, UINT32 posX, UINT32 posY, UINT32 posZ, UINT32 dirX, UINT32 dirY, UINT32 dirZ)
-{
-    // 아직 작업 x
-
-    return false;
 }

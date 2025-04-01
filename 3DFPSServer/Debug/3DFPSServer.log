@@ -1,11 +1,7 @@
-﻿  SessionManager.cpp
-G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
-  (소스 파일 'SessionManager.cpp'을(를) 컴파일하는 중)
-  
+﻿  Content.cpp
   PacketProc.cpp
 G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
   (소스 파일 'PacketProc.cpp'을(를) 컴파일하는 중)
   
-  Player.cpp
   코드를 생성하고 있습니다...
   3DFPSServer.vcxproj -> G:\Sparta\FPS26Server\x64\Debug\3DFPSServer.exe

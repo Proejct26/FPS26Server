@@ -3,6 +3,7 @@ G:\Sparta\FPS26Server\3DFPSServer\Content.cpp;G:\Sparta\FPS26Server\3DFPSServer\
 G:\Sparta\FPS26Server\3DFPSServer\cpuUsage.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\cpuUsage.obj
 G:\Sparta\FPS26Server\3DFPSServer\CrashDump.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\CrashDump.obj
 G:\Sparta\FPS26Server\3DFPSServer\DamageTracker.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\DamageTracker.obj
+G:\Sparta\FPS26Server\3DFPSServer\EncodingUtils.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\EncodingUtils.obj
 G:\Sparta\FPS26Server\3DFPSServer\Item.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\Item.obj
 G:\Sparta\FPS26Server\3DFPSServer\ItemSpawner.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\ItemSpawner.obj
 G:\Sparta\FPS26Server\3DFPSServer\MatchSystem.cpp;G:\Sparta\FPS26Server\3DFPSServer\Debug\MatchSystem.obj

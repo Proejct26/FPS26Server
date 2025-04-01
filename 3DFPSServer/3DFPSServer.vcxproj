@@ -176,6 +176,7 @@
     <ClCompile Include="cpuUsage.cpp" />
     <ClCompile Include="CrashDump.cpp" />
     <ClCompile Include="DamageTracker.cpp" />
+    <ClCompile Include="EncodingUtils.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemSpawner.cpp" />
     <ClCompile Include="MatchSystem.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="cpuUsage.h" />
     <ClInclude Include="CrashDump.h" />
     <ClInclude Include="DamageTracker.h" />
+    <ClInclude Include="EncodingUtils.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemSpawner.h" />
     <ClInclude Include="MatchSystem.h" />

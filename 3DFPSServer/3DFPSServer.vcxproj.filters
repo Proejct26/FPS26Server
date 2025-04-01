@@ -135,6 +135,9 @@
     <Filter Include="소스 파일\01. Manager\06. LogMgr">
       <UniqueIdentifier>{4f153e81-0de9-46d0-ba82-b0c1cfd54188}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Etc\08. Utils">
+      <UniqueIdentifier>{3c2b8da2-bbc2-46ad-8018-8b6774ef3434}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CustomException.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="SessionManager.cpp">
       <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="EncodingUtils.cpp">
+      <Filter>소스 파일\99. Etc\08. Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +354,9 @@
     </ClInclude>
     <ClInclude Include="SessionManager.h">
       <Filter>소스 파일\01. Manager\03. SessionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="EncodingUtils.h">
+      <Filter>소스 파일\99. Etc\08. Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

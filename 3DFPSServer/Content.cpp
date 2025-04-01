@@ -74,8 +74,4 @@ void LoginAcceptObject(CObject* pObj)
                 activePlayer->GetWeaponInfo(), activePlayer->GetTeamId());
         }
     }
-
-
-    // 채팅 메시지 예제
-    SC_SEND_MESSAGE_FOR_SINGLE(pSession, pPlayer->m_ID, "안녕하세요");
 }
