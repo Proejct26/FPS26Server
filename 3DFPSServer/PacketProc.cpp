@@ -390,6 +390,47 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
         pPlayer->GetTeamId()            // 팀 ID
     );
 
+    // 5. 방에 있는 모든 플레이어들에게 새로 접속한 플레이어 정보 전송
+    KDAInfo kdaInfo;
+    for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
+    {
+            pPlayer->GetKDAInfo(kdaInfo);
+
+            // 자기 자신은 제외
+            if (waitingPlayer != pPlayer)
+            {
+                    SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                            waitingPlayer->m_pSession,
+                            pPlayer->m_ID,
+                            pPlayer->GetSpawnPosIndex(),
+                            100, pPlayer->GetCurHp(),
+                            pPlayer->GetName(),
+                            kdaInfo,
+                            pPlayer->GetWeaponInfo(),
+                            pPlayer->GetTeamId()
+                    );
+            }
+    }
+    for (const auto& activePlayer : pRoom->m_activePlayers)
+    {
+            pPlayer->GetKDAInfo(kdaInfo);
+
+            // 자기 자신은 제외
+            if (activePlayer != pPlayer)
+            {
+                    SC_CREATE_OTHER_CHARACTER_FOR_SINGLE(
+                            activePlayer->m_pSession,
+                            pPlayer->m_ID,
+                            pPlayer->GetSpawnPosIndex(),
+                            100, pPlayer->GetCurHp(),
+                            pPlayer->GetName(),
+                            kdaInfo,
+                            pPlayer->GetWeaponInfo(),
+                            pPlayer->GetTeamId()
+                    );
+            }
+    }
+
     return true;
 }
 
@@ -413,7 +454,7 @@ bool CS_SEND_MESSAGE_ALL(CSession* pSession, UINT32 playerId, std::string messag
         {
             // 매시지 전송
             wideStr = Utf8ToWString(message);
-            SC_SEND_MESSAGE_ALL_FOR_SINGLE(pSession, playerId, WStringToUtf8(wideStr));
+            SC_SEND_MESSAGE_ALL_FOR_SINGLE(activePlayer->m_pSession, playerId, WStringToUtf8(wideStr));
         }
     }
 
@@ -465,7 +506,7 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
     // 3. waiting에서 active로 이동
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
     pRoom->MoveToActive(pPlayer->m_ID);
-
+     
     // 4. 서버에서 클라이언트에게 자신을 생성하라는 메시지 전송
     SC_CREATE_MY_CHARACTER_FOR_SINGLE(pSession, pPlayer->m_ID,
         pPlayer->GetSpawnPosIndex(),    // 팀 id에 따라서 부여된 스폰 번호
@@ -543,10 +584,18 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
 
             // 플레이어가 다운되었음을 방의 모든 플레이어들에게 전송
 
+            std::vector<PlayerInfo> v;
             for (const auto& activePlayer : pRoom->m_activePlayers)
             {
                 SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), pTargetPlayer->GetLastAttackedPlayerID());
+                KDAInfo kda;
+                activePlayer->GetKDAInfo(kda);
+                v.push_back(PlayerInfo(activePlayer->m_ID, kda));
             }
+             
+            for (const auto& activePlayer : pRoom->m_activePlayers)
+                SC_CHARACTER_KILL_LOG_FOR_SINGLE(activePlayer->m_pSession, v);
+
             for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
             {
                 SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), pTargetPlayer->GetLastAttackedPlayerID());
