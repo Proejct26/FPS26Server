@@ -533,7 +533,7 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
     CPlayer* pTargetPlayer = pRoom->FindPlayerById(playerId);
     
     // 타겟 플레이어가 존재한다면
-    if (!pTargetPlayer)
+    if (pTargetPlayer)
     {
         // 체력이 0 보다 작다면
         if (hp <= 0)
