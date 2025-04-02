@@ -41,9 +41,9 @@ void SC_ITEM_SPAWNED_FOR_All(CSession* pSession, UINT32 itemId, UINT32 itemType,
 void SC_ITEM_SPAWNED_FOR_SINGLE(CSession* pSession, UINT32 itemId, UINT32 itemType, UINT32 itemPosIndex);
 void SC_ITEM_SPAWNED_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 itemId, UINT32 itemType, UINT32 itemPosIndex);
 
-void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump);
-void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump);
-void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump);
+void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ);
+void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ);
+void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ);
 
 void SC_ON_ACCEPT_FOR_All(CSession* pSession, UINT32 playerId);
 void SC_ON_ACCEPT_FOR_SINGLE(CSession* pSession, UINT32 playerId);

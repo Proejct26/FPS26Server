@@ -837,59 +837,62 @@ class CS_KEY_INPUT final :
     kRotateAxisXFieldNumber = 5,
     kRotateAxisYFieldNumber = 6,
     kJumpFieldNumber = 7,
+    kNormalXFieldNumber = 8,
+    kNormalYFieldNumber = 9,
+    kNormalZFieldNumber = 10,
   };
-  // uint32 keyW = 1;
+  // bool keyW = 1;
   void clear_keyw();
-  uint32_t keyw() const;
-  void set_keyw(uint32_t value);
+  bool keyw() const;
+  void set_keyw(bool value);
   private:
-  uint32_t _internal_keyw() const;
-  void _internal_set_keyw(uint32_t value);
+  bool _internal_keyw() const;
+  void _internal_set_keyw(bool value);
   public:
 
-  // uint32 keyA = 2;
+  // bool keyA = 2;
   void clear_keya();
-  uint32_t keya() const;
-  void set_keya(uint32_t value);
+  bool keya() const;
+  void set_keya(bool value);
   private:
-  uint32_t _internal_keya() const;
-  void _internal_set_keya(uint32_t value);
+  bool _internal_keya() const;
+  void _internal_set_keya(bool value);
   public:
 
-  // uint32 keyS = 3;
+  // bool keyS = 3;
   void clear_keys();
-  uint32_t keys() const;
-  void set_keys(uint32_t value);
+  bool keys() const;
+  void set_keys(bool value);
   private:
-  uint32_t _internal_keys() const;
-  void _internal_set_keys(uint32_t value);
+  bool _internal_keys() const;
+  void _internal_set_keys(bool value);
   public:
 
-  // uint32 keyD = 4;
+  // bool keyD = 4;
   void clear_keyd();
-  uint32_t keyd() const;
-  void set_keyd(uint32_t value);
+  bool keyd() const;
+  void set_keyd(bool value);
   private:
-  uint32_t _internal_keyd() const;
-  void _internal_set_keyd(uint32_t value);
+  bool _internal_keyd() const;
+  void _internal_set_keyd(bool value);
   public:
 
-  // fixed32 rotateAxisX = 5;
+  // float rotateAxisX = 5;
   void clear_rotateaxisx();
-  uint32_t rotateaxisx() const;
-  void set_rotateaxisx(uint32_t value);
+  float rotateaxisx() const;
+  void set_rotateaxisx(float value);
   private:
-  uint32_t _internal_rotateaxisx() const;
-  void _internal_set_rotateaxisx(uint32_t value);
+  float _internal_rotateaxisx() const;
+  void _internal_set_rotateaxisx(float value);
   public:
 
-  // fixed32 rotateAxisY = 6;
+  // float rotateAxisY = 6;
   void clear_rotateaxisy();
-  uint32_t rotateaxisy() const;
-  void set_rotateaxisy(uint32_t value);
+  float rotateaxisy() const;
+  void set_rotateaxisy(float value);
   private:
-  uint32_t _internal_rotateaxisy() const;
-  void _internal_set_rotateaxisy(uint32_t value);
+  float _internal_rotateaxisy() const;
+  void _internal_set_rotateaxisy(float value);
   public:
 
   // uint32 Jump = 7;
@@ -901,6 +904,33 @@ class CS_KEY_INPUT final :
   void _internal_set_jump(uint32_t value);
   public:
 
+  // float normalX = 8;
+  void clear_normalx();
+  float normalx() const;
+  void set_normalx(float value);
+  private:
+  float _internal_normalx() const;
+  void _internal_set_normalx(float value);
+  public:
+
+  // float normalY = 9;
+  void clear_normaly();
+  float normaly() const;
+  void set_normaly(float value);
+  private:
+  float _internal_normaly() const;
+  void _internal_set_normaly(float value);
+  public:
+
+  // float normalZ = 10;
+  void clear_normalz();
+  float normalz() const;
+  void set_normalz(float value);
+  private:
+  float _internal_normalz() const;
+  void _internal_set_normalz(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:game.CS_KEY_INPUT)
  private:
   class _Internal;
@@ -909,13 +939,16 @@ class CS_KEY_INPUT final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    uint32_t keyw_;
-    uint32_t keya_;
-    uint32_t keys_;
-    uint32_t keyd_;
-    uint32_t rotateaxisx_;
-    uint32_t rotateaxisy_;
+    bool keyw_;
+    bool keya_;
+    bool keys_;
+    bool keyd_;
+    float rotateaxisx_;
+    float rotateaxisy_;
     uint32_t jump_;
+    float normalx_;
+    float normaly_;
+    float normalz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -3803,6 +3836,9 @@ class SC_KEY_INPUT final :
     kRotateAxisXFieldNumber = 6,
     kRotateAxisYFieldNumber = 7,
     kJumpFieldNumber = 8,
+    kNormalXFieldNumber = 9,
+    kNormalYFieldNumber = 10,
+    kNormalZFieldNumber = 11,
   };
   // uint32 playerId = 1;
   void clear_playerid();
@@ -3813,58 +3849,58 @@ class SC_KEY_INPUT final :
   void _internal_set_playerid(uint32_t value);
   public:
 
-  // uint32 keyW = 2;
+  // bool keyW = 2;
   void clear_keyw();
-  uint32_t keyw() const;
-  void set_keyw(uint32_t value);
+  bool keyw() const;
+  void set_keyw(bool value);
   private:
-  uint32_t _internal_keyw() const;
-  void _internal_set_keyw(uint32_t value);
+  bool _internal_keyw() const;
+  void _internal_set_keyw(bool value);
   public:
 
-  // uint32 keyA = 3;
+  // bool keyA = 3;
   void clear_keya();
-  uint32_t keya() const;
-  void set_keya(uint32_t value);
+  bool keya() const;
+  void set_keya(bool value);
   private:
-  uint32_t _internal_keya() const;
-  void _internal_set_keya(uint32_t value);
+  bool _internal_keya() const;
+  void _internal_set_keya(bool value);
   public:
 
-  // uint32 keyS = 4;
+  // bool keyS = 4;
   void clear_keys();
-  uint32_t keys() const;
-  void set_keys(uint32_t value);
+  bool keys() const;
+  void set_keys(bool value);
   private:
-  uint32_t _internal_keys() const;
-  void _internal_set_keys(uint32_t value);
+  bool _internal_keys() const;
+  void _internal_set_keys(bool value);
   public:
 
-  // uint32 keyD = 5;
+  // bool keyD = 5;
   void clear_keyd();
-  uint32_t keyd() const;
-  void set_keyd(uint32_t value);
+  bool keyd() const;
+  void set_keyd(bool value);
   private:
-  uint32_t _internal_keyd() const;
-  void _internal_set_keyd(uint32_t value);
+  bool _internal_keyd() const;
+  void _internal_set_keyd(bool value);
   public:
 
-  // fixed32 rotateAxisX = 6;
+  // float rotateAxisX = 6;
   void clear_rotateaxisx();
-  uint32_t rotateaxisx() const;
-  void set_rotateaxisx(uint32_t value);
+  float rotateaxisx() const;
+  void set_rotateaxisx(float value);
   private:
-  uint32_t _internal_rotateaxisx() const;
-  void _internal_set_rotateaxisx(uint32_t value);
+  float _internal_rotateaxisx() const;
+  void _internal_set_rotateaxisx(float value);
   public:
 
-  // fixed32 rotateAxisY = 7;
+  // float rotateAxisY = 7;
   void clear_rotateaxisy();
-  uint32_t rotateaxisy() const;
-  void set_rotateaxisy(uint32_t value);
+  float rotateaxisy() const;
+  void set_rotateaxisy(float value);
   private:
-  uint32_t _internal_rotateaxisy() const;
-  void _internal_set_rotateaxisy(uint32_t value);
+  float _internal_rotateaxisy() const;
+  void _internal_set_rotateaxisy(float value);
   public:
 
   // uint32 Jump = 8;
@@ -3876,6 +3912,33 @@ class SC_KEY_INPUT final :
   void _internal_set_jump(uint32_t value);
   public:
 
+  // float normalX = 9;
+  void clear_normalx();
+  float normalx() const;
+  void set_normalx(float value);
+  private:
+  float _internal_normalx() const;
+  void _internal_set_normalx(float value);
+  public:
+
+  // float normalY = 10;
+  void clear_normaly();
+  float normaly() const;
+  void set_normaly(float value);
+  private:
+  float _internal_normaly() const;
+  void _internal_set_normaly(float value);
+  public:
+
+  // float normalZ = 11;
+  void clear_normalz();
+  float normalz() const;
+  void set_normalz(float value);
+  private:
+  float _internal_normalz() const;
+  void _internal_set_normalz(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:game.SC_KEY_INPUT)
  private:
   class _Internal;
@@ -3885,13 +3948,16 @@ class SC_KEY_INPUT final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     uint32_t playerid_;
-    uint32_t keyw_;
-    uint32_t keya_;
-    uint32_t keys_;
-    uint32_t keyd_;
-    uint32_t rotateaxisx_;
-    uint32_t rotateaxisy_;
+    bool keyw_;
+    bool keya_;
+    bool keys_;
+    bool keyd_;
+    float rotateaxisx_;
+    float rotateaxisy_;
     uint32_t jump_;
+    float normalx_;
+    float normaly_;
+    float normalz_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4752,122 +4818,122 @@ inline void CS_ITEM_PICKED::set_itemid(uint32_t value) {
 
 // CS_KEY_INPUT
 
-// uint32 keyW = 1;
+// bool keyW = 1;
 inline void CS_KEY_INPUT::clear_keyw() {
-  _impl_.keyw_ = 0u;
+  _impl_.keyw_ = false;
 }
-inline uint32_t CS_KEY_INPUT::_internal_keyw() const {
+inline bool CS_KEY_INPUT::_internal_keyw() const {
   return _impl_.keyw_;
 }
-inline uint32_t CS_KEY_INPUT::keyw() const {
+inline bool CS_KEY_INPUT::keyw() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.keyW)
   return _internal_keyw();
 }
-inline void CS_KEY_INPUT::_internal_set_keyw(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_keyw(bool value) {
   
   _impl_.keyw_ = value;
 }
-inline void CS_KEY_INPUT::set_keyw(uint32_t value) {
+inline void CS_KEY_INPUT::set_keyw(bool value) {
   _internal_set_keyw(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.keyW)
 }
 
-// uint32 keyA = 2;
+// bool keyA = 2;
 inline void CS_KEY_INPUT::clear_keya() {
-  _impl_.keya_ = 0u;
+  _impl_.keya_ = false;
 }
-inline uint32_t CS_KEY_INPUT::_internal_keya() const {
+inline bool CS_KEY_INPUT::_internal_keya() const {
   return _impl_.keya_;
 }
-inline uint32_t CS_KEY_INPUT::keya() const {
+inline bool CS_KEY_INPUT::keya() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.keyA)
   return _internal_keya();
 }
-inline void CS_KEY_INPUT::_internal_set_keya(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_keya(bool value) {
   
   _impl_.keya_ = value;
 }
-inline void CS_KEY_INPUT::set_keya(uint32_t value) {
+inline void CS_KEY_INPUT::set_keya(bool value) {
   _internal_set_keya(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.keyA)
 }
 
-// uint32 keyS = 3;
+// bool keyS = 3;
 inline void CS_KEY_INPUT::clear_keys() {
-  _impl_.keys_ = 0u;
+  _impl_.keys_ = false;
 }
-inline uint32_t CS_KEY_INPUT::_internal_keys() const {
+inline bool CS_KEY_INPUT::_internal_keys() const {
   return _impl_.keys_;
 }
-inline uint32_t CS_KEY_INPUT::keys() const {
+inline bool CS_KEY_INPUT::keys() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.keyS)
   return _internal_keys();
 }
-inline void CS_KEY_INPUT::_internal_set_keys(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_keys(bool value) {
   
   _impl_.keys_ = value;
 }
-inline void CS_KEY_INPUT::set_keys(uint32_t value) {
+inline void CS_KEY_INPUT::set_keys(bool value) {
   _internal_set_keys(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.keyS)
 }
 
-// uint32 keyD = 4;
+// bool keyD = 4;
 inline void CS_KEY_INPUT::clear_keyd() {
-  _impl_.keyd_ = 0u;
+  _impl_.keyd_ = false;
 }
-inline uint32_t CS_KEY_INPUT::_internal_keyd() const {
+inline bool CS_KEY_INPUT::_internal_keyd() const {
   return _impl_.keyd_;
 }
-inline uint32_t CS_KEY_INPUT::keyd() const {
+inline bool CS_KEY_INPUT::keyd() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.keyD)
   return _internal_keyd();
 }
-inline void CS_KEY_INPUT::_internal_set_keyd(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_keyd(bool value) {
   
   _impl_.keyd_ = value;
 }
-inline void CS_KEY_INPUT::set_keyd(uint32_t value) {
+inline void CS_KEY_INPUT::set_keyd(bool value) {
   _internal_set_keyd(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.keyD)
 }
 
-// fixed32 rotateAxisX = 5;
+// float rotateAxisX = 5;
 inline void CS_KEY_INPUT::clear_rotateaxisx() {
-  _impl_.rotateaxisx_ = 0u;
+  _impl_.rotateaxisx_ = 0;
 }
-inline uint32_t CS_KEY_INPUT::_internal_rotateaxisx() const {
+inline float CS_KEY_INPUT::_internal_rotateaxisx() const {
   return _impl_.rotateaxisx_;
 }
-inline uint32_t CS_KEY_INPUT::rotateaxisx() const {
+inline float CS_KEY_INPUT::rotateaxisx() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.rotateAxisX)
   return _internal_rotateaxisx();
 }
-inline void CS_KEY_INPUT::_internal_set_rotateaxisx(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_rotateaxisx(float value) {
   
   _impl_.rotateaxisx_ = value;
 }
-inline void CS_KEY_INPUT::set_rotateaxisx(uint32_t value) {
+inline void CS_KEY_INPUT::set_rotateaxisx(float value) {
   _internal_set_rotateaxisx(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.rotateAxisX)
 }
 
-// fixed32 rotateAxisY = 6;
+// float rotateAxisY = 6;
 inline void CS_KEY_INPUT::clear_rotateaxisy() {
-  _impl_.rotateaxisy_ = 0u;
+  _impl_.rotateaxisy_ = 0;
 }
-inline uint32_t CS_KEY_INPUT::_internal_rotateaxisy() const {
+inline float CS_KEY_INPUT::_internal_rotateaxisy() const {
   return _impl_.rotateaxisy_;
 }
-inline uint32_t CS_KEY_INPUT::rotateaxisy() const {
+inline float CS_KEY_INPUT::rotateaxisy() const {
   // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.rotateAxisY)
   return _internal_rotateaxisy();
 }
-inline void CS_KEY_INPUT::_internal_set_rotateaxisy(uint32_t value) {
+inline void CS_KEY_INPUT::_internal_set_rotateaxisy(float value) {
   
   _impl_.rotateaxisy_ = value;
 }
-inline void CS_KEY_INPUT::set_rotateaxisy(uint32_t value) {
+inline void CS_KEY_INPUT::set_rotateaxisy(float value) {
   _internal_set_rotateaxisy(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.rotateAxisY)
 }
@@ -4890,6 +4956,66 @@ inline void CS_KEY_INPUT::_internal_set_jump(uint32_t value) {
 inline void CS_KEY_INPUT::set_jump(uint32_t value) {
   _internal_set_jump(value);
   // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.Jump)
+}
+
+// float normalX = 8;
+inline void CS_KEY_INPUT::clear_normalx() {
+  _impl_.normalx_ = 0;
+}
+inline float CS_KEY_INPUT::_internal_normalx() const {
+  return _impl_.normalx_;
+}
+inline float CS_KEY_INPUT::normalx() const {
+  // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.normalX)
+  return _internal_normalx();
+}
+inline void CS_KEY_INPUT::_internal_set_normalx(float value) {
+  
+  _impl_.normalx_ = value;
+}
+inline void CS_KEY_INPUT::set_normalx(float value) {
+  _internal_set_normalx(value);
+  // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.normalX)
+}
+
+// float normalY = 9;
+inline void CS_KEY_INPUT::clear_normaly() {
+  _impl_.normaly_ = 0;
+}
+inline float CS_KEY_INPUT::_internal_normaly() const {
+  return _impl_.normaly_;
+}
+inline float CS_KEY_INPUT::normaly() const {
+  // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.normalY)
+  return _internal_normaly();
+}
+inline void CS_KEY_INPUT::_internal_set_normaly(float value) {
+  
+  _impl_.normaly_ = value;
+}
+inline void CS_KEY_INPUT::set_normaly(float value) {
+  _internal_set_normaly(value);
+  // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.normalY)
+}
+
+// float normalZ = 10;
+inline void CS_KEY_INPUT::clear_normalz() {
+  _impl_.normalz_ = 0;
+}
+inline float CS_KEY_INPUT::_internal_normalz() const {
+  return _impl_.normalz_;
+}
+inline float CS_KEY_INPUT::normalz() const {
+  // @@protoc_insertion_point(field_get:game.CS_KEY_INPUT.normalZ)
+  return _internal_normalz();
+}
+inline void CS_KEY_INPUT::_internal_set_normalz(float value) {
+  
+  _impl_.normalz_ = value;
+}
+inline void CS_KEY_INPUT::set_normalz(float value) {
+  _internal_set_normalz(value);
+  // @@protoc_insertion_point(field_set:game.CS_KEY_INPUT.normalZ)
 }
 
 // -------------------------------------------------------------------
@@ -6170,122 +6296,122 @@ inline void SC_KEY_INPUT::set_playerid(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.playerId)
 }
 
-// uint32 keyW = 2;
+// bool keyW = 2;
 inline void SC_KEY_INPUT::clear_keyw() {
-  _impl_.keyw_ = 0u;
+  _impl_.keyw_ = false;
 }
-inline uint32_t SC_KEY_INPUT::_internal_keyw() const {
+inline bool SC_KEY_INPUT::_internal_keyw() const {
   return _impl_.keyw_;
 }
-inline uint32_t SC_KEY_INPUT::keyw() const {
+inline bool SC_KEY_INPUT::keyw() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.keyW)
   return _internal_keyw();
 }
-inline void SC_KEY_INPUT::_internal_set_keyw(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_keyw(bool value) {
   
   _impl_.keyw_ = value;
 }
-inline void SC_KEY_INPUT::set_keyw(uint32_t value) {
+inline void SC_KEY_INPUT::set_keyw(bool value) {
   _internal_set_keyw(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.keyW)
 }
 
-// uint32 keyA = 3;
+// bool keyA = 3;
 inline void SC_KEY_INPUT::clear_keya() {
-  _impl_.keya_ = 0u;
+  _impl_.keya_ = false;
 }
-inline uint32_t SC_KEY_INPUT::_internal_keya() const {
+inline bool SC_KEY_INPUT::_internal_keya() const {
   return _impl_.keya_;
 }
-inline uint32_t SC_KEY_INPUT::keya() const {
+inline bool SC_KEY_INPUT::keya() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.keyA)
   return _internal_keya();
 }
-inline void SC_KEY_INPUT::_internal_set_keya(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_keya(bool value) {
   
   _impl_.keya_ = value;
 }
-inline void SC_KEY_INPUT::set_keya(uint32_t value) {
+inline void SC_KEY_INPUT::set_keya(bool value) {
   _internal_set_keya(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.keyA)
 }
 
-// uint32 keyS = 4;
+// bool keyS = 4;
 inline void SC_KEY_INPUT::clear_keys() {
-  _impl_.keys_ = 0u;
+  _impl_.keys_ = false;
 }
-inline uint32_t SC_KEY_INPUT::_internal_keys() const {
+inline bool SC_KEY_INPUT::_internal_keys() const {
   return _impl_.keys_;
 }
-inline uint32_t SC_KEY_INPUT::keys() const {
+inline bool SC_KEY_INPUT::keys() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.keyS)
   return _internal_keys();
 }
-inline void SC_KEY_INPUT::_internal_set_keys(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_keys(bool value) {
   
   _impl_.keys_ = value;
 }
-inline void SC_KEY_INPUT::set_keys(uint32_t value) {
+inline void SC_KEY_INPUT::set_keys(bool value) {
   _internal_set_keys(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.keyS)
 }
 
-// uint32 keyD = 5;
+// bool keyD = 5;
 inline void SC_KEY_INPUT::clear_keyd() {
-  _impl_.keyd_ = 0u;
+  _impl_.keyd_ = false;
 }
-inline uint32_t SC_KEY_INPUT::_internal_keyd() const {
+inline bool SC_KEY_INPUT::_internal_keyd() const {
   return _impl_.keyd_;
 }
-inline uint32_t SC_KEY_INPUT::keyd() const {
+inline bool SC_KEY_INPUT::keyd() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.keyD)
   return _internal_keyd();
 }
-inline void SC_KEY_INPUT::_internal_set_keyd(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_keyd(bool value) {
   
   _impl_.keyd_ = value;
 }
-inline void SC_KEY_INPUT::set_keyd(uint32_t value) {
+inline void SC_KEY_INPUT::set_keyd(bool value) {
   _internal_set_keyd(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.keyD)
 }
 
-// fixed32 rotateAxisX = 6;
+// float rotateAxisX = 6;
 inline void SC_KEY_INPUT::clear_rotateaxisx() {
-  _impl_.rotateaxisx_ = 0u;
+  _impl_.rotateaxisx_ = 0;
 }
-inline uint32_t SC_KEY_INPUT::_internal_rotateaxisx() const {
+inline float SC_KEY_INPUT::_internal_rotateaxisx() const {
   return _impl_.rotateaxisx_;
 }
-inline uint32_t SC_KEY_INPUT::rotateaxisx() const {
+inline float SC_KEY_INPUT::rotateaxisx() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.rotateAxisX)
   return _internal_rotateaxisx();
 }
-inline void SC_KEY_INPUT::_internal_set_rotateaxisx(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_rotateaxisx(float value) {
   
   _impl_.rotateaxisx_ = value;
 }
-inline void SC_KEY_INPUT::set_rotateaxisx(uint32_t value) {
+inline void SC_KEY_INPUT::set_rotateaxisx(float value) {
   _internal_set_rotateaxisx(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.rotateAxisX)
 }
 
-// fixed32 rotateAxisY = 7;
+// float rotateAxisY = 7;
 inline void SC_KEY_INPUT::clear_rotateaxisy() {
-  _impl_.rotateaxisy_ = 0u;
+  _impl_.rotateaxisy_ = 0;
 }
-inline uint32_t SC_KEY_INPUT::_internal_rotateaxisy() const {
+inline float SC_KEY_INPUT::_internal_rotateaxisy() const {
   return _impl_.rotateaxisy_;
 }
-inline uint32_t SC_KEY_INPUT::rotateaxisy() const {
+inline float SC_KEY_INPUT::rotateaxisy() const {
   // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.rotateAxisY)
   return _internal_rotateaxisy();
 }
-inline void SC_KEY_INPUT::_internal_set_rotateaxisy(uint32_t value) {
+inline void SC_KEY_INPUT::_internal_set_rotateaxisy(float value) {
   
   _impl_.rotateaxisy_ = value;
 }
-inline void SC_KEY_INPUT::set_rotateaxisy(uint32_t value) {
+inline void SC_KEY_INPUT::set_rotateaxisy(float value) {
   _internal_set_rotateaxisy(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.rotateAxisY)
 }
@@ -6308,6 +6434,66 @@ inline void SC_KEY_INPUT::_internal_set_jump(uint32_t value) {
 inline void SC_KEY_INPUT::set_jump(uint32_t value) {
   _internal_set_jump(value);
   // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.Jump)
+}
+
+// float normalX = 9;
+inline void SC_KEY_INPUT::clear_normalx() {
+  _impl_.normalx_ = 0;
+}
+inline float SC_KEY_INPUT::_internal_normalx() const {
+  return _impl_.normalx_;
+}
+inline float SC_KEY_INPUT::normalx() const {
+  // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.normalX)
+  return _internal_normalx();
+}
+inline void SC_KEY_INPUT::_internal_set_normalx(float value) {
+  
+  _impl_.normalx_ = value;
+}
+inline void SC_KEY_INPUT::set_normalx(float value) {
+  _internal_set_normalx(value);
+  // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.normalX)
+}
+
+// float normalY = 10;
+inline void SC_KEY_INPUT::clear_normaly() {
+  _impl_.normaly_ = 0;
+}
+inline float SC_KEY_INPUT::_internal_normaly() const {
+  return _impl_.normaly_;
+}
+inline float SC_KEY_INPUT::normaly() const {
+  // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.normalY)
+  return _internal_normaly();
+}
+inline void SC_KEY_INPUT::_internal_set_normaly(float value) {
+  
+  _impl_.normaly_ = value;
+}
+inline void SC_KEY_INPUT::set_normaly(float value) {
+  _internal_set_normaly(value);
+  // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.normalY)
+}
+
+// float normalZ = 11;
+inline void SC_KEY_INPUT::clear_normalz() {
+  _impl_.normalz_ = 0;
+}
+inline float SC_KEY_INPUT::_internal_normalz() const {
+  return _impl_.normalz_;
+}
+inline float SC_KEY_INPUT::normalz() const {
+  // @@protoc_insertion_point(field_get:game.SC_KEY_INPUT.normalZ)
+  return _internal_normalz();
+}
+inline void SC_KEY_INPUT::_internal_set_normalz(float value) {
+  
+  _impl_.normalz_ = value;
+}
+inline void SC_KEY_INPUT::set_normalz(float value) {
+  _internal_set_normalz(value);
+  // @@protoc_insertion_point(field_set:game.SC_KEY_INPUT.normalZ)
 }
 
 // -------------------------------------------------------------------

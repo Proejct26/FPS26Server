@@ -75,13 +75,16 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
     break;
     case game::PacketID::CS_KeyInput:
     {
-        UINT32 keyW;
-        UINT32 keyA;
-        UINT32 keyS;
-        UINT32 keyD;
-        UINT32 rotateAxisX;
-        UINT32 rotateAxisY;
+        bool keyW;
+        bool keyA;
+        bool keyS;
+        bool keyD;
+        float rotateAxisX;
+        float rotateAxisY;
         UINT32 Jump;
+        float normalX;
+        float normalY;
+        float normalZ;
 
         game::CS_KEY_INPUT pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
@@ -93,8 +96,11 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         rotateAxisX = pkt.rotateaxisx();
         rotateAxisY = pkt.rotateaxisy();
         Jump = pkt.jump();
+        normalX = pkt.normalx();
+        normalY = pkt.normaly();
+        normalZ = pkt.normalz();
 
-        return CS_KEY_INPUT(pSession, keyW, keyA, keyS, keyD, rotateAxisX, rotateAxisY, Jump);
+        return CS_KEY_INPUT(pSession, keyW, keyA, keyS, keyD, rotateAxisX, rotateAxisY, Jump, normalX, normalY, normalZ);
     }
     break;
     case game::PacketID::CS_PosInterpolation:
@@ -192,7 +198,7 @@ bool CS_ITEM_PICKED(CSession* pSession, UINT32 itemId)
     return false;
 }
 
-bool CS_KEY_INPUT(CSession* pSession, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
+bool CS_KEY_INPUT(CSession* pSession, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ)
 {
     return false;
 }

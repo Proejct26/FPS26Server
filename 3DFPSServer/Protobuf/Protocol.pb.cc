@@ -68,13 +68,16 @@ struct CS_ITEM_PICKEDDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_ITEM_PICKEDDefaultTypeInternal _CS_ITEM_PICKED_default_instance_;
 PROTOBUF_CONSTEXPR CS_KEY_INPUT::CS_KEY_INPUT(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.keyw_)*/0u
-  , /*decltype(_impl_.keya_)*/0u
-  , /*decltype(_impl_.keys_)*/0u
-  , /*decltype(_impl_.keyd_)*/0u
-  , /*decltype(_impl_.rotateaxisx_)*/0u
-  , /*decltype(_impl_.rotateaxisy_)*/0u
+    /*decltype(_impl_.keyw_)*/false
+  , /*decltype(_impl_.keya_)*/false
+  , /*decltype(_impl_.keys_)*/false
+  , /*decltype(_impl_.keyd_)*/false
+  , /*decltype(_impl_.rotateaxisx_)*/0
+  , /*decltype(_impl_.rotateaxisy_)*/0
   , /*decltype(_impl_.jump_)*/0u
+  , /*decltype(_impl_.normalx_)*/0
+  , /*decltype(_impl_.normaly_)*/0
+  , /*decltype(_impl_.normalz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CS_KEY_INPUTDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CS_KEY_INPUTDefaultTypeInternal()
@@ -327,13 +330,16 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR SC_KEY_INPUT::SC_KEY_INPUT(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
-  , /*decltype(_impl_.keyw_)*/0u
-  , /*decltype(_impl_.keya_)*/0u
-  , /*decltype(_impl_.keys_)*/0u
-  , /*decltype(_impl_.keyd_)*/0u
-  , /*decltype(_impl_.rotateaxisx_)*/0u
-  , /*decltype(_impl_.rotateaxisy_)*/0u
+  , /*decltype(_impl_.keyw_)*/false
+  , /*decltype(_impl_.keya_)*/false
+  , /*decltype(_impl_.keys_)*/false
+  , /*decltype(_impl_.keyd_)*/false
+  , /*decltype(_impl_.rotateaxisx_)*/0
+  , /*decltype(_impl_.rotateaxisy_)*/0
   , /*decltype(_impl_.jump_)*/0u
+  , /*decltype(_impl_.normalx_)*/0
+  , /*decltype(_impl_.normaly_)*/0
+  , /*decltype(_impl_.normalz_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SC_KEY_INPUTDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SC_KEY_INPUTDefaultTypeInternal()
@@ -447,6 +453,9 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.rotateaxisx_),
   PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.rotateaxisy_),
   PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.jump_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.normalx_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.normaly_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_KEY_INPUT, _impl_.normalz_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::CS_POS_INTERPOLATION, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -604,6 +613,9 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.rotateaxisx_),
   PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.rotateaxisy_),
   PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.jump_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.normalx_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.normaly_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_KEY_INPUT, _impl_.normalz_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::SC_ON_ACCEPT, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -643,27 +655,27 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 13, -1, -1, sizeof(::game::CS_CHANGE_WEAPON)},
   { 20, -1, -1, sizeof(::game::CS_ITEM_PICKED)},
   { 27, -1, -1, sizeof(::game::CS_KEY_INPUT)},
-  { 40, -1, -1, sizeof(::game::CS_POS_INTERPOLATION)},
-  { 49, -1, -1, sizeof(::game::CS_REQUEST_RESTART)},
-  { 57, -1, -1, sizeof(::game::CS_SEND_MESSAGE)},
-  { 65, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
-  { 72, -1, -1, sizeof(::game::CS_SHOT_HIT)},
-  { 80, -1, -1, sizeof(::game::KDAInfo)},
-  { 89, -1, -1, sizeof(::game::PlayerInfo)},
-  { 97, -1, -1, sizeof(::game::SC_ATTACK)},
-  { 111, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
-  { 119, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
-  { 127, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
-  { 134, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
-  { 144, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
-  { 158, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
-  { 166, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
-  { 174, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
-  { 183, -1, -1, sizeof(::game::SC_KEY_INPUT)},
-  { 197, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
-  { 204, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
-  { 214, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
-  { 222, -1, -1, sizeof(::game::SC_SHOT_HIT)},
+  { 43, -1, -1, sizeof(::game::CS_POS_INTERPOLATION)},
+  { 52, -1, -1, sizeof(::game::CS_REQUEST_RESTART)},
+  { 60, -1, -1, sizeof(::game::CS_SEND_MESSAGE)},
+  { 68, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
+  { 75, -1, -1, sizeof(::game::CS_SHOT_HIT)},
+  { 83, -1, -1, sizeof(::game::KDAInfo)},
+  { 92, -1, -1, sizeof(::game::PlayerInfo)},
+  { 100, -1, -1, sizeof(::game::SC_ATTACK)},
+  { 114, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
+  { 122, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
+  { 130, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
+  { 137, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
+  { 147, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
+  { 161, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
+  { 169, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
+  { 177, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
+  { 186, -1, -1, sizeof(::game::SC_KEY_INPUT)},
+  { 203, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
+  { 210, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
+  { 220, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
+  { 228, -1, -1, sizeof(::game::SC_SHOT_HIT)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -700,65 +712,67 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "\007normalY\030\003 \001(\002\022\017\n\007normalZ\030\004 \001(\002\022\014\n\004posX\030"
   "\005 \001(\002\022\014\n\004posY\030\006 \001(\002\022\014\n\004posZ\030\007 \001(\002\"\"\n\020CS_"
   "CHANGE_WEAPON\022\016\n\006weapon\030\001 \001(\r\" \n\016CS_ITEM"
-  "_PICKED\022\016\n\006itemId\030\001 \001(\r\"~\n\014CS_KEY_INPUT\022"
-  "\014\n\004keyW\030\001 \001(\r\022\014\n\004keyA\030\002 \001(\r\022\014\n\004keyS\030\003 \001("
-  "\r\022\014\n\004keyD\030\004 \001(\r\022\023\n\013rotateAxisX\030\005 \001(\007\022\023\n\013"
-  "rotateAxisY\030\006 \001(\007\022\014\n\004Jump\030\007 \001(\r\"@\n\024CS_PO"
-  "S_INTERPOLATION\022\014\n\004posX\030\001 \001(\002\022\014\n\004posY\030\002 "
-  "\001(\002\022\014\n\004posZ\030\003 \001(\002\"6\n\022CS_REQUEST_RESTART\022"
-  "\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r\"4\n\017CS_"
-  "SEND_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007messag"
-  "e\030\002 \001(\t\" \n\020CS_SEND_NICKNAME\022\014\n\004name\030\001 \001("
-  "\t\"+\n\013CS_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp"
-  "\030\002 \001(\r\"6\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022\r\n\005death"
-  "\030\002 \001(\r\022\016\n\006assist\030\003 \001(\r\":\n\nPlayerInfo\022\020\n\010"
-  "playerId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.game.KDAIn"
-  "fo\"\222\001\n\tSC_ATTACK\022\020\n\010playerId\030\001 \001(\r\022\026\n\016hi"
-  "ttedTargetId\030\002 \001(\r\022\017\n\007normalX\030\003 \001(\002\022\017\n\007n"
-  "ormalY\030\004 \001(\002\022\017\n\007normalZ\030\005 \001(\002\022\014\n\004posX\030\006 "
-  "\001(\002\022\014\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 \001(\002\"4\n\020SC_CH"
-  "ANGE_WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030"
-  "\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020\n\010playerId\030\001"
-  " \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_CHARACTER_KIL"
-  "L_LOG\022(\n\016playerInfoList\030\001 \003(\0132\020.game.Pla"
-  "yerInfo\"[\n\026SC_CREATE_MY_CHARACTER\022\020\n\010pla"
-  "yerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003"
-  " \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_CREATE_OTHER"
-  "_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex"
-  "\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005curHP\030\004 \001(\r\022\014\n\004"
-  "name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132\r.game.KDAIn"
-  "fo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID\030\010 \001(\r\"5\n\021SC"
-  "_ITEM_PICK_FAIL\022\020\n\010playerId\030\001 \001(\r\022\016\n\006ite"
-  "mId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SUCCESS\022\020\n\010pla"
-  "yerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"I\n\017SC_ITEM_S"
-  "PAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010itemType\030\002 \001(\r"
-  "\022\024\n\014itemPosIndex\030\003 \001(\r\"\220\001\n\014SC_KEY_INPUT\022"
-  "\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 \001(\r\022\014\n\004keyA\030"
-  "\003 \001(\r\022\014\n\004keyS\030\004 \001(\r\022\014\n\004keyD\030\005 \001(\r\022\023\n\013rot"
-  "ateAxisX\030\006 \001(\007\022\023\n\013rotateAxisY\030\007 \001(\007\022\014\n\004J"
-  "ump\030\010 \001(\r\" \n\014SC_ON_ACCEPT\022\020\n\010playerId\030\001 "
-  "\001(\r\"R\n\024SC_POS_INTERPOLATION\022\020\n\010playerId\030"
-  "\001 \001(\r\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\014\n\004pos"
-  "Z\030\004 \001(\002\"4\n\017SC_SEND_MESSAGE\022\020\n\010playerId\030\001"
-  " \001(\r\022\017\n\007message\030\002 \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010"
-  "playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r*\345\003\n\010PacketID\022"
-  "\r\n\tCS_Attack\020\000\022\023\n\017CS_ChangeWeapon\020\001\022\021\n\rC"
-  "S_ItemPicked\020\002\022\017\n\013CS_KeyInput\020\003\022\027\n\023CS_Po"
-  "sInterpolation\020\004\022\025\n\021CS_RequestRestart\020\005\022"
-  "\022\n\016CS_SendMessage\020\006\022\023\n\017CS_SendNickname\020\007"
-  "\022\016\n\nCS_ShotHit\020\010\022\r\n\tSC_Attack\020\t\022\023\n\017SC_Ch"
-  "angeWeapon\020\n\022\024\n\020SC_CharacterDown\020\013\022\027\n\023SC"
-  "_CharacterKillLog\020\014\022\030\n\024SC_CreateMyCharac"
-  "ter\020\r\022\033\n\027SC_CreateOtherCharacter\020\016\022\023\n\017SC"
-  "_ItemPickFail\020\017\022\026\n\022SC_ItemPickSuccess\020\020\022"
-  "\022\n\016SC_ItemSpawned\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013"
-  "SC_OnAccept\020\023\022\027\n\023SC_PosInterpolation\020\024\022\022"
-  "\n\016SC_SendMessage\020\025\022\016\n\nSC_ShotHit\020\026b\006prot"
-  "o3"
+  "_PICKED\022\016\n\006itemId\030\001 \001(\r\"\261\001\n\014CS_KEY_INPUT"
+  "\022\014\n\004keyW\030\001 \001(\010\022\014\n\004keyA\030\002 \001(\010\022\014\n\004keyS\030\003 \001"
+  "(\010\022\014\n\004keyD\030\004 \001(\010\022\023\n\013rotateAxisX\030\005 \001(\002\022\023\n"
+  "\013rotateAxisY\030\006 \001(\002\022\014\n\004Jump\030\007 \001(\r\022\017\n\007norm"
+  "alX\030\010 \001(\002\022\017\n\007normalY\030\t \001(\002\022\017\n\007normalZ\030\n "
+  "\001(\002\"@\n\024CS_POS_INTERPOLATION\022\014\n\004posX\030\001 \001("
+  "\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004posZ\030\003 \001(\002\"6\n\022CS_REQU"
+  "EST_RESTART\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030"
+  "\002 \001(\r\"4\n\017CS_SEND_MESSAGE\022\020\n\010playerId\030\001 \001"
+  "(\r\022\017\n\007message\030\002 \001(\t\" \n\020CS_SEND_NICKNAME\022"
+  "\014\n\004name\030\001 \001(\t\"+\n\013CS_SHOT_HIT\022\020\n\010playerId"
+  "\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"6\n\007KDAInfo\022\014\n\004kill\030\001 "
+  "\001(\r\022\r\n\005death\030\002 \001(\r\022\016\n\006assist\030\003 \001(\r\":\n\nPl"
+  "ayerInfo\022\020\n\010playerId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132"
+  "\r.game.KDAInfo\"\222\001\n\tSC_ATTACK\022\020\n\010playerId"
+  "\030\001 \001(\r\022\026\n\016hittedTargetId\030\002 \001(\r\022\017\n\007normal"
+  "X\030\003 \001(\002\022\017\n\007normalY\030\004 \001(\002\022\017\n\007normalZ\030\005 \001("
+  "\002\022\014\n\004posX\030\006 \001(\002\022\014\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 "
+  "\001(\002\"4\n\020SC_CHANGE_WEAPON\022\020\n\010playerId\030\001 \001("
+  "\r\022\016\n\006weapon\030\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020"
+  "\n\010playerId\030\001 \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_C"
+  "HARACTER_KILL_LOG\022(\n\016playerInfoList\030\001 \003("
+  "\0132\020.game.PlayerInfo\"[\n\026SC_CREATE_MY_CHAR"
+  "ACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001("
+  "\r\022\r\n\005maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_"
+  "CREATE_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r"
+  "\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005cur"
+  "HP\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132"
+  "\r.game.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID"
+  "\030\010 \001(\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010playerId\030"
+  "\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SU"
+  "CCESS\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\""
+  "I\n\017SC_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010it"
+  "emType\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\303\001\n\014S"
+  "C_KEY_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 "
+  "\001(\010\022\014\n\004keyA\030\003 \001(\010\022\014\n\004keyS\030\004 \001(\010\022\014\n\004keyD\030"
+  "\005 \001(\010\022\023\n\013rotateAxisX\030\006 \001(\002\022\023\n\013rotateAxis"
+  "Y\030\007 \001(\002\022\014\n\004Jump\030\010 \001(\r\022\017\n\007normalX\030\t \001(\002\022\017"
+  "\n\007normalY\030\n \001(\002\022\017\n\007normalZ\030\013 \001(\002\" \n\014SC_O"
+  "N_ACCEPT\022\020\n\010playerId\030\001 \001(\r\"R\n\024SC_POS_INT"
+  "ERPOLATION\022\020\n\010playerId\030\001 \001(\r\022\014\n\004posX\030\002 \001"
+  "(\002\022\014\n\004posY\030\003 \001(\002\022\014\n\004posZ\030\004 \001(\002\"4\n\017SC_SEN"
+  "D_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002"
+  " \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n"
+  "\002hp\030\002 \001(\r*\345\003\n\010PacketID\022\r\n\tCS_Attack\020\000\022\023\n"
+  "\017CS_ChangeWeapon\020\001\022\021\n\rCS_ItemPicked\020\002\022\017\n"
+  "\013CS_KeyInput\020\003\022\027\n\023CS_PosInterpolation\020\004\022"
+  "\025\n\021CS_RequestRestart\020\005\022\022\n\016CS_SendMessage"
+  "\020\006\022\023\n\017CS_SendNickname\020\007\022\016\n\nCS_ShotHit\020\010\022"
+  "\r\n\tSC_Attack\020\t\022\023\n\017SC_ChangeWeapon\020\n\022\024\n\020S"
+  "C_CharacterDown\020\013\022\027\n\023SC_CharacterKillLog"
+  "\020\014\022\030\n\024SC_CreateMyCharacter\020\r\022\033\n\027SC_Creat"
+  "eOtherCharacter\020\016\022\023\n\017SC_ItemPickFail\020\017\022\026"
+  "\n\022SC_ItemPickSuccess\020\020\022\022\n\016SC_ItemSpawned"
+  "\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013SC_OnAccept\020\023\022\027\n\023"
+  "SC_PosInterpolation\020\024\022\022\n\016SC_SendMessage\020"
+  "\025\022\016\n\nSC_ShotHit\020\026b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 2362, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 2465, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
     &descriptor_table_Protocol_2eproto_once, nullptr, 0, 25,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
@@ -1590,12 +1604,15 @@ CS_KEY_INPUT::CS_KEY_INPUT(const CS_KEY_INPUT& from)
     , decltype(_impl_.rotateaxisx_){}
     , decltype(_impl_.rotateaxisy_){}
     , decltype(_impl_.jump_){}
+    , decltype(_impl_.normalx_){}
+    , decltype(_impl_.normaly_){}
+    , decltype(_impl_.normalz_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&_impl_.keyw_, &from._impl_.keyw_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.jump_) -
-    reinterpret_cast<char*>(&_impl_.keyw_)) + sizeof(_impl_.jump_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.normalz_) -
+    reinterpret_cast<char*>(&_impl_.keyw_)) + sizeof(_impl_.normalz_));
   // @@protoc_insertion_point(copy_constructor:game.CS_KEY_INPUT)
 }
 
@@ -1604,13 +1621,16 @@ inline void CS_KEY_INPUT::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.keyw_){0u}
-    , decltype(_impl_.keya_){0u}
-    , decltype(_impl_.keys_){0u}
-    , decltype(_impl_.keyd_){0u}
-    , decltype(_impl_.rotateaxisx_){0u}
-    , decltype(_impl_.rotateaxisy_){0u}
+      decltype(_impl_.keyw_){false}
+    , decltype(_impl_.keya_){false}
+    , decltype(_impl_.keys_){false}
+    , decltype(_impl_.keyd_){false}
+    , decltype(_impl_.rotateaxisx_){0}
+    , decltype(_impl_.rotateaxisy_){0}
     , decltype(_impl_.jump_){0u}
+    , decltype(_impl_.normalx_){0}
+    , decltype(_impl_.normaly_){0}
+    , decltype(_impl_.normalz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -1639,8 +1659,8 @@ void CS_KEY_INPUT::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.keyw_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.jump_) -
-      reinterpret_cast<char*>(&_impl_.keyw_)) + sizeof(_impl_.jump_));
+      reinterpret_cast<char*>(&_impl_.normalz_) -
+      reinterpret_cast<char*>(&_impl_.keyw_)) + sizeof(_impl_.normalz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1650,51 +1670,51 @@ const char* CS_KEY_INPUT::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 keyW = 1;
+      // bool keyW = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.keyw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keyw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyA = 2;
+      // bool keyA = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.keya_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keya_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyS = 3;
+      // bool keyS = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.keys_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keys_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyD = 4;
+      // bool keyD = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.keyd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keyd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // fixed32 rotateAxisX = 5;
+      // float rotateAxisX = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
-          _impl_.rotateaxisx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
+          _impl_.rotateaxisx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // fixed32 rotateAxisY = 6;
+      // float rotateAxisY = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
-          _impl_.rotateaxisy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
+          _impl_.rotateaxisy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1703,6 +1723,30 @@ const char* CS_KEY_INPUT::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           _impl_.jump_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalX = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 69)) {
+          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalY = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
+          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalZ = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 85)) {
+          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1735,46 +1779,84 @@ uint8_t* CS_KEY_INPUT::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 keyW = 1;
+  // bool keyW = 1;
   if (this->_internal_keyw() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_keyw(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_keyw(), target);
   }
 
-  // uint32 keyA = 2;
+  // bool keyA = 2;
   if (this->_internal_keya() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_keya(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_keya(), target);
   }
 
-  // uint32 keyS = 3;
+  // bool keyS = 3;
   if (this->_internal_keys() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_keys(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_keys(), target);
   }
 
-  // uint32 keyD = 4;
+  // bool keyD = 4;
   if (this->_internal_keyd() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_keyd(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_keyd(), target);
   }
 
-  // fixed32 rotateAxisX = 5;
-  if (this->_internal_rotateaxisx() != 0) {
+  // float rotateAxisX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = this->_internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(5, this->_internal_rotateaxisx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_rotateaxisx(), target);
   }
 
-  // fixed32 rotateAxisY = 6;
-  if (this->_internal_rotateaxisy() != 0) {
+  // float rotateAxisY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = this->_internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(6, this->_internal_rotateaxisy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_rotateaxisy(), target);
   }
 
   // uint32 Jump = 7;
   if (this->_internal_jump() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_jump(), target);
+  }
+
+  // float normalX = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_normalx(), target);
+  }
+
+  // float normalY = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_normaly(), target);
+  }
+
+  // float normalZ = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(10, this->_internal_normalz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1793,39 +1875,74 @@ size_t CS_KEY_INPUT::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 keyW = 1;
+  // bool keyW = 1;
   if (this->_internal_keyw() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keyw());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyA = 2;
+  // bool keyA = 2;
   if (this->_internal_keya() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keya());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyS = 3;
+  // bool keyS = 3;
   if (this->_internal_keys() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keys());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyD = 4;
+  // bool keyD = 4;
   if (this->_internal_keyd() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keyd());
+    total_size += 1 + 1;
   }
 
-  // fixed32 rotateAxisX = 5;
-  if (this->_internal_rotateaxisx() != 0) {
+  // float rotateAxisX = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = this->_internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     total_size += 1 + 4;
   }
 
-  // fixed32 rotateAxisY = 6;
-  if (this->_internal_rotateaxisy() != 0) {
+  // float rotateAxisY = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = this->_internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     total_size += 1 + 4;
   }
 
   // uint32 Jump = 7;
   if (this->_internal_jump() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_jump());
+  }
+
+  // float normalX = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float normalY = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float normalZ = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1858,14 +1975,43 @@ void CS_KEY_INPUT::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   if (from._internal_keyd() != 0) {
     _this->_internal_set_keyd(from._internal_keyd());
   }
-  if (from._internal_rotateaxisx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = from._internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     _this->_internal_set_rotateaxisx(from._internal_rotateaxisx());
   }
-  if (from._internal_rotateaxisy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = from._internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     _this->_internal_set_rotateaxisy(from._internal_rotateaxisy());
   }
   if (from._internal_jump() != 0) {
     _this->_internal_set_jump(from._internal_jump());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = from._internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    _this->_internal_set_normalx(from._internal_normalx());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = from._internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    _this->_internal_set_normaly(from._internal_normaly());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = from._internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    _this->_internal_set_normalz(from._internal_normalz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1885,8 +2031,8 @@ void CS_KEY_INPUT::InternalSwap(CS_KEY_INPUT* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CS_KEY_INPUT, _impl_.jump_)
-      + sizeof(CS_KEY_INPUT::_impl_.jump_)
+      PROTOBUF_FIELD_OFFSET(CS_KEY_INPUT, _impl_.normalz_)
+      + sizeof(CS_KEY_INPUT::_impl_.normalz_)
       - PROTOBUF_FIELD_OFFSET(CS_KEY_INPUT, _impl_.keyw_)>(
           reinterpret_cast<char*>(&_impl_.keyw_),
           reinterpret_cast<char*>(&other->_impl_.keyw_));
@@ -5857,12 +6003,15 @@ SC_KEY_INPUT::SC_KEY_INPUT(const SC_KEY_INPUT& from)
     , decltype(_impl_.rotateaxisx_){}
     , decltype(_impl_.rotateaxisy_){}
     , decltype(_impl_.jump_){}
+    , decltype(_impl_.normalx_){}
+    , decltype(_impl_.normaly_){}
+    , decltype(_impl_.normalz_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&_impl_.playerid_, &from._impl_.playerid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.jump_) -
-    reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.jump_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.normalz_) -
+    reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.normalz_));
   // @@protoc_insertion_point(copy_constructor:game.SC_KEY_INPUT)
 }
 
@@ -5872,13 +6021,16 @@ inline void SC_KEY_INPUT::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.playerid_){0u}
-    , decltype(_impl_.keyw_){0u}
-    , decltype(_impl_.keya_){0u}
-    , decltype(_impl_.keys_){0u}
-    , decltype(_impl_.keyd_){0u}
-    , decltype(_impl_.rotateaxisx_){0u}
-    , decltype(_impl_.rotateaxisy_){0u}
+    , decltype(_impl_.keyw_){false}
+    , decltype(_impl_.keya_){false}
+    , decltype(_impl_.keys_){false}
+    , decltype(_impl_.keyd_){false}
+    , decltype(_impl_.rotateaxisx_){0}
+    , decltype(_impl_.rotateaxisy_){0}
     , decltype(_impl_.jump_){0u}
+    , decltype(_impl_.normalx_){0}
+    , decltype(_impl_.normaly_){0}
+    , decltype(_impl_.normalz_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -5907,8 +6059,8 @@ void SC_KEY_INPUT::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.playerid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.jump_) -
-      reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.jump_));
+      reinterpret_cast<char*>(&_impl_.normalz_) -
+      reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.normalz_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -5926,51 +6078,51 @@ const char* SC_KEY_INPUT::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyW = 2;
+      // bool keyW = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.keyw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keyw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyA = 3;
+      // bool keyA = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.keya_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keya_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyS = 4;
+      // bool keyS = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.keys_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keys_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 keyD = 5;
+      // bool keyD = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          _impl_.keyd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.keyd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // fixed32 rotateAxisX = 6;
+      // float rotateAxisX = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
-          _impl_.rotateaxisx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
+          _impl_.rotateaxisx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // fixed32 rotateAxisY = 7;
+      // float rotateAxisY = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
-          _impl_.rotateaxisy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
-          ptr += sizeof(uint32_t);
+          _impl_.rotateaxisy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -5979,6 +6131,30 @@ const char* SC_KEY_INPUT::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _impl_.jump_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalX = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
+          _impl_.normalx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalY = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 85)) {
+          _impl_.normaly_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float normalZ = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 93)) {
+          _impl_.normalz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -6017,46 +6193,84 @@ uint8_t* SC_KEY_INPUT::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
   }
 
-  // uint32 keyW = 2;
+  // bool keyW = 2;
   if (this->_internal_keyw() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_keyw(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_keyw(), target);
   }
 
-  // uint32 keyA = 3;
+  // bool keyA = 3;
   if (this->_internal_keya() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_keya(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_keya(), target);
   }
 
-  // uint32 keyS = 4;
+  // bool keyS = 4;
   if (this->_internal_keys() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_keys(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_keys(), target);
   }
 
-  // uint32 keyD = 5;
+  // bool keyD = 5;
   if (this->_internal_keyd() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_keyd(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_keyd(), target);
   }
 
-  // fixed32 rotateAxisX = 6;
-  if (this->_internal_rotateaxisx() != 0) {
+  // float rotateAxisX = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = this->_internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(6, this->_internal_rotateaxisx(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_rotateaxisx(), target);
   }
 
-  // fixed32 rotateAxisY = 7;
-  if (this->_internal_rotateaxisy() != 0) {
+  // float rotateAxisY = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = this->_internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(7, this->_internal_rotateaxisy(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_rotateaxisy(), target);
   }
 
   // uint32 Jump = 8;
   if (this->_internal_jump() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_jump(), target);
+  }
+
+  // float normalX = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_normalx(), target);
+  }
+
+  // float normalY = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(10, this->_internal_normaly(), target);
+  }
+
+  // float normalZ = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(11, this->_internal_normalz(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -6080,39 +6294,74 @@ size_t SC_KEY_INPUT::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
-  // uint32 keyW = 2;
+  // bool keyW = 2;
   if (this->_internal_keyw() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keyw());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyA = 3;
+  // bool keyA = 3;
   if (this->_internal_keya() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keya());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyS = 4;
+  // bool keyS = 4;
   if (this->_internal_keys() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keys());
+    total_size += 1 + 1;
   }
 
-  // uint32 keyD = 5;
+  // bool keyD = 5;
   if (this->_internal_keyd() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_keyd());
+    total_size += 1 + 1;
   }
 
-  // fixed32 rotateAxisX = 6;
-  if (this->_internal_rotateaxisx() != 0) {
+  // float rotateAxisX = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = this->_internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     total_size += 1 + 4;
   }
 
-  // fixed32 rotateAxisY = 7;
-  if (this->_internal_rotateaxisy() != 0) {
+  // float rotateAxisY = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = this->_internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     total_size += 1 + 4;
   }
 
   // uint32 Jump = 8;
   if (this->_internal_jump() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_jump());
+  }
+
+  // float normalX = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = this->_internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float normalY = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = this->_internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float normalZ = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = this->_internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -6148,14 +6397,43 @@ void SC_KEY_INPUT::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   if (from._internal_keyd() != 0) {
     _this->_internal_set_keyd(from._internal_keyd());
   }
-  if (from._internal_rotateaxisx() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisx = from._internal_rotateaxisx();
+  uint32_t raw_rotateaxisx;
+  memcpy(&raw_rotateaxisx, &tmp_rotateaxisx, sizeof(tmp_rotateaxisx));
+  if (raw_rotateaxisx != 0) {
     _this->_internal_set_rotateaxisx(from._internal_rotateaxisx());
   }
-  if (from._internal_rotateaxisy() != 0) {
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_rotateaxisy = from._internal_rotateaxisy();
+  uint32_t raw_rotateaxisy;
+  memcpy(&raw_rotateaxisy, &tmp_rotateaxisy, sizeof(tmp_rotateaxisy));
+  if (raw_rotateaxisy != 0) {
     _this->_internal_set_rotateaxisy(from._internal_rotateaxisy());
   }
   if (from._internal_jump() != 0) {
     _this->_internal_set_jump(from._internal_jump());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalx = from._internal_normalx();
+  uint32_t raw_normalx;
+  memcpy(&raw_normalx, &tmp_normalx, sizeof(tmp_normalx));
+  if (raw_normalx != 0) {
+    _this->_internal_set_normalx(from._internal_normalx());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normaly = from._internal_normaly();
+  uint32_t raw_normaly;
+  memcpy(&raw_normaly, &tmp_normaly, sizeof(tmp_normaly));
+  if (raw_normaly != 0) {
+    _this->_internal_set_normaly(from._internal_normaly());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_normalz = from._internal_normalz();
+  uint32_t raw_normalz;
+  memcpy(&raw_normalz, &tmp_normalz, sizeof(tmp_normalz));
+  if (raw_normalz != 0) {
+    _this->_internal_set_normalz(from._internal_normalz());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -6175,8 +6453,8 @@ void SC_KEY_INPUT::InternalSwap(SC_KEY_INPUT* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SC_KEY_INPUT, _impl_.jump_)
-      + sizeof(SC_KEY_INPUT::_impl_.jump_)
+      PROTOBUF_FIELD_OFFSET(SC_KEY_INPUT, _impl_.normalz_)
+      + sizeof(SC_KEY_INPUT::_impl_.normalz_)
       - PROTOBUF_FIELD_OFFSET(SC_KEY_INPUT, _impl_.playerid_)>(
           reinterpret_cast<char*>(&_impl_.playerid_),
           reinterpret_cast<char*>(&other->_impl_.playerid_));

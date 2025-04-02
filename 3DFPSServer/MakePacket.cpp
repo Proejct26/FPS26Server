@@ -832,7 +832,7 @@ void SC_ITEM_SPAWNED_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 itemId,
     packetPool.Free(Packet);
 }
 
-void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
+void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ)
 {
     game::SC_KEY_INPUT pkt;
 
@@ -844,6 +844,9 @@ void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT
     pkt.set_rotateaxisx(rotateAxisX);
     pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_jump(Jump);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -864,7 +867,7 @@ void SC_KEY_INPUT_FOR_All(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT
     packetPool.Free(Packet);
 }
 
-void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
+void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ)
 {
     game::SC_KEY_INPUT pkt;
 
@@ -876,6 +879,9 @@ void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, U
     pkt.set_rotateaxisx(rotateAxisX);
     pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_jump(Jump);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -896,7 +902,7 @@ void SC_KEY_INPUT_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 keyW, U
     packetPool.Free(Packet);
 }
 
-void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 keyW, UINT32 keyA, UINT32 keyS, UINT32 keyD, UINT32 rotateAxisX, UINT32 rotateAxisY, UINT32 Jump)
+void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, bool keyW, bool keyA, bool keyS, bool keyD, float rotateAxisX, float rotateAxisY, UINT32 Jump, float normalX, float normalY, float normalZ)
 {
     game::SC_KEY_INPUT pkt;
 
@@ -908,6 +914,9 @@ void SC_KEY_INPUT_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, 
     pkt.set_rotateaxisx(rotateAxisX);
     pkt.set_rotateaxisy(rotateAxisY);
     pkt.set_jump(Jump);
+    pkt.set_normalx(normalX);
+    pkt.set_normaly(normalY);
+    pkt.set_normalz(normalZ);
 
     int pktSize = pkt.ByteSizeLong();
 

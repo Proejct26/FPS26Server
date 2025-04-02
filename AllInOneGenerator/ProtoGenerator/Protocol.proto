@@ -47,13 +47,16 @@ message CS_ITEM_PICKED {
     uint32 itemId = 1; // 획득 시도한 아이템의 정보
 }
 message CS_KEY_INPUT {
-    uint32 keyW = 1; // 키(WASD)
-    uint32 keyA = 2;
-    uint32 keyS = 3;
-    uint32 keyD = 4;
-    fixed32 rotateAxisX = 5; // 마우스 X축 회전값
-    fixed32 rotateAxisY = 6; // 마우스 Y축 회전값
+    bool keyW = 1; // 키(WASD)
+    bool keyA = 2;
+    bool keyS = 3;
+    bool keyD = 4;
+    float rotateAxisX = 5; // 마우스 X축 회전값
+    float rotateAxisY = 6; // 마우스 Y축 회전값
     uint32 Jump = 7; // 점프 여부
+    float normalX = 8; // 플레이어의 노멀 벡터
+    float normalY = 9;
+    float normalZ = 10;
 }
 message CS_POS_INTERPOLATION {
     float posX = 1; // 플레이어의 현재 위치
@@ -136,13 +139,16 @@ message SC_ITEM_SPAWNED {
 }
 message SC_KEY_INPUT {
     uint32 playerId = 1;
-    uint32 keyW = 2; // 키(WASD)
-    uint32 keyA = 3;
-    uint32 keyS = 4;
-    uint32 keyD = 5;
-    fixed32 rotateAxisX = 6; // 마우스 X축 회전값
-    fixed32 rotateAxisY = 7; // 마우스 Y축 회전값
+    bool keyW = 2; // 키(WASD)
+    bool keyA = 3;
+    bool keyS = 4;
+    bool keyD = 5;
+    float rotateAxisX = 6; // 마우스 X축 회전값
+    float rotateAxisY = 7; // 마우스 Y축 회전값
     uint32 Jump = 8; // 점프 여부
+    float normalX = 9; // 플레이어의 노멀 벡터
+    float normalY = 10;
+    float normalZ = 11;
 }
 message SC_ON_ACCEPT {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
