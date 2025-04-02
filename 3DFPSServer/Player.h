@@ -75,8 +75,8 @@ public:
     void SetMovementKeys(const std::array<bool, (int)PRESS_KEY::END>& keys);
 
 public:
-    void GetRotationAxisXY(UINT32& AxisX, UINT32& AxisY) const { AxisX = m_rotationAxisX; AxisY = m_rotationAxisY; }
-    void SetRotationAxisXY(UINT32 AxisX, UINT32 AxisY) { m_rotationAxisX = AxisX, m_rotationAxisY = AxisY; }
+    void GetRotationAxisXY(float& AxisX, float& AxisY) const { AxisX = m_rotationAxisX; AxisY = m_rotationAxisY; }
+    void SetRotationAxisXY(float AxisX, float AxisY) { m_rotationAxisX = AxisX, m_rotationAxisY = AxisY; }
 
 public:
     UINT8 GetCurHp(void) { return m_curHp; }
@@ -95,8 +95,8 @@ private:
     UINT8 m_curHp = 0;          // 체력
     UINT8 m_maxHp = 0;
 
-    UINT32 m_rotationAxisX = 0;      // x, y축 회전값
-    UINT32 m_rotationAxisY = 0;
+    float m_rotationAxisX = 0;      // x, y축 회전값
+    float m_rotationAxisY = 0;
 
     int m_roomId = -1;
     int m_teamId = -1;

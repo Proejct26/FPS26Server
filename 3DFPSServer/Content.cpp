@@ -56,7 +56,7 @@ void LoginAcceptObject(CObject* pObj)
 
     // 룸에 있던 activePlayer들의 정보를 새로 룸에 접속한 플레이어에게 전송
     float posX, posY, posZ;
-    UINT32 rotationAxisX, rotationAxisY;
+    float rotationAxisX, rotationAxisY;
     KDAInfo kdaInfo;
     for (const auto& activePlayer : room->m_activePlayers)
     {
