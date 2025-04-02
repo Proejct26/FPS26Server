@@ -137,18 +137,32 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         return CS_REQUEST_RESTART(pSession, playerId, weapon);
     }
     break;
-    case game::PacketID::CS_SendMessage:
+    case game::PacketID::CS_SendMessageAll:
     {
         UINT32 playerId;
         std::string message;
 
-        game::CS_SEND_MESSAGE pkt;
+        game::CS_SEND_MESSAGE_ALL pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
 
         playerId = pkt.playerid();
         message = pkt.message();
 
-        return CS_SEND_MESSAGE(pSession, playerId, message);
+        return CS_SEND_MESSAGE_ALL(pSession, playerId, message);
+    }
+    break;
+    case game::PacketID::CS_SendMessageTeam:
+    {
+        UINT32 playerId;
+        std::string message;
+
+        game::CS_SEND_MESSAGE_TEAM pkt;
+        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
+
+        playerId = pkt.playerid();
+        message = pkt.message();
+
+        return CS_SEND_MESSAGE_TEAM(pSession, playerId, message);
     }
     break;
     case game::PacketID::CS_SendNickname:
@@ -193,14 +207,16 @@ void DisconnectSessionProc(CSession* pSession)
     // 2. 방 정보 검색
     CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
 
-    // 3. 현재 플레이어를 제외한 모든 플레이어에게 해당 캐릭이 나갔음을 알리는 패킷 전송. 단, 자기 자신은 제외한다.
+    // 3. 현재 플레이어를 제외한 모든 플레이어에게 해당 캐릭이 나갔음을 알리는 패킷 전송. 단, 자기 자신은 제외한다. 
+    
+    std::vector<UINT32> assistID{ 1,2,3 };  // 어시스트 관련 임시
     for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         if (activePlayer == pPlayer)
             continue;
 
         // 캐릭터의 hp가 0이 되었음을 알리는 패킷을 전송. 나간 것이나 hp가 0이 된 것이나 같은 의미로 사용
-        SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId());
+        SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId(), assistID);
     }
     for (const auto& waitingPlayer : pRoom->m_activePlayers)
     {
@@ -208,7 +224,7 @@ void DisconnectSessionProc(CSession* pSession)
             continue;
 
         // 캐릭터의 hp가 0이 되었음을 알리는 패킷을 전송. 나간 것이나 hp가 0이 된 것이나 같은 의미로 사용
-        SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId());
+        SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, pPlayer->m_ID, pPlayer->GetTeamId(), assistID);
     }
 
     // 4. 방을 나감
@@ -377,9 +393,56 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
     return true;
 }
 
-bool CS_SEND_MESSAGE(CSession* pSession, UINT32 playerId, std::string message)
+bool CS_SEND_MESSAGE_ALL(CSession* pSession, UINT32 playerId, std::string message)
 {
-    int a = 10;
+    // 방에 있는 모든 플레이어에게 메시지를 전송
+
+    // 1. 연결된 플레이어 추출
+    CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
+
+    // 2. 방 정보 추출
+    CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
+
+    // 3. 메시지 전송. 메시지는 active 상태일 때만 클라이언트에서 전송이 가능하기에 activePlayer 들에게만 보낸다.
+    // 자기 자신은 메시지를 이미 보냈으니깐 다시 반환하지 않는다.
+    std::wstring wideStr;
+    for (const auto& activePlayer : pRoom->m_activePlayers)
+    {
+        // 메시지를 보낸 플레이어가 아닐때
+        if (activePlayer != pPlayer)
+        {
+            // 매시지 전송
+            wideStr = Utf8ToWString(message);
+            SC_SEND_MESSAGE_ALL_FOR_SINGLE(pSession, playerId, WStringToUtf8(wideStr));
+        }
+    }
+
+    return true;
+}
+
+bool CS_SEND_MESSAGE_TEAM(CSession* pSession, UINT32 playerId, std::string message)
+{
+    // 같은 팀 플레이어에게만 메시지를 전송
+
+    // 1. 연결된 플레이어 추출
+    CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
+
+    // 2. 방 정보 추출
+    CRoom* pRoom = roomManager.GetRoomById(pPlayer->GetRoomId());
+
+    // 3. 메시지 전송. 메시지는 active 상태일 때만 클라이언트에서 전송이 가능하기에 activePlayer 들에게만 보낸다.
+    // 자기 자신은 메시지를 이미 보냈으니깐 다시 반환하지 않는다.
+    std::wstring wideStr;
+    for (const auto& activePlayer : pRoom->m_activePlayers)
+    {
+        // 같은 team이고, 메시지를 보낸 플레이어가 아닐때
+        if (activePlayer->GetTeamId() == pPlayer->GetTeamId() && activePlayer != pPlayer)
+        {
+            // 매시지 전송
+            wideStr = Utf8ToWString(message);
+            SC_SEND_MESSAGE_TEAM_FOR_SINGLE(pSession, playerId, WStringToUtf8(wideStr));
+        }
+    }
 
     return true;
 }
@@ -391,18 +454,12 @@ bool CS_SEND_NICKNAME(CSession* pSession, std::string name)
     // 1. 연결된 플레이어 추출
     CPlayer* pPlayer = static_cast<CPlayer*>(pSession->pObj);
 
-
-
-
     // 채팅 메시지 예제
     // 확인용. 한글을 보내면 wideStr에서 한글을 확인할 수 있다.
-    std::wstring wideStr = Utf8ToWString(name);
-    SC_SEND_MESSAGE_FOR_SINGLE(pSession, pPlayer->m_ID, WStringToUtf8(wideStr));
-
-
-
+    //SC_SEND_MESSAGE_FOR_SINGLE(pSession, pPlayer->m_ID, WStringToUtf8(wideStr));
 
     // 2. 이름 부여
+    std::wstring wideStr = Utf8ToWString(name);
     pPlayer->SetName(WStringToUtf8(wideStr));
 
     // 3. waiting에서 active로 이동
@@ -485,13 +542,16 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
             pRoom->MoveToWaiting(playerId);
 
             // 플레이어가 다운되었음을 방의 모든 플레이어들에게 전송
+
+            // 어시스트 관련 임시
+            std::vector<UINT32> assistID{ 1,2,3 };
             for (const auto& activePlayer : pRoom->m_activePlayers)
             {
-                SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId());
+                SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), assistID);
             }
             for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
             {
-                SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId());
+                SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), assistID);
             }
         }
         else

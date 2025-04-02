@@ -191,12 +191,16 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 player
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID)
+void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
+    for (const auto& data : assistPlayerId) {
+        auto* item = pkt.add_assistplayerid();
+        *item = data;
+    }
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -217,12 +221,16 @@ void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamI
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID)
+void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
+    for (const auto& data : assistPlayerId) {
+        auto* item = pkt.add_assistplayerid();
+        *item = data;
+    }
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -243,12 +251,16 @@ void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 te
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID)
+void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
+    for (const auto& data : assistPlayerId) {
+        auto* item = pkt.add_assistplayerid();
+        *item = data;
+    }
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -1111,9 +1123,9 @@ void SC_POS_INTERPOLATION_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 pl
     packetPool.Free(Packet);
 }
 
-void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string message)
+void SC_SEND_MESSAGE_ALL_FOR_All(CSession* pSession, UINT32 playerId, std::string message)
 {
-    game::SC_SEND_MESSAGE pkt;
+    game::SC_SEND_MESSAGE_ALL pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_message(message);
@@ -1123,7 +1135,7 @@ void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string me
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_SendMessage;
+    header.byType = game::PacketID::SC_SendMessageAll;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();
@@ -1137,9 +1149,9 @@ void SC_SEND_MESSAGE_FOR_All(CSession* pSession, UINT32 playerId, std::string me
     packetPool.Free(Packet);
 }
 
-void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message)
+void SC_SEND_MESSAGE_ALL_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message)
 {
-    game::SC_SEND_MESSAGE pkt;
+    game::SC_SEND_MESSAGE_ALL pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_message(message);
@@ -1149,7 +1161,7 @@ void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_SendMessage;
+    header.byType = game::PacketID::SC_SendMessageAll;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();
@@ -1163,9 +1175,9 @@ void SC_SEND_MESSAGE_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string
     packetPool.Free(Packet);
 }
 
-void SC_SEND_MESSAGE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, std::string message)
+void SC_SEND_MESSAGE_ALL_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, std::string message)
 {
-    game::SC_SEND_MESSAGE pkt;
+    game::SC_SEND_MESSAGE_ALL pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_message(message);
@@ -1175,7 +1187,90 @@ void SC_SEND_MESSAGE_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerI
     PACKET_HEADER header;
     header.byCode = dfNETWORK_PACKET_CODE;
     header.bySize = pktSize;
-    header.byType = game::PacketID::SC_SendMessage;
+    header.byType = game::PacketID::SC_SendMessageAll;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    for (auto& player : pRoom->m_activePlayers)
+    {
+        if (pSession == player->m_pSession)
+            continue;
+        UnicastPacket(player->m_pSession, &header, Packet);
+    }
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_SEND_MESSAGE_TEAM_FOR_All(CSession* pSession, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE_TEAM pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessageTeam;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    BroadcastData(pSession, Packet, Packet->GetDataSize());
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_SEND_MESSAGE_TEAM_FOR_SINGLE(CSession* pSession, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE_TEAM pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessageTeam;
+
+    int headerSize = sizeof(PACKET_HEADER);
+    CPacket* Packet = packetPool.Alloc();
+
+    char buffer[512];
+    pkt.SerializeToArray(buffer, pktSize);
+    Packet->PutData(buffer, pktSize);
+
+    UnicastPacket(pSession, &header, Packet);
+    Packet->Clear();
+    packetPool.Free(Packet);
+}
+
+void SC_SEND_MESSAGE_TEAM_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, std::string message)
+{
+    game::SC_SEND_MESSAGE_TEAM pkt;
+
+    pkt.set_playerid(playerId);
+    pkt.set_message(message);
+
+    int pktSize = pkt.ByteSizeLong();
+
+    PACKET_HEADER header;
+    header.byCode = dfNETWORK_PACKET_CODE;
+    header.bySize = pktSize;
+    header.byType = game::PacketID::SC_SendMessageTeam;
 
     int headerSize = sizeof(PACKET_HEADER);
     CPacket* Packet = packetPool.Alloc();

@@ -25,6 +25,8 @@ public:
 
     CPlayer* FindPlayerById(int playerId);
 
+    MatchSystem* GetMatchSystem(void) { return m_pMatchSystem; }
+
 public:
     std::vector<CPlayer*> m_activePlayers;
     std::vector<CPlayer*> m_waitingPlayers;

@@ -117,20 +117,34 @@ struct CS_REQUEST_RESTARTDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_REQUEST_RESTARTDefaultTypeInternal _CS_REQUEST_RESTART_default_instance_;
-PROTOBUF_CONSTEXPR CS_SEND_MESSAGE::CS_SEND_MESSAGE(
+PROTOBUF_CONSTEXPR CS_SEND_MESSAGE_ALL::CS_SEND_MESSAGE_ALL(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.playerid_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct CS_SEND_MESSAGEDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CS_SEND_MESSAGEDefaultTypeInternal()
+struct CS_SEND_MESSAGE_ALLDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CS_SEND_MESSAGE_ALLDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CS_SEND_MESSAGEDefaultTypeInternal() {}
+  ~CS_SEND_MESSAGE_ALLDefaultTypeInternal() {}
   union {
-    CS_SEND_MESSAGE _instance;
+    CS_SEND_MESSAGE_ALL _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_SEND_MESSAGEDefaultTypeInternal _CS_SEND_MESSAGE_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_SEND_MESSAGE_ALLDefaultTypeInternal _CS_SEND_MESSAGE_ALL_default_instance_;
+PROTOBUF_CONSTEXPR CS_SEND_MESSAGE_TEAM::CS_SEND_MESSAGE_TEAM(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.playerid_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CS_SEND_MESSAGE_TEAMDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CS_SEND_MESSAGE_TEAMDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CS_SEND_MESSAGE_TEAMDefaultTypeInternal() {}
+  union {
+    CS_SEND_MESSAGE_TEAM _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CS_SEND_MESSAGE_TEAMDefaultTypeInternal _CS_SEND_MESSAGE_TEAM_default_instance_;
 PROTOBUF_CONSTEXPR CS_SEND_NICKNAME::CS_SEND_NICKNAME(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -223,7 +237,9 @@ struct SC_CHANGE_WEAPONDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_CHANGE_WEAPONDefaultTypeInternal _SC_CHANGE_WEAPON_default_instance_;
 PROTOBUF_CONSTEXPR SC_CHARACTER_DOWN::SC_CHARACTER_DOWN(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.playerid_)*/0u
+    /*decltype(_impl_.assistplayerid_)*/{}
+  , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
+  , /*decltype(_impl_.playerid_)*/0u
   , /*decltype(_impl_.teamid_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SC_CHARACTER_DOWNDefaultTypeInternal {
@@ -379,20 +395,34 @@ struct SC_POS_INTERPOLATIONDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_POS_INTERPOLATIONDefaultTypeInternal _SC_POS_INTERPOLATION_default_instance_;
-PROTOBUF_CONSTEXPR SC_SEND_MESSAGE::SC_SEND_MESSAGE(
+PROTOBUF_CONSTEXPR SC_SEND_MESSAGE_ALL::SC_SEND_MESSAGE_ALL(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.playerid_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct SC_SEND_MESSAGEDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SC_SEND_MESSAGEDefaultTypeInternal()
+struct SC_SEND_MESSAGE_ALLDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SC_SEND_MESSAGE_ALLDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SC_SEND_MESSAGEDefaultTypeInternal() {}
+  ~SC_SEND_MESSAGE_ALLDefaultTypeInternal() {}
   union {
-    SC_SEND_MESSAGE _instance;
+    SC_SEND_MESSAGE_ALL _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SEND_MESSAGEDefaultTypeInternal _SC_SEND_MESSAGE_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SEND_MESSAGE_ALLDefaultTypeInternal _SC_SEND_MESSAGE_ALL_default_instance_;
+PROTOBUF_CONSTEXPR SC_SEND_MESSAGE_TEAM::SC_SEND_MESSAGE_TEAM(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.playerid_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SC_SEND_MESSAGE_TEAMDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SC_SEND_MESSAGE_TEAMDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SC_SEND_MESSAGE_TEAMDefaultTypeInternal() {}
+  union {
+    SC_SEND_MESSAGE_TEAM _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SEND_MESSAGE_TEAMDefaultTypeInternal _SC_SEND_MESSAGE_TEAM_default_instance_;
 PROTOBUF_CONSTEXPR SC_SHOT_HIT::SC_SHOT_HIT(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.playerid_)*/0u
@@ -408,7 +438,7 @@ struct SC_SHOT_HITDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_SHOT_HITDefaultTypeInternal _SC_SHOT_HIT_default_instance_;
 }  // namespace game
-static ::_pb::Metadata file_level_metadata_Protocol_2eproto[25];
+static ::_pb::Metadata file_level_metadata_Protocol_2eproto[27];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Protocol_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Protocol_2eproto = nullptr;
 
@@ -474,13 +504,21 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   PROTOBUF_FIELD_OFFSET(::game::CS_REQUEST_RESTART, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::CS_REQUEST_RESTART, _impl_.weapon_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_ALL, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE, _impl_.playerid_),
-  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE, _impl_.message_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_ALL, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_ALL, _impl_.message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_TEAM, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_TEAM, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::game::CS_SEND_MESSAGE_TEAM, _impl_.message_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::CS_SEND_NICKNAME, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -543,6 +581,7 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::game::SC_CHARACTER_DOWN, _impl_.playerid_),
   PROTOBUF_FIELD_OFFSET(::game::SC_CHARACTER_DOWN, _impl_.teamid_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_CHARACTER_DOWN, _impl_.assistplayerid_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::SC_CHARACTER_KILL_LOG, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -634,13 +673,21 @@ const uint32_t TableStruct_Protocol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.posy_),
   PROTOBUF_FIELD_OFFSET(::game::SC_POS_INTERPOLATION, _impl_.posz_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_ALL, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE, _impl_.playerid_),
-  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE, _impl_.message_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_ALL, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_ALL, _impl_.message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_TEAM, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_TEAM, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::game::SC_SEND_MESSAGE_TEAM, _impl_.message_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::game::SC_SHOT_HIT, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -657,25 +704,27 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 27, -1, -1, sizeof(::game::CS_KEY_INPUT)},
   { 43, -1, -1, sizeof(::game::CS_POS_INTERPOLATION)},
   { 52, -1, -1, sizeof(::game::CS_REQUEST_RESTART)},
-  { 60, -1, -1, sizeof(::game::CS_SEND_MESSAGE)},
-  { 68, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
-  { 75, -1, -1, sizeof(::game::CS_SHOT_HIT)},
-  { 83, -1, -1, sizeof(::game::KDAInfo)},
-  { 92, -1, -1, sizeof(::game::PlayerInfo)},
-  { 100, -1, -1, sizeof(::game::SC_ATTACK)},
-  { 114, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
-  { 122, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
-  { 130, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
-  { 137, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
-  { 147, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
-  { 161, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
-  { 169, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
-  { 177, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
-  { 186, -1, -1, sizeof(::game::SC_KEY_INPUT)},
-  { 203, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
-  { 210, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
-  { 220, -1, -1, sizeof(::game::SC_SEND_MESSAGE)},
-  { 228, -1, -1, sizeof(::game::SC_SHOT_HIT)},
+  { 60, -1, -1, sizeof(::game::CS_SEND_MESSAGE_ALL)},
+  { 68, -1, -1, sizeof(::game::CS_SEND_MESSAGE_TEAM)},
+  { 76, -1, -1, sizeof(::game::CS_SEND_NICKNAME)},
+  { 83, -1, -1, sizeof(::game::CS_SHOT_HIT)},
+  { 91, -1, -1, sizeof(::game::KDAInfo)},
+  { 100, -1, -1, sizeof(::game::PlayerInfo)},
+  { 108, -1, -1, sizeof(::game::SC_ATTACK)},
+  { 122, -1, -1, sizeof(::game::SC_CHANGE_WEAPON)},
+  { 130, -1, -1, sizeof(::game::SC_CHARACTER_DOWN)},
+  { 139, -1, -1, sizeof(::game::SC_CHARACTER_KILL_LOG)},
+  { 146, -1, -1, sizeof(::game::SC_CREATE_MY_CHARACTER)},
+  { 156, -1, -1, sizeof(::game::SC_CREATE_OTHER_CHARACTER)},
+  { 170, -1, -1, sizeof(::game::SC_ITEM_PICK_FAIL)},
+  { 178, -1, -1, sizeof(::game::SC_ITEM_PICK_SUCCESS)},
+  { 186, -1, -1, sizeof(::game::SC_ITEM_SPAWNED)},
+  { 195, -1, -1, sizeof(::game::SC_KEY_INPUT)},
+  { 212, -1, -1, sizeof(::game::SC_ON_ACCEPT)},
+  { 219, -1, -1, sizeof(::game::SC_POS_INTERPOLATION)},
+  { 229, -1, -1, sizeof(::game::SC_SEND_MESSAGE_ALL)},
+  { 237, -1, -1, sizeof(::game::SC_SEND_MESSAGE_TEAM)},
+  { 245, -1, -1, sizeof(::game::SC_SHOT_HIT)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -685,7 +734,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::game::_CS_KEY_INPUT_default_instance_._instance,
   &::game::_CS_POS_INTERPOLATION_default_instance_._instance,
   &::game::_CS_REQUEST_RESTART_default_instance_._instance,
-  &::game::_CS_SEND_MESSAGE_default_instance_._instance,
+  &::game::_CS_SEND_MESSAGE_ALL_default_instance_._instance,
+  &::game::_CS_SEND_MESSAGE_TEAM_default_instance_._instance,
   &::game::_CS_SEND_NICKNAME_default_instance_._instance,
   &::game::_CS_SHOT_HIT_default_instance_._instance,
   &::game::_KDAInfo_default_instance_._instance,
@@ -702,7 +752,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::game::_SC_KEY_INPUT_default_instance_._instance,
   &::game::_SC_ON_ACCEPT_default_instance_._instance,
   &::game::_SC_POS_INTERPOLATION_default_instance_._instance,
-  &::game::_SC_SEND_MESSAGE_default_instance_._instance,
+  &::game::_SC_SEND_MESSAGE_ALL_default_instance_._instance,
+  &::game::_SC_SEND_MESSAGE_TEAM_default_instance_._instance,
   &::game::_SC_SHOT_HIT_default_instance_._instance,
 };
 
@@ -720,61 +771,66 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "\001(\002\"@\n\024CS_POS_INTERPOLATION\022\014\n\004posX\030\001 \001("
   "\002\022\014\n\004posY\030\002 \001(\002\022\014\n\004posZ\030\003 \001(\002\"6\n\022CS_REQU"
   "EST_RESTART\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030"
-  "\002 \001(\r\"4\n\017CS_SEND_MESSAGE\022\020\n\010playerId\030\001 \001"
-  "(\r\022\017\n\007message\030\002 \001(\t\" \n\020CS_SEND_NICKNAME\022"
-  "\014\n\004name\030\001 \001(\t\"+\n\013CS_SHOT_HIT\022\020\n\010playerId"
-  "\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r\"6\n\007KDAInfo\022\014\n\004kill\030\001 "
-  "\001(\r\022\r\n\005death\030\002 \001(\r\022\016\n\006assist\030\003 \001(\r\":\n\nPl"
-  "ayerInfo\022\020\n\010playerId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132"
-  "\r.game.KDAInfo\"\222\001\n\tSC_ATTACK\022\020\n\010playerId"
-  "\030\001 \001(\r\022\026\n\016hittedTargetId\030\002 \001(\r\022\017\n\007normal"
-  "X\030\003 \001(\002\022\017\n\007normalY\030\004 \001(\002\022\017\n\007normalZ\030\005 \001("
-  "\002\022\014\n\004posX\030\006 \001(\002\022\014\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 "
-  "\001(\002\"4\n\020SC_CHANGE_WEAPON\022\020\n\010playerId\030\001 \001("
-  "\r\022\016\n\006weapon\030\002 \001(\r\"5\n\021SC_CHARACTER_DOWN\022\020"
-  "\n\010playerId\030\001 \001(\r\022\016\n\006teamID\030\002 \001(\r\"A\n\025SC_C"
-  "HARACTER_KILL_LOG\022(\n\016playerInfoList\030\001 \003("
-  "\0132\020.game.PlayerInfo\"[\n\026SC_CREATE_MY_CHAR"
-  "ACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posIndex\030\002 \001("
-  "\r\022\r\n\005maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\"\253\001\n\031SC_"
-  "CREATE_OTHER_CHARACTER\022\020\n\010playerId\030\001 \001(\r"
-  "\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\r\n\005cur"
-  "HP\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo\030\006 \001(\0132"
-  "\r.game.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n\006teamID"
-  "\030\010 \001(\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010playerId\030"
-  "\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_PICK_SU"
-  "CCESS\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\""
-  "I\n\017SC_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001(\r\022\020\n\010it"
-  "emType\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001(\r\"\303\001\n\014S"
-  "C_KEY_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004keyW\030\002 "
-  "\001(\010\022\014\n\004keyA\030\003 \001(\010\022\014\n\004keyS\030\004 \001(\010\022\014\n\004keyD\030"
-  "\005 \001(\010\022\023\n\013rotateAxisX\030\006 \001(\002\022\023\n\013rotateAxis"
-  "Y\030\007 \001(\002\022\014\n\004Jump\030\010 \001(\r\022\017\n\007normalX\030\t \001(\002\022\017"
-  "\n\007normalY\030\n \001(\002\022\017\n\007normalZ\030\013 \001(\002\" \n\014SC_O"
-  "N_ACCEPT\022\020\n\010playerId\030\001 \001(\r\"R\n\024SC_POS_INT"
-  "ERPOLATION\022\020\n\010playerId\030\001 \001(\r\022\014\n\004posX\030\002 \001"
-  "(\002\022\014\n\004posY\030\003 \001(\002\022\014\n\004posZ\030\004 \001(\002\"4\n\017SC_SEN"
-  "D_MESSAGE\022\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002"
-  " \001(\t\"+\n\013SC_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n"
-  "\002hp\030\002 \001(\r*\345\003\n\010PacketID\022\r\n\tCS_Attack\020\000\022\023\n"
-  "\017CS_ChangeWeapon\020\001\022\021\n\rCS_ItemPicked\020\002\022\017\n"
-  "\013CS_KeyInput\020\003\022\027\n\023CS_PosInterpolation\020\004\022"
-  "\025\n\021CS_RequestRestart\020\005\022\022\n\016CS_SendMessage"
-  "\020\006\022\023\n\017CS_SendNickname\020\007\022\016\n\nCS_ShotHit\020\010\022"
-  "\r\n\tSC_Attack\020\t\022\023\n\017SC_ChangeWeapon\020\n\022\024\n\020S"
-  "C_CharacterDown\020\013\022\027\n\023SC_CharacterKillLog"
-  "\020\014\022\030\n\024SC_CreateMyCharacter\020\r\022\033\n\027SC_Creat"
-  "eOtherCharacter\020\016\022\023\n\017SC_ItemPickFail\020\017\022\026"
-  "\n\022SC_ItemPickSuccess\020\020\022\022\n\016SC_ItemSpawned"
-  "\020\021\022\017\n\013SC_KeyInput\020\022\022\017\n\013SC_OnAccept\020\023\022\027\n\023"
-  "SC_PosInterpolation\020\024\022\022\n\016SC_SendMessage\020"
-  "\025\022\016\n\nSC_ShotHit\020\026b\006proto3"
+  "\002 \001(\r\"8\n\023CS_SEND_MESSAGE_ALL\022\020\n\010playerId"
+  "\030\001 \001(\r\022\017\n\007message\030\002 \001(\t\"9\n\024CS_SEND_MESSA"
+  "GE_TEAM\022\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002 \001"
+  "(\t\" \n\020CS_SEND_NICKNAME\022\014\n\004name\030\001 \001(\t\"+\n\013"
+  "CS_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001("
+  "\r\"6\n\007KDAInfo\022\014\n\004kill\030\001 \001(\r\022\r\n\005death\030\002 \001("
+  "\r\022\016\n\006assist\030\003 \001(\r\":\n\nPlayerInfo\022\020\n\010playe"
+  "rId\030\001 \001(\r\022\032\n\003kda\030\002 \001(\0132\r.game.KDAInfo\"\222\001"
+  "\n\tSC_ATTACK\022\020\n\010playerId\030\001 \001(\r\022\026\n\016hittedT"
+  "argetId\030\002 \001(\r\022\017\n\007normalX\030\003 \001(\002\022\017\n\007normal"
+  "Y\030\004 \001(\002\022\017\n\007normalZ\030\005 \001(\002\022\014\n\004posX\030\006 \001(\002\022\014"
+  "\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 \001(\002\"4\n\020SC_CHANGE_"
+  "WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r"
+  "\"M\n\021SC_CHARACTER_DOWN\022\020\n\010playerId\030\001 \001(\r\022"
+  "\016\n\006teamID\030\002 \001(\r\022\026\n\016assistPlayerId\030\003 \003(\r\""
+  "A\n\025SC_CHARACTER_KILL_LOG\022(\n\016playerInfoLi"
+  "st\030\001 \003(\0132\020.game.PlayerInfo\"[\n\026SC_CREATE_"
+  "MY_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posInd"
+  "ex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r\022\016\n\006teamID\030\004 \001(\r\""
+  "\253\001\n\031SC_CREATE_OTHER_CHARACTER\022\020\n\010playerI"
+  "d\030\001 \001(\r\022\020\n\010posIndex\030\002 \001(\r\022\r\n\005maxHP\030\003 \001(\r"
+  "\022\r\n\005curHP\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\036\n\007kdaInfo"
+  "\030\006 \001(\0132\r.game.KDAInfo\022\016\n\006weapon\030\007 \001(\r\022\016\n"
+  "\006teamID\030\010 \001(\r\"5\n\021SC_ITEM_PICK_FAIL\022\020\n\010pl"
+  "ayerId\030\001 \001(\r\022\016\n\006itemId\030\002 \001(\r\"8\n\024SC_ITEM_"
+  "PICK_SUCCESS\022\020\n\010playerId\030\001 \001(\r\022\016\n\006itemId"
+  "\030\002 \001(\r\"I\n\017SC_ITEM_SPAWNED\022\016\n\006itemId\030\001 \001("
+  "\r\022\020\n\010itemType\030\002 \001(\r\022\024\n\014itemPosIndex\030\003 \001("
+  "\r\"\303\001\n\014SC_KEY_INPUT\022\020\n\010playerId\030\001 \001(\r\022\014\n\004"
+  "keyW\030\002 \001(\010\022\014\n\004keyA\030\003 \001(\010\022\014\n\004keyS\030\004 \001(\010\022\014"
+  "\n\004keyD\030\005 \001(\010\022\023\n\013rotateAxisX\030\006 \001(\002\022\023\n\013rot"
+  "ateAxisY\030\007 \001(\002\022\014\n\004Jump\030\010 \001(\r\022\017\n\007normalX\030"
+  "\t \001(\002\022\017\n\007normalY\030\n \001(\002\022\017\n\007normalZ\030\013 \001(\002\""
+  " \n\014SC_ON_ACCEPT\022\020\n\010playerId\030\001 \001(\r\"R\n\024SC_"
+  "POS_INTERPOLATION\022\020\n\010playerId\030\001 \001(\r\022\014\n\004p"
+  "osX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\014\n\004posZ\030\004 \001(\002\"8\n"
+  "\023SC_SEND_MESSAGE_ALL\022\020\n\010playerId\030\001 \001(\r\022\017"
+  "\n\007message\030\002 \001(\t\"9\n\024SC_SEND_MESSAGE_TEAM\022"
+  "\020\n\010playerId\030\001 \001(\r\022\017\n\007message\030\002 \001(\t\"+\n\013SC"
+  "_SHOT_HIT\022\020\n\010playerId\030\001 \001(\r\022\n\n\002hp\030\002 \001(\r*"
+  "\233\004\n\010PacketID\022\r\n\tCS_Attack\020\000\022\023\n\017CS_Change"
+  "Weapon\020\001\022\021\n\rCS_ItemPicked\020\002\022\017\n\013CS_KeyInp"
+  "ut\020\003\022\027\n\023CS_PosInterpolation\020\004\022\025\n\021CS_Requ"
+  "estRestart\020\005\022\025\n\021CS_SendMessageAll\020\006\022\026\n\022C"
+  "S_SendMessageTeam\020\007\022\023\n\017CS_SendNickname\020\010"
+  "\022\016\n\nCS_ShotHit\020\t\022\r\n\tSC_Attack\020\n\022\023\n\017SC_Ch"
+  "angeWeapon\020\013\022\024\n\020SC_CharacterDown\020\014\022\027\n\023SC"
+  "_CharacterKillLog\020\r\022\030\n\024SC_CreateMyCharac"
+  "ter\020\016\022\033\n\027SC_CreateOtherCharacter\020\017\022\023\n\017SC"
+  "_ItemPickFail\020\020\022\026\n\022SC_ItemPickSuccess\020\021\022"
+  "\022\n\016SC_ItemSpawned\020\022\022\017\n\013SC_KeyInput\020\023\022\017\n\013"
+  "SC_OnAccept\020\024\022\027\n\023SC_PosInterpolation\020\025\022\025"
+  "\n\021SC_SendMessageAll\020\026\022\026\n\022SC_SendMessageT"
+  "eam\020\027\022\016\n\nSC_ShotHit\020\030b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Protocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Protocol_2eproto = {
-    false, false, 2465, descriptor_table_protodef_Protocol_2eproto,
+    false, false, 2669, descriptor_table_protodef_Protocol_2eproto,
     "Protocol.proto",
-    &descriptor_table_Protocol_2eproto_once, nullptr, 0, 25,
+    &descriptor_table_Protocol_2eproto_once, nullptr, 0, 27,
     schemas, file_default_instances, TableStruct_Protocol_2eproto::offsets,
     file_level_metadata_Protocol_2eproto, file_level_enum_descriptors_Protocol_2eproto,
     file_level_service_descriptors_Protocol_2eproto,
@@ -815,6 +871,8 @@ bool PacketID_IsValid(int value) {
     case 20:
     case 21:
     case 22:
+    case 23:
+    case 24:
       return true;
     default:
       return false;
@@ -2528,19 +2586,19 @@ void CS_REQUEST_RESTART::InternalSwap(CS_REQUEST_RESTART* other) {
 
 // ===================================================================
 
-class CS_SEND_MESSAGE::_Internal {
+class CS_SEND_MESSAGE_ALL::_Internal {
  public:
 };
 
-CS_SEND_MESSAGE::CS_SEND_MESSAGE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+CS_SEND_MESSAGE_ALL::CS_SEND_MESSAGE_ALL(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.CS_SEND_MESSAGE)
+  // @@protoc_insertion_point(arena_constructor:game.CS_SEND_MESSAGE_ALL)
 }
-CS_SEND_MESSAGE::CS_SEND_MESSAGE(const CS_SEND_MESSAGE& from)
+CS_SEND_MESSAGE_ALL::CS_SEND_MESSAGE_ALL(const CS_SEND_MESSAGE_ALL& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  CS_SEND_MESSAGE* const _this = this; (void)_this;
+  CS_SEND_MESSAGE_ALL* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.message_){}
     , decltype(_impl_.playerid_){}
@@ -2556,10 +2614,10 @@ CS_SEND_MESSAGE::CS_SEND_MESSAGE(const CS_SEND_MESSAGE& from)
       _this->GetArenaForAllocation());
   }
   _this->_impl_.playerid_ = from._impl_.playerid_;
-  // @@protoc_insertion_point(copy_constructor:game.CS_SEND_MESSAGE)
+  // @@protoc_insertion_point(copy_constructor:game.CS_SEND_MESSAGE_ALL)
 }
 
-inline void CS_SEND_MESSAGE::SharedCtor(
+inline void CS_SEND_MESSAGE_ALL::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -2574,8 +2632,8 @@ inline void CS_SEND_MESSAGE::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-CS_SEND_MESSAGE::~CS_SEND_MESSAGE() {
-  // @@protoc_insertion_point(destructor:game.CS_SEND_MESSAGE)
+CS_SEND_MESSAGE_ALL::~CS_SEND_MESSAGE_ALL() {
+  // @@protoc_insertion_point(destructor:game.CS_SEND_MESSAGE_ALL)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2583,17 +2641,17 @@ CS_SEND_MESSAGE::~CS_SEND_MESSAGE() {
   SharedDtor();
 }
 
-inline void CS_SEND_MESSAGE::SharedDtor() {
+inline void CS_SEND_MESSAGE_ALL::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.message_.Destroy();
 }
 
-void CS_SEND_MESSAGE::SetCachedSize(int size) const {
+void CS_SEND_MESSAGE_ALL::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void CS_SEND_MESSAGE::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.CS_SEND_MESSAGE)
+void CS_SEND_MESSAGE_ALL::Clear() {
+// @@protoc_insertion_point(message_clear_start:game.CS_SEND_MESSAGE_ALL)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2603,7 +2661,7 @@ void CS_SEND_MESSAGE::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CS_SEND_MESSAGE::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* CS_SEND_MESSAGE_ALL::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -2623,7 +2681,7 @@ const char* CS_SEND_MESSAGE::_InternalParse(const char* ptr, ::_pbi::ParseContex
           auto str = _internal_mutable_message();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "game.CS_SEND_MESSAGE.message"));
+          CHK_(::_pbi::VerifyUTF8(str, "game.CS_SEND_MESSAGE_ALL.message"));
         } else
           goto handle_unusual;
         continue;
@@ -2650,9 +2708,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* CS_SEND_MESSAGE::_InternalSerialize(
+uint8_t* CS_SEND_MESSAGE_ALL::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.CS_SEND_MESSAGE)
+  // @@protoc_insertion_point(serialize_to_array_start:game.CS_SEND_MESSAGE_ALL)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2667,7 +2725,7 @@ uint8_t* CS_SEND_MESSAGE::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "game.CS_SEND_MESSAGE.message");
+      "game.CS_SEND_MESSAGE_ALL.message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_message(), target);
   }
@@ -2676,12 +2734,12 @@ uint8_t* CS_SEND_MESSAGE::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:game.CS_SEND_MESSAGE)
+  // @@protoc_insertion_point(serialize_to_array_end:game.CS_SEND_MESSAGE_ALL)
   return target;
 }
 
-size_t CS_SEND_MESSAGE::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.CS_SEND_MESSAGE)
+size_t CS_SEND_MESSAGE_ALL::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:game.CS_SEND_MESSAGE_ALL)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2703,17 +2761,17 @@ size_t CS_SEND_MESSAGE::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CS_SEND_MESSAGE::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CS_SEND_MESSAGE_ALL::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CS_SEND_MESSAGE::MergeImpl
+    CS_SEND_MESSAGE_ALL::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CS_SEND_MESSAGE::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CS_SEND_MESSAGE_ALL::GetClassData() const { return &_class_data_; }
 
 
-void CS_SEND_MESSAGE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CS_SEND_MESSAGE*>(&to_msg);
-  auto& from = static_cast<const CS_SEND_MESSAGE&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.CS_SEND_MESSAGE)
+void CS_SEND_MESSAGE_ALL::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CS_SEND_MESSAGE_ALL*>(&to_msg);
+  auto& from = static_cast<const CS_SEND_MESSAGE_ALL&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:game.CS_SEND_MESSAGE_ALL)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2727,18 +2785,18 @@ void CS_SEND_MESSAGE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void CS_SEND_MESSAGE::CopyFrom(const CS_SEND_MESSAGE& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.CS_SEND_MESSAGE)
+void CS_SEND_MESSAGE_ALL::CopyFrom(const CS_SEND_MESSAGE_ALL& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:game.CS_SEND_MESSAGE_ALL)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CS_SEND_MESSAGE::IsInitialized() const {
+bool CS_SEND_MESSAGE_ALL::IsInitialized() const {
   return true;
 }
 
-void CS_SEND_MESSAGE::InternalSwap(CS_SEND_MESSAGE* other) {
+void CS_SEND_MESSAGE_ALL::InternalSwap(CS_SEND_MESSAGE_ALL* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2750,10 +2808,240 @@ void CS_SEND_MESSAGE::InternalSwap(CS_SEND_MESSAGE* other) {
   swap(_impl_.playerid_, other->_impl_.playerid_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_MESSAGE::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_MESSAGE_ALL::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
       file_level_metadata_Protocol_2eproto[6]);
+}
+
+// ===================================================================
+
+class CS_SEND_MESSAGE_TEAM::_Internal {
+ public:
+};
+
+CS_SEND_MESSAGE_TEAM::CS_SEND_MESSAGE_TEAM(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:game.CS_SEND_MESSAGE_TEAM)
+}
+CS_SEND_MESSAGE_TEAM::CS_SEND_MESSAGE_TEAM(const CS_SEND_MESSAGE_TEAM& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CS_SEND_MESSAGE_TEAM* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.playerid_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    _this->_impl_.message_.Set(from._internal_message(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.playerid_ = from._impl_.playerid_;
+  // @@protoc_insertion_point(copy_constructor:game.CS_SEND_MESSAGE_TEAM)
+}
+
+inline void CS_SEND_MESSAGE_TEAM::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.playerid_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+CS_SEND_MESSAGE_TEAM::~CS_SEND_MESSAGE_TEAM() {
+  // @@protoc_insertion_point(destructor:game.CS_SEND_MESSAGE_TEAM)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CS_SEND_MESSAGE_TEAM::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.message_.Destroy();
+}
+
+void CS_SEND_MESSAGE_TEAM::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CS_SEND_MESSAGE_TEAM::Clear() {
+// @@protoc_insertion_point(message_clear_start:game.CS_SEND_MESSAGE_TEAM)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _impl_.playerid_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CS_SEND_MESSAGE_TEAM::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 playerId = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "game.CS_SEND_MESSAGE_TEAM.message"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CS_SEND_MESSAGE_TEAM::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:game.CS_SEND_MESSAGE_TEAM)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "game.CS_SEND_MESSAGE_TEAM.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:game.CS_SEND_MESSAGE_TEAM)
+  return target;
+}
+
+size_t CS_SEND_MESSAGE_TEAM::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:game.CS_SEND_MESSAGE_TEAM)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CS_SEND_MESSAGE_TEAM::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CS_SEND_MESSAGE_TEAM::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CS_SEND_MESSAGE_TEAM::GetClassData() const { return &_class_data_; }
+
+
+void CS_SEND_MESSAGE_TEAM::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CS_SEND_MESSAGE_TEAM*>(&to_msg);
+  auto& from = static_cast<const CS_SEND_MESSAGE_TEAM&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:game.CS_SEND_MESSAGE_TEAM)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (from._internal_playerid() != 0) {
+    _this->_internal_set_playerid(from._internal_playerid());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CS_SEND_MESSAGE_TEAM::CopyFrom(const CS_SEND_MESSAGE_TEAM& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:game.CS_SEND_MESSAGE_TEAM)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CS_SEND_MESSAGE_TEAM::IsInitialized() const {
+  return true;
+}
+
+void CS_SEND_MESSAGE_TEAM::InternalSwap(CS_SEND_MESSAGE_TEAM* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.message_, lhs_arena,
+      &other->_impl_.message_, rhs_arena
+  );
+  swap(_impl_.playerid_, other->_impl_.playerid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_MESSAGE_TEAM::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
+      file_level_metadata_Protocol_2eproto[7]);
 }
 
 // ===================================================================
@@ -2956,7 +3244,7 @@ void CS_SEND_NICKNAME::InternalSwap(CS_SEND_NICKNAME* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_SEND_NICKNAME::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[7]);
+      file_level_metadata_Protocol_2eproto[8]);
 }
 
 // ===================================================================
@@ -3167,7 +3455,7 @@ void CS_SHOT_HIT::InternalSwap(CS_SHOT_HIT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CS_SHOT_HIT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[8]);
+      file_level_metadata_Protocol_2eproto[9]);
 }
 
 // ===================================================================
@@ -3402,7 +3690,7 @@ void KDAInfo::InternalSwap(KDAInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata KDAInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[9]);
+      file_level_metadata_Protocol_2eproto[10]);
 }
 
 // ===================================================================
@@ -3626,7 +3914,7 @@ void PlayerInfo::InternalSwap(PlayerInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[10]);
+      file_level_metadata_Protocol_2eproto[11]);
 }
 
 // ===================================================================
@@ -4053,7 +4341,7 @@ void SC_ATTACK::InternalSwap(SC_ATTACK* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ATTACK::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[11]);
+      file_level_metadata_Protocol_2eproto[12]);
 }
 
 // ===================================================================
@@ -4264,7 +4552,7 @@ void SC_CHANGE_WEAPON::InternalSwap(SC_CHANGE_WEAPON* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHANGE_WEAPON::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[12]);
+      file_level_metadata_Protocol_2eproto[13]);
 }
 
 // ===================================================================
@@ -4283,7 +4571,9 @@ SC_CHARACTER_DOWN::SC_CHARACTER_DOWN(const SC_CHARACTER_DOWN& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SC_CHARACTER_DOWN* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.playerid_){}
+      decltype(_impl_.assistplayerid_){from._impl_.assistplayerid_}
+    , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
+    , decltype(_impl_.playerid_){}
     , decltype(_impl_.teamid_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -4299,7 +4589,9 @@ inline void SC_CHARACTER_DOWN::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.playerid_){0u}
+      decltype(_impl_.assistplayerid_){arena}
+    , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
+    , decltype(_impl_.playerid_){0u}
     , decltype(_impl_.teamid_){0u}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -4316,6 +4608,7 @@ SC_CHARACTER_DOWN::~SC_CHARACTER_DOWN() {
 
 inline void SC_CHARACTER_DOWN::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.assistplayerid_.~RepeatedField();
 }
 
 void SC_CHARACTER_DOWN::SetCachedSize(int size) const {
@@ -4328,6 +4621,7 @@ void SC_CHARACTER_DOWN::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.assistplayerid_.Clear();
   ::memset(&_impl_.playerid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.teamid_) -
       reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.teamid_));
@@ -4352,6 +4646,17 @@ const char* SC_CHARACTER_DOWN::_InternalParse(const char* ptr, ::_pbi::ParseCont
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _impl_.teamid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated uint32 assistPlayerId = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_assistplayerid(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 24) {
+          _internal_add_assistplayerid(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -4397,6 +4702,15 @@ uint8_t* SC_CHARACTER_DOWN::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_teamid(), target);
   }
 
+  // repeated uint32 assistPlayerId = 3;
+  {
+    int byte_size = _impl_._assistplayerid_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteUInt32Packed(
+          3, _internal_assistplayerid(), byte_size, target);
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4412,6 +4726,20 @@ size_t SC_CHARACTER_DOWN::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated uint32 assistPlayerId = 3;
+  {
+    size_t data_size = ::_pbi::WireFormatLite::
+      UInt32Size(this->_impl_.assistplayerid_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    int cached_size = ::_pbi::ToCachedSize(data_size);
+    _impl_._assistplayerid_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
 
   // uint32 playerId = 1;
   if (this->_internal_playerid() != 0) {
@@ -4441,6 +4769,7 @@ void SC_CHARACTER_DOWN::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.assistplayerid_.MergeFrom(from._impl_.assistplayerid_);
   if (from._internal_playerid() != 0) {
     _this->_internal_set_playerid(from._internal_playerid());
   }
@@ -4464,6 +4793,7 @@ bool SC_CHARACTER_DOWN::IsInitialized() const {
 void SC_CHARACTER_DOWN::InternalSwap(SC_CHARACTER_DOWN* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.assistplayerid_.InternalSwap(&other->_impl_.assistplayerid_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SC_CHARACTER_DOWN, _impl_.teamid_)
       + sizeof(SC_CHARACTER_DOWN::_impl_.teamid_)
@@ -4475,7 +4805,7 @@ void SC_CHARACTER_DOWN::InternalSwap(SC_CHARACTER_DOWN* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHARACTER_DOWN::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[13]);
+      file_level_metadata_Protocol_2eproto[14]);
 }
 
 // ===================================================================
@@ -4660,7 +4990,7 @@ void SC_CHARACTER_KILL_LOG::InternalSwap(SC_CHARACTER_KILL_LOG* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CHARACTER_KILL_LOG::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[14]);
+      file_level_metadata_Protocol_2eproto[15]);
 }
 
 // ===================================================================
@@ -4919,7 +5249,7 @@ void SC_CREATE_MY_CHARACTER::InternalSwap(SC_CREATE_MY_CHARACTER* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CREATE_MY_CHARACTER::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[15]);
+      file_level_metadata_Protocol_2eproto[16]);
 }
 
 // ===================================================================
@@ -5319,7 +5649,7 @@ void SC_CREATE_OTHER_CHARACTER::InternalSwap(SC_CREATE_OTHER_CHARACTER* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_CREATE_OTHER_CHARACTER::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[16]);
+      file_level_metadata_Protocol_2eproto[17]);
 }
 
 // ===================================================================
@@ -5530,7 +5860,7 @@ void SC_ITEM_PICK_FAIL::InternalSwap(SC_ITEM_PICK_FAIL* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_PICK_FAIL::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[17]);
+      file_level_metadata_Protocol_2eproto[18]);
 }
 
 // ===================================================================
@@ -5741,7 +6071,7 @@ void SC_ITEM_PICK_SUCCESS::InternalSwap(SC_ITEM_PICK_SUCCESS* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_PICK_SUCCESS::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[18]);
+      file_level_metadata_Protocol_2eproto[19]);
 }
 
 // ===================================================================
@@ -5976,7 +6306,7 @@ void SC_ITEM_SPAWNED::InternalSwap(SC_ITEM_SPAWNED* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ITEM_SPAWNED::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[19]);
+      file_level_metadata_Protocol_2eproto[20]);
 }
 
 // ===================================================================
@@ -6463,7 +6793,7 @@ void SC_KEY_INPUT::InternalSwap(SC_KEY_INPUT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_KEY_INPUT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[20]);
+      file_level_metadata_Protocol_2eproto[21]);
 }
 
 // ===================================================================
@@ -6641,7 +6971,7 @@ void SC_ON_ACCEPT::InternalSwap(SC_ON_ACCEPT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_ON_ACCEPT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[21]);
+      file_level_metadata_Protocol_2eproto[22]);
 }
 
 // ===================================================================
@@ -6936,24 +7266,24 @@ void SC_POS_INTERPOLATION::InternalSwap(SC_POS_INTERPOLATION* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_POS_INTERPOLATION::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[22]);
+      file_level_metadata_Protocol_2eproto[23]);
 }
 
 // ===================================================================
 
-class SC_SEND_MESSAGE::_Internal {
+class SC_SEND_MESSAGE_ALL::_Internal {
  public:
 };
 
-SC_SEND_MESSAGE::SC_SEND_MESSAGE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+SC_SEND_MESSAGE_ALL::SC_SEND_MESSAGE_ALL(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:game.SC_SEND_MESSAGE)
+  // @@protoc_insertion_point(arena_constructor:game.SC_SEND_MESSAGE_ALL)
 }
-SC_SEND_MESSAGE::SC_SEND_MESSAGE(const SC_SEND_MESSAGE& from)
+SC_SEND_MESSAGE_ALL::SC_SEND_MESSAGE_ALL(const SC_SEND_MESSAGE_ALL& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  SC_SEND_MESSAGE* const _this = this; (void)_this;
+  SC_SEND_MESSAGE_ALL* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.message_){}
     , decltype(_impl_.playerid_){}
@@ -6969,10 +7299,10 @@ SC_SEND_MESSAGE::SC_SEND_MESSAGE(const SC_SEND_MESSAGE& from)
       _this->GetArenaForAllocation());
   }
   _this->_impl_.playerid_ = from._impl_.playerid_;
-  // @@protoc_insertion_point(copy_constructor:game.SC_SEND_MESSAGE)
+  // @@protoc_insertion_point(copy_constructor:game.SC_SEND_MESSAGE_ALL)
 }
 
-inline void SC_SEND_MESSAGE::SharedCtor(
+inline void SC_SEND_MESSAGE_ALL::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -6987,8 +7317,8 @@ inline void SC_SEND_MESSAGE::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-SC_SEND_MESSAGE::~SC_SEND_MESSAGE() {
-  // @@protoc_insertion_point(destructor:game.SC_SEND_MESSAGE)
+SC_SEND_MESSAGE_ALL::~SC_SEND_MESSAGE_ALL() {
+  // @@protoc_insertion_point(destructor:game.SC_SEND_MESSAGE_ALL)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -6996,17 +7326,17 @@ SC_SEND_MESSAGE::~SC_SEND_MESSAGE() {
   SharedDtor();
 }
 
-inline void SC_SEND_MESSAGE::SharedDtor() {
+inline void SC_SEND_MESSAGE_ALL::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.message_.Destroy();
 }
 
-void SC_SEND_MESSAGE::SetCachedSize(int size) const {
+void SC_SEND_MESSAGE_ALL::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void SC_SEND_MESSAGE::Clear() {
-// @@protoc_insertion_point(message_clear_start:game.SC_SEND_MESSAGE)
+void SC_SEND_MESSAGE_ALL::Clear() {
+// @@protoc_insertion_point(message_clear_start:game.SC_SEND_MESSAGE_ALL)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7016,7 +7346,7 @@ void SC_SEND_MESSAGE::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SC_SEND_MESSAGE::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* SC_SEND_MESSAGE_ALL::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -7036,7 +7366,7 @@ const char* SC_SEND_MESSAGE::_InternalParse(const char* ptr, ::_pbi::ParseContex
           auto str = _internal_mutable_message();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "game.SC_SEND_MESSAGE.message"));
+          CHK_(::_pbi::VerifyUTF8(str, "game.SC_SEND_MESSAGE_ALL.message"));
         } else
           goto handle_unusual;
         continue;
@@ -7063,9 +7393,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* SC_SEND_MESSAGE::_InternalSerialize(
+uint8_t* SC_SEND_MESSAGE_ALL::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:game.SC_SEND_MESSAGE)
+  // @@protoc_insertion_point(serialize_to_array_start:game.SC_SEND_MESSAGE_ALL)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -7080,7 +7410,7 @@ uint8_t* SC_SEND_MESSAGE::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "game.SC_SEND_MESSAGE.message");
+      "game.SC_SEND_MESSAGE_ALL.message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_message(), target);
   }
@@ -7089,12 +7419,12 @@ uint8_t* SC_SEND_MESSAGE::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:game.SC_SEND_MESSAGE)
+  // @@protoc_insertion_point(serialize_to_array_end:game.SC_SEND_MESSAGE_ALL)
   return target;
 }
 
-size_t SC_SEND_MESSAGE::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:game.SC_SEND_MESSAGE)
+size_t SC_SEND_MESSAGE_ALL::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:game.SC_SEND_MESSAGE_ALL)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -7116,17 +7446,17 @@ size_t SC_SEND_MESSAGE::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SC_SEND_MESSAGE::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SC_SEND_MESSAGE_ALL::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    SC_SEND_MESSAGE::MergeImpl
+    SC_SEND_MESSAGE_ALL::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SC_SEND_MESSAGE::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SC_SEND_MESSAGE_ALL::GetClassData() const { return &_class_data_; }
 
 
-void SC_SEND_MESSAGE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<SC_SEND_MESSAGE*>(&to_msg);
-  auto& from = static_cast<const SC_SEND_MESSAGE&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:game.SC_SEND_MESSAGE)
+void SC_SEND_MESSAGE_ALL::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SC_SEND_MESSAGE_ALL*>(&to_msg);
+  auto& from = static_cast<const SC_SEND_MESSAGE_ALL&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:game.SC_SEND_MESSAGE_ALL)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -7140,18 +7470,18 @@ void SC_SEND_MESSAGE::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void SC_SEND_MESSAGE::CopyFrom(const SC_SEND_MESSAGE& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:game.SC_SEND_MESSAGE)
+void SC_SEND_MESSAGE_ALL::CopyFrom(const SC_SEND_MESSAGE_ALL& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:game.SC_SEND_MESSAGE_ALL)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SC_SEND_MESSAGE::IsInitialized() const {
+bool SC_SEND_MESSAGE_ALL::IsInitialized() const {
   return true;
 }
 
-void SC_SEND_MESSAGE::InternalSwap(SC_SEND_MESSAGE* other) {
+void SC_SEND_MESSAGE_ALL::InternalSwap(SC_SEND_MESSAGE_ALL* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -7163,10 +7493,240 @@ void SC_SEND_MESSAGE::InternalSwap(SC_SEND_MESSAGE* other) {
   swap(_impl_.playerid_, other->_impl_.playerid_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata SC_SEND_MESSAGE::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata SC_SEND_MESSAGE_ALL::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[23]);
+      file_level_metadata_Protocol_2eproto[24]);
+}
+
+// ===================================================================
+
+class SC_SEND_MESSAGE_TEAM::_Internal {
+ public:
+};
+
+SC_SEND_MESSAGE_TEAM::SC_SEND_MESSAGE_TEAM(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:game.SC_SEND_MESSAGE_TEAM)
+}
+SC_SEND_MESSAGE_TEAM::SC_SEND_MESSAGE_TEAM(const SC_SEND_MESSAGE_TEAM& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SC_SEND_MESSAGE_TEAM* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.playerid_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    _this->_impl_.message_.Set(from._internal_message(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.playerid_ = from._impl_.playerid_;
+  // @@protoc_insertion_point(copy_constructor:game.SC_SEND_MESSAGE_TEAM)
+}
+
+inline void SC_SEND_MESSAGE_TEAM::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.playerid_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SC_SEND_MESSAGE_TEAM::~SC_SEND_MESSAGE_TEAM() {
+  // @@protoc_insertion_point(destructor:game.SC_SEND_MESSAGE_TEAM)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SC_SEND_MESSAGE_TEAM::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.message_.Destroy();
+}
+
+void SC_SEND_MESSAGE_TEAM::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SC_SEND_MESSAGE_TEAM::Clear() {
+// @@protoc_insertion_point(message_clear_start:game.SC_SEND_MESSAGE_TEAM)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _impl_.playerid_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SC_SEND_MESSAGE_TEAM::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 playerId = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "game.SC_SEND_MESSAGE_TEAM.message"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SC_SEND_MESSAGE_TEAM::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:game.SC_SEND_MESSAGE_TEAM)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_playerid(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "game.SC_SEND_MESSAGE_TEAM.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:game.SC_SEND_MESSAGE_TEAM)
+  return target;
+}
+
+size_t SC_SEND_MESSAGE_TEAM::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:game.SC_SEND_MESSAGE_TEAM)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // uint32 playerId = 1;
+  if (this->_internal_playerid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SC_SEND_MESSAGE_TEAM::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SC_SEND_MESSAGE_TEAM::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SC_SEND_MESSAGE_TEAM::GetClassData() const { return &_class_data_; }
+
+
+void SC_SEND_MESSAGE_TEAM::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SC_SEND_MESSAGE_TEAM*>(&to_msg);
+  auto& from = static_cast<const SC_SEND_MESSAGE_TEAM&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:game.SC_SEND_MESSAGE_TEAM)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (from._internal_playerid() != 0) {
+    _this->_internal_set_playerid(from._internal_playerid());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SC_SEND_MESSAGE_TEAM::CopyFrom(const SC_SEND_MESSAGE_TEAM& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:game.SC_SEND_MESSAGE_TEAM)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SC_SEND_MESSAGE_TEAM::IsInitialized() const {
+  return true;
+}
+
+void SC_SEND_MESSAGE_TEAM::InternalSwap(SC_SEND_MESSAGE_TEAM* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.message_, lhs_arena,
+      &other->_impl_.message_, rhs_arena
+  );
+  swap(_impl_.playerid_, other->_impl_.playerid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SC_SEND_MESSAGE_TEAM::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
+      file_level_metadata_Protocol_2eproto[25]);
 }
 
 // ===================================================================
@@ -7377,7 +7937,7 @@ void SC_SHOT_HIT::InternalSwap(SC_SHOT_HIT* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SC_SHOT_HIT::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Protocol_2eproto_getter, &descriptor_table_Protocol_2eproto_once,
-      file_level_metadata_Protocol_2eproto[24]);
+      file_level_metadata_Protocol_2eproto[26]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -7407,9 +7967,13 @@ template<> PROTOBUF_NOINLINE ::game::CS_REQUEST_RESTART*
 Arena::CreateMaybeMessage< ::game::CS_REQUEST_RESTART >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::CS_REQUEST_RESTART >(arena);
 }
-template<> PROTOBUF_NOINLINE ::game::CS_SEND_MESSAGE*
-Arena::CreateMaybeMessage< ::game::CS_SEND_MESSAGE >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::CS_SEND_MESSAGE >(arena);
+template<> PROTOBUF_NOINLINE ::game::CS_SEND_MESSAGE_ALL*
+Arena::CreateMaybeMessage< ::game::CS_SEND_MESSAGE_ALL >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::game::CS_SEND_MESSAGE_ALL >(arena);
+}
+template<> PROTOBUF_NOINLINE ::game::CS_SEND_MESSAGE_TEAM*
+Arena::CreateMaybeMessage< ::game::CS_SEND_MESSAGE_TEAM >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::game::CS_SEND_MESSAGE_TEAM >(arena);
 }
 template<> PROTOBUF_NOINLINE ::game::CS_SEND_NICKNAME*
 Arena::CreateMaybeMessage< ::game::CS_SEND_NICKNAME >(Arena* arena) {
@@ -7475,9 +8039,13 @@ template<> PROTOBUF_NOINLINE ::game::SC_POS_INTERPOLATION*
 Arena::CreateMaybeMessage< ::game::SC_POS_INTERPOLATION >(Arena* arena) {
   return Arena::CreateMessageInternal< ::game::SC_POS_INTERPOLATION >(arena);
 }
-template<> PROTOBUF_NOINLINE ::game::SC_SEND_MESSAGE*
-Arena::CreateMaybeMessage< ::game::SC_SEND_MESSAGE >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::game::SC_SEND_MESSAGE >(arena);
+template<> PROTOBUF_NOINLINE ::game::SC_SEND_MESSAGE_ALL*
+Arena::CreateMaybeMessage< ::game::SC_SEND_MESSAGE_ALL >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::game::SC_SEND_MESSAGE_ALL >(arena);
+}
+template<> PROTOBUF_NOINLINE ::game::SC_SEND_MESSAGE_TEAM*
+Arena::CreateMaybeMessage< ::game::SC_SEND_MESSAGE_TEAM >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::game::SC_SEND_MESSAGE_TEAM >(arena);
 }
 template<> PROTOBUF_NOINLINE ::game::SC_SHOT_HIT*
 Arena::CreateMaybeMessage< ::game::SC_SHOT_HIT >(Arena* arena) {

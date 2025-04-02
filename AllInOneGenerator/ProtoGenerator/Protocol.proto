@@ -10,25 +10,27 @@ enum PacketID {
     CS_KeyInput = 3;
     CS_PosInterpolation = 4;
     CS_RequestRestart = 5;
-    CS_SendMessage = 6;
-    CS_SendNickname = 7;
-    CS_ShotHit = 8;
+    CS_SendMessageAll = 6;
+    CS_SendMessageTeam = 7;
+    CS_SendNickname = 8;
+    CS_ShotHit = 9;
 
 // Server → Client
-    SC_Attack = 9;
-    SC_ChangeWeapon = 10;
-    SC_CharacterDown = 11;
-    SC_CharacterKillLog = 12;
-    SC_CreateMyCharacter = 13;
-    SC_CreateOtherCharacter = 14;
-    SC_ItemPickFail = 15;
-    SC_ItemPickSuccess = 16;
-    SC_ItemSpawned = 17;
-    SC_KeyInput = 18;
-    SC_OnAccept = 19;
-    SC_PosInterpolation = 20;
-    SC_SendMessage = 21;
-    SC_ShotHit = 22;
+    SC_Attack = 10;
+    SC_ChangeWeapon = 11;
+    SC_CharacterDown = 12;
+    SC_CharacterKillLog = 13;
+    SC_CreateMyCharacter = 14;
+    SC_CreateOtherCharacter = 15;
+    SC_ItemPickFail = 16;
+    SC_ItemPickSuccess = 17;
+    SC_ItemSpawned = 18;
+    SC_KeyInput = 19;
+    SC_OnAccept = 20;
+    SC_PosInterpolation = 21;
+    SC_SendMessageAll = 22;
+    SC_SendMessageTeam = 23;
+    SC_ShotHit = 24;
 }
 
 message CS_ATTACK {
@@ -67,7 +69,11 @@ message CS_REQUEST_RESTART {
     uint32 playerId = 1; // 플레이어의 고유 ID
     uint32 weapon = 2; // 들고 있는 무기 정보
 }
-message CS_SEND_MESSAGE {
+message CS_SEND_MESSAGE_ALL {
+    uint32 playerId = 1; // 플레이어의 고유 ID
+    string message = 2; // 전송할 문자열
+}
+message CS_SEND_MESSAGE_TEAM {
     uint32 playerId = 1; // 플레이어의 고유 ID
     string message = 2; // 전송할 문자열
 }
@@ -104,6 +110,7 @@ message SC_CHANGE_WEAPON {
 message SC_CHARACTER_DOWN {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
     uint32 teamID = 2; // 접속한 팀 ID
+    repeated uint32 assistPlayerId = 3; // 어시스트 관련 
 }
 message SC_CHARACTER_KILL_LOG {
     repeated PlayerInfo playerInfoList = 1; // 모든 플레이어들의 KDA 정보
@@ -159,7 +166,11 @@ message SC_POS_INTERPOLATION {
     float posY = 3;
     float posZ = 4;
 }
-message SC_SEND_MESSAGE {
+message SC_SEND_MESSAGE_ALL {
+    uint32 playerId = 1; // 플레이어의 고유 ID
+    string message = 2; // 전송할 문자열
+}
+message SC_SEND_MESSAGE_TEAM {
     uint32 playerId = 1; // 플레이어의 고유 ID
     string message = 2; // 전송할 문자열
 }

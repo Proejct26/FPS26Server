@@ -133,18 +133,32 @@ bool PacketProc(CSession* pSession, game::PacketID packetType, CPacket* pPacket)
         return CS_REQUEST_RESTART(pSession, playerId, weapon);
     }
     break;
-    case game::PacketID::CS_SendMessage:
+    case game::PacketID::CS_SendMessageAll:
     {
         UINT32 playerId;
         std::string message;
 
-        game::CS_SEND_MESSAGE pkt;
+        game::CS_SEND_MESSAGE_ALL pkt;
         pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
 
         playerId = pkt.playerid();
         message = pkt.message();
 
-        return CS_SEND_MESSAGE(pSession, playerId, message);
+        return CS_SEND_MESSAGE_ALL(pSession, playerId, message);
+    }
+    break;
+    case game::PacketID::CS_SendMessageTeam:
+    {
+        UINT32 playerId;
+        std::string message;
+
+        game::CS_SEND_MESSAGE_TEAM pkt;
+        pkt.ParseFromArray(pPacket->GetBufferPtr(), pPacket->GetDataSize());
+
+        playerId = pkt.playerid();
+        message = pkt.message();
+
+        return CS_SEND_MESSAGE_TEAM(pSession, playerId, message);
     }
     break;
     case game::PacketID::CS_SendNickname:
@@ -213,7 +227,12 @@ bool CS_REQUEST_RESTART(CSession* pSession, UINT32 playerId, UINT32 weapon)
     return false;
 }
 
-bool CS_SEND_MESSAGE(CSession* pSession, UINT32 playerId, std::string message)
+bool CS_SEND_MESSAGE_ALL(CSession* pSession, UINT32 playerId, std::string message)
+{
+    return false;
+}
+
+bool CS_SEND_MESSAGE_TEAM(CSession* pSession, UINT32 playerId, std::string message)
 {
     return false;
 }
