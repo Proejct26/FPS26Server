@@ -589,7 +589,8 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
             CPlayer* pAssistPlayer = pRoom->FindPlayerById(pTargetPlayer->GetLastAttackedPlayerID());
             if (pAssistPlayer)
             {
-                pAssistPlayer->AddAssist();
+                if (pPlayer != pAssistPlayer)
+                    pAssistPlayer->AddAssist();
             }
 
             // 플레이어는 죽고, active에서 waiting 상태로 변경됨
