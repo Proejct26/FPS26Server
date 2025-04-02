@@ -579,11 +579,23 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
         // 체력이 0 보다 작다면
         if (hp <= 0)
         {
+            // 죽인 인원의 kil을 올림
+            pPlayer->AddKill();
+
+            // 죽은 인원의 death가 올라감
+            pTargetPlayer->AddDeath();
+
+            // 마지막에 공격한 인원의 assist를 올림
+            CPlayer* pAssistPlayer = pRoom->FindPlayerById(pTargetPlayer->GetLastAttackedPlayerID());
+            if (pAssistPlayer)
+            {
+                pAssistPlayer->AddAssist();
+            }
+
             // 플레이어는 죽고, active에서 waiting 상태로 변경됨
             pRoom->MoveToWaiting(playerId);
 
             // 플레이어가 다운되었음을 방의 모든 플레이어들에게 전송
-
             std::vector<PlayerInfo> v;
             for (const auto& activePlayer : pRoom->m_activePlayers)
             {
