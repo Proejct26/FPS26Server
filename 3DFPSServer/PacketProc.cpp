@@ -209,7 +209,7 @@ void DisconnectSessionProc(CSession* pSession)
 
     // 3. 현재 플레이어를 제외한 모든 플레이어에게 해당 캐릭이 나갔음을 알리는 패킷 전송. 단, 자기 자신은 제외한다. 
     
-    std::vector<UINT32> assistID{ 1,2,3 };  // 어시스트 관련 임시
+    UINT32 assistID = 1;  // 어시스트 관련 임시
     for (const auto& activePlayer : pRoom->m_activePlayers)
     {
         if (activePlayer == pPlayer)
@@ -543,21 +543,20 @@ bool CS_SHOT_HIT(CSession* pSession, UINT32 playerId, UINT32 hp)
 
             // 플레이어가 다운되었음을 방의 모든 플레이어들에게 전송
 
-            // 어시스트 관련 임시
-            std::vector<UINT32> assistID{ 1,2,3 };
             for (const auto& activePlayer : pRoom->m_activePlayers)
             {
-                SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), assistID);
+                SC_CHARACTER_DOWN_FOR_SINGLE(activePlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), pTargetPlayer->GetLastAttackedPlayerID());
             }
             for (const auto& waitingPlayer : pRoom->m_waitingPlayers)
             {
-                SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), assistID);
+                SC_CHARACTER_DOWN_FOR_SINGLE(waitingPlayer->m_pSession, playerId, pTargetPlayer->GetTeamId(), pTargetPlayer->GetLastAttackedPlayerID());
             }
         }
         else
         {
             // 해당 플레이어에게 데미지 부여
             pTargetPlayer->SetCurHp(hp);
+            pTargetPlayer->SetLastAttackedPlayerID(pPlayer->m_ID);  // pPlayer가 마지막으로 pTargetPlayer를 공격했다고 갱신
 
             // 관련 정보를 방의 모든 플레이어들에게 전송
             for (const auto& activePlayer : pRoom->m_activePlayers)

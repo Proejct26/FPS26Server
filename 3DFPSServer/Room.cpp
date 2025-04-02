@@ -60,9 +60,10 @@ void CRoom::RemovePlayer(int playerId) {
 void CRoom::Update(float deltaTime) {
     float now = g_iTime;
 
-    for (CPlayer* p : m_activePlayers) {
-        p->UpdateDamageHistory(now);
-    }
+    //for (CPlayer* p : m_activePlayers) {
+    //    p->UpdateDamageHistory(now);
+    //}
+
     m_pItemSpawner->Update(deltaTime);
 }
 

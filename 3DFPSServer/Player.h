@@ -2,7 +2,7 @@
 
 #include "pch.h"
 #include "Object.h"
-#include "DamageTracker.h"
+//#include "DamageTracker.h"
 #include <array>
 #include "ProtoStruct.h"
 
@@ -46,10 +46,12 @@ public:
     int GetRoomId() const { return m_roomId; }
     int GetTeamId() const { return m_teamId; }
     int GetSpawnPosIndex() const { return m_spawnPosIndex; }
+    UINT32 GetLastAttackedPlayerID() const { return m_lastAttackedPlayerID; }
 
     void SetRoomId(int roomId) { m_roomId = roomId; }
     void SetTeamId(int teamId) { m_teamId = teamId; }
     void SetSpawnPosIndex(int spawnPosIndex) { m_spawnPosIndex = spawnPosIndex; }
+    void SetLastAttackedPlayerID(UINT32 lastAttackedPlayerID) { m_lastAttackedPlayerID = lastAttackedPlayerID; }
 
     void AddKill() { ++m_kdaInfo.kill; }
     void AddDeath() { ++m_kdaInfo.death; }
@@ -60,9 +62,9 @@ public:
     int GetAssist() const { return m_kdaInfo.assist; }
     void GetKDAInfo(KDAInfo& info) const { info = m_kdaInfo; }
 
-    void RecordDamage(int attackerId, float nowTime) { m_damageTracker.RecordDamage(attackerId, nowTime); }
-    void UpdateDamageHistory(float nowTime) { m_damageTracker.Update(nowTime); }
-    std::vector<int> GetAssistCandidates(float nowTime) const { return m_damageTracker.GetAssistCandidates(nowTime); }
+    //void RecordDamage(int attackerId, float nowTime) { m_damageTracker.RecordDamage(attackerId, nowTime); }
+    //void UpdateDamageHistory(float nowTime) { m_damageTracker.Update(nowTime); }
+    //std::vector<int> GetAssistCandidates(float nowTime) const { return m_damageTracker.GetAssistCandidates(nowTime); }
 
 public:
     PLAYER_GAME_STATE GetCurGameState(void) { return m_eCurPlayerGameState; }
@@ -106,7 +108,10 @@ private:
 
     bool m_pressedKey[(int)PRESS_KEY::END];
 
-    DamageTracker m_damageTracker;
+    // 데미지 트레커 기능은 비활성화 대신 마지막에 같이 때린 플레이어 정보를 전송
+    // DamageTracker m_damageTracker;
+    UINT32 m_lastAttackedPlayerID = 0;  // 가장 최근에 나를 공격한 플레이어 ID
+                                        // 초기값은 0이고 플레이어 id는 1부터 시작하므로, 0이면 아무에게도 아직 맞지 않은 상태
 
     PLAYER_GAME_STATE m_eCurPlayerGameState;  // 시작 관련 정보, 처음이나 죽었을 때 WAITING 상태, 게임 플레이 중이면 ACTIVE로 변경됨
 

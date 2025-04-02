@@ -13,9 +13,9 @@ void SC_CHANGE_WEAPON_FOR_All(CSession* pSession, UINT32 playerId, UINT32 weapon
 void SC_CHANGE_WEAPON_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 weapon);
 void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 weapon);
 
-void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId);
-void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId);
-void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId);
+void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId);
+void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId);
+void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId);
 
 void SC_CHARACTER_KILL_LOG_FOR_All(CSession* pSession, std::vector<PlayerInfo>& playerInfoList);
 void SC_CHARACTER_KILL_LOG_FOR_SINGLE(CSession* pSession, std::vector<PlayerInfo>& playerInfoList);

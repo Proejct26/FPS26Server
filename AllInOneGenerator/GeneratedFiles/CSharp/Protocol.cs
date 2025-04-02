@@ -48,7 +48,7 @@ namespace Game {
             "DAoEcG9zWBgGIAEoAhIMCgRwb3NZGAcgASgCEgwKBHBvc1oYCCABKAIiNAoQ",
             "U0NfQ0hBTkdFX1dFQVBPThIQCghwbGF5ZXJJZBgBIAEoDRIOCgZ3ZWFwb24Y",
             "AiABKA0iTQoRU0NfQ0hBUkFDVEVSX0RPV04SEAoIcGxheWVySWQYASABKA0S",
-            "DgoGdGVhbUlEGAIgASgNEhYKDmFzc2lzdFBsYXllcklkGAMgAygNIkEKFVND",
+            "DgoGdGVhbUlEGAIgASgNEhYKDmFzc2lzdFBsYXllcklkGAMgASgNIkEKFVND",
             "X0NIQVJBQ1RFUl9LSUxMX0xPRxIoCg5wbGF5ZXJJbmZvTGlzdBgBIAMoCzIQ",
             "LmdhbWUuUGxheWVySW5mbyJbChZTQ19DUkVBVEVfTVlfQ0hBUkFDVEVSEhAK",
             "CHBsYXllcklkGAEgASgNEhAKCHBvc0luZGV4GAIgASgNEg0KBW1heEhQGAMg",
@@ -4110,7 +4110,7 @@ namespace Game {
     public SC_CHARACTER_DOWN(SC_CHARACTER_DOWN other) : this() {
       playerId_ = other.playerId_;
       teamID_ = other.teamID_;
-      assistPlayerId_ = other.assistPlayerId_.Clone();
+      assistPlayerId_ = other.assistPlayerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4152,16 +4152,17 @@ namespace Game {
 
     /// <summary>Field number for the "assistPlayerId" field.</summary>
     public const int AssistPlayerIdFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_assistPlayerId_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> assistPlayerId_ = new pbc::RepeatedField<uint>();
+    private uint assistPlayerId_;
     /// <summary>
-    /// 어시스트 관련 
+    /// 마지막에 때린 플레이어의 ID (어시스트 관련) 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AssistPlayerId {
+    public uint AssistPlayerId {
       get { return assistPlayerId_; }
+      set {
+        assistPlayerId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4181,7 +4182,7 @@ namespace Game {
       }
       if (PlayerId != other.PlayerId) return false;
       if (TeamID != other.TeamID) return false;
-      if(!assistPlayerId_.Equals(other.assistPlayerId_)) return false;
+      if (AssistPlayerId != other.AssistPlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4191,7 +4192,7 @@ namespace Game {
       int hash = 1;
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (TeamID != 0) hash ^= TeamID.GetHashCode();
-      hash ^= assistPlayerId_.GetHashCode();
+      if (AssistPlayerId != 0) hash ^= AssistPlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4218,7 +4219,10 @@ namespace Game {
         output.WriteRawTag(16);
         output.WriteUInt32(TeamID);
       }
-      assistPlayerId_.WriteTo(output, _repeated_assistPlayerId_codec);
+      if (AssistPlayerId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AssistPlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4237,7 +4241,10 @@ namespace Game {
         output.WriteRawTag(16);
         output.WriteUInt32(TeamID);
       }
-      assistPlayerId_.WriteTo(ref output, _repeated_assistPlayerId_codec);
+      if (AssistPlayerId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AssistPlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4254,7 +4261,9 @@ namespace Game {
       if (TeamID != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeamID);
       }
-      size += assistPlayerId_.CalculateSize(_repeated_assistPlayerId_codec);
+      if (AssistPlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AssistPlayerId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4273,7 +4282,9 @@ namespace Game {
       if (other.TeamID != 0) {
         TeamID = other.TeamID;
       }
-      assistPlayerId_.Add(other.assistPlayerId_);
+      if (other.AssistPlayerId != 0) {
+        AssistPlayerId = other.AssistPlayerId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -4297,9 +4308,8 @@ namespace Game {
             TeamID = input.ReadUInt32();
             break;
           }
-          case 26:
           case 24: {
-            assistPlayerId_.AddEntriesFrom(input, _repeated_assistPlayerId_codec);
+            AssistPlayerId = input.ReadUInt32();
             break;
           }
         }
@@ -4325,9 +4335,8 @@ namespace Game {
             TeamID = input.ReadUInt32();
             break;
           }
-          case 26:
           case 24: {
-            assistPlayerId_.AddEntriesFrom(ref input, _repeated_assistPlayerId_codec);
+            AssistPlayerId = input.ReadUInt32();
             break;
           }
         }

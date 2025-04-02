@@ -237,10 +237,9 @@ struct SC_CHANGE_WEAPONDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SC_CHANGE_WEAPONDefaultTypeInternal _SC_CHANGE_WEAPON_default_instance_;
 PROTOBUF_CONSTEXPR SC_CHARACTER_DOWN::SC_CHARACTER_DOWN(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.assistplayerid_)*/{}
-  , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
-  , /*decltype(_impl_.playerid_)*/0u
+    /*decltype(_impl_.playerid_)*/0u
   , /*decltype(_impl_.teamid_)*/0u
+  , /*decltype(_impl_.assistplayerid_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SC_CHARACTER_DOWNDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SC_CHARACTER_DOWNDefaultTypeInternal()
@@ -785,7 +784,7 @@ const char descriptor_table_protodef_Protocol_2eproto[] PROTOBUF_SECTION_VARIABL
   "\n\004posY\030\007 \001(\002\022\014\n\004posZ\030\010 \001(\002\"4\n\020SC_CHANGE_"
   "WEAPON\022\020\n\010playerId\030\001 \001(\r\022\016\n\006weapon\030\002 \001(\r"
   "\"M\n\021SC_CHARACTER_DOWN\022\020\n\010playerId\030\001 \001(\r\022"
-  "\016\n\006teamID\030\002 \001(\r\022\026\n\016assistPlayerId\030\003 \003(\r\""
+  "\016\n\006teamID\030\002 \001(\r\022\026\n\016assistPlayerId\030\003 \001(\r\""
   "A\n\025SC_CHARACTER_KILL_LOG\022(\n\016playerInfoLi"
   "st\030\001 \003(\0132\020.game.PlayerInfo\"[\n\026SC_CREATE_"
   "MY_CHARACTER\022\020\n\010playerId\030\001 \001(\r\022\020\n\010posInd"
@@ -4571,16 +4570,15 @@ SC_CHARACTER_DOWN::SC_CHARACTER_DOWN(const SC_CHARACTER_DOWN& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SC_CHARACTER_DOWN* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.assistplayerid_){from._impl_.assistplayerid_}
-    , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
-    , decltype(_impl_.playerid_){}
+      decltype(_impl_.playerid_){}
     , decltype(_impl_.teamid_){}
+    , decltype(_impl_.assistplayerid_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&_impl_.playerid_, &from._impl_.playerid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.teamid_) -
-    reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.teamid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.assistplayerid_) -
+    reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.assistplayerid_));
   // @@protoc_insertion_point(copy_constructor:game.SC_CHARACTER_DOWN)
 }
 
@@ -4589,10 +4587,9 @@ inline void SC_CHARACTER_DOWN::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.assistplayerid_){arena}
-    , /*decltype(_impl_._assistplayerid_cached_byte_size_)*/{0}
-    , decltype(_impl_.playerid_){0u}
+      decltype(_impl_.playerid_){0u}
     , decltype(_impl_.teamid_){0u}
+    , decltype(_impl_.assistplayerid_){0u}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -4608,7 +4605,6 @@ SC_CHARACTER_DOWN::~SC_CHARACTER_DOWN() {
 
 inline void SC_CHARACTER_DOWN::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.assistplayerid_.~RepeatedField();
 }
 
 void SC_CHARACTER_DOWN::SetCachedSize(int size) const {
@@ -4621,10 +4617,9 @@ void SC_CHARACTER_DOWN::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.assistplayerid_.Clear();
   ::memset(&_impl_.playerid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.teamid_) -
-      reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.teamid_));
+      reinterpret_cast<char*>(&_impl_.assistplayerid_) -
+      reinterpret_cast<char*>(&_impl_.playerid_)) + sizeof(_impl_.assistplayerid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4650,13 +4645,10 @@ const char* SC_CHARACTER_DOWN::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // repeated uint32 assistPlayerId = 3;
+      // uint32 assistPlayerId = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_assistplayerid(), ptr, ctx);
-          CHK_(ptr);
-        } else if (static_cast<uint8_t>(tag) == 24) {
-          _internal_add_assistplayerid(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.assistplayerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -4702,13 +4694,10 @@ uint8_t* SC_CHARACTER_DOWN::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_teamid(), target);
   }
 
-  // repeated uint32 assistPlayerId = 3;
-  {
-    int byte_size = _impl_._assistplayerid_cached_byte_size_.load(std::memory_order_relaxed);
-    if (byte_size > 0) {
-      target = stream->WriteUInt32Packed(
-          3, _internal_assistplayerid(), byte_size, target);
-    }
+  // uint32 assistPlayerId = 3;
+  if (this->_internal_assistplayerid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_assistplayerid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4727,20 +4716,6 @@ size_t SC_CHARACTER_DOWN::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated uint32 assistPlayerId = 3;
-  {
-    size_t data_size = ::_pbi::WireFormatLite::
-      UInt32Size(this->_impl_.assistplayerid_);
-    if (data_size > 0) {
-      total_size += 1 +
-        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
-    }
-    int cached_size = ::_pbi::ToCachedSize(data_size);
-    _impl_._assistplayerid_cached_byte_size_.store(cached_size,
-                                    std::memory_order_relaxed);
-    total_size += data_size;
-  }
-
   // uint32 playerId = 1;
   if (this->_internal_playerid() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
@@ -4749,6 +4724,11 @@ size_t SC_CHARACTER_DOWN::ByteSizeLong() const {
   // uint32 teamID = 2;
   if (this->_internal_teamid() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_teamid());
+  }
+
+  // uint32 assistPlayerId = 3;
+  if (this->_internal_assistplayerid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_assistplayerid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -4769,12 +4749,14 @@ void SC_CHARACTER_DOWN::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.assistplayerid_.MergeFrom(from._impl_.assistplayerid_);
   if (from._internal_playerid() != 0) {
     _this->_internal_set_playerid(from._internal_playerid());
   }
   if (from._internal_teamid() != 0) {
     _this->_internal_set_teamid(from._internal_teamid());
+  }
+  if (from._internal_assistplayerid() != 0) {
+    _this->_internal_set_assistplayerid(from._internal_assistplayerid());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -4793,10 +4775,9 @@ bool SC_CHARACTER_DOWN::IsInitialized() const {
 void SC_CHARACTER_DOWN::InternalSwap(SC_CHARACTER_DOWN* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.assistplayerid_.InternalSwap(&other->_impl_.assistplayerid_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SC_CHARACTER_DOWN, _impl_.teamid_)
-      + sizeof(SC_CHARACTER_DOWN::_impl_.teamid_)
+      PROTOBUF_FIELD_OFFSET(SC_CHARACTER_DOWN, _impl_.assistplayerid_)
+      + sizeof(SC_CHARACTER_DOWN::_impl_.assistplayerid_)
       - PROTOBUF_FIELD_OFFSET(SC_CHARACTER_DOWN, _impl_.playerid_)>(
           reinterpret_cast<char*>(&_impl_.playerid_),
           reinterpret_cast<char*>(&other->_impl_.playerid_));

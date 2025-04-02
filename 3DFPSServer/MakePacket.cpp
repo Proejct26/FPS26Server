@@ -191,16 +191,13 @@ void SC_CHANGE_WEAPON_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 player
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
+void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
-    for (const auto& data : assistPlayerId) {
-        auto* item = pkt.add_assistplayerid();
-        *item = data;
-    }
+    pkt.set_assistplayerid(assistPlayerId);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -221,16 +218,13 @@ void SC_CHARACTER_DOWN_FOR_All(CSession* pSession, UINT32 playerId, UINT32 teamI
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
+void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
-    for (const auto& data : assistPlayerId) {
-        auto* item = pkt.add_assistplayerid();
-        *item = data;
-    }
+    pkt.set_assistplayerid(assistPlayerId);
 
     int pktSize = pkt.ByteSizeLong();
 
@@ -251,16 +245,13 @@ void SC_CHARACTER_DOWN_FOR_SINGLE(CSession* pSession, UINT32 playerId, UINT32 te
     packetPool.Free(Packet);
 }
 
-void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID, std::vector<UINT32>& assistPlayerId)
+void SC_CHARACTER_DOWN_FOR_AROUND(CSession* pSession, CRoom* pRoom, UINT32 playerId, UINT32 teamID, UINT32 assistPlayerId)
 {
     game::SC_CHARACTER_DOWN pkt;
 
     pkt.set_playerid(playerId);
     pkt.set_teamid(teamID);
-    for (const auto& data : assistPlayerId) {
-        auto* item = pkt.add_assistplayerid();
-        *item = data;
-    }
+    pkt.set_assistplayerid(assistPlayerId);
 
     int pktSize = pkt.ByteSizeLong();
 

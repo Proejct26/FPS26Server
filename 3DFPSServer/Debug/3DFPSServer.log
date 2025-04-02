@@ -1,7 +1,6 @@
-﻿  PacketProc.cpp
-G:\Sparta\FPS26Server\3DFPSServer\LogManager.h(61,17): warning C4002: 함수 같은 매크로 호출 'GetCurrentTime'에 대해 인수가 너무 많습니다.
-  (소스 파일 'PacketProc.cpp'을(를) 컴파일하는 중)
-  
-G:\Sparta\FPS26Server\3DFPSServer\PacketProc.cpp(326,45): warning C4244: '인수': 'float'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-G:\Sparta\FPS26Server\3DFPSServer\PacketProc.cpp(326,32): warning C4244: '인수': 'float'에서 'UINT32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Room.cpp
+G:\Sparta\FPS26Server\3DFPSServer\Room.cpp(61,15): warning C4244: '초기화 중': 'unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MemoryPoolManager.cpp
+  Player.cpp
+  코드를 생성하고 있습니다...
   3DFPSServer.vcxproj -> G:\Sparta\FPS26Server\x64\Debug\3DFPSServer.exe

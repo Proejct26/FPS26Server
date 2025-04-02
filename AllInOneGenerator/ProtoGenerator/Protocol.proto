@@ -110,7 +110,7 @@ message SC_CHANGE_WEAPON {
 message SC_CHARACTER_DOWN {
     uint32 playerId = 1; // 서버로 부터 부여받은 ID
     uint32 teamID = 2; // 접속한 팀 ID
-    repeated uint32 assistPlayerId = 3; // 어시스트 관련 
+    uint32 assistPlayerId = 3; // 마지막에 때린 플레이어의 ID (어시스트 관련) 
 }
 message SC_CHARACTER_KILL_LOG {
     repeated PlayerInfo playerInfoList = 1; // 모든 플레이어들의 KDA 정보

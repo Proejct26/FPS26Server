@@ -2778,32 +2778,10 @@ class SC_CHARACTER_DOWN final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAssistPlayerIdFieldNumber = 3,
     kPlayerIdFieldNumber = 1,
     kTeamIDFieldNumber = 2,
+    kAssistPlayerIdFieldNumber = 3,
   };
-  // repeated uint32 assistPlayerId = 3;
-  int assistplayerid_size() const;
-  private:
-  int _internal_assistplayerid_size() const;
-  public:
-  void clear_assistplayerid();
-  private:
-  uint32_t _internal_assistplayerid(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-      _internal_assistplayerid() const;
-  void _internal_add_assistplayerid(uint32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-      _internal_mutable_assistplayerid();
-  public:
-  uint32_t assistplayerid(int index) const;
-  void set_assistplayerid(int index, uint32_t value);
-  void add_assistplayerid(uint32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-      assistplayerid() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-      mutable_assistplayerid();
-
   // uint32 playerId = 1;
   void clear_playerid();
   uint32_t playerid() const;
@@ -2822,6 +2800,15 @@ class SC_CHARACTER_DOWN final :
   void _internal_set_teamid(uint32_t value);
   public:
 
+  // uint32 assistPlayerId = 3;
+  void clear_assistplayerid();
+  uint32_t assistplayerid() const;
+  void set_assistplayerid(uint32_t value);
+  private:
+  uint32_t _internal_assistplayerid() const;
+  void _internal_set_assistplayerid(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:game.SC_CHARACTER_DOWN)
  private:
   class _Internal;
@@ -2830,10 +2817,9 @@ class SC_CHARACTER_DOWN final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t > assistplayerid_;
-    mutable std::atomic<int> _assistplayerid_cached_byte_size_;
     uint32_t playerid_;
     uint32_t teamid_;
+    uint32_t assistplayerid_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -6165,51 +6151,24 @@ inline void SC_CHARACTER_DOWN::set_teamid(uint32_t value) {
   // @@protoc_insertion_point(field_set:game.SC_CHARACTER_DOWN.teamID)
 }
 
-// repeated uint32 assistPlayerId = 3;
-inline int SC_CHARACTER_DOWN::_internal_assistplayerid_size() const {
-  return _impl_.assistplayerid_.size();
-}
-inline int SC_CHARACTER_DOWN::assistplayerid_size() const {
-  return _internal_assistplayerid_size();
-}
+// uint32 assistPlayerId = 3;
 inline void SC_CHARACTER_DOWN::clear_assistplayerid() {
-  _impl_.assistplayerid_.Clear();
+  _impl_.assistplayerid_ = 0u;
 }
-inline uint32_t SC_CHARACTER_DOWN::_internal_assistplayerid(int index) const {
-  return _impl_.assistplayerid_.Get(index);
-}
-inline uint32_t SC_CHARACTER_DOWN::assistplayerid(int index) const {
-  // @@protoc_insertion_point(field_get:game.SC_CHARACTER_DOWN.assistPlayerId)
-  return _internal_assistplayerid(index);
-}
-inline void SC_CHARACTER_DOWN::set_assistplayerid(int index, uint32_t value) {
-  _impl_.assistplayerid_.Set(index, value);
-  // @@protoc_insertion_point(field_set:game.SC_CHARACTER_DOWN.assistPlayerId)
-}
-inline void SC_CHARACTER_DOWN::_internal_add_assistplayerid(uint32_t value) {
-  _impl_.assistplayerid_.Add(value);
-}
-inline void SC_CHARACTER_DOWN::add_assistplayerid(uint32_t value) {
-  _internal_add_assistplayerid(value);
-  // @@protoc_insertion_point(field_add:game.SC_CHARACTER_DOWN.assistPlayerId)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-SC_CHARACTER_DOWN::_internal_assistplayerid() const {
+inline uint32_t SC_CHARACTER_DOWN::_internal_assistplayerid() const {
   return _impl_.assistplayerid_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
-SC_CHARACTER_DOWN::assistplayerid() const {
-  // @@protoc_insertion_point(field_list:game.SC_CHARACTER_DOWN.assistPlayerId)
+inline uint32_t SC_CHARACTER_DOWN::assistplayerid() const {
+  // @@protoc_insertion_point(field_get:game.SC_CHARACTER_DOWN.assistPlayerId)
   return _internal_assistplayerid();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-SC_CHARACTER_DOWN::_internal_mutable_assistplayerid() {
-  return &_impl_.assistplayerid_;
+inline void SC_CHARACTER_DOWN::_internal_set_assistplayerid(uint32_t value) {
+  
+  _impl_.assistplayerid_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
-SC_CHARACTER_DOWN::mutable_assistplayerid() {
-  // @@protoc_insertion_point(field_mutable_list:game.SC_CHARACTER_DOWN.assistPlayerId)
-  return _internal_mutable_assistplayerid();
+inline void SC_CHARACTER_DOWN::set_assistplayerid(uint32_t value) {
+  _internal_set_assistplayerid(value);
+  // @@protoc_insertion_point(field_set:game.SC_CHARACTER_DOWN.assistPlayerId)
 }
 
 // -------------------------------------------------------------------
