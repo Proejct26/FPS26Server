@@ -60,39 +60,6 @@ FPS26Server/
 - **C# (Unity Client 연동용)**  
   Unity 클라이언트와의 통신을 위한 메시지 포맷 자동 생성
 
----
-
-## 🚀 빠른 시작
-
-### 1. 저장소 클론
-```bash
-git clone https://github.com/Proejct26/FPS26Server.git
-cd FPS26Server
-```
-
-### 2. 프로토콜 버퍼 설치 (Ubuntu 예시)
-```bash
-sudo apt install protobuf-compiler
-```
-
-### 3. 프로토콜 코드 생성
-```bash
-cd ProtoFileGenerator
-python generate_all.py
-```
-
-### 4. 서버 빌드 및 실행
-```bash
-cd 3DFPSServer
-mkdir build && cd build
-cmake ..
-make
-./FPS26Server
-```
-
-> C++17 이상, `protobuf` 설치 필요
-
----
 
 ## 👥 기여자
 
